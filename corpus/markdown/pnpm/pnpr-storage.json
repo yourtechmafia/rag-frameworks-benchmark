@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/storage",
+ "file": "markdown/pnpm/pnpr-storage.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.19,
+ "markdown_chars": 5992,
+ "raw_html_chars": 14390,
+ "sha256": "7e53c5e45b2790936c46bc0d92e030e2490c84bedd13cf26ec63fb9765887fb5",
+ "fetched_at": "2026-10-03T08:58:58+00:00"
+}

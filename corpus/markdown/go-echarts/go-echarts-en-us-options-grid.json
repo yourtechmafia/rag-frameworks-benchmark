@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/options/grid",
+ "file": "markdown/go-echarts/go-echarts-en-us-options-grid.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 2.53,
+ "markdown_chars": 1651,
+ "raw_html_chars": 3769,
+ "sha256": "593fa3a05baf75a7417d995e5a04180684930499b2e65dd3b95e6db00d5b61ac",
+ "fetched_at": "2026-10-03T08:59:26+00:00"
+}

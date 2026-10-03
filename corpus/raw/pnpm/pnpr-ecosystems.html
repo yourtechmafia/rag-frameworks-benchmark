@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cargo and Python registries | pnpm</title>
+    <meta name="description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Cargo and Python registries | pnpm" />
+    <meta property="og:description" content="Added in: v0.1.0-alpha.11" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Cargo and Python registries | pnpm" />
+    <meta name="twitter:description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/ecosystems" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/ecosystems" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/ecosystems" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Cargo and Python registries</h1><p>Added in: v0.1.0-alpha.11</p>
+<p>pnpr serves npm, Cargo, Python, and <a href="/pnpr/container-images">container image</a>
+registries from one instance. Every registry declares which ecosystem it serves,
+and each ecosystem keeps its own protocol, its own routing, and its own default
+registry.</p>
+<h2 id="addressing-an-ecosystem">Addressing an ecosystem<a class="hash-link" href="#addressing-an-ecosystem" aria-label="Direct link to Addressing an ecosystem">#</a></h2>
+<p>When more than one ecosystem is configured, a path prefix selects it:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Ecosystem</th><th>Prefix</th></tr></thead><tbody><tr><td>npm</td><td><code>/npm/</code></td></tr><tr><td>Cargo</td><td><code>/cargo/</code></td></tr><tr><td>Python</td><td><code>/pypi/</code></td></tr><tr><td>Container images</td><td><code>/oci/</code></td></tr></tbody></table></div>
+<p><code>/&#x3C;ecosystem>/~&#x3C;name>/</code> addresses a named registry and <code>/&#x3C;ecosystem>/</code> the
+ecosystem's default. A server that configures only one ecosystem omits the
+prefix entirely, so existing npm URLs keep working unchanged.</p>
+<p>Two things sit outside the prefixes. Container image registries answer at
+<code>/v2/</code> on the host root whatever else is configured, because a client derives
+that path from the image reference itself. And the endpoints that belong to no
+single ecosystem stay at the root: <code>/-/ping</code>, the <code>/-/pnpr/v0/</code> protocols
+(resolve, verify-lockfile, shared artifacts, pipeline runs, and the
+cross-ecosystem publish), and the account endpoints that mint and manage tokens.</p>
+<p>A <code>/~&#x3C;name>/</code> prefix must arrive with a literal <code>~</code>. A percent-encoded <code>%7E</code>
+does not select the named registry. <code>~</code> is unreserved, so a conforming client
+sends it as written.</p>
+<h2 id="declaring-registries">Declaring registries<a class="hash-link" href="#declaring-registries" aria-label="Direct link to Declaring registries">#</a></h2>
+<p>Give a hosted or upstream registry an <code>ecosystem:</code>; npm is the default. A router
+may list sources of every ecosystem, because a request only ever sees the
+sources that speak its own protocol, so one router can be the default target for
+all of them.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">local:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'@example/*':</span> {}
+  <span class="hljs-attr">npmjs:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://registry.npmjs.org/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">crates:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">cargo</span>
+    <span class="hljs-attr">org:</span> <span class="hljs-string">crates</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">my-crate:</span> {}
+  <span class="hljs-attr">crates-io:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">cargo</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://index.crates.io/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">python:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">pypi</span>
+    <span class="hljs-attr">org:</span> <span class="hljs-string">python</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">my-package:</span> {}
+  <span class="hljs-attr">pypi-org:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">pypi</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://pypi.org/simple/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">router</span>
+    <span class="hljs-attr">sources:</span> [<span class="hljs-string">local</span>, <span class="hljs-string">npmjs</span>, <span class="hljs-string">crates</span>, <span class="hljs-string">crates-io</span>, <span class="hljs-string">python</span>, <span class="hljs-string">pypi-org</span>]
+
+<span class="hljs-attr">defaultRegistry:</span> <span class="hljs-string">main</span>
+</code></pre>
+<p>For a <code>cargo</code> upstream, <code>url</code> is a sparse index root; for <code>pypi</code>, a Simple API
+root.</p>
+<h3 id="reusing-a-name-across-ecosystems">Reusing a name across ecosystems<a class="hash-link" href="#reusing-a-name-across-ecosystems" aria-label="Direct link to Reusing a name across ecosystems">#</a></h3>
+<p>Group the registries under an ecosystem key to give each protocol its own
+registry of the same name:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">npm:</span>
+    <span class="hljs-attr">internal:</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+      <span class="hljs-attr">packages:</span>
+        <span class="hljs-attr">'@example/*':</span> {}
+    <span class="hljs-attr">public:</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+      <span class="hljs-attr">url:</span> <span class="hljs-string">https://registry.npmjs.org/</span>
+      <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">main:</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">router</span>
+      <span class="hljs-attr">sources:</span> [<span class="hljs-string">internal</span>, <span class="hljs-string">public</span>]
+  <span class="hljs-attr">cargo:</span>
+    <span class="hljs-attr">internal:</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">main:</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">router</span>
+      <span class="hljs-attr">sources:</span> [<span class="hljs-string">internal</span>]
+
+<span class="hljs-attr">defaultRegistry:</span>
+  <span class="hljs-attr">npm:</span> <span class="hljs-string">main</span>
+  <span class="hljs-attr">cargo:</span> <span class="hljs-string">main</span>
+</code></pre>
+<p><code>/npm/~internal</code> and <code>/cargo/~internal</code> are then independent registries. Router
+sources resolve within their own group and cannot cross into another, and each
+ecosystem gets its own default. Access rules, teams, upstream credentials, and
+caches belong to the individual registry.</p>
+<p>A grouped hosted registry defaults to the storage namespace
+<code>&#x3C;ecosystem>~&#x3C;name></code>. Set <code>org</code> explicitly to keep an existing namespace when
+moving a flat registry into a group, <code>org: ''</code> included for the flat storage
+root. Two hosted registries still cannot share a namespace. The flat
+configuration format and its shared <code>defaultRegistry: main</code> remain supported.</p>
+<h2 id="cargo">Cargo<a class="hash-link" href="#cargo" aria-label="Direct link to Cargo">#</a></h2>
+<p>A Cargo registry serves a sparse index at <code>/cargo/index/</code> and the crates API at
+<code>/cargo/api/v1/crates/</code>, or under <code>/cargo/~&#x3C;name>/...</code> for a named registry.
+Point <code>cargo</code> at it:</p>
+<div class="code-block"><div class="code-block-title">.cargo/config.toml</div><pre><code class="hljs language-toml"><span class="hljs-section">[registries.pnpr]</span>
+<span class="hljs-attr">index</span> = <span class="hljs-string">"sparse+https://pnpr.example.com/cargo/index/"</span>
+</code></pre></div>
+<p><code>cargo publish --registry pnpr</code>, <code>cargo yank --registry pnpr</code>, and dependencies
+with <code>registry = "pnpr"</code> then go through pnpr. The <code>config.json</code> pnpr serves
+points downloads back at itself, so proxied crates are cached and verified
+against the upstream index checksum.</p>
+<p>Use a pnpr token as the registry token. <code>cargo</code> sends it as a bare
+<code>Authorization</code> header, and pnpr accepts that alongside <code>Bearer</code>. A registry
+that is not anonymously readable advertises <code>auth-required</code>, so <code>cargo</code> sends
+the token on index and download requests too.</p>
+<p>Crate names are compared case-insensitively, and an exact <code>packages:</code> key must
+be a valid crate name.</p>
+<p><code>cargo search</code> works against a pnpr registry, matching on crate name over the
+crates it hosts. Each result reports the crate's newest release that is not
+yanked; a crate whose releases are all yanked reports its newest release.</p>
+<h2 id="python">Python<a class="hash-link" href="#python" aria-label="Direct link to Python">#</a></h2>
+<p>A Python registry serves the Simple Repository API at <code>/pypi/simple/</code> (PEP 503
+HTML and PEP 691 JSON, chosen by <code>Accept</code>), files at
+<code>/pypi/files/&#x3C;project>/&#x3C;filename></code>, and accepts uploads on the legacy API at
+<code>/pypi/legacy/</code>. A named registry answers under <code>/pypi/~&#x3C;name>/...</code>.</p>
+<pre><code class="hljs language-sh">pip install --index-url https://pnpr.example.com/pypi/simple/ my-package
+twine upload --repository-url https://pnpr.example.com/pypi/legacy/ dist/*
+</code></pre>
+<p>Use <code>__token__</code> as the username and a pnpr token as the password, the PyPI
+convention.</p>
+<p>Project names are compared PEP 503 normalized, so <code>My_Package</code>, <code>my.package</code>,
+and <code>my-package</code> are one project, and exact <code>packages:</code> keys are normalized the
+same way. Proxied files are fetched from the URL the upstream page lists,
+verified against its <code>sha256</code>, and cached. The project list at <code>/pypi/simple/</code>
+enumerates hosted projects only.</p>
+<h2 id="proxying-cratesio-and-pypi">Proxying crates.io and PyPI<a class="hash-link" href="#proxying-cratesio-and-pypi" aria-label="Direct link to Proxying crates.io and PyPI">#</a></h2>
+<p>Cargo and Python proxies restrict downloads and redirects to their configured
+upstream origin and the existing <a href="/pnpr/configuration#routes"><code>routes.public</code></a>
+allowlist. The official crates.io and PyPI upstreams also permit their download
+hosts, <code>static.crates.io</code> and <code>files.pythonhosted.org</code>. A custom registry that
+serves downloads from a separate host needs that host declared:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">routes:</span>
+  <span class="hljs-attr">public:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">registry:</span> <span class="hljs-string">https://downloads.example.com/</span>
+</code></pre>
+<p>Configured headers are sent only over HTTPS or loopback HTTP, and a redirect
+rebuilds its headers per destination, so configured credentials stay on the
+upstream origin. Upstream credentials are never sent to the separate host an
+index points downloads at.</p>
+<h2 id="one-publish-for-a-workspace-that-spans-ecosystems">One publish for a workspace that spans ecosystems<a class="hash-link" href="#one-publish-for-a-workspace-that-spans-ecosystems" aria-label="Direct link to One publish for a workspace that spans ecosystems">#</a></h2>
+<p><code>PUT /-/pnpr/v0/publish</code> publishes packages of any ecosystem in a single
+transaction. Each entry names its <code>ecosystem</code>, and an entry without one is an
+npm publish document, so the body the npm batch endpoint already takes is a
+valid one.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"packages"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span> <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@acme/ui"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"versions"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"_attachments"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span> <span class="hljs-attr">"ecosystem"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"cargo"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"metadata"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"acme"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"vers"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"0.1.0"</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"archive"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"&#x3C;base64 .crate>"</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span> <span class="hljs-attr">"ecosystem"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"pypi"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"acme"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"0.1.0"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"filetype"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"bdist_wheel"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"filename"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"acme-0.1.0-py3-none-any.whl"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"&#x3C;base64 wheel>"</span> <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Every entry is authorized and verified before any of them is written. Two
+different failures follow from that, so it is worth keeping them apart.</p>
+<p><strong>A batch that fails a check publishes nothing.</strong> Authorization, validation, and
+the version-conflict check all run up front, and any entry that fails one of them
+aborts the whole batch before a byte is written.</p>
+<p><strong>A batch that passes its checks is committed as one journaled transaction.</strong> It
+lands whole or leaves nothing behind, and one interrupted by a crash is finished
+on the next startup rather than staying half-published. A read that arrives while
+the transaction applies can still see part of the release.</p>
+<p>The one case that ends in a partial release is losing a write race: another
+writer publishing the same file between the check and the commit. That entry is
+left out and reported with <code>409</code> while the rest of the release stands, because
+the bytes that won the slot are someone else's published release and overwriting
+them would be the worse outcome. Republishing the batch after bumping the
+conflicting version completes the release.</p>
+<p>An <a href="/pnpr/container-images">image manifest</a> whose layers are already uploaded can
+ride along in the same batch. <code>GET /-/pnpr</code> advertises support as
+<code>publish: [0]</code>. The npm-only <code>PUT /-/pnpm/v1/publish</code> stays where it is.</p>
+<h2 id="jsr">JSR<a class="hash-link" href="#jsr" aria-label="Direct link to JSR">#</a></h2>
+<p><code>npm.jsr.io</code> is a built-in public route, like the npm registry, so JSR packages
+resolve with no configuration. The built-in routes are reachable over HTTPS only.</p></article></main></div>
+  </body>
+</html>

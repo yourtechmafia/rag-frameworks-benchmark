@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/parallel",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-parallel.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.23,
+ "markdown_chars": 5626,
+ "raw_html_chars": 3769,
+ "sha256": "6439995e775d83dbb6a02b7a3291b4ec3a3d14c3ac4c4c988f580746bdfdad1b",
+ "fetched_at": "2026-10-03T08:59:42+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/shim",
+ "file": "markdown/pnpm/cli-shim.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.2,
+ "markdown_chars": 4192,
+ "raw_html_chars": 10057,
+ "sha256": "43d25491f340b0eecce7ea82b6f31d2134b473021ed74b93740ed57984019d60",
+ "fetched_at": "2026-10-03T08:58:34+00:00"
+}

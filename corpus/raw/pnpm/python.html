@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python dependencies | pnpm</title>
+    <meta name="description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Python dependencies | pnpm" />
+    <meta property="og:description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Python dependencies | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/python" />
+    <meta property="og:url" content="https://pnpm.io/python" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/python" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/python" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/python" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/python" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/python" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/python" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/python" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/python" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/python" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/python" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/python" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/python" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/python" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/python" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Python dependencies</h1><p>Added in: v12.4.0 (pnpm v12 only)</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>Multi-ecosystem support is experimental. The settings and the layout it writes may change.</p>
+</div>
+<p>pnpm can install a project's Python dependencies alongside its npm packages. One <code>pnpm install</code> resolves both graphs, uses pnpm's connection budget, and stores every verified wheel in pnpm's content-addressable store, so a wheel fetched for one project is reused by the next.</p>
+<p>Turn it on in <code>pnpm-workspace.yaml</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">python:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>pnpm reads the project's <code>pyproject.toml</code>, writes a <a href="https://packaging.python.org/en/latest/specifications/pylock-toml/"><code>pylock.toml</code></a>, and builds an environment for it.</p>
+<h2 id="adding-a-package">Adding a package<a class="hash-link" href="#adding-a-package" aria-label="Direct link to Adding a package">#</a></h2>
+<p>Prefix the requirement with <code>pypi:</code>:</p>
+<pre><code class="hljs language-sh">pnpm add pypi:httpx
+pnpm add pypi:httpx@0.28.1
+pnpm add pypi:<span class="hljs-string">'httpx>=0.28'</span>
+pnpm add -D pypi:pytest
+</code></pre>
+<p>A bare <code>name@version</code> is written as an exact pin (<code>httpx==0.28.1</code>). A requirement that already carries a comparison operator is kept as written, and the full <a href="https://peps.python.org/pep-0508/">PEP 508</a> grammar is accepted, environment markers and extras included.</p>
+<h2 id="the-environment">The environment<a class="hash-link" href="#the-environment" aria-label="Direct link to The environment">#</a></h2>
+<p>Each discovered Python project gets a <code>.venv</code> in its own directory, unless its workspace <a href="#sharing-one-environment">shares one</a>. It is a symlink into <code>python-envs</code> in the pnpm store, and pnpm swaps the link atomically when the environment changes, so a failed install leaves the previous environment in place.</p>
+<p>Since v12.5.0, environments live in the store and each project keeps only its <code>.venv</code> link. The next install migrates links created by earlier releases. Old project-local <code>.pnpm/python-envs</code> directories are left in place and can be deleted once no running program uses them. With <a href="/settings/store#frozenstore"><code>frozenStore</code></a>, environments remain under the project's <code>.pnpm/python-envs</code> instead.</p>
+<p>pnpm refuses to touch a <code>.venv</code> it did not create, so an existing hand-made virtual environment is never replaced.</p>
+<p><a href="/cli/run"><code>pnpm run</code></a> and <a href="/cli/exec"><code>pnpm exec</code></a> put the environment's script directory (<code>.venv/bin</code>, or <code>.venv/Scripts</code> on Windows) at the front of <code>PATH</code>, so a script can call <code>pytest</code> or <code>ruff</code> without activating anything.</p>
+<p>Python requirement, marker, and lockfile semantics are kept separate from npm's and Cargo's. What is shared is the plumbing below them: the HTTP and authentication budget, artifact verification, and the store.</p>
+<p><code>--lockfile-only</code>, <code>--frozen-lockfile</code>, and <code>--offline</code> apply to Python dependencies too.</p>
+<h2 id="project-packages-and-local-sources">Project packages and local sources<a class="hash-link" href="#project-packages-and-local-sources" aria-label="Direct link to Project packages and local sources">#</a></h2>
+<p>Added in: v12.5.0</p>
+<p>pnpm installs the project's own package editable when it declares <code>[build-system]</code>, making its imports and <code>[project.scripts]</code> commands available immediately. Source edits take effect without reinstalling. <code>[tool.uv].package</code> overrides whether the project is packaged. Dynamic metadata is read from the declared build backend. A project with only <code>requirements.txt</code> can also receive an environment and <code>pylock.toml</code>.</p>
+<p>Declare workspace and local dependencies in <code>pyproject.toml</code>:</p>
+<div class="code-block"><div class="code-block-title">pyproject.toml</div><pre><code class="hljs language-toml"><span class="hljs-section">[project]</span>
+<span class="hljs-attr">name</span> = <span class="hljs-string">"app"</span>
+<span class="hljs-attr">version</span> = <span class="hljs-string">"0.1.0"</span>
+<span class="hljs-attr">dependencies</span> = [<span class="hljs-string">"shared"</span>]
+
+<span class="hljs-section">[tool.uv.sources]</span>
+<span class="hljs-attr">shared</span> = { workspace = <span class="hljs-literal">true</span> }
+<span class="hljs-comment"># Alternatively: shared = { path = "../shared", editable = true }</span>
+</code></pre></div>
+<p>pnpm builds local packages with their declared backend. Editable installations follow source edits. A requirement naming a workspace project without a source declaration is refused instead of fetched from the index.</p>
+<p>Build requirements need approval under <a href="/settings/build#allowbuilds"><code>allowBuilds</code></a>, using Package URL keys:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">allowBuilds:</span>
+  <span class="hljs-attr">'pkg:pypi/hatchling':</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>An unapproved backend is skipped, with a message naming the approval to add. Git sources and source distributions additionally need approval of <code>pkg:pypi/&#x3C;distribution></code>. pnpm can build a source distribution when no compatible wheel is published; its archive and SHA-256 are pinned in <code>pylock.toml</code>, and cached sources can be replayed offline. Direct wheel URLs and Git sources can be declared in <code>[tool.uv.sources]</code>; Git and URL sources cannot be installed editable.</p>
+<h2 id="locking-for-multiple-environments">Locking for multiple environments<a class="hash-link" href="#locking-for-multiple-environments" aria-label="Direct link to Locking for multiple environments">#</a></h2>
+<p>Added in: v12.5.0</p>
+<p>Use <a href="/settings/dependency-resolution#supportedarchitectures"><code>supportedArchitectures</code></a> and <code>python.versions</code> to resolve one <code>pylock.toml</code> for several platforms and interpreters:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">supportedArchitectures:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">linux-x64-manylinux_2_28</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">darwin-arm64</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">win32-x64</span>
+<span class="hljs-attr">python:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">versions:</span> [<span class="hljs-string">'3.12'</span>, <span class="hljs-string">'3.13'</span>]
+</code></pre></div>
+<p>Every platform is paired with every Python version. The lockfile pins wheels and conditional packages for each environment. Installation selects the matching environment and rejects an interpreter outside the declared environments. Without either setting, pnpm locks for the interpreter running the install.</p>
+<h2 id="filtering-projects">Filtering projects<a class="hash-link" href="#filtering-projects" aria-label="Direct link to Filtering projects">#</a></h2>
+<p>Project discovery honors <code>[tool.uv.workspace]</code> members. Outside an explicitly declared uv workspace, conventional example, demo, documentation, template, test, and fixture directories are skipped.</p>
+<p>Since v12.5.0, <code>pnpm install --filter &#x3C;selector></code> selects Python projects by name, path, or dependencies declared in <code>[tool.uv.sources]</code>. A Python project colocated with an npm workspace project is selected with that project. <code>--fail-if-no-match</code> accepts Python-only matches, and <code>pnpm add --filter &#x3C;selector> pypi:&#x3C;package></code> writes to every selected project. Selecting a member of a shared environment installs the whole environment.</p>
+<h2 id="selecting-extras-and-dependency-groups-per-project">Selecting extras and dependency groups per project<a class="hash-link" href="#selecting-extras-and-dependency-groups-per-project" aria-label="Direct link to Selecting extras and dependency groups per project">#</a></h2>
+<p>Added in: v12.5.0</p>
+<p>Workspace <code>python.extras</code> and <code>python.groups</code> are defaults. Each project selects only the names it defines, so members with different extras and groups can install together. For example, <code>groups: [dev, test]</code> selects both groups in a project that defines both, and only <code>dev</code> in a project that defines just <code>dev</code>.</p>
+<p>Override either list in the project's <code>pyproject.toml</code>:</p>
+<div class="code-block"><div class="code-block-title">pyproject.toml</div><pre><code class="hljs language-toml"><span class="hljs-section">[tool.pnpm.python]</span>
+<span class="hljs-attr">extras</span> = [<span class="hljs-string">"cli"</span>]
+<span class="hljs-attr">groups</span> = [<span class="hljs-string">"test"</span>]
+</code></pre></div>
+<p>The lists override their workspace defaults independently. Omitting a list keeps its workspace default. An empty list disables that default for the project.</p>
+<p>Explicit project selections must exist in that project. Selected groups' <code>include-group</code> references must exist and cannot form cycles. Extra names follow Python's normalization rules, so <code>dev_tools</code> and <code>dev-tools</code> select the same extra. These rules also apply to extras obtained from dynamic build-backend metadata.</p>
+<p>Selections participate in locking. <code>--prod</code> and <code>--dev</code> choose which dependencies to install without changing the complete lockfile. A requirement on another project's extra, such as <code>library[cli]</code>, selects that distribution extra independently of <code>library</code>'s own installation settings.</p>
+<h2 id="sharing-one-environment">Sharing one environment<a class="hash-link" href="#sharing-one-environment" aria-label="Direct link to Sharing one environment">#</a></h2>
+<p>Added in: v12.5.0</p>
+<p>By default each project resolves its dependencies on its own and gets an environment of its own. The members of a <a href="https://docs.astral.sh/uv/concepts/projects/workspaces/">uv workspace</a> can share one environment instead. Ask for it in the <code>pyproject.toml</code> that declares the workspace:</p>
+<div class="code-block"><div class="code-block-title">pyproject.toml</div><pre><code class="hljs language-toml"><span class="hljs-section">[tool.uv.workspace]</span>
+<span class="hljs-attr">members</span> = [<span class="hljs-string">"packages/*"</span>]
+
+<span class="hljs-section">[tool.pnpm.python]</span>
+<span class="hljs-attr">shared-environment</span> = <span class="hljs-literal">true</span>
+</code></pre></div>
+<p><code>pnpm install</code> then resolves every member as one graph into one <code>pylock.toml</code> and one <code>.venv</code> at the workspace root. Each member still selects its own extras and dependency groups, and the environment holds the union of them. Every member that builds a package is installed into it, and a member that another member requires through <code>[tool.uv.sources]</code> is installed as that source asks. One interpreter serves all of them: the first on the machine that every member's <code>requires-python</code> accepts, preferring the version the root's <code>.python-version</code> asks for. Where the machine has none, pnpm installs one that every member accepts, as it does for a project on its own, with <a href="/settings/cli#runtimeonfail"><code>runtimeOnFail</code></a> controlling what happens when no installed interpreter fits.</p>
+<p>Two members that require versions of one distribution no release satisfies at once are refused, with an error naming the distribution and both members. Two members whose own <code>[project]</code> tables name the same distribution are refused too, because one environment holds one distribution of a name. Members may require the same dependencies freely; the environment holds each once.</p>
+<p>Selecting any member with <a href="/filtering"><code>--filter</code></a> installs the whole shared environment. <code>pnpm add</code> in a member writes that member's <code>pyproject.toml</code> and the shared <code>pylock.toml</code>. <a href="/cli/run"><code>pnpm run</code></a> and <a href="/cli/exec"><code>pnpm exec</code></a> in a member, or in any directory under one, use the <code>.venv</code> at the workspace root.</p>
+<p>Sharing is decided per workspace, so a repository can share an environment where its projects agree and keep independent ones where they do not.</p>
+<h2 id="faster-resolution-through-pnpr">Faster resolution through pnpr<a class="hash-link" href="#faster-resolution-through-pnpr" aria-label="Direct link to Faster resolution through pnpr">#</a></h2>
+<p>With <a href="/pnpr/install-acceleration"><code>pnprServer</code></a> set, the server resolves the Python graph, so pnpm does not have to download a wheel to find out what it requires. A server that does not answer for Python makes pnpm fall back to resolving locally.</p>
+<p>Python graphs configured with multiple indexes, overrides, constraints, or explicit target environments resolve locally. pnpr cannot represent these resolution settings.</p>
+<h2 id="settings">Settings<a class="hash-link" href="#settings" aria-label="Direct link to Settings">#</a></h2>
+<h3 id="pythonenabled">python.enabled<a class="hash-link" href="#pythonenabled" aria-label="Direct link to python.enabled">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Whether <code>pnpm install</code> resolves and installs the project's Python dependencies.</p>
+<h3 id="pythonexecutable">python.executable<a class="hash-link" href="#pythonexecutable" aria-label="Direct link to python.executable">#</a></h3>
+<ul>
+<li>Default: <strong>automatic selection per project</strong></li>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>An explicit interpreter to use for every project. When omitted, pnpm chooses an interpreter that satisfies each project's <code>requires-python</code>, preferring <code>.python-version</code> when present. If none fits, pnpm downloads a shared <a href="https://github.com/astral-sh/python-build-standalone">python-build-standalone</a> interpreter. <a href="/settings/cli#runtimeonfail"><code>runtimeOnFail</code></a> controls this: the default and <code>download</code> allow downloads, <code>error</code> fails, and <code>warn</code> or <code>ignore</code> use an available interpreter despite the version mismatch. Offline installs cannot download an interpreter. Configure its download source with <a href="/settings/cli#tools"><code>tools.python.mirror</code></a>.</p>
+<h3 id="python-indexes">Python indexes<a class="hash-link" href="#python-indexes" aria-label="Direct link to Python indexes">#</a></h3>
+<p>Since v12.5.0, declare indexes through <a href="/registries#ecosystem"><code>registries</code></a>, with <code>ecosystem: pypi</code>. Without a declaration, pnpm uses <code>https://pypi.org/simple/</code>. <code>python.indexUrl</code> and <code>python.extraIndexUrls</code> are not supported settings in v12.5.0.</p>
+<p>Since v12.5.1, assign package names to each index through <a href="/registries#packages"><code>packages</code></a>. pnpm selects one authoritative index before requesting a package, so declaration order has no effect.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">python:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">https://packages.example.org/simple/:</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">pypi</span>
+    <span class="hljs-attr">packages:</span> [<span class="hljs-string">"company-*"</span>, <span class="hljs-string">"legacy-internal-package"</span>]
+  <span class="hljs-attr">https://download.pytorch.org/whl/cpu/:</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">pypi</span>
+    <span class="hljs-attr">packages:</span> [<span class="hljs-string">"torch"</span>]
+  <span class="hljs-attr">https://pypi.org/simple/:</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">pypi</span>
+    <span class="hljs-attr">packages:</span> [<span class="hljs-string">"*"</span>]
+</code></pre></div>
+<p><code>packages</code> accepts exact distribution names, a name prefix followed by a single <code>*</code>, and <code>*</code> or <code>**</code> for the default index. Names are compared after Python name normalization: case is ignored and runs of <code>.</code>, <code>_</code>, and <code>-</code> become <code>-</code>, so <code>Company_Tools</code> and <code>company-tools</code> are one claim. Any other wildcard shape, such as <code>company-**</code> or <code>@scope/*</code>, is rejected, as is an empty list.</p>
+<p>Two patterns that can match the same name are a configuration error, whether they sit in one entry or in two: an entry that claims the default may claim nothing else, and only one index may be the default.</p>
+<p>A matched package resolves exclusively from its assigned index, including transitive dependencies and isolated build dependencies. A missing package, incompatible version, authentication error, or other registry failure stops resolution. pnpm does not retry another index. Indexes must support the Simple JSON API; HTML-only indexes are not supported. Missing pages are cached for offline resolution.</p>
+<p>Omitting <code>packages</code> claims the default too, so a single custom index needs no patterns, and two indexes that both omit it are refused as two defaults. Once any Python index is declared, PyPI is not added implicitly: a package no index claims fails with <code>ERR_PNPM_UNCLAIMED_PYTHON_PACKAGE</code> unless one index is the default. Changing the routes invalidates Python lockfiles, and a <code>--frozen-lockfile</code> install then fails with <code>the Python index changed</code>.</p>
+<p>Configure credentials in <a href="/npmrc"><code>.npmrc</code></a>, matched by origin, rather than putting them in a <code>registries</code> URL. Authenticated index caches use a credential fingerprint; raw credentials never appear in cache keys.</p>
+<h3 id="pythonoverrides">python.overrides<a class="hash-link" href="#pythonoverrides" aria-label="Direct link to python.overrides">#</a></h3>
+<p>Added in: v12.5.0</p>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>String[]</strong></li>
+</ul>
+<p><a href="https://packaging.python.org/en/latest/specifications/dependency-specifiers/">PEP 508 registry requirements</a> that replace matching dependency version requirements throughout the Python graph. Environment markers select where an override applies. An active override replaces the original extras with the extras it requests.</p>
+<p>An override does not add a dependency that the graph does not already require. URL requirements cannot be used as overrides. Version rules preserve Git or direct wheel sources already declared for a dependency.</p>
+<h3 id="pythonconstraints">python.constraints<a class="hash-link" href="#pythonconstraints" aria-label="Direct link to python.constraints">#</a></h3>
+<p>Added in: v12.5.0</p>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>String[]</strong></li>
+</ul>
+<p>PEP 508 registry requirements that narrow the permitted versions of matching Python dependencies. Constraints do not add dependencies or replace their version requirements. Environment markers select where a constraint applies, and URL requirements cannot be used as constraints.</p>
+<p>Overrides and constraints can be used together:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">python:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">overrides:</span> [<span class="hljs-string">'urllib3>=2'</span>]
+  <span class="hljs-attr">constraints:</span> [<span class="hljs-string">'urllib3&#x3C;3'</span>]
+</code></pre></div>
+<p>pnpm also reads <code>[tool.uv]</code> <code>override-dependencies</code> and <code>constraint-dependencies</code> from <code>pyproject.toml</code>. In a declared uv workspace, these lists come from the workspace root manifest. Otherwise, they come from each project's manifest. They are combined with the pnpm workspace settings.</p>
+<p>These rules apply to project dependencies. They do not apply to isolated build-backend dependencies. Changing the index list, overrides, or constraints invalidates <code>pylock.toml</code>, and <code>--frozen-lockfile</code> rejects those changes.</p>
+<h3 id="importing-wheel-files">Importing wheel files<a class="hash-link" href="#importing-wheel-files" aria-label="Direct link to Importing wheel files">#</a></h3>
+<p>Python uses <a href="/settings/node-modules#packageimportmethod">packageImportMethod</a> to import unchanged wheel files into project environments. It uses the same methods and <code>auto</code> default as npm packages.</p>
+<p>Use <code>clone-or-copy</code> for copy-on-write clones with a copy fallback, or <code>copy</code> for independent files. <code>clone</code> requires filesystem support for cloning.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>Hardlinked wheel files share writes with the store and other hardlinked environments. The <code>auto</code> method can select hardlinks. Use <code>clone-or-copy</code> or <code>copy</code> if installed files may be modified.</p>
+</div>
+<p>Isolated build environments also use <code>packageImportMethod</code>, but replace <code>auto</code> and <code>hardlink</code> with <code>clone-or-copy</code> to keep build backend writes private.</p>
+<p>Generated metadata, entry-point scripts, and wheel scripts whose shebangs or permissions need changing remain private in every mode.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packageImportMethod:</span> <span class="hljs-string">clone-or-copy</span>
+<span class="hljs-attr">python:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<h3 id="pythonextras">python.extras<a class="hash-link" href="#pythonextras" aria-label="Direct link to python.extras">#</a></h3>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>String[]</strong></li>
+</ul>
+<p>The default <a href="https://packaging.python.org/en/latest/specifications/dependency-specifiers/#extras">extras</a> to install in each project. Names a project does not define are skipped. <code>[tool.pnpm.python].extras</code> in the project's <code>pyproject.toml</code> overrides this list.</p>
+<h3 id="pythongroups">python.groups<a class="hash-link" href="#pythongroups" aria-label="Direct link to python.groups">#</a></h3>
+<ul>
+<li>Default: <strong>['dev']</strong></li>
+<li>Type: <strong>String[]</strong></li>
+</ul>
+<p>The default <a href="https://peps.python.org/pep-0735/">dependency groups</a> to install in each project. Names a project does not define are skipped. <code>[tool.pnpm.python].groups</code> in the project's <code>pyproject.toml</code> overrides this list.</p>
+<h3 id="pythonversions">python.versions<a class="hash-link" href="#pythonversions" aria-label="Direct link to python.versions">#</a></h3>
+<p>Added in: v12.5.0</p>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>String[]</strong></li>
+</ul>
+<p>Python minor or full versions to lock for, such as <code>3.12</code> or <code>3.12.7</code>. An empty list uses the selected interpreter's version. See <a href="#locking-for-multiple-environments">locking for multiple environments</a>.</p></article></main></div>
+  </body>
+</html>

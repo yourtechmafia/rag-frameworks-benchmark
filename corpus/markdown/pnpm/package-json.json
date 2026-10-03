@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/package_json",
+ "file": "markdown/pnpm/package-json.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.77,
+ "markdown_chars": 16512,
+ "raw_html_chars": 41294,
+ "sha256": "2628af8beda4e71ce8debf7e708a1e415ec61a59c8fa7b78f15ecb897cf3a591",
+ "fetched_at": "2026-10-03T08:58:51+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/install-test",
+ "file": "markdown/pnpm/cli-install-test.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 10.71,
+ "markdown_chars": 179,
+ "raw_html_chars": 4823,
+ "sha256": "4e005c13d12b789a98254c8f76a12976b9b54df37c534040b1ef66511f875f27",
+ "fetched_at": "2026-10-03T08:58:30+00:00"
+}

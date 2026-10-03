@@ -1,0 +1,13 @@
+{
+ "site": "docsify",
+ "url": "https://docsify.js.org/#/cdn",
+ "file": "markdown/docsify/cdn.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 2.26,
+ "markdown_chars": 2823,
+ "raw_html_chars": 7894,
+ "sha256": "829fc81e6cea8e8b31238ad2bee9d9c67794db4a0d4eee6437f504115aebf09e",
+ "fetched_at": "2026-10-03T09:00:02+00:00"
+}

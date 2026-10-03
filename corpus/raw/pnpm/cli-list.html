@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm list | pnpm</title>
+    <meta name="description" content="Aliases: ls" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm list | pnpm" />
+    <meta property="og:description" content="Aliases: ls" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm list | pnpm" />
+    <meta name="twitter:description" content="Aliases: ls" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/list" />
+    <meta property="og:url" content="https://pnpm.io/cli/list" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/list" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/list" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/list" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/list" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/list" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/list" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/list" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/list" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/list" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/list" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/list" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/list" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/list" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/list" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm list</h1><p>Aliases: <code>ls</code></p>
+<p>This command will output all the versions of packages that are installed, as
+well as their dependencies, in a tree-structure.</p>
+<p>Positional arguments are <code>name-pattern@version-range</code> identifiers, which will
+limit the results to only the packages named. For example,
+<code>pnpm list "babel-*" "eslint-*" semver@5</code>.</p>
+<p>Since v12.7.0, running <code>pnpm list</code> inside a workspace project lists only that
+project. Use <a href="#--recursive--r"><code>--recursive</code></a> or <a href="#--filter-package_selector"><code>--filter</code></a>
+to list other workspace projects.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Perform command on every package in subdirectories or on every workspace
+package, when executed inside a workspace.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>Log output in JSON format.</p>
+<h3 id="--long">--long<a class="hash-link" href="#--long" aria-label="Direct link to --long">#</a></h3>
+<p>Show extended information.</p>
+<h3 id="--lockfile-only">--lockfile-only<a class="hash-link" href="#--lockfile-only" aria-label="Direct link to --lockfile-only">#</a></h3>
+<p>Added in: v10.23.0</p>
+<p>Read package information from the lockfile instead of checking the actual <code>node_modules</code> directory. This is useful for quickly inspecting what would be installed without requiring a full installation.</p>
+<h3 id="--parseable">--parseable<a class="hash-link" href="#--parseable" aria-label="Direct link to --parseable">#</a></h3>
+<p>Outputs package directories in a parseable format instead of their tree view.</p>
+<h3 id="--global--g">--global, -g<a class="hash-link" href="#--global--g" aria-label="Direct link to --global, -g">#</a></h3>
+<p>List packages in the global install directory instead of in the current project.</p>
+<h3 id="--depth-number">--depth &#x3C;number><a class="hash-link" href="#--depth-number" aria-label="Direct link to --depth <number>">#</a></h3>
+<p>Max display depth of the dependency tree.</p>
+<p><code>pnpm ls --depth 0</code> (default) will list direct dependencies only.
+<code>pnpm ls --depth -1</code> will list projects only. Useful inside a workspace when
+used with the <code>-r</code> option.
+<code>pnpm ls --depth Infinity</code> will list all dependencies regardless of depth.</p>
+<h3 id="--prod--p">--prod, -P<a class="hash-link" href="#--prod--p" aria-label="Direct link to --prod, -P">#</a></h3>
+<p>Display only the dependency graph for packages in <code>dependencies</code> and
+<code>optionalDependencies</code>.</p>
+<h3 id="--dev--d">--dev, -D<a class="hash-link" href="#--dev--d" aria-label="Direct link to --dev, -D">#</a></h3>
+<p>Display only the dependency graph for packages in <code>devDependencies</code>.</p>
+<h3 id="--no-optional">--no-optional<a class="hash-link" href="#--no-optional" aria-label="Direct link to --no-optional">#</a></h3>
+<p>Don't display packages from <code>optionalDependencies</code>.</p>
+<h3 id="--only-projects">--only-projects<a class="hash-link" href="#--only-projects" aria-label="Direct link to --only-projects">#</a></h3>
+<p>Display only dependencies that are also projects within the workspace.</p>
+<h3 id="--exclude-peers">--exclude-peers<a class="hash-link" href="#--exclude-peers" aria-label="Direct link to --exclude-peers">#</a></h3>
+<p>Exclude peer dependencies from the results (but dependencies of peer dependencies are not ignored).</p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p>
+<h3 id="--find-by-finder_name">--find-by &#x3C;finder_name><a class="hash-link" href="#--find-by-finder_name" aria-label="Direct link to --find-by <finder_name>">#</a></h3>
+<p>Added in: v10.16.0</p>
+<p>Use a <a href="/finders">finder function</a> defined in <code>.pnpmfile.mjs</code> to match dependencies by properties other than name.</p></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mitigating supply chain attacks | pnpm</title>
+    <meta name="description" content="Sometimes npm packages are compromised and published with malware. Luckily, there are companies like Socket, Snyk, Xygeni and Aikido that detect these compromised packages early. The npm registry usually removes the affected versions within hours. However, there is always a window of time..." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Mitigating supply chain attacks | pnpm" />
+    <meta property="og:description" content="Sometimes npm packages are compromised and published with malware. Luckily, there are companies like Socket, Snyk, Xygeni and Aikido that detect these compromised packages early. The npm registry usually removes the affected versions within hours. However, there is always a window of time..." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Mitigating supply chain attacks | pnpm" />
+    <meta name="twitter:description" content="Sometimes npm packages are compromised and published with malware. Luckily, there are companies like Socket, Snyk, Xygeni and Aikido that detect these compromised packages early. The npm registry usually removes the affected versions within hours. However, there is always a window of time..." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/supply-chain-security" />
+    <meta property="og:url" content="https://pnpm.io/supply-chain-security" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/supply-chain-security" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/supply-chain-security" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/supply-chain-security" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/supply-chain-security" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/supply-chain-security" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/supply-chain-security" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/supply-chain-security" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/supply-chain-security" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/supply-chain-security" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/supply-chain-security" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/supply-chain-security" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/supply-chain-security" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/supply-chain-security" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/supply-chain-security" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Mitigating supply chain attacks</h1><p>Sometimes npm packages are compromised and published with malware. Luckily, there are companies like <a href="https://socket.dev/">Socket</a>, <a href="https://snyk.io">Snyk</a>, <a href="https://xygeni.io/">Xygeni</a> and <a href="https://www.aikido.dev/">Aikido</a> that detect these compromised packages early. The npm registry usually removes the affected versions within hours. However, there is always a window of time between when the malware is published and when it is detected, during which you could be exposed. Fortunately, there are some things you can do with pnpm to minimize the risks.</p>
+<h3 id="block-risky-postinstall-scripts">Block risky postinstall scripts<a class="hash-link" href="#block-risky-postinstall-scripts" aria-label="Direct link to Block risky postinstall scripts">#</a></h3>
+<p>Historically, most compromised packages have used <code>postinstall</code> scripts to run code immediately upon installation. To mitigate this, pnpm v10 disables the automatic execution of <code>postinstall</code> scripts in dependencies. Although there is a setting to re-enable them globally using <a href="/settings/build#dangerouslyallowallbuilds">dangerouslyAllowAllBuilds</a>, we recommend explicitly listing only trusted dependencies using <a href="/settings/build#allowbuilds">allowBuilds</a>. This way, if a dependency did not require a build in the past, it won't suddenly run a malicious script if a compromised version is published. Still, we recommend being cautious when updating a trusted package that has a <code>postinstall</code> script, as <a href="https://socket.dev/blog/nx-packages-compromised">it might get compromised</a>.</p>
+<h3 id="prevent-exotic-transitive-dependencies">Prevent exotic transitive dependencies<a class="hash-link" href="#prevent-exotic-transitive-dependencies" aria-label="Direct link to Prevent exotic transitive dependencies">#</a></h3>
+<p>You can prevent transitive dependencies from using exotic sources (like git repositories or direct tarball URLs) by setting <a href="/settings/dependency-resolution#blockexoticsubdeps">blockExoticSubdeps</a> to <code>true</code>. This ensures that all transitive dependencies are resolved from trusted sources, reducing the risk of supply chain attacks.</p>
+<h3 id="delay-dependency-updates">Delay dependency updates<a class="hash-link" href="#delay-dependency-updates" aria-label="Direct link to Delay dependency updates">#</a></h3>
+<p>Another way to reduce the risk of installing compromised packages is to delay updates to your dependencies. Since malware is usually detected quickly, delaying updates by 24 hours will most likely prevent you from installing a bad version. The <a href="/settings/dependency-resolution#minimumreleaseage">minimumReleaseAge</a> setting defines the minimum number of minutes that must pass after a version is published before pnpm will install it. This defaults to <code>1440</code> (1 day), meaning newly published packages will not be resolved until they are at least 1 day old. To opt out, set <code>minimumReleaseAge: 0</code> in <code>pnpm-workspace.yaml</code>. You can also set it to <code>10080</code> to wait one week before installing a new version.</p>
+<h3 id="enforce-trust-with-trustpolicy">Enforce trust with trustPolicy<a class="hash-link" href="#enforce-trust-with-trustpolicy" aria-label="Direct link to Enforce trust with trustPolicy">#</a></h3>
+<p>To further protect your supply chain, pnpm also supports a <a href="/settings/dependency-resolution#trustpolicy">trustPolicy</a> setting. When set to <code>no-downgrade</code>, this setting will prevent installation of a package if its trust level has decreased compared to previous releases (for example, if it was previously published by a trusted publisher but now only has provenance or no trust evidence). This helps you avoid installing potentially compromised or less trustworthy versions.</p>
+<p>If you need to allow specific packages or versions to bypass the trust policy check, you can use the <a href="/settings/dependency-resolution#trustpolicyexclude">trustPolicyExclude</a> setting. This is useful for known packages that may not meet the trust requirements but are still safe to use.</p>
+<p>Additionally, the <a href="/settings/dependency-resolution#trustpolicyignoreafter">trustPolicyIgnoreAfter</a> setting allows you to ignore trust checks for packages published more than a specified time ago. This is helpful for older versions of packages that lack a process for publishing with signatures or provenance.</p>
+<h3 id="use-a-lockfile">Use a lockfile<a class="hash-link" href="#use-a-lockfile" aria-label="Direct link to Use a lockfile">#</a></h3>
+<p>It goes without saying that you should always lock your dependencies with a lockfile. Commit your lockfile to your repository to avoid unexpected updates.</p>
+<p>If you scan <code>pnpm-lock.yaml</code> with a vulnerability scanner or an SBOM generator, check that it handles the <a href="/lockfile">two-document lockfile</a>: a tool that reads only the first document reports that the project has no dependencies, and no vulnerabilities, without failing.</p>
+<h3 id="pin-dependencies-to-the-registry-they-come-from">Pin dependencies to the registry they come from<a class="hash-link" href="#pin-dependencies-to-the-registry-they-come-from" aria-label="Direct link to Pin dependencies to the registry they come from">#</a></h3>
+<p>If you install from more than one registry, use <a href="/settings/dependency-resolution#namedregistries">namedRegistries</a> aliases for the packages that must come from a specific one. Since v11.20.0, pnpm records those packages in the lockfile under registry-qualified keys (<code>&#x3C;name>@&#x3C;registryName>:&#x3C;version></code>), so a package cannot be quietly substituted by another registry that publishes the same name and version. See <a href="/settings/dependency-resolution#named-registries-in-the-lockfile">Named registries in the lockfile</a>. Packages installed without an alias are resolved through the default <a href="/settings/dependency-resolution#registries">registries</a> configuration as before.</p></article></main></div>
+  </body>
+</html>

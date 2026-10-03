@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/marimo/",
+ "file": "markdown/uv/uv-guides-integration-marimo.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 5.38,
+ "markdown_chars": 9359,
+ "raw_html_chars": 71184,
+ "sha256": "31d2a1cc20a5a4a37e87c54b9c925090cabf40ac9b42e39552cae161249b3b1f",
+ "fetched_at": "2026-10-03T08:57:36+00:00"
+}

@@ -1,0 +1,255 @@
+pnpm install
+============
+
+Aliases: `i`
+
+`pnpm install` is used to install all dependencies for a project.
+
+In a CI environment, installation fails if a lockfile is present but needs an
+update. To allow lockfile updates in CI, run `pnpm install --no-frozen-lockfile`.
+
+Inside a [workspace](/workspaces), `pnpm install` installs all dependencies in all the
+projects. If you want to disable this behavior, set the `recursive-install`
+setting to `false`.
+
+When a workspace project changes, unchanged direct dependencies in other projects
+keep their locked versions if those versions still satisfy their declared ranges.
+Use [`pnpm update`](/cli/update) to request dependency updates.
+
+![](/docs-assets/12.x/img/demos/pnpm-install.svg)
+
+TL;DR[#](#tldr)
+---------------
+
+| Command | Meaning |
+| --- | --- |
+| `pnpm i --offline` | Install offline from the store only |
+| `pnpm i --frozen-lockfile` | `pnpm-lock.yaml` is not updated |
+| `pnpm i --lockfile-only` | Only `pnpm-lock.yaml` is updated |
+| `pnpm i --dry-run` | Preview changes without writing |
+
+Options for filtering dependencies[#](#options-for-filtering-dependencies)
+--------------------------------------------------------------------------
+
+Without a lockfile, pnpm has to create one, and it must be consistent regardless of dependencies
+filtering, so running `pnpm install --prod` on a directory without a lockfile would still resolve the
+dev dependencies, and it would error if the resolution is unsuccessful. The only exception for this rule
+are `link:` dependencies.
+
+Without `--frozen-lockfile`, pnpm will check for outdated information from `file:` dependencies, so
+running `pnpm install --prod` without `--frozen-lockfile` on an environment where the target of `file:`
+has been removed would error.
+
+### --prod, -P[#](#--prod--p)
+
+* Default: **false**
+* Type: **Boolean**
+
+If `true`, pnpm will not install any package listed in `devDependencies` and will remove
+those insofar they were already installed.
+If `false`, pnpm will install all packages listed in `devDependencies` and `dependencies`.
+
+### --dev, -D[#](#--dev--d)
+
+Only `devDependencies` are installed and `dependencies` are removed insofar they
+were already installed.
+
+### --no-optional[#](#--no-optional)
+
+`optionalDependencies` are not installed.
+
+### --no-runtime[#](#--no-runtime)
+
+Added in: v11.1.0
+
+Skip installing runtime entries (e.g. Node.js downloaded via [`devEngines.runtime`](/package_json#devenginesruntime)). The lockfile is left untouched, so frozen installs still validate; only the runtime fetch and bin-linking are skipped.
+
+This is useful in CI matrices where the runtime is provisioned externally (e.g. via `pnpm runtime -g set node <version>`) before `pnpm install` runs.
+
+This can also be set via the `runtime=false` config in `pnpm-workspace.yaml`.
+
+Options[#](#options)
+--------------------
+
+### --ignore-workspace[#](#--ignore-workspace)
+
+Added in: v6.25.0
+
+Install the current project as a standalone project, without discovering a
+`pnpm-workspace.yaml` in a parent directory. The workspace's settings and other
+projects do not apply. See the [`--ignore-workspace` global option](/pnpm-cli#--ignore-workspace).
+
+### --force[#](#--force)
+
+Force reinstall dependencies: refetch packages modified in store, recreate a lockfile and/or modules directory created by a non-compatible version of pnpm. `--force` also lifts [`engineStrict`](/settings/cli#enginestrict).
+
+Since v12.7.0, `--force` no longer installs optional dependencies whose `os`, `cpu`, or `libc` do not match the host. Set [`forceIgnoresPlatform`](/settings/dependency-resolution#forceignoresplatform) to `true` to install them anyway.
+
+### --offline[#](#--offline)
+
+* Default: **false**
+* Type: **Boolean**
+
+If `true`, pnpm will use only packages already available in the store.
+If a package won't be found locally, the installation will fail.
+
+### --prefer-offline[#](#--prefer-offline)
+
+* Default: **false**
+* Type: **Boolean**
+
+If `true`, staleness checks for cached data will be bypassed, but missing data
+will be requested from the server. To force full offline mode, use `--offline`.
+
+### --no-lockfile[#](#--no-lockfile)
+
+Don't read or generate a `pnpm-lock.yaml` file.
+
+### --lockfile-only[#](#--lockfile-only)
+
+* Default: **false**
+* Type: **Boolean**
+
+When used, only updates `pnpm-lock.yaml` and `package.json`. Nothing gets written to the `node_modules` directory.
+
+### --dry-run[#](#--dry-run)
+
+Added in: v11.8.0
+
+Run a full dependency resolution and report what a real install would change, without writing anything to disk. No lockfile, manifest, or `node_modules` changes are saved.
+
+A completed dry run exits with code 0, even when it reports that a real install would update the lockfile.
+
+`--dry-run` cannot be used with a configured pnpr server, because that install path resolves and links through the server.
+
+### --fix-lockfile[#](#--fix-lockfile)
+
+Fix broken lockfile entries automatically.
+
+### --update-checksums[#](#--update-checksums)
+
+Added in: v11.4.0
+
+Refresh the locked tarball integrity values from what the registry currently serves, when a downloaded tarball's hash doesn't match the integrity recorded in `pnpm-lock.yaml`.
+
+By default, since v11.4.0, an integrity mismatch is a hard failure: `pnpm install` exits with `ERR_PNPM_TARBALL_INTEGRITY` rather than silently re-resolving from the registry and overwriting the locked integrity. This protects projects that ship a committed lockfile from a compromised registry, proxy, or republished version substituting attacker-controlled content on a clean machine.
+
+`--update-checksums` is the narrowly-scoped opt-in for the legitimate case (e.g. a registry rewrote its tarballs and you've verified the new bytes are correct). A warning still prints when the bypass takes effect so the operation is auditable.
+
+`--force` and `pnpm update` deliberately do **not** bypass the integrity check. `--frozen-lockfile` is unchanged, and `--fix-lockfile` keeps its documented purpose (filling in missing lockfile entries) and is also not a bypass.
+
+### --frozen-lockfile[#](#--frozen-lockfile)
+
+* Default:
+  + For non-CI: **false**
+  + For CI: **true**, if a lockfile is present
+* Type: **Boolean**
+
+If `true`, pnpm doesn't generate a lockfile and fails to install if the lockfile
+is out of sync with the manifest / an update is needed or no lockfile is
+present.
+
+This setting is `true` by default in [CI environments](https://github.com/watson/ci-info#supported-ci-tools). The following code is used to detect CI environments:
+
+https://github.com/watson/ci-info/blob/44e98cebcdf4403f162195fbcf90b1f69fc6e047/index.js#L54-L61
+
+```
+exports.isCI = !!(
+  env.CI || // Travis CI, CircleCI, Cirrus CI, GitLab CI, Appveyor, CodeShip, dsari
+  env.CONTINUOUS_INTEGRATION || // Travis CI, Cirrus CI
+  env.BUILD_NUMBER || // Jenkins, TeamCity
+  env.RUN_ID || // TaskCluster, dsari
+  exports.name ||
+  false
+)
+```
+
+### --no-frozen-lockfile[#](#--no-frozen-lockfile)
+
+Allows lockfile updates during installation. This is the inverse of `--frozen-lockfile`.
+
+### --merge-git-branch-lockfiles[#](#--merge-git-branch-lockfiles)
+
+Merge all git branch lockfiles.
+[Read more about git branch lockfiles.](../git_branch_lockfiles)
+
+### --reporter=<name>[#](#--reportername)
+
+* Default:
+  + For TTY stdout: **default**
+  + For non-TTY stdout: **append-only**
+* Type: **default**, **append-only**, **ndjson**, **silent**
+
+Allows you to choose the reporter that will log debug info to the terminal about
+the installation progress.
+
+* **silent** - no output is logged to the console, not even fatal errors
+* **default** - the default reporter when the stdout is TTY
+* **append-only** - the output is always appended to the end. No cursor manipulations are performed
+* **ndjson** - the most verbose reporter. Prints all logs in [ndjson](https://github.com/ndjson/ndjson-spec) format
+
+If you want to change what type of information is printed, use the [loglevel](/settings/cli#loglevel) setting.
+
+### --shamefully-hoist[#](#--shamefully-hoist)
+
+* Default: **false**
+* Type: **Boolean**
+
+Creates a flat `node_modules` structure, similar to that of `npm` or `yarn`.
+**WARNING**: This is highly discouraged.
+
+### --ignore-scripts[#](#--ignore-scripts)
+
+* Default: **false**
+* Type: **Boolean**
+
+Do not execute any scripts defined in the project `package.json` and its
+dependencies.
+
+### --allow-build[#](#--allow-build)
+
+Added in: v12.7.0
+
+Allow the named package to run its lifecycle scripts during this install, and
+record it in the [`allowBuilds`](/settings/build#allowbuilds) field of
+`pnpm-workspace.yaml` so it stays allowed. Prefix a name with `!` to deny its
+scripts instead. The option can be repeated:
+
+```
+pnpm install --allow-build=esbuild --allow-build='!core-js'
+```
+
+The quotes keep a POSIX shell from treating `!` as history expansion. In
+Windows `cmd.exe`, leave them out.
+
+writes:
+
+pnpm-workspace.yaml
+
+```
+allowBuilds:
+  esbuild: true
+  core-js: false
+```
+
+### --filter <package\_selector>[#](#--filter-package_selector)
+
+[Read more about filtering.](/filtering)
+
+### --cpu=<name>[#](#--cpuname)
+
+Added in: v10.14.0
+
+Override CPU architecture of native modules to install. Acceptable values are same as `cpu` field of `package.json`, which comes from `process.arch`.
+
+### --os=<name>[#](#--osname)
+
+Added in: v10.14.0
+
+Override OS of native modules to install. Acceptable values are same as `os` field of `package.json`, which comes from `process.platform`.
+
+### --libc=<name>[#](#--libcname)
+
+Added in: v10.14.0
+
+Override libc of native modules to install. Acceptable values are same as `libc` field of `package.json`.

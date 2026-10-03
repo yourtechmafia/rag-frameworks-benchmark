@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/config-dependencies",
+ "file": "markdown/pnpm/config-dependencies.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.75,
+ "markdown_chars": 4227,
+ "raw_html_chars": 12720,
+ "sha256": "929cd0f7444b105194ac628c74e329e7145f82223144264e5cc9b628cd6d465d",
+ "fetched_at": "2026-10-03T08:58:42+00:00"
+}

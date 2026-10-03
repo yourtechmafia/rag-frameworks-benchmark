@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm setup | pnpm</title>
+    <meta name="description" content="This command is used by the standalone installation scripts of pnpm. For instance, in https://get.pnpm.io/install.sh." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm setup | pnpm" />
+    <meta property="og:description" content="This command is used by the standalone installation scripts of pnpm. For instance, in https://get.pnpm.io/install.sh." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm setup | pnpm" />
+    <meta name="twitter:description" content="This command is used by the standalone installation scripts of pnpm. For instance, in https://get.pnpm.io/install.sh." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/setup" />
+    <meta property="og:url" content="https://pnpm.io/cli/setup" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/setup" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/setup" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/setup" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/setup" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/setup" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/setup" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/setup" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/setup" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/setup" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/setup" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/setup" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/setup" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/setup" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/setup" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm setup</h1><p>This command is used by the standalone installation scripts of pnpm. For instance, in <a href="https://get.pnpm.io/install.sh">https://get.pnpm.io/install.sh</a>.</p>
+<p>Setup does the following actions:</p>
+<ul>
+<li>creates a home directory for the pnpm CLI</li>
+<li>adds the pnpm home directory to the <code>PATH</code> by updating the shell configuration file</li>
+<li>copies the pnpm executable to the pnpm home directory</li>
+</ul>
+<p>Since v11.18.0, when running on GitHub Actions, <code>pnpm setup</code> also appends <code>PNPM_HOME</code> and the global bin directory to the GitHub Actions environment files (<code>GITHUB_ENV</code> and <code>GITHUB_PATH</code>), so later steps in the same job can run <code>pnpm add --global</code> and other global commands.</p>
+<div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>After upgrading to pnpm v11, run <code>pnpm setup</code> to update your shell configuration. In v11, globally installed binaries are stored in a <code>bin</code> subdirectory of <code>PNPM_HOME</code>.</p>
+</div></article></main></div>
+  </body>
+</html>

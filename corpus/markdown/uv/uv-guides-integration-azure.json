@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/azure/",
+ "file": "markdown/uv/uv-guides-integration-azure.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.23,
+ "markdown_chars": 9675,
+ "raw_html_chars": 72879,
+ "sha256": "a2c38bcd3fe2cab1466207cac7eadeea32a77d54424123829cc1ff44855d151c",
+ "fetched_at": "2026-10-03T08:57:29+00:00"
+}

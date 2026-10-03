@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/limitations",
+ "file": "markdown/pnpm/limitations.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.77,
+ "markdown_chars": 980,
+ "raw_html_chars": 5703,
+ "sha256": "dc984b158f87dcc586356b4df7e957138c69d40815fe08c2223b9857ccb7f64f",
+ "fetched_at": "2026-10-03T08:58:48+00:00"
+}

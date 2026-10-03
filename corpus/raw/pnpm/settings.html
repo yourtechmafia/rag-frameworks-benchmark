@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings (pnpm-workspace.yaml) | pnpm</title>
+    <meta name="description" content="pnpm gets its configuration from the command line, environment variables, and pnpm-workspace.yaml." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Settings (pnpm-workspace.yaml) | pnpm" />
+    <meta property="og:description" content="pnpm gets its configuration from the command line, environment variables, and pnpm-workspace.yaml." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Settings (pnpm-workspace.yaml) | pnpm" />
+    <meta name="twitter:description" content="pnpm gets its configuration from the command line, environment variables, and pnpm-workspace.yaml." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings" />
+    <meta property="og:url" content="https://pnpm.io/settings" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Settings (pnpm-workspace.yaml)</h1><p>pnpm gets its configuration from the command line, environment variables, and <code>pnpm-workspace.yaml</code>.</p>
+<p>Only auth and registry settings are read from <code>.npmrc</code> files. All other settings are configured in <code>pnpm-workspace.yaml</code> or the <a href="/configuring#global-configuration">global <code>config.yaml</code></a>. Some settings are limited to one of them: settings that define the structure of <code>node_modules</code> (like <code>hoistPattern</code>, <code>publicHoistPattern</code>, <code>nodeLinker</code>, or <code>shamefullyHoist</code>) can only be set in <code>pnpm-workspace.yaml</code>, while settings that name machine-level state (like <code>stateDir</code> or <code>pnpmHomeDir</code>) are not read from <code>pnpm-workspace.yaml</code>.</p>
+<p>The <code>pnpm config</code> command can be used to read and edit the contents of the project and global configuration files.</p>
+<p>The relevant configuration files are:</p>
+<ul>
+<li>Per-project configuration file: <code>/path/to/my/project/pnpm-workspace.yaml</code></li>
+<li><a href="/cli/config">Global configuration file</a></li>
+</ul>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Authorization-related settings are handled via <a href="/npmrc"><code>.npmrc</code></a>.</p>
+</div>
+<p>Values in the configuration files may contain env variables using the <code>${NAME}</code> syntax. The env variables may also be specified with default values. Using <code>${NAME-fallback}</code> will return <code>fallback</code> if <code>NAME</code> isn't set. <code>${NAME:-fallback}</code> will return <code>fallback</code> if <code>NAME</code> isn't set, or is an empty string. Since v12.7.0, <code>${NAME?}</code> expands to an empty string without a warning when <code>NAME</code> isn't set, as in npm.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>Since v11.5.3, env variables are <strong>not</strong> expanded in settings of <code>pnpm-workspace.yaml</code> that define registry URLs: <code>registry</code> and the URL values of <a href="/settings/dependency-resolution#registries"><code>registries</code></a> and <a href="/settings/dependency-resolution#namedregistries"><code>namedRegistries</code></a>. Values containing a <code>${...}</code> placeholder in these settings are ignored. In the <a href="/registries">registry declaration shape</a> of <code>registries</code> (since v11.23.0), the URL is the key rather than the value, and the same rule applies to the keys. Because <code>pnpm-workspace.yaml</code> is committed to the repository, expanding env variables in registry URLs could be exploited by a malicious repository to leak secrets from the environment to an attacker-controlled registry. Configure dynamic registry URLs in a trusted location instead: the global configuration file or CLI options.</p>
+<p>Since v12.7.0, the same applies to <code>userAgent</code>: a <code>userAgent</code> in <code>pnpm-workspace.yaml</code> that contains a <code>${...}</code> placeholder is ignored, because the user agent is sent to the configured registry with every request.</p>
+</div>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Since v11.22.0, a project's <code>pnpm-workspace.yaml</code> cannot choose where pnpm keeps its credentials, its own installation, or other machine-level state: <code>bin</code>, <code>configDir</code>, <code>dir</code>, <code>globalBinDir</code>, <code>globalDir</code>, <code>npmrcAuthFile</code>, <code>pnpmHomeDir</code>, <code>stateDir</code>, <code>userconfig</code>, and <code>workspaceDir</code> are ignored there, with a warning. Set them in the <a href="/cli/config">global configuration file</a> or on the command line instead. <code>cacheDir</code> and <code>storeDir</code> are unaffected.</p>
+</div>
+<h2 id="packages">packages<a class="hash-link" href="#packages" aria-label="Direct link to packages">#</a></h2>
+<p>Besides settings, <code>pnpm-workspace.yaml</code> defines the root of the <a href="/workspaces">workspace</a> and
+enables you to include / exclude directories from the workspace. If the
+<code>packages</code> field is omitted, only the root package is included in the workspace.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-comment"># specify a package in a direct subdir of the root</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'my-app'</span>
+  <span class="hljs-comment"># all packages in direct subdirs of packages/</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'packages/*'</span>
+  <span class="hljs-comment"># all packages in subdirs of components/</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'components/**'</span>
+  <span class="hljs-comment"># exclude packages that are inside test directories</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'!**/test/**'</span>
+</code></pre></div>
+<p>The root package is always included, even when custom location wildcards are
+used.</p>
+<p>A pattern may be written with a <code>./</code> prefix, may contain <code>.</code> and <code>..</code> segments,
+and may repeat slashes: <code>./packages/*</code> and <code>packages//*</code> select the same
+projects, and <code>!./packages/legacy</code> excludes the same directory that
+<code>!packages/legacy</code> does. A <code>*</code> never matches a name beginning with a dot, so
+<code>packages/*</code> skips <code>packages/.cache</code>; name such a directory explicitly to
+include it.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>pnpm reads the workspace from <code>pnpm-workspace.yaml</code>, not from the <code>workspaces</code>
+field of the root <code>package.json</code>. Since v12.4.1, a root manifest that declares a
+non-empty <code>workspaces</code> array in a project with no <code>pnpm-workspace.yaml</code> gets a
+warning, because such an install silently links no project at all.</p>
+</div>
+<p>Catalogs are also defined in the <code>pnpm-workspace.yaml</code> file. See <a href="/catalogs"><em>Catalogs</em></a> for details.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'packages/*'</span>
+
+<span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">chalk:</span> <span class="hljs-string">^4.1.2</span>
+
+<span class="hljs-attr">catalogs:</span>
+  <span class="hljs-attr">react16:</span>
+    <span class="hljs-attr">react:</span> <span class="hljs-string">^16.7.0</span>
+    <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^16.7.0</span>
+  <span class="hljs-attr">react17:</span>
+    <span class="hljs-attr">react:</span> <span class="hljs-string">^17.10.0</span>
+    <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^17.10.0</span>
+</code></pre></div>
+<h2 id="packageconfigs">packageConfigs<a class="hash-link" href="#packageconfigs" aria-label="Direct link to packageConfigs">#</a></h2>
+<p>Added in: v11.0.0</p>
+<p>Allows setting project-specific configuration for individual workspace packages. This replaces workspace project-specific <code>.npmrc</code> files.</p>
+<p><code>packageConfigs</code> can be specified as a map of package names to config objects:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"packages/project-1"</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"packages/project-2"</span>
+<span class="hljs-attr">packageConfigs:</span>
+  <span class="hljs-attr">"project-1":</span>
+    <span class="hljs-attr">saveExact:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">"project-2":</span>
+    <span class="hljs-attr">savePrefix:</span> <span class="hljs-string">"~"</span>
+</code></pre></div>
+<p>Or as an array of pattern-matched rules:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"packages/project-1"</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"packages/project-2"</span>
+<span class="hljs-attr">packageConfigs:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">match:</span> [<span class="hljs-string">"project-1"</span>, <span class="hljs-string">"project-2"</span>]
+    <span class="hljs-attr">modulesDir:</span> <span class="hljs-string">"node_modules"</span>
+    <span class="hljs-attr">saveExact:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>Settings that shape resolution or the layout of <code>node_modules</code> (<code>overrides</code>,
+<code>hoist</code>, <code>modulesDir</code>, <code>saveExact</code>, <code>savePrefix</code>, and their neighbours) take
+effect per project only where each project has its own lockfile, that is with
+<a href="/workspaces#sharedworkspacelockfile"><code>sharedWorkspaceLockfile: false</code></a>. A
+workspace on the default shared lockfile has one resolution for every project,
+so pnpm reports which entries it ignored instead of applying them silently.</p>
+<h2 id="settings">Settings<a class="hash-link" href="#settings" aria-label="Direct link to Settings">#</a></h2>
+<p>Every setting is listed below, grouped by topic. Follow a setting to read its documentation, or open the full reference of a group.</p>
+<h3 id="dependency-resolution">Dependency Resolution<a class="hash-link" href="#dependency-resolution" aria-label="Direct link to Dependency Resolution">#</a></h3>
+<p><a href="/settings/dependency-resolution">Full reference →</a></p>
+<ul>
+<li><a href="/settings/dependency-resolution#overrides">overrides</a>
+<ul>
+<li><a href="/settings/dependency-resolution#convergence-overrides">Convergence overrides</a></li>
+<li><a href="/settings/dependency-resolution#overriding-peer-dependencies">Overriding peer dependencies</a></li>
+</ul>
+</li>
+<li><a href="/settings/dependency-resolution#packageextensions">packageExtensions</a></li>
+<li><a href="/settings/dependency-resolution#alloweddeprecatedversions">allowedDeprecatedVersions</a></li>
+<li><a href="/settings/dependency-resolution#update">update</a>
+<ul>
+<li><a href="/settings/dependency-resolution#updateignoredeps">update.ignoreDeps</a></li>
+<li><a href="/settings/dependency-resolution#updatechangeset">update.changeset</a></li>
+<li><a href="/settings/dependency-resolution#updategithubactions">update.githubActions</a></li>
+<li><a href="/settings/dependency-resolution#updategithubactionsserver">update.githubActionsServer</a></li>
+</ul>
+</li>
+<li><a href="/settings/dependency-resolution#supportedarchitectures">supportedArchitectures</a></li>
+<li><a href="/settings/dependency-resolution#optional">optional</a></li>
+<li><a href="/settings/dependency-resolution#ignoredoptionaldependencies">ignoredOptionalDependencies</a></li>
+<li><a href="/settings/dependency-resolution#forceignoresplatform">forceIgnoresPlatform</a></li>
+<li><a href="/settings/dependency-resolution#minimumreleaseage">minimumReleaseAge</a></li>
+<li><a href="/settings/dependency-resolution#minimumreleaseageexclude">minimumReleaseAgeExclude</a></li>
+<li><a href="/settings/dependency-resolution#minimumreleaseageexcludeprune">minimumReleaseAgeExcludePrune</a></li>
+<li><a href="/settings/dependency-resolution#minimumreleaseageignoremissingtime">minimumReleaseAgeIgnoreMissingTime</a></li>
+<li><a href="/settings/dependency-resolution#minimumreleaseagestrict">minimumReleaseAgeStrict</a></li>
+<li><a href="/settings/dependency-resolution#trustpolicy">trustPolicy</a></li>
+<li><a href="/settings/dependency-resolution#trustpolicyexclude">trustPolicyExclude</a></li>
+<li><a href="/settings/dependency-resolution#trustpolicyignoreafter">trustPolicyIgnoreAfter</a></li>
+<li><a href="/settings/dependency-resolution#trustpolicyexcludeprune">trustPolicyExcludePrune</a></li>
+<li><a href="/settings/dependency-resolution#trustlockfile">trustLockfile</a></li>
+<li><a href="/settings/dependency-resolution#blockexoticsubdeps">blockExoticSubdeps</a></li>
+<li><a href="/settings/dependency-resolution#registries">registries</a></li>
+<li><a href="/settings/dependency-resolution#namedregistries">namedRegistries</a></li>
+</ul>
+<h3 id="node-modules-settings">Node-Modules Settings<a class="hash-link" href="#node-modules-settings" aria-label="Direct link to Node-Modules Settings">#</a></h3>
+<p><a href="/settings/node-modules#node-modules-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/node-modules#modulesdir">modulesDir</a></li>
+<li><a href="/settings/node-modules#nodelinker">nodeLinker</a></li>
+<li><a href="/settings/node-modules#nodeexperimentalpackagemap">nodeExperimentalPackageMap</a></li>
+<li><a href="/settings/node-modules#nodepackagemaptype">nodePackageMapType</a></li>
+<li><a href="/settings/node-modules#symlink">symlink</a></li>
+<li><a href="/settings/node-modules#enablemodulesdir">enableModulesDir</a></li>
+<li><a href="/settings/node-modules#virtualstoredir">virtualStoreDir</a></li>
+<li><a href="/settings/node-modules#virtualstoredirmaxlength">virtualStoreDirMaxLength</a></li>
+<li><a href="/settings/node-modules#virtualstoreonly">virtualStoreOnly</a></li>
+<li><a href="/settings/node-modules#packageimportmethod">packageImportMethod</a></li>
+<li><a href="/settings/node-modules#modulescachemaxage">modulesCacheMaxAge</a></li>
+<li><a href="/settings/node-modules#dlxcachemaxage">dlxCacheMaxAge</a></li>
+<li><a href="/settings/node-modules#virtualstoretype">virtualStoreType</a></li>
+<li><a href="/settings/node-modules#enableglobalvirtualstore">enableGlobalVirtualStore</a></li>
+</ul>
+<h3 id="dependency-hoisting-settings">Dependency Hoisting Settings<a class="hash-link" href="#dependency-hoisting-settings" aria-label="Direct link to Dependency Hoisting Settings">#</a></h3>
+<p><a href="/settings/node-modules#dependency-hoisting-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/node-modules#hoist">hoist</a></li>
+<li><a href="/settings/node-modules#hoistpattern">hoistPattern</a></li>
+<li><a href="/settings/node-modules#publichoistpattern">publicHoistPattern</a></li>
+<li><a href="/settings/node-modules#hoistworkspacepackages">hoistWorkspacePackages</a></li>
+<li><a href="/settings/node-modules#shamefullyhoist">shamefullyHoist</a></li>
+<li><a href="/settings/node-modules#hoistinglimits">hoistingLimits</a></li>
+</ul>
+<h3 id="store-settings">Store Settings<a class="hash-link" href="#store-settings" aria-label="Direct link to Store Settings">#</a></h3>
+<p><a href="/settings/store#store-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/store#storedir">storeDir</a></li>
+<li><a href="/settings/store#verifystoreintegrity">verifyStoreIntegrity</a></li>
+<li><a href="/settings/store#userunningstoreserver">useRunningStoreServer</a></li>
+<li><a href="/settings/store#strictstorepkgcontentcheck">strictStorePkgContentCheck</a></li>
+<li><a href="/settings/store#frozenstore">frozenStore</a></li>
+</ul>
+<h3 id="lockfile-settings">Lockfile Settings<a class="hash-link" href="#lockfile-settings" aria-label="Direct link to Lockfile Settings">#</a></h3>
+<p><a href="/settings/store#lockfile-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/store#lockfile">lockfile</a></li>
+<li><a href="/settings/store#frozenlockfile">frozenLockfile</a></li>
+<li><a href="/settings/store#preferfrozenlockfile">preferFrozenLockfile</a></li>
+<li><a href="/settings/store#lockfileincludetarballurl">lockfileIncludeTarballUrl</a></li>
+<li><a href="/settings/store#gitbranchlockfile">gitBranchLockfile</a></li>
+<li><a href="/settings/store#mergegitbranchlockfilesbranchpattern">mergeGitBranchLockfilesBranchPattern</a></li>
+<li><a href="/settings/store#peerssuffixmaxlength">peersSuffixMaxLength</a></li>
+</ul>
+<h3 id="network-settings">Network Settings<a class="hash-link" href="#network-settings" aria-label="Direct link to Network Settings">#</a></h3>
+<p><a href="/settings/network#network-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/network#httpsproxy">httpsProxy</a></li>
+<li><a href="/settings/network#httpproxy">httpProxy</a></li>
+<li><a href="/settings/network#noproxy">noProxy</a></li>
+<li><a href="/settings/network#localaddress">localAddress</a></li>
+<li><a href="/settings/network#maxsockets">maxsockets</a></li>
+<li><a href="/settings/network#strictssl">strictSsl</a></li>
+</ul>
+<h3 id="request-settings">Request Settings<a class="hash-link" href="#request-settings" aria-label="Direct link to Request Settings">#</a></h3>
+<p><a href="/settings/network#request-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/network#gitshallowhosts">gitShallowHosts</a></li>
+<li><a href="/settings/network#networkconcurrency">networkConcurrency</a></li>
+<li><a href="/settings/network#fetchretries">fetchRetries</a></li>
+<li><a href="/settings/network#fetchretryfactor">fetchRetryFactor</a></li>
+<li><a href="/settings/network#fetchretrymintimeout">fetchRetryMintimeout</a></li>
+<li><a href="/settings/network#fetchretrymaxtimeout">fetchRetryMaxtimeout</a></li>
+<li><a href="/settings/network#fetchtimeout">fetchTimeout</a></li>
+<li><a href="/settings/network#fetchwarntimeoutms">fetchWarnTimeoutMs</a></li>
+<li><a href="/settings/network#fetchminspeedkibps">fetchMinSpeedKiBps</a></li>
+</ul>
+<h3 id="peer-dependency-settings">Peer Dependency Settings<a class="hash-link" href="#peer-dependency-settings" aria-label="Direct link to Peer Dependency Settings">#</a></h3>
+<p><a href="/settings/peer-dependencies">Full reference →</a></p>
+<ul>
+<li><a href="/settings/peer-dependencies#autoinstallpeers">autoInstallPeers</a>
+<ul>
+<li><a href="/settings/peer-dependencies#version-conflicts">Version Conflicts</a></li>
+<li><a href="/settings/peer-dependencies#conflict-resolution">Conflict Resolution</a></li>
+</ul>
+</li>
+<li><a href="/settings/peer-dependencies#dedupepeerdependents">dedupePeerDependents</a></li>
+<li><a href="/settings/peer-dependencies#dedupepeers">dedupePeers</a></li>
+<li><a href="/settings/peer-dependencies#strictpeerdependencies">strictPeerDependencies</a></li>
+<li><a href="/settings/peer-dependencies#resolvepeersfromworkspaceroot">resolvePeersFromWorkspaceRoot</a></li>
+<li><a href="/settings/peer-dependencies#peerdependencyrules">peerDependencyRules</a>
+<ul>
+<li><a href="/settings/peer-dependencies#peerdependencyrulesignoremissing">peerDependencyRules.ignoreMissing</a></li>
+<li><a href="/settings/peer-dependencies#peerdependencyrulesallowedversions">peerDependencyRules.allowedVersions</a></li>
+<li><a href="/settings/peer-dependencies#peerdependencyrulesallowany">peerDependencyRules.allowAny</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="cli-settings">CLI Settings<a class="hash-link" href="#cli-settings" aria-label="Direct link to CLI Settings">#</a></h3>
+<p><a href="/settings/cli#cli-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/cli#no-color">[no-]color</a></li>
+<li><a href="/settings/cli#loglevel">loglevel</a></li>
+<li><a href="/settings/cli#reporter">reporter</a></li>
+<li><a href="/settings/cli#usebetacli">useBetaCli</a></li>
+<li><a href="/settings/cli#recursiveinstall">recursiveInstall</a></li>
+<li><a href="/settings/cli#enginestrict">engineStrict</a></li>
+<li><a href="/settings/cli#npmpath">npmPath</a></li>
+<li><a href="/settings/cli#pmonfail">pmOnFail</a></li>
+<li><a href="/settings/cli#ignoreworkspacerootcheck">ignoreWorkspaceRootCheck</a></li>
+</ul>
+<h3 id="nodejs-settings">Node.js Settings<a class="hash-link" href="#nodejs-settings" aria-label="Direct link to Node.js Settings">#</a></h3>
+<p><a href="/settings/cli#nodejs-settings">Full reference →</a></p>
+<ul>
+<li><a href="/settings/cli#nodeversion">nodeVersion</a></li>
+<li><a href="/settings/cli#runtimeonfail">runtimeOnFail</a></li>
+<li><a href="/settings/cli#nodedownloadmirrors">nodeDownloadMirrors</a></li>
+<li><a href="/settings/cli#tools">tools</a></li>
+</ul>
+<h3 id="build-settings">Build Settings<a class="hash-link" href="#build-settings" aria-label="Direct link to Build Settings">#</a></h3>
+<p><a href="/settings/build">Full reference →</a></p>
+<ul>
+<li><a href="/settings/build#ignorescripts">ignoreScripts</a></li>
+<li><a href="/settings/build#childconcurrency">childConcurrency</a></li>
+<li><a href="/settings/build#sideeffectscache">sideEffectsCache</a></li>
+<li><a href="/settings/build#sideeffectscachereadonly">sideEffectsCacheReadonly</a></li>
+<li><a href="/settings/build#sideeffectscacheremote">sideEffectsCache.remote</a></li>
+<li><a href="/settings/build#unsafeperm">unsafePerm</a></li>
+<li><a href="/settings/build#nodeoptions">nodeOptions</a></li>
+<li><a href="/settings/build#verifydepsbeforerun">verifyDepsBeforeRun</a></li>
+<li><a href="/settings/build#strictdepbuilds">strictDepBuilds</a></li>
+<li><a href="/settings/build#allowbuilds">allowBuilds</a></li>
+<li><a href="/settings/build#dangerouslyallowallbuilds">dangerouslyAllowAllBuilds</a></li>
+</ul>
+<h3 id="versioning-settings">Versioning Settings<a class="hash-link" href="#versioning-settings" aria-label="Direct link to Versioning Settings">#</a></h3>
+<p><a href="/settings/versioning">Full reference →</a></p>
+<ul>
+<li><a href="/settings/versioning#versioningfixed">versioning.fixed</a></li>
+<li><a href="/settings/versioning#versioningignore">versioning.ignore</a></li>
+<li><a href="/settings/versioning#versioningmaxbump">versioning.maxBump</a></li>
+<li><a href="/settings/versioning#versioninglanes">versioning.lanes</a></li>
+<li><a href="/settings/versioning#versioningepics">versioning.epics</a></li>
+<li><a href="/settings/versioning#versioningchangelogstorage">versioning.changelog.storage</a></li>
+</ul>
+<h3 id="other-settings">Other Settings<a class="hash-link" href="#other-settings" aria-label="Direct link to Other Settings">#</a></h3>
+<p><a href="/settings/other">Full reference →</a></p>
+<ul>
+<li><a href="/settings/other#saveprefix">savePrefix</a></li>
+<li><a href="/settings/other#tag">tag</a></li>
+<li><a href="/settings/other#globaldir">globalDir</a></li>
+<li><a href="/settings/other#globalbindir">globalBinDir</a></li>
+<li><a href="/settings/other#npmrcauthfile">npmrcAuthFile</a></li>
+<li><a href="/settings/other#statedir">stateDir</a></li>
+<li><a href="/settings/other#cachedir">cacheDir</a></li>
+<li><a href="/settings/other#usestderr">useStderr</a></li>
+<li><a href="/settings/other#updatenotifier">updateNotifier</a></li>
+<li><a href="/settings/other#globalshims">globalShims</a></li>
+<li><a href="/settings/other#prefersymlinkedexecutables">preferSymlinkedExecutables</a></li>
+<li><a href="/settings/other#ignorecompatibilitydb">ignoreCompatibilityDb</a></li>
+<li><a href="/settings/other#resolutionmode">resolutionMode</a></li>
+<li><a href="/settings/other#registrysupportstimefield">registrySupportsTimeField</a></li>
+<li><a href="/settings/other#extendnodepath">extendNodePath</a>
+<ul>
+<li><a href="/settings/other#why-this-is-needed">Why this is needed</a></li>
+<li><a href="/settings/other#when-to-disable">When to disable</a></li>
+</ul>
+</li>
+<li><a href="/settings/other#deployallfiles">deployAllFiles</a></li>
+<li><a href="/settings/other#dedupedirectdeps">dedupeDirectDeps</a></li>
+<li><a href="/settings/other#optimisticrepeatinstall">optimisticRepeatInstall</a></li>
+<li><a href="/settings/other#requiredscripts">requiredScripts</a></li>
+<li><a href="/settings/other#enableprepostscripts">enablePrePostScripts</a></li>
+<li><a href="/settings/other#scriptshell">scriptShell</a></li>
+<li><a href="/settings/other#shellemulator">shellEmulator</a></li>
+<li><a href="/settings/other#catalogmode">catalogMode</a></li>
+<li><a href="/settings/other#ci">ci</a></li>
+<li><a href="/settings/other#catalogprune">catalogPrune</a></li>
+</ul>
+<h3 id="workspace-settings">Workspace Settings<a class="hash-link" href="#workspace-settings" aria-label="Direct link to Workspace Settings">#</a></h3>
+<p>These settings are configured in <code>pnpm-workspace.yaml</code> as well, but are documented together with the workspace feature they belong to.</p>
+<p><a href="/workspaces#configuration">Full reference →</a></p>
+<ul>
+<li><a href="/workspaces#linkworkspacepackages">linkWorkspacePackages</a></li>
+<li><a href="/workspaces#injectworkspacepackages">injectWorkspacePackages</a></li>
+<li><a href="/workspaces#dedupeinjecteddeps">dedupeInjectedDeps</a></li>
+<li><a href="/workspaces#syncinjecteddepsafterscripts">syncInjectedDepsAfterScripts</a></li>
+<li><a href="/workspaces#preferworkspacepackages">preferWorkspacePackages</a></li>
+<li><a href="/workspaces#sharedworkspacelockfile">sharedWorkspaceLockfile</a></li>
+<li><a href="/workspaces#saveworkspaceprotocol">saveWorkspaceProtocol</a></li>
+<li><a href="/workspaces#includeworkspaceroot">includeWorkspaceRoot</a></li>
+<li><a href="/workspaces#ignoreworkspacecycles">ignoreWorkspaceCycles</a></li>
+<li><a href="/workspaces#disallowworkspacecycles">disallowWorkspaceCycles</a></li>
+<li><a href="/workspaces#workspaceconcurrency">workspaceConcurrency</a></li>
+<li><a href="/workspaces#ignoreworkspacerootcheck">ignoreWorkspaceRootCheck</a></li>
+<li><a href="/workspaces#failifnomatch">failIfNoMatch</a></li>
+</ul>
+<h3 id="settings-documented-elsewhere">Settings documented elsewhere<a class="hash-link" href="#settings-documented-elsewhere" aria-label="Direct link to Settings documented elsewhere">#</a></h3>
+<ul>
+<li><a href="/cli/publish#publishwaittimeout">publishWaitTimeout</a></li>
+<li><a href="/cli/patch#patcheddependencies">patchedDependencies</a></li>
+<li><a href="/pnpmfile#pnpmfile">pnpmfile</a>, <a href="/pnpmfile#globalpnpmfile">globalPnpmfile</a> and <a href="/pnpmfile#ignorepnpmfile">ignorePnpmfile</a></li>
+<li><a href="/cli/audit#auditlevel">audit.level</a>, <a href="/cli/audit#auditignore">audit.ignore</a> and <a href="/cli/audit#auditignoreprune">audit.ignorePrune</a></li>
+<li><a href="/cli/init#initversion">initVersion</a>, <a href="/cli/init#initlicense">initLicense</a> and <a href="/cli/init#initauthorname-initauthoremail-initauthorurl">initAuthorName / initAuthorEmail / initAuthorUrl</a></li>
+<li><a href="/filtering#legacydirfiltering">legacyDirFiltering</a></li>
+<li><a href="/workspace-task-orchestration#concurrencygroups">concurrencyGroups</a></li>
+<li><a href="/workspace-task-orchestration#configure-task-dependencies">tasks</a>, <a href="/cli/pipeline#pipelines">pipelines</a> and <a href="/cli/pipeline#pipelinebase">pipelineBase</a></li>
+<li><a href="/cargo#cargoenabled">cargo.enabled</a> and <a href="/cargo#cargo-index">Cargo index</a></li>
+<li><a href="/python#pythonenabled">python.enabled</a>, <a href="/python#pythonexecutable">python.executable</a>, <a href="/python#python-indexes">Python indexes</a>, <a href="/python#pythonextras">python.extras</a> and <a href="/python#pythongroups">python.groups</a></li>
+<li><a href="/python#pythonversions">python.versions</a>, <a href="/python#pythonoverrides">python.overrides</a> and <a href="/python#pythonconstraints">python.constraints</a></li>
+<li>Authorization settings, which are read from <a href="/npmrc"><code>.npmrc</code></a></li>
+</ul></article></main></div>
+  </body>
+</html>

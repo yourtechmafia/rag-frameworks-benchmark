@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/heatmap",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-heatmap.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 2.49,
+ "markdown_chars": 7623,
+ "raw_html_chars": 3769,
+ "sha256": "0a4dfb803d5c97552b2049d84565e592040b87f45e0f5246f4ffa35501569764",
+ "fetched_at": "2026-10-03T08:59:38+00:00"
+}

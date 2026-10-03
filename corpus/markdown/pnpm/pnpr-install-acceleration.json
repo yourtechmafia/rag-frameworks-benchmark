@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/install-acceleration",
+ "file": "markdown/pnpm/pnpr-install-acceleration.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.12,
+ "markdown_chars": 8697,
+ "raw_html_chars": 15629,
+ "sha256": "5a32f655542b258fa07f7657e00f7dfc430e2d4c9f5f01196c11b8242ca132e1",
+ "fetched_at": "2026-10-03T08:58:55+00:00"
+}

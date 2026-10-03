@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/oidc",
+ "file": "markdown/pnpm/pnpr-oidc.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.21,
+ "markdown_chars": 7462,
+ "raw_html_chars": 15480,
+ "sha256": "6f1900e6912bc8d858f06e56f1fbe65354ee0f2d6a557b16a3b18fcf6c1b33f5",
+ "fetched_at": "2026-10-03T08:58:56+00:00"
+}

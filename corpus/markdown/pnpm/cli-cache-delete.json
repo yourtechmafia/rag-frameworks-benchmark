@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/cache-delete",
+ "file": "markdown/pnpm/cli-cache-delete.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 9.62,
+ "markdown_chars": 147,
+ "raw_html_chars": 4868,
+ "sha256": "4e3e9f66587f4b1fb6e79b6b09a93bf2107be46ec40985561d74a5ee0ef67e65",
+ "fetched_at": "2026-10-03T08:58:09+00:00"
+}

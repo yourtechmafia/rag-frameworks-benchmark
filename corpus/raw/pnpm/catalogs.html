@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalogs | pnpm</title>
+    <meta name="description" content="&quot;Catalogs&quot; are a workspace feature for defining dependency version ranges as reusable constants. Constants defined in catalogs can later be referenced in package.json files." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Catalogs | pnpm" />
+    <meta property="og:description" content="&quot;Catalogs&quot; are a workspace feature for defining dependency version ranges as reusable constants. Constants defined in catalogs can later be referenced in package.json files." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Catalogs | pnpm" />
+    <meta name="twitter:description" content="&quot;Catalogs&quot; are a workspace feature for defining dependency version ranges as reusable constants. Constants defined in catalogs can later be referenced in package.json files." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/catalogs" />
+    <meta property="og:url" content="https://pnpm.io/catalogs" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/catalogs" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/catalogs" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/catalogs" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/catalogs" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/catalogs" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/catalogs" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/catalogs" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/catalogs" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/catalogs" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/catalogs" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/catalogs" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/catalogs" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/catalogs" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/catalogs" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Catalogs</h1><p>"<em>Catalogs</em>" are a <a href="/workspaces">workspace feature</a> for defining dependency version ranges as reusable constants. Constants defined in catalogs can later be referenced in <code>package.json</code> files.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PuRUk4mV2jc" title="pnpm Catalogs — A New Tool to Manage Dependencies in monorepos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
+<h2 id="the-catalog-protocol-catalog">The Catalog Protocol (<code>catalog:</code>)<a class="hash-link" href="#the-catalog-protocol-catalog" aria-label="Direct link to The Catalog Protocol (catalog:)">#</a></h2>
+<p>Once a catalog is defined in <code>pnpm-workspace.yaml</code>,</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">packages/*</span>
+
+<span class="hljs-comment"># Define a catalog of version ranges.</span>
+<span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">react:</span> <span class="hljs-string">^18.3.1</span>
+  <span class="hljs-attr">redux:</span> <span class="hljs-string">^5.0.1</span>
+</code></pre></div>
+<p>The <code>catalog:</code> protocol can be used instead of the version range itself.</p>
+<div class="code-block"><div class="code-block-title">packages/example-app/package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@example/app"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"react"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"catalog:"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"redux"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"catalog:"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>This is equivalent to writing a version range (e.g. <code>^18.3.1</code>) directly.</p>
+<div class="code-block"><div class="code-block-title">packages/example-app/package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@example/app"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"react"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^18.3.1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"redux"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^5.0.1"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>You may use the <code>catalog:</code> protocol in the next fields:</p>
+<ul>
+<li><code>package.json</code>:
+<ul>
+<li><code>dependencies</code></li>
+<li><code>devDependencies</code></li>
+<li><code>peerDependencies</code></li>
+<li><code>optionalDependencies</code></li>
+</ul>
+</li>
+<li><code>pnpm-workspace.yaml</code>
+<ul>
+<li><code>overrides</code></li>
+</ul>
+</li>
+</ul>
+<p>The <code>catalog:</code> protocol allows an optional name after the colon (ex: <code>catalog:name</code>) to specify which catalog should be used. When a name is omitted, the default catalog is used.</p>
+<p>Depending on the scenario, the <code>catalog:</code> protocol offers a few <a href="#advantages">advantages</a> compared to writing version ranges directly that are detailed next.</p>
+<h2 id="advantages">Advantages<a class="hash-link" href="#advantages" aria-label="Direct link to Advantages">#</a></h2>
+<p>In a workspace (i.e. monorepo or multi-package repo) it's common for the same dependency to be used by many packages. Catalogs reduce duplication when authoring <code>package.json</code> files and provide a few benefits in doing so:</p>
+<ul>
+<li><strong>Maintain unique versions</strong> — It's usually desirable to have only one version of a dependency in a workspace. Catalogs make this easier to maintain. Duplicated dependencies can conflict at runtime and cause bugs. Duplicates also increase size when using a bundler.</li>
+<li><strong>Easier upgrades</strong> — When upgrading a dependency, only the catalog entry in <code>pnpm-workspace.yaml</code> needs to be edited rather than all <code>package.json</code> files using that dependency. This saves time — only one line needs to be changed instead of many.</li>
+<li><strong>Fewer merge conflicts</strong> — Since <code>package.json</code> files do not need to be edited when upgrading a dependency, git merge conflicts no longer happen in these files.</li>
+</ul>
+<h2 id="defining-catalogs">Defining Catalogs<a class="hash-link" href="#defining-catalogs" aria-label="Direct link to Defining Catalogs">#</a></h2>
+<p>Catalogs are defined in the <code>pnpm-workspace.yaml</code> file. There are two ways to define catalogs.</p>
+<ol>
+<li>Using the (singular) <code>catalog</code> field to create a catalog named <code>default</code>.</li>
+<li>Using the (plural) <code>catalogs</code> field to create arbitrarily named catalogs.</li>
+</ol>
+<div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>If you have an existing workspace that you want to migrate to using catalogs, you can use the following <a href="https://go.codemod.com/pnpm-catalog">codemod</a>:</p>
+<pre><code>pnpx codemod pnpm/catalog
+</code></pre>
+</div>
+<h3 id="default-catalog">Default Catalog<a class="hash-link" href="#default-catalog" aria-label="Direct link to Default Catalog">#</a></h3>
+<p>The top-level <code>catalog</code> field allows users to define a catalog named <code>default</code>.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">react:</span> <span class="hljs-string">^18.2.0</span>
+  <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^18.2.0</span>
+</code></pre></div>
+<p>These version ranges can be referenced through <code>catalog:default</code>. For the default catalog only, a special <code>catalog:</code> shorthand can also be used. Think of <code>catalog:</code> as a shorthand that expands to <code>catalog:default</code>.</p>
+<h3 id="named-catalogs">Named Catalogs<a class="hash-link" href="#named-catalogs" aria-label="Direct link to Named Catalogs">#</a></h3>
+<p>Multiple catalogs with arbitrarily chosen names can be configured under the <code>catalogs</code> key.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">catalogs:</span>
+  <span class="hljs-comment"># Can be referenced through "catalog:react17"</span>
+  <span class="hljs-attr">react17:</span>
+    <span class="hljs-attr">react:</span> <span class="hljs-string">^17.0.2</span>
+    <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^17.0.2</span>
+
+  <span class="hljs-comment"># Can be referenced through "catalog:react18"</span>
+  <span class="hljs-attr">react18:</span>
+    <span class="hljs-attr">react:</span> <span class="hljs-string">^18.2.0</span>
+    <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^18.2.0</span>
+</code></pre></div>
+<p>A default catalog can be defined alongside multiple named catalogs. This might be useful in a large multi-package repo that's migrating to a newer version of a dependency piecemeal.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">react:</span> <span class="hljs-string">^16.14.0</span>
+  <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^16.14.0</span>
+
+<span class="hljs-attr">catalogs:</span>
+  <span class="hljs-comment"># Can be referenced through "catalog:react17"</span>
+  <span class="hljs-attr">react17:</span>
+    <span class="hljs-attr">react:</span> <span class="hljs-string">^17.0.2</span>
+    <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^17.0.2</span>
+
+  <span class="hljs-comment"># Can be referenced through "catalog:react18"</span>
+  <span class="hljs-attr">react18:</span>
+    <span class="hljs-attr">react:</span> <span class="hljs-string">^18.2.0</span>
+    <span class="hljs-attr">react-dom:</span> <span class="hljs-string">^18.2.0</span>
+</code></pre></div>
+<h3 id="workspace-dependencies-in-a-catalog">Workspace dependencies in a catalog<a class="hash-link" href="#workspace-dependencies-in-a-catalog" aria-label="Direct link to Workspace dependencies in a catalog">#</a></h3>
+<p>Added in: v12.2.0</p>
+<p>A catalog entry may hold a <a href="/workspaces#workspace-protocol-workspace"><code>workspace:</code> range</a>, so the version a workspace dependency is linked by is written once too:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">'@example/utils':</span> <span class="hljs-string">workspace:^</span>
+</code></pre></div>
+<div class="code-block"><div class="code-block-title">packages/example-app/package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@example/app"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"@example/utils"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"catalog:"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>pnpm expands the <code>catalog:</code> reference to <code>workspace:^</code> and then links the workspace project, exactly as if the <code>package.json</code> had declared <code>workspace:^</code> itself. On publish both protocols are replaced, so the example above ships as <code>"^1.4.0"</code> when <code>@example/utils</code> is at 1.4.0.</p>
+<h3 id="local-dependencies-in-a-catalog">Local dependencies in a catalog<a class="hash-link" href="#local-dependencies-in-a-catalog" aria-label="Direct link to Local dependencies in a catalog">#</a></h3>
+<p>Added in: v12.6.0</p>
+<p>Catalog entries can use the <code>file:</code> and <code>link:</code> protocols (<a href="https://github.com/pnpm/pnpm/issues/8642">#8642</a>). A relative path or bare path in an entry is measured from the directory holding <code>pnpm-workspace.yaml</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">my-lib:</span> <span class="hljs-string">link:./packages/my-lib</span>
+  <span class="hljs-attr">my-tarball:</span> <span class="hljs-string">file:./tarballs/foo.tgz</span>
+</code></pre></div>
+<div class="code-block"><div class="code-block-title">packages/example-app/package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@example/app"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"my-lib"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"catalog:"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"my-tarball"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"catalog:"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<h2 id="publishing">Publishing<a class="hash-link" href="#publishing" aria-label="Direct link to Publishing">#</a></h2>
+<p>The <code>catalog:</code> protocol is removed when running <code>pnpm publish</code> or <code>pnpm pack</code>. This is similar to the <a href="/workspaces#workspace-protocol-workspace"><code>workspace:</code> protocol</a>, which is <a href="/workspaces#publishing-workspace-packages">also replaced on publish</a>.</p>
+<p>For example,</p>
+<div class="code-block"><div class="code-block-title">packages/example-components/package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@example/components"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"react"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"catalog:react18"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>Will become the following on publish.</p>
+<div class="code-block"><div class="code-block-title">packages/example-components/package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@example/components"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"react"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^18.3.1"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>The <code>catalog:</code> protocol replacement process allows the <code>@example/components</code> package to be used by other workspaces or package managers.</p>
+<h2 id="settings">Settings<a class="hash-link" href="#settings" aria-label="Direct link to Settings">#</a></h2>
+<h3 id="catalogmode">catalogMode<a class="hash-link" href="#catalogmode" aria-label="Direct link to catalogMode">#</a></h3>
+<p>Added in: v10.12.1</p>
+<ul>
+<li>Default: <strong>manual</strong></li>
+<li>Type: <strong>manual</strong>, <strong>strict</strong>, <strong>prefer</strong></li>
+</ul>
+<p>Controls if and how dependencies are added to the default catalog, when running <code>pnpm add</code>. There are three modes:</p>
+<ul>
+<li><strong>strict</strong> - only allows dependency versions from the catalog. Adding a dependency outside the catalog's version range will cause an error.</li>
+<li><strong>prefer</strong> - prefers catalog versions, but will fall back to direct dependencies if no compatible version is found.</li>
+<li><strong>manual</strong> (default) - does not automatically add dependencies to the catalog.</li>
+</ul>
+<p>Since v12.3.0, a specifier that names a location rather than a version is never moved into a catalog: local paths, local tarballs, tarball URLs, and <code>workspace:&#x3C;path></code> ranges stay in the <code>package.json</code> that declares them. Such a specifier is resolved relative to its own project, so one catalog entry could not mean the same directory for every project referencing it.</p>
+<p><a id="cleanupunusedcatalogs"></a></p>
+<h3 id="catalogprune">catalogPrune<a class="hash-link" href="#catalogprune" aria-label="Direct link to catalogPrune">#</a></h3>
+<p>Added in: v11.22.0 (as <code>cleanupUnusedCatalogs</code> since v10.15.0)</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, pnpm will remove unused catalog entries during installation.</p>
+<p><code>cleanupUnusedCatalogs</code> is the deprecated spelling of this setting and continues to work; when both are set, <code>catalogPrune</code> wins.</p></article></main></div>
+  </body>
+</html>

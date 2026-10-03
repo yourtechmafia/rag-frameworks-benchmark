@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/python",
+ "file": "markdown/pnpm/python.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.73,
+ "markdown_chars": 17141,
+ "raw_html_chars": 29094,
+ "sha256": "e42a38637a42d0d5dc3f091681e8d11634329c473f52b447ee05aba51bf4c3b7",
+ "fetched_at": "2026-10-03T08:58:58+00:00"
+}

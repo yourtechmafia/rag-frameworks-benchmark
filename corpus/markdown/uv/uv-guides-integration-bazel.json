@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/bazel/",
+ "file": "markdown/uv/uv-guides-integration-bazel.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.08,
+ "markdown_chars": 6075,
+ "raw_html_chars": 65240,
+ "sha256": "3a3c503399fa896186e06cf2c63fd1f5154b758824a021ca99cd76a35026f908",
+ "fetched_at": "2026-10-03T08:57:28+00:00"
+}

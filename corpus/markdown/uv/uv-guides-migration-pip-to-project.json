@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/migration/pip-to-project/",
+ "file": "markdown/uv/uv-guides-migration-pip-to-project.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.41,
+ "markdown_chars": 22198,
+ "raw_html_chars": 112852,
+ "sha256": "4c6cc49361d1905239c4fc084d6ddad7f0eaecbc863324242f8b2b074c4b56c2",
+ "fetched_at": "2026-10-03T08:57:34+00:00"
+}

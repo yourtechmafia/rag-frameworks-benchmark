@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/license",
+ "file": "markdown/pnpm/pnpr-license.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.66,
+ "markdown_chars": 967,
+ "raw_html_chars": 5905,
+ "sha256": "d45752c74177ceb970df4e5605b9f55f4dd4abe6eabd4e654bfe6cab41f9e28a",
+ "fetched_at": "2026-10-03T08:58:56+00:00"
+}

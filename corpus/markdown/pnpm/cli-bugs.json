@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/bugs",
+ "file": "markdown/pnpm/cli-bugs.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.07,
+ "markdown_chars": 902,
+ "raw_html_chars": 5788,
+ "sha256": "072d8d42c2ae2175ca1ae53783b18699be029fb2cbbd901d9f711e3eac257dde",
+ "fetched_at": "2026-10-03T08:57:48+00:00"
+}

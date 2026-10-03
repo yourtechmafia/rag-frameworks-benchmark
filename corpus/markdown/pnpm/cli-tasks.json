@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/tasks",
+ "file": "markdown/pnpm/cli-tasks.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.91,
+ "markdown_chars": 2049,
+ "raw_html_chars": 7556,
+ "sha256": "e1c9e9cb9aabc6dab6571030af772eda8ca82415e15ed8ee09ecc9f01f339c21",
+ "fetched_at": "2026-10-03T08:58:37+00:00"
+}

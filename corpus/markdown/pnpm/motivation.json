@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/motivation",
+ "file": "markdown/pnpm/motivation.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.17,
+ "markdown_chars": 3640,
+ "raw_html_chars": 9209,
+ "sha256": "5150c0baf4cec222081b07c93c4c3705a671b2fad45103c1666a907f72763c3c",
+ "fetched_at": "2026-10-03T08:58:49+00:00"
+}

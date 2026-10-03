@@ -1,0 +1,13 @@
+{
+ "site": "docsify",
+ "url": "https://docsify.js.org/#/language-highlight",
+ "file": "markdown/docsify/language-highlight.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.27,
+ "markdown_chars": 4620,
+ "raw_html_chars": 7894,
+ "sha256": "fb07edb47ef9c0547341531009390889b93d305bfbbfa9ca71cc0a1c5a8fe9fc",
+ "fetched_at": "2026-10-03T08:59:59+00:00"
+}

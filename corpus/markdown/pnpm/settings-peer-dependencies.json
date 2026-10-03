@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/settings/peer-dependencies",
+ "file": "markdown/pnpm/settings-peer-dependencies.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.73,
+ "markdown_chars": 7228,
+ "raw_html_chars": 15657,
+ "sha256": "f936c178a65ab6e193bd72ec383bdc98d3837f9f87d28e0fd05fedf9c012f6e5",
+ "fetched_at": "2026-10-03T08:59:06+00:00"
+}

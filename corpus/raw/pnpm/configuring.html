@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuring | pnpm</title>
+    <meta name="description" content="pnpm settings are divided into two categories:" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Configuring | pnpm" />
+    <meta property="og:description" content="pnpm settings are divided into two categories:" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Configuring | pnpm" />
+    <meta name="twitter:description" content="pnpm settings are divided into two categories:" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/configuring" />
+    <meta property="og:url" content="https://pnpm.io/configuring" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/configuring" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/configuring" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/configuring" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/configuring" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/configuring" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/configuring" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/configuring" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/configuring" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/configuring" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/configuring" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/configuring" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/configuring" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/configuring" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/configuring" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Configuring</h1><p>pnpm settings are divided into two categories:</p>
+<ul>
+<li><strong>Authentication and certificate settings</strong> are stored in INI files. These contain sensitive credentials and should not be committed to your repository. See <a href="/npmrc#auth-file-locations">Authentication Settings</a> for details.</li>
+<li><strong>All other settings</strong> are stored in YAML files: the project <code>pnpm-workspace.yaml</code> and the global <code>config.yaml</code>. Some settings are project-only and are ignored in the global <code>config.yaml</code> (see <a href="#global-configuration">Global configuration</a>).</li>
+</ul>
+<p>pnpm also no longer reads settings from the <code>pnpm</code> field of <code>package.json</code>. Settings should be defined in <code>pnpm-workspace.yaml</code>.</p>
+<h2 id="local-project-configuration">Local project configuration<a class="hash-link" href="#local-project-configuration" aria-label="Direct link to Local project configuration">#</a></h2>
+<p>Project-level settings go in <code>pnpm-workspace.yaml</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">nodeVersion:</span> <span class="hljs-string">"22.22.3"</span>
+<span class="hljs-attr">saveExact:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<h2 id="global-configuration">Global configuration<a class="hash-link" href="#global-configuration" aria-label="Direct link to Global configuration">#</a></h2>
+<p>The global YAML config file (<code>config.yaml</code>) is located at one of the following paths:</p>
+<ul>
+<li>If the <strong>$XDG_CONFIG_HOME</strong> env variable is set, then <strong>$XDG_CONFIG_HOME/pnpm/config.yaml</strong></li>
+<li>On Windows: <strong>~/AppData/Local/pnpm/config/config.yaml</strong></li>
+<li>On macOS: <strong>~/Library/Preferences/pnpm/config.yaml</strong></li>
+<li>On Linux: <strong>~/.config/pnpm/config.yaml</strong></li>
+</ul>
+<p>Not every setting may be set in the global <code>config.yaml</code>. Settings that apply to the whole machine, such as <code>storeDir</code>, <code>cacheDir</code>, <code>packageImportMethod</code>, <code>minimumReleaseAge</code>, and network settings, may be set there. Settings that define the structure of a project's <code>node_modules</code> or workspace, such as <code>nodeLinker</code>, <code>hoistPattern</code>, <code>publicHoistPattern</code>, <code>shamefullyHoist</code>, or <code>linkWorkspacePackages</code>, are project-only: they have to be set in <code>pnpm-workspace.yaml</code>, so that the project installs the same way on every machine. Registry routes may be set globally, but the server descriptions <code>serverType</code> and <code>supportsTimeField</code> are read only from <code>pnpm-workspace.yaml</code> (see <a href="/registries#where-the-setting-may-live">Registries</a>).</p>
+<p><code>pnpm config set --global</code> refuses project-only settings with <code>ERR_PNPM_CONFIG_SET_UNSUPPORTED_YAML_CONFIG_KEY</code>. If they are written to <code>config.yaml</code> by hand, pnpm prints a warning that names them and ignores them.</p>
+<p>To share project-only settings across several projects, publish them as a <a href="/config-dependencies">config dependency</a> and add it to each project.</p>
+<p>The global <code>rc</code> file (for registry and auth settings only) is at:</p>
+<ul>
+<li>If the <strong>$XDG_CONFIG_HOME</strong> env variable is set, then <strong>$XDG_CONFIG_HOME/pnpm/rc</strong></li>
+<li>On Windows: <strong>~/AppData/Local/pnpm/config/rc</strong></li>
+<li>On macOS: <strong>~/Library/Preferences/pnpm/rc</strong></li>
+<li>On Linux: <strong>~/.config/pnpm/rc</strong></li>
+</ul>
+<h2 id="environment-variables">Environment variables<a class="hash-link" href="#environment-variables" aria-label="Direct link to Environment variables">#</a></h2>
+<p>Environment variables whose names start with <code>pnpm_config_</code> (or <code>PNPM_CONFIG_</code>) are loaded into configuration. These override settings from <code>pnpm-workspace.yaml</code> but not CLI arguments.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>pnpm no longer reads <code>npm_config_*</code> environment variables. Use <code>pnpm_config_*</code> environment variables instead (e.g., <code>pnpm_config_registry</code> instead of <code>npm_config_registry</code>).</p>
+</div>
+<p>For example:</p>
+<pre><code class="hljs language-sh">pnpm_config_save_exact=<span class="hljs-literal">true</span> pnpm add foo
+</code></pre>
+<p>If you need pnpm to work across multiple hard drives or filesystems,
+please read <a href="/faq#does-pnpm-work-across-multiple-drives-or-filesystems">the FAQ</a>.</p>
+<p>See the <a href="/cli/config"><code>config</code> command</a> for more information on managing configuration.</p></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/build-backend/",
+ "file": "markdown/uv/uv-concepts-build-backend.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.31,
+ "markdown_chars": 15954,
+ "raw_html_chars": 83888,
+ "sha256": "f1ed7a779524f59bab53eedff8159b5a8341e869901affd11940f518be6cc6eb",
+ "fetched_at": "2026-10-03T08:57:15+00:00"
+}

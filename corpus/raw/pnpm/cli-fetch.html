@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm fetch | pnpm</title>
+    <meta name="description" content="Fetch packages from a lockfile into virtual store, package manifest is ignored." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm fetch | pnpm" />
+    <meta property="og:description" content="Fetch packages from a lockfile into virtual store, package manifest is ignored." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm fetch | pnpm" />
+    <meta name="twitter:description" content="Fetch packages from a lockfile into virtual store, package manifest is ignored." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/fetch" />
+    <meta property="og:url" content="https://pnpm.io/cli/fetch" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/fetch" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/fetch" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/fetch" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/fetch" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/fetch" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/fetch" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/fetch" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/fetch" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/fetch" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/fetch" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/fetch" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/fetch" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/fetch" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/fetch" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm fetch</h1><p>Fetch packages from a lockfile into virtual store, package manifest is ignored.</p>
+<h2 id="usage-scenario">Usage scenario<a class="hash-link" href="#usage-scenario" aria-label="Direct link to Usage scenario">#</a></h2>
+<p>This command is specifically designed to improve building a docker image.</p>
+<p>You may have read the <a href="https://github.com/nodejs/docker-node#readme">official guide</a> to writing a Dockerfile for a Node.js
+app, if you haven't read it yet, you may want to read it first.</p>
+<p>From that guide, we learn to write an optimized Dockerfile for projects using
+pnpm, which looks like</p>
+<pre><code class="hljs language-Dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm runtime <span class="hljs-built_in">set</span> node 22 -g</span>
+
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+
+<span class="hljs-comment"># Files required by pnpm install</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> package.json pnpm-lock.yaml pnpm-workspace.yaml .pnpmfile.mjs ./</span>
+
+<span class="hljs-comment"># If you patched any package, include patches before install too</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> patches patches</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm install --frozen-lockfile --prod</span>
+
+<span class="hljs-comment"># Bundle app source</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . .</span>
+
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8080</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"node"</span>, <span class="hljs-string">"server.js"</span> ]</span>
+</code></pre>
+<p>As long as there are no changes to <code>package.json</code>, <code>pnpm-lock.yaml</code>, <code>pnpm-workspace.yaml</code>,
+<code>.pnpmfile.mjs</code>, docker build cache is still valid up to the layer of
+<code>RUN pnpm install --frozen-lockfile --prod</code>, which cost most of the time
+when building a docker image.</p>
+<p>However, modification to <code>package.json</code> may happen much more frequently than
+we expect, because it does not only contain dependencies, but may also
+contain the version number, scripts, and arbitrary configuration for any other
+tool.</p>
+<p>It's also hard to maintain a Dockerfile that builds a monorepo project, it may
+look like</p>
+<pre><code class="hljs language-Dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm runtime <span class="hljs-built_in">set</span> node 22 -g</span>
+
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+
+<span class="hljs-comment"># Files required by pnpm install</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> package.json pnpm-lock.yaml pnpm-workspace.yaml .pnpmfile.mjs ./</span>
+
+<span class="hljs-comment"># If you patched any package, include patches before install too</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> patches patches</span>
+
+<span class="hljs-comment"># for each sub-package, we have to add one extra step to copy its manifest</span>
+<span class="hljs-comment"># to the right place, as docker have no way to filter out only package.json with</span>
+<span class="hljs-comment"># single instruction</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> packages/foo/package.json packages/foo/</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> packages/bar/package.json packages/bar/</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm install --frozen-lockfile --prod</span>
+
+<span class="hljs-comment"># Bundle app source</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . .</span>
+
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8080</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"node"</span>, <span class="hljs-string">"server.js"</span> ]</span>
+
+</code></pre>
+<p>As you can see, the Dockerfile has to be updated when you add or remove
+sub-packages.</p>
+<p><code>pnpm fetch</code> solves the above problem perfectly by providing the ability
+to load packages into the virtual store using only information from a lockfile and a configuration file (<code>pnpm-workspace.yaml</code>).</p>
+<pre><code class="hljs language-Dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm runtime <span class="hljs-built_in">set</span> node 22 -g</span>
+
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+
+<span class="hljs-comment"># pnpm fetch does require only lockfile</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> pnpm-lock.yaml pnpm-workspace.yaml ./</span>
+
+<span class="hljs-comment"># If you patched any package, include patches before running pnpm fetch</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> patches patches</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm fetch --prod</span>
+
+
+<span class="hljs-keyword">COPY</span><span class="bash"> . ./</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm install -r --offline --prod</span>
+
+
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8080</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"node"</span>, <span class="hljs-string">"server.js"</span> ]</span>
+</code></pre>
+<p>It works for both simple and monorepo projects, <code>--offline</code> enforces
+pnpm not to communicate with the package registry as all needed packages are
+already present in the virtual store.</p>
+<p>As long as the lockfile is not changed, the build cache is valid up to the
+layer, so <code>RUN pnpm install -r --offline --prod</code>, will save you much
+time.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Local <code>file:</code> protocol dependencies are skipped during <code>pnpm fetch</code>, since they reference directories that may not be available at fetch time (e.g. in Docker builds).</p>
+</div>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--dev--d">--dev, -D<a class="hash-link" href="#--dev--d" aria-label="Direct link to --dev, -D">#</a></h3>
+<p>Only development packages will be fetched</p>
+<h3 id="--prod--p">--prod, -P<a class="hash-link" href="#--prod--p" aria-label="Direct link to --prod, -P">#</a></h3>
+<p>Development packages will not be fetched</p></article></main></div>
+  </body>
+</html>

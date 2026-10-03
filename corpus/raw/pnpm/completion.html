@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Command line tab-completion | pnpm</title>
+    <meta name="description" content="Completion for pnpm v9+ is incompatible with completion for older pnpm versions. If you have already installed pnpm completion for a version older than v9, you must uninstall it first to ensure that completion for v9+ works properly. You can do this by removing the section of code that contains..." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Command line tab-completion | pnpm" />
+    <meta property="og:description" content="Completion for pnpm v9+ is incompatible with completion for older pnpm versions. If you have already installed pnpm completion for a version older than v9, you must uninstall it first to ensure that completion for v9+ works properly. You can do this by removing the section of code that contains..." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Command line tab-completion | pnpm" />
+    <meta name="twitter:description" content="Completion for pnpm v9+ is incompatible with completion for older pnpm versions. If you have already installed pnpm completion for a version older than v9, you must uninstall it first to ensure that completion for v9+ works properly. You can do this by removing the section of code that contains..." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/completion" />
+    <meta property="og:url" content="https://pnpm.io/completion" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/completion" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/completion" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/completion" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/completion" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/completion" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/completion" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/completion" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/completion" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/completion" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/completion" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/completion" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/completion" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/completion" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/completion" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Command line tab-completion</h1><div class="admonition admonition-info"><p class="admonition-title">Info</p>
+<p>Completion for pnpm v9+ is incompatible with completion for older pnpm versions.
+If you have already installed pnpm completion for a version older than v9, you must uninstall it first to ensure that completion for v9+ works properly.
+You can do this by removing the section of code that contains <code>__tabtab</code> in your dot files.</p>
+</div>
+<p>Unlike other popular package managers, which usually require plugins, pnpm
+supports command line tab-completion for Bash, Zsh, Fish, and similar shells.</p>
+<p><code>pnpm completion &#x3C;shell></code> prints completion code to standard output. Supported
+shell names are <code>bash</code>, <code>fish</code>, <code>pwsh</code>, and <code>zsh</code>.</p>
+<p>To setup autocompletion for Bash, run:</p>
+<pre><code class="hljs language-text">pnpm completion bash > ~/completion-for-pnpm.bash
+echo 'source ~/completion-for-pnpm.bash' >> ~/.bashrc
+</code></pre>
+<p>To setup autocompletion for Fish, run:</p>
+<pre><code class="hljs language-text">pnpm completion fish > ~/.config/fish/completions/pnpm.fish
+</code></pre>
+<p>Since v12.4.0, the generated completions cover the <a href="/pnpm-cli#short-aliases"><code>pn</code> alias</a> as well, in Bash, Fish, PowerShell, and Zsh.</p>
+<h2 id="g-planepnpm-shell-completion">g-plane/pnpm-shell-completion<a class="hash-link" href="#g-planepnpm-shell-completion" aria-label="Direct link to g-plane/pnpm-shell-completion">#</a></h2>
+<p><a href="https://github.com/g-plane/pnpm-shell-completion">pnpm-shell-completion</a> is a shell plugin maintained by Pig Fang on GitHub.</p>
+<p>Features:</p>
+<ul>
+<li>Provide completion for <code>pnpm --filter &#x3C;package></code>.</li>
+<li>Provide completion for <code>pnpm remove</code> command, even in workspace's packages (by specifying <code>--filter</code> option).</li>
+<li>Provide completion for scripts in <code>package.json</code>.</li>
+</ul></article></main></div>
+  </body>
+</html>

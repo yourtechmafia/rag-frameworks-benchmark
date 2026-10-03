@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node-Modules &amp; Hoisting Settings | pnpm</title>
+    <meta name="description" content="The directory in which dependencies will be installed (instead of node_modules)." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Node-Modules &amp; Hoisting Settings | pnpm" />
+    <meta property="og:description" content="The directory in which dependencies will be installed (instead of node_modules)." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Node-Modules &amp; Hoisting Settings | pnpm" />
+    <meta name="twitter:description" content="The directory in which dependencies will be installed (instead of node_modules)." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/node-modules" />
+    <meta property="og:url" content="https://pnpm.io/settings/node-modules" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/node-modules" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/node-modules" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/node-modules" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/node-modules" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/node-modules" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/node-modules" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/node-modules" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/node-modules" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/node-modules" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/node-modules" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/node-modules" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/node-modules" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/node-modules" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/node-modules" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Node-Modules &amp; Hoisting Settings</h1><h2 id="node-modules-settings">Node-Modules Settings<a class="hash-link" href="#node-modules-settings" aria-label="Direct link to Node-Modules Settings">#</a></h2>
+<h3 id="modulesdir">modulesDir<a class="hash-link" href="#modulesdir" aria-label="Direct link to modulesDir">#</a></h3>
+<ul>
+<li>Default: <strong>node_modules</strong></li>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>The directory in which dependencies will be installed (instead of
+<code>node_modules</code>).</p>
+<h3 id="nodelinker">nodeLinker<a class="hash-link" href="#nodelinker" aria-label="Direct link to nodeLinker">#</a></h3>
+<ul>
+<li>Default: <strong>isolated</strong></li>
+<li>Type: <strong>isolated</strong>, <strong>hoisted</strong>, <strong>pnp</strong></li>
+</ul>
+<p>Defines what linker should be used for installing Node packages.</p>
+<ul>
+<li><strong>isolated</strong> - dependencies are symlinked from a virtual store at <code>node_modules/.pnpm</code>.</li>
+<li><strong>hoisted</strong> - a flat <code>node_modules</code> without symlinks is created. Same as the <code>node_modules</code> created by npm or Yarn Classic. One of Yarn's libraries is used for hoisting, when this setting is used. Legitimate reasons to use this setting:
+<ol>
+<li>Your tooling doesn't work well with symlinks.</li>
+<li>Your project is deployed to a serverless hosting provider. Some serverless providers (for instance, AWS Lambda) don't support symlinks. An alternative solution for this problem is to bundle your application before deployment.</li>
+<li>If you want to publish your package with <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json#bundleddependencies"><code>"bundledDependencies"</code></a>.</li>
+<li>If you are running Node.js with the <a href="https://nodejs.org/api/cli.html#cli_preserve_symlinks">--preserve-symlinks</a> flag.</li>
+</ol>
+</li>
+<li><strong>pnp</strong> - no <code>node_modules</code>. Plug'n'Play is an innovative strategy for Node that is <a href="https://yarnpkg.com/features/pnp">used by Yarn Berry</a>. It is recommended to also set <code>symlink</code> setting to <code>false</code> when using <code>pnp</code> as
+your linker.</li>
+</ul>
+<h3 id="nodeexperimentalpackagemap">nodeExperimentalPackageMap<a class="hash-link" href="#nodeexperimentalpackagemap" aria-label="Direct link to nodeExperimentalPackageMap">#</a></h3>
+<p>Added in: v11.8.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, pnpm writes <code>node_modules/.package-map.json</code> during isolated and hoisted installs and injects it into pnpm-managed Node.js script environments by adding Node's <code>--experimental-package-map</code> option to <code>NODE_OPTIONS</code>.</p>
+<p>Nothing reads the map without this setting, so pnpm does not write one. An install that stops writing the map also removes one an earlier install left.</p>
+<p>CLI and environment configuration use the kebab-case name <code>node-experimental-package-map</code>.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">nodeExperimentalPackageMap:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<h3 id="nodepackagemaptype">nodePackageMapType<a class="hash-link" href="#nodepackagemaptype" aria-label="Direct link to nodePackageMapType">#</a></h3>
+<p>Added in: v11.8.0</p>
+<ul>
+<li>Default: <strong>standard</strong></li>
+<li>Type: <strong>standard</strong>, <strong>loose</strong></li>
+</ul>
+<p>Controls how <code>node_modules/.package-map.json</code> is generated.</p>
+<ul>
+<li><strong>standard</strong> - only declared dependencies are available through the package map.</li>
+<li><strong>loose</strong> - also maps packages that are reachable through the installed <code>node_modules</code> layout, which can allow undeclared hoisted dependencies to resolve.</li>
+</ul>
+<p>CLI and environment configuration use the kebab-case name <code>node-package-map-type</code>.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">nodePackageMapType:</span> <span class="hljs-string">loose</span>
+</code></pre>
+<h3 id="symlink">symlink<a class="hash-link" href="#symlink" aria-label="Direct link to symlink">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>symlink</code> is set to <code>false</code>, pnpm creates a virtual store directory without
+any symlinks. It is a useful setting together with <code>nodeLinker=pnp</code>.</p>
+<h3 id="enablemodulesdir">enableModulesDir<a class="hash-link" href="#enablemodulesdir" aria-label="Direct link to enableModulesDir">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>false</code>, pnpm will not write any files to the modules directory
+(<code>node_modules</code>). This is useful for when the modules directory is mounted with
+filesystem in userspace (FUSE). There is an experimental CLI that allows you to
+mount a modules directory with FUSE: <a href="https://www.npmjs.com/package/@pnpm/mount-modules">@pnpm/mount-modules</a>.</p>
+<h3 id="virtualstoredir">virtualStoreDir<a class="hash-link" href="#virtualstoredir" aria-label="Direct link to virtualStoreDir">#</a></h3>
+<ul>
+<li>Default: <strong>node_modules/.pnpm</strong></li>
+<li>Types: <strong>path</strong></li>
+</ul>
+<p>The directory with links to the store. All direct and indirect dependencies of
+the project are linked into this directory.</p>
+<p>This is a useful setting that can solve issues with long paths on Windows. If
+you have some dependencies with very long paths, you can select a virtual store
+in the root of your drive (for instance <code>C:\my-project-store</code>).</p>
+<p>Or you can set the virtual store to <code>.pnpm</code> and add it to <code>.gitignore</code>. This
+will make stacktraces cleaner as paths to dependencies will be one directory
+higher.</p>
+<p><strong>NOTE:</strong> without a global virtual store, the virtual store cannot be shared
+between several projects. Every project should have its own virtual store
+(except for in workspaces where the root is shared).</p>
+<p>When <a href="#enableglobalvirtualstore"><code>enableGlobalVirtualStore</code></a> is on,
+<code>virtualStoreDir</code> sets the location of the global virtual store, which several
+projects can share. Each project still keeps its current lockfile and hidden
+hoisted dependencies in its own <code>node_modules/.pnpm</code>.</p>
+<h3 id="virtualstoredirmaxlength">virtualStoreDirMaxLength<a class="hash-link" href="#virtualstoredirmaxlength" aria-label="Direct link to virtualStoreDirMaxLength">#</a></h3>
+<ul>
+<li>Default:
+<ul>
+<li>On Linux/macOS: <strong>120</strong></li>
+<li>On Windows: <strong>60</strong></li>
+</ul>
+</li>
+<li>Types: <strong>number</strong></li>
+</ul>
+<p>Sets the maximum allowed length of directory names inside the virtual store directory (<code>node_modules/.pnpm</code>). You may set this to a lower number if you encounter long path issues on Windows.</p>
+<h3 id="virtualstoreonly">virtualStoreOnly<a class="hash-link" href="#virtualstoreonly" aria-label="Direct link to virtualStoreOnly">#</a></h3>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, pnpm populates the virtual store without creating importer symlinks, hoisting, bin links, or running lifecycle scripts. This is useful for pre-populating a store (e.g., in Nix builds) without creating unnecessary project-level artifacts. <code>pnpm fetch</code> uses this mode internally.</p>
+<h3 id="packageimportmethod">packageImportMethod<a class="hash-link" href="#packageimportmethod" aria-label="Direct link to packageImportMethod">#</a></h3>
+<ul>
+<li>Default: <strong>auto</strong></li>
+<li>Type: <strong>auto</strong>, <strong>hardlink</strong>, <strong>copy</strong>, <strong>clone</strong>, <strong>clone-or-copy</strong></li>
+</ul>
+<p>Controls the way packages are imported from the store (if you want to disable symlinks inside <code>node_modules</code>, then you need to change the <a href="#nodelinker">nodeLinker</a> setting, not this one).</p>
+<ul>
+<li><strong>auto</strong> - try the platform's cheap link tiers in order, falling back to
+copying when none of them is possible. On Linux it tries hardlinking before
+cloning; on macOS and Windows it tries cloning before hardlinking.</li>
+<li><strong>hardlink</strong> - hard link packages from the store</li>
+<li><strong>clone-or-copy</strong> - try to clone packages from the store. If cloning is not supported then fall back to copying</li>
+<li><strong>copy</strong> - copy packages from the store</li>
+<li><strong>clone</strong> - clone (AKA copy-on-write or reference link) packages from the store</li>
+</ul>
+<p>Cloning is the best way to write packages to node_modules. It is the fastest way and safest way. When cloning is used, you may edit files in your node_modules and they will not be modified in the central content-addressable store.</p>
+<p>Unfortunately, not all file systems support cloning. We recommend using a copy-on-write (CoW) file system (for instance, Btrfs instead of Ext4 on Linux) for the best experience with pnpm.</p>
+<h4 id="what-auto-tries-first">What <code>auto</code> tries first<a class="hash-link" href="#what-auto-tries-first" aria-label="Direct link to What auto tries first">#</a></h4>
+<p><code>auto</code> is a per-platform order:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Platform</th><th>Order</th></tr></thead><tbody><tr><td>Linux</td><td>hardlink → clone → copy</td></tr><tr><td>macOS</td><td>clone → hardlink → copy</td></tr><tr><td>Windows</td><td>clone → hardlink → copy</td></tr></tbody></table></div>
+<p>A reflink materializes a new inode and copies extent bookkeeping inside the
+filesystem's metadata trees, where a hardlink is one directory entry. On btrfs
+that difference roughly halves the time an install spends materializing
+<code>node_modules</code> from a warm store, which is why pnpm reaches for the hardlink
+first there. ext4 is unaffected — it never supported cloning, so <code>auto</code> already
+hardlinked — and macOS keeps clone-first, since APFS <code>clonefile</code> is that
+platform's cheap primitive.</p>
+<p>If you edit files inside <code>node_modules</code>, ask for <code>clone</code> explicitly. Under a
+hardlink, the file in <code>node_modules</code> <em>is</em> the file in the store, so editing it
+changes every project that links the same package.</p>
+<h4 id="when-a-link-succeeds-but-costs-more-than-a-copy">When a link succeeds but costs more than a copy<a class="hash-link" href="#when-a-link-succeeds-but-costs-more-than-a-copy" aria-label="Direct link to When a link succeeds but costs more than a copy">#</a></h4>
+<p><code>auto</code> steps down a tier only when a link <em>fails</em>, never when one succeeds
+slowly. Two setups produce links that succeed and are expensive, and on both
+<code>packageImportMethod: copy</code> can be considerably faster.</p>
+<p>Neither is a reason to reach for <code>copy</code> generally. On an ordinary install —
+store and <code>node_modules</code> on the same everyday filesystem, no image layer in
+between — copying is the slowest option and the one that uses the most space.
+Measure both on the machine in question.</p>
+<h4 id="a-store-baked-into-a-container-image-layer">A store baked into a container image layer<a class="hash-link" href="#a-store-baked-into-a-container-image-layer" aria-label="Direct link to A store baked into a container image layer">#</a></h4>
+<p>Container runtimes assemble an image from stacked layers, usually with
+overlayfs. A hardlink to a file that lives in a lower layer <em>succeeds</em> there,
+but the file is copied into the writable upper layer first. An image that
+ships a pre-populated pnpm store leaves that store in a lower layer, so the
+first link to any store file copies that file up — and pnpm's "Packages are
+hard linked from the content-addressable store" line stays accurate while the
+install copies most of the store out anyway.</p>
+<p>The cost is per file, not per link: a package linked into several projects is
+copied up once and linked cheaply after that. It still lands on most of the
+store, because an install links nearly every file it needs at least once. The
+run below made 69k links and copied up 36.7k distinct files.</p>
+<p>Measured with pnpm 12 (through <code>@pnpm/napi</code> 12.1.0) on a 13-project workspace,
+2074 packages, store fully pre-populated so nothing was downloaded, timing
+only the phase that writes <code>node_modules</code>. Rootless podman on the kernel
+<code>overlay</code> storage driver with <code>metacopy</code> off, backed by btrfs, <code>--cpus=8</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th><code>packageImportMethod</code></th><th>Link phase</th><th>System time</th><th>Written</th></tr></thead><tbody><tr><td><code>auto</code> (hardlinking)</td><td>2.1s</td><td>8.0s</td><td>36.7k files copied up, 366 MB</td></tr><tr><td><code>copy</code></td><td>1.5s</td><td>5.6s</td><td>874 MB, nothing copied up</td></tr></tbody></table></div>
+<p>Backing that overlay with btrfs is what keeps the gap small: a copy-up there
+can share extents rather than duplicate them. On ext4 every copy-up is a full
+data copy, and the gap widens — one project's CI, running this shape on an
+ext4 boot disk, went from 38s to 16s by switching to <code>copy</code>.</p>
+<p>Note that the <code>EXDEV</code> fallback below does not help here. A cross-layer
+hardlink does not fail — it copies up and reports success — so <code>auto</code> has no
+failure to step down on.</p>
+<h4 id="network-and-virtualized-filesystems">Network and virtualized filesystems<a class="hash-link" href="#network-and-virtualized-filesystems" aria-label="Direct link to Network and virtualized filesystems">#</a></h4>
+<p>The same "succeeds, but slowly" shape appears when the store and
+<code>node_modules</code> sit on the same filesystem and that filesystem services every
+metadata operation over a round trip — a network share (NFS, SMB, Amazon EFS)
+or a directory shared from a host into a VM or container (virtiofs,
+gRPC-FUSE, 9p). Cloning, where the platform tries it first, fails there and
+steps down; hardlinking then succeeds, so <code>auto</code> stays on it and the install
+pays a round trip per file.
+Copying reads and writes whole files instead of performing per-file metadata
+operations the filesystem has to service remotely.</p>
+<p>This only arises when both live on that filesystem. A store on a genuinely
+different filesystem from <code>node_modules</code> cannot be hardlinked from at all —
+the attempt fails with <code>EXDEV</code> — so <code>auto</code> already falls back to copying on
+its own.</p>
+<h3 id="modulescachemaxage">modulesCacheMaxAge<a class="hash-link" href="#modulescachemaxage" aria-label="Direct link to modulesCacheMaxAge">#</a></h3>
+<ul>
+<li>Default: <strong>10080</strong> (7 days in minutes)</li>
+<li>Type: <strong>number</strong></li>
+</ul>
+<p>The time in minutes after which orphan packages from the modules directory should be removed.
+pnpm keeps a cache of packages in the modules directory. This boosts installation speed when
+switching branches or downgrading dependencies.</p>
+<h3 id="dlxcachemaxage">dlxCacheMaxAge<a class="hash-link" href="#dlxcachemaxage" aria-label="Direct link to dlxCacheMaxAge">#</a></h3>
+<ul>
+<li>Default: <strong>1440</strong> (1 day in minutes)</li>
+<li>Type: <strong>number</strong></li>
+</ul>
+<p>The time in minutes after which dlx cache expires.
+After executing a dlx command, pnpm keeps a cache that omits the installation step for subsequent calls to the same dlx command.</p>
+<h3 id="virtualstoretype">virtualStoreType<a class="hash-link" href="#virtualstoretype" aria-label="Direct link to virtualStoreType">#</a></h3>
+<p>Added in: v11.23.0</p>
+<ul>
+<li>Default: <strong>project</strong></li>
+<li>Type: <strong>project</strong>, <strong>global</strong></li>
+</ul>
+<p>Names where the virtual store lives — one store per project, or one store per machine.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">virtualStoreType:</span> <span class="hljs-string">global</span>
+</code></pre>
+<p><code>project</code> is the default layout: every project gets its own virtual store inside <code>node_modules/.pnpm</code>. <code>global</code> is the <a href="/global-virtual-store">global virtual store</a>: a single store shared by every project on the machine, with each project's <code>node_modules</code> holding only symlinks into it.</p>
+<p>This is the canonical spelling of <a href="#enableglobalvirtualstore"><code>enableGlobalVirtualStore</code></a>, which keeps working; when a project sets both, <code>virtualStoreType</code> wins. It can also be set through the <code>PNPM_CONFIG_VIRTUAL_STORE_TYPE</code> env variable and read back with <code>pnpm config get virtualStoreType</code>.</p>
+<p>The setting is independent of <a href="#nodelinker"><code>nodeLinker</code></a>: <code>isolated</code> and <code>pnp</code> both work with either store type, and <code>hoisted</code> writes no virtual store at all, so it is unaffected.</p>
+<h3 id="enableglobalvirtualstore">enableGlobalVirtualStore<a class="hash-link" href="#enableglobalvirtualstore" aria-label="Direct link to enableGlobalVirtualStore">#</a></h3>
+<p>Added in: v10.12.1</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Since v11.23.0, <a href="#virtualstoretype"><code>virtualStoreType</code></a> is the canonical spelling of this setting: <code>enableGlobalVirtualStore: true</code> is <code>virtualStoreType: global</code>. Both work, and <code>virtualStoreType</code> wins when a project sets both.</p>
+</div>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Global installs (<code>pnpm add -g</code>) and <code>pnpm dlx</code> use the global virtual store by default.</p>
+</div>
+<p>When enabled, <code>node_modules</code> contains only symlinks to a central virtual store, rather than to <code>node_modules/.pnpm</code>. By default, this central store is located at <code>&#x3C;store-path>/links</code> (use <code>pnpm store path</code> to find <code>&#x3C;store-path></code>). Set <a href="#virtualstoredir"><code>virtualStoreDir</code></a> to place it elsewhere.</p>
+<p>In the central virtual store, each package is hard linked into a directory whose name is the hash of its dependency graph. As a result, all projects on the system can symlink their dependencies from this shared location on disk. This approach is conceptually similar to how <a href="https://nixos.org/guides/how-nix-works/">NixOS manages packages</a>, using dependency graph hashes to create isolated and shareable package directories in the Nix store.</p>
+<blockquote>
+<p>This should not be confused with the global content-addressable store. The actual package files are still hard linked from the content-addressable store—but instead of being linked directly into <code>node_modules/.pnpm</code>, they are linked into the global virtual store.</p>
+</blockquote>
+<p>Using a global virtual store can significantly speed up installations when a warm cache is available. However, in CI environments (where caches are typically absent), it may slow down installation. If pnpm detects that it is running in CI, this setting is automatically disabled.</p>
+<div class="admonition admonition-important"><p class="admonition-title">Important</p>
+<p>To support hoisted dependencies when using a global virtual store, pnpm relies on the <code>NODE_PATH</code> environment variable. This allows Node.js to resolve packages from the hoisted <code>node_modules</code> directory. Node.js does not respect <code>NODE_PATH</code> for ESM imports, though, so before v11.23.0 a dependency that imports a package <strong>not declared in its own <code>package.json</code></strong> (which is considered bad practice) failed to resolve under ESM.</p>
+<p>Since v11.23.0, every process pnpm spawns for the project — <code>pnpm run</code>, <code>pnpm exec</code>, lifecycle scripts, and the tools <code>pnpm dlx</code> runs — receives both <code>NODE_PATH</code> and a <code>NODE_OPTIONS</code> <code>--import</code> flag that registers a resolve hook restoring <code>NODE_PATH</code> lookups for ESM. Such imports now resolve for CommonJS and ESM alike, without the <code>@pnpm/plugin-esm-node-path</code> config dependency that used to be needed (<a href="https://github.com/pnpm/pnpm/issues/9618">#9618</a>).</p>
+<p>Two things fall outside that: a <code>node</code> process you start yourself rather than through pnpm, and a project that sets <a href="/settings/other#extendnodepath"><code>extendNodePath</code></a> to <code>false</code>, which turns the whole <code>NODE_PATH</code> mechanism off and takes the resolve hook with it. Use <a href="/settings/dependency-resolution#packageextensions">packageExtensions</a> to declare the missing dependencies if you need them to resolve in either case.</p>
+</div>
+<h2 id="dependency-hoisting-settings">Dependency Hoisting Settings<a class="hash-link" href="#dependency-hoisting-settings" aria-label="Direct link to Dependency Hoisting Settings">#</a></h2>
+<h3 id="hoist">hoist<a class="hash-link" href="#hoist" aria-label="Direct link to hoist">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>boolean</strong></li>
+</ul>
+<p>When <code>true</code>, all dependencies are hoisted to <code>node_modules/.pnpm/node_modules</code>. This makes
+unlisted dependencies accessible to all packages inside <code>node_modules</code>.</p>
+<h3 id="hoistpattern">hoistPattern<a class="hash-link" href="#hoistpattern" aria-label="Direct link to hoistPattern">#</a></h3>
+<ul>
+<li>Default: <strong>['*']</strong></li>
+<li>Type: <strong>string[]</strong></li>
+</ul>
+<p>Tells pnpm which packages should be hoisted to <code>node_modules/.pnpm/node_modules</code>. By
+default, all packages are hoisted - however, if you know that only some flawed
+packages have phantom dependencies, you can use this option to exclusively hoist
+the phantom dependencies (recommended).</p>
+<p>For instance:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">hoistPattern:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"*eslint*"</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"*babel*"</span>
+</code></pre>
+<p>You may also exclude patterns from hoisting using <code>!</code>.</p>
+<p>For instance:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">hoistPattern:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"*types*"</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"!@types/react"</span>
+</code></pre>
+<p>In a workspace, the pattern is matched against the names of the workspace projects too, unless <a href="#hoistworkspacepackages"><code>hoistWorkspacePackages</code></a> is turned off.</p>
+<h3 id="publichoistpattern">publicHoistPattern<a class="hash-link" href="#publichoistpattern" aria-label="Direct link to publicHoistPattern">#</a></h3>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>string[]</strong></li>
+</ul>
+<p>Unlike <code>hoistPattern</code>, which hoists dependencies to a hidden modules directory
+inside the virtual store, <code>publicHoistPattern</code> hoists dependencies matching
+the pattern to the root modules directory. Hoisting to the root modules
+directory means that application code will have access to phantom dependencies,
+even if they modify the resolution strategy improperly.</p>
+<p>This setting is useful when dealing with some flawed pluggable tools that don't
+resolve dependencies properly.</p>
+<p>For instance:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">publicHoistPattern:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"*plugin*"</span>
+</code></pre>
+<p>Note: Setting <code>shamefullyHoist</code> to <code>true</code> is the same as setting
+<code>publicHoistPattern</code> to <code>*</code>.</p>
+<p>You may also exclude patterns from hoisting using <code>!</code>.</p>
+<p>For instance:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">publicHoistPattern:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"*types*"</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"!@types/react"</span>
+</code></pre>
+<p>In a workspace, the pattern is matched against the names of the workspace projects too, unless <a href="#hoistworkspacepackages"><code>hoistWorkspacePackages</code></a> is turned off.</p>
+<h3 id="hoistworkspacepackages">hoistWorkspacePackages<a class="hash-link" href="#hoistworkspacepackages" aria-label="Direct link to hoistWorkspacePackages">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>boolean</strong></li>
+</ul>
+<p>When <code>true</code>, the projects of the workspace are hoisting candidates too, not only the packages that come from a registry.</p>
+<p><a href="#hoistpattern"><code>hoistPattern</code></a> and <a href="#publichoistpattern"><code>publicHoistPattern</code></a> then decide where each project lands, exactly as they do for a registry dependency. <code>publicHoistPattern</code> is checked first, so a project matching both patterns goes to the root only:</p>
+<ul>
+<li>A project whose name matches <code>publicHoistPattern</code> is symlinked into <code>&#x3C;workspace_root>/node_modules</code>.</li>
+<li>A project whose name matches only <code>hoistPattern</code> is symlinked into <code>&#x3C;workspace_root>/node_modules/.pnpm/node_modules</code>.</li>
+<li>A project whose name matches neither is not hoisted.</li>
+</ul>
+<p>Because <code>hoistPattern</code> defaults to <code>['*']</code> and <code>publicHoistPattern</code> to <code>[]</code>, the default is that every workspace project is symlinked into <code>&#x3C;workspace_root>/node_modules/.pnpm/node_modules</code>.</p>
+<p>This is how a tool that resolves packages by name from the workspace root finds a project of the workspace. The usual case is ESLint loading a plugin that is developed in the same monorepo:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">publicHoistPattern:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"*eslint*"</span>
+</code></pre>
+<p>With that setting, a workspace project named <code>eslint-plugin-acme</code> appears at <code>&#x3C;workspace_root>/node_modules/eslint-plugin-acme</code>, even if no <code>package.json</code> lists it as a dependency.</p>
+<p>Details worth knowing:</p>
+<ul>
+<li>A project is matched by the <code>name</code> in its <code>package.json</code>, not by its directory name.</li>
+<li>Every project of the workspace is a candidate, including a project that nothing else depends on. The workspace root project is never hoisted.</li>
+<li>The symlink points at the project's own directory in the workspace, so there is nothing to keep in sync.</li>
+<li>A direct dependency wins a name conflict. If a package with the same name is a direct dependency of any workspace project, that package is hoisted and the workspace project is not.</li>
+<li>The setting only adds candidates. When <code>hoistPattern</code> and <code>publicHoistPattern</code> are both empty, nothing is hoisted at all, workspace projects included. Setting <a href="#hoist"><code>hoist</code></a> to <code>false</code> empties <code>hoistPattern</code>.</li>
+</ul>
+<h3 id="shamefullyhoist">shamefullyHoist<a class="hash-link" href="#shamefullyhoist" aria-label="Direct link to shamefullyHoist">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>By default, pnpm creates a semistrict <code>node_modules</code>, meaning dependencies have
+access to undeclared dependencies but modules outside of <code>node_modules</code> do not.
+With this layout, most of the packages in the ecosystem work with no issues.
+However, if some tooling only works when the hoisted dependencies are in the
+root of <code>node_modules</code>, you can set this to <code>true</code> to hoist them for you.</p>
+<h3 id="hoistinglimits">hoistingLimits<a class="hash-link" href="#hoistinglimits" aria-label="Direct link to hoistingLimits">#</a></h3>
+<p>Added in: v11.5.0</p>
+<ul>
+<li>Default: <strong>none</strong></li>
+<li>Type: <strong>none</strong>, <strong>workspaces</strong>, <strong>dependencies</strong></li>
+</ul>
+<p>Controls how far dependencies are hoisted when using <code>nodeLinker: hoisted</code>. This setting mirrors Yarn's <code>nmHoistingLimits</code>.</p>
+<ul>
+<li><strong>none</strong> - hoist as far as possible (the default).</li>
+<li><strong>workspaces</strong> - hoist only as far as each workspace package, preventing dependencies from being hoisted above the workspace package that depends on them.</li>
+<li><strong>dependencies</strong> - hoist only up to each workspace package's direct dependencies, preventing transitive dependencies from being hoisted into the workspace package's <code>node_modules</code>.</li>
+</ul></article></main></div>
+  </body>
+</html>

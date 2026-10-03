@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/jupyter/",
+ "file": "markdown/uv/uv-guides-integration-jupyter.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.98,
+ "markdown_chars": 12372,
+ "raw_html_chars": 78540,
+ "sha256": "4dfa26770e0abc812c3c5771e17f1d888347f46bf5e3ecf7c5dbe709d5a3a793",
+ "fetched_at": "2026-10-03T08:57:31+00:00"
+}

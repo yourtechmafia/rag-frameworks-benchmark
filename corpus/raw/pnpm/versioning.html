@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Release management | pnpm</title>
+    <meta name="description" content="Added in: v11.13.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Release management | pnpm" />
+    <meta property="og:description" content="Added in: v11.13.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Release management | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.13.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/versioning" />
+    <meta property="og:url" content="https://pnpm.io/versioning" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/versioning" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/versioning" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/versioning" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/versioning" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/versioning" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/versioning" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/versioning" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/versioning" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/versioning" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/versioning" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/versioning" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/versioning" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/versioning" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/versioning" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Release management</h1><p>Added in: v11.13.0</p>
+<p>pnpm can version and release a workspace on its own, without a separate release tool. The workflow has two halves:</p>
+<ol>
+<li>As you work, <a href="/cli/change"><code>pnpm change</code></a> records <strong>change intents</strong> — small markdown files in <code>.changeset/</code> saying which packages a change affects, how each should be bumped, and a summary that becomes the changelog entry. These are committed alongside the change.</li>
+<li>At release time, the bare <a href="/cli/version#recursive-releases"><code>pnpm version -r</code></a> consumes the pending intents: it bumps versions across the workspace, propagates to dependents, writes changelogs, and records what it consumed in a committed ledger.</li>
+</ol>
+<p>Intent files use the <a href="https://github.com/changesets/changesets">changesets</a> format, so an existing <code>.changeset/</code> directory keeps working. See <a href="/using-changesets">Using Changesets with pnpm</a> if you would rather keep using the Changesets CLI.</p>
+<h2 id="recording-a-change">Recording a change<a class="hash-link" href="#recording-a-change" aria-label="Direct link to Recording a change">#</a></h2>
+<pre><code class="hljs language-sh">pnpm change
+</code></pre>
+<p>This prompts for the affected packages, their bump types, and a summary, then writes a file like <code>.changeset/calm-cats-resolve.md</code>:</p>
+<pre><code class="hljs language-markdown">---
+<span class="hljs-section">"@example/core": minor
+---</span>
+
+Added a <span class="hljs-code">`--watch`</span> flag to the build command.
+</code></pre>
+<p>To see what the pending intents would produce:</p>
+<pre><code class="hljs language-sh">pnpm change status
+</code></pre>
+<h2 id="releasing">Releasing<a class="hash-link" href="#releasing" aria-label="Direct link to Releasing">#</a></h2>
+<pre><code class="hljs language-sh">pnpm version -r
+</code></pre>
+<p>This applies the release plan: every package named by an intent is bumped, and so is every package that depends on it through a <code>workspace:</code> range. Preview it first with <code>--dry-run</code>, and narrow it with <code>--filter</code>.</p>
+<p>Because a recursive run can bump many packages to different versions, no git commit or tag is created — there is no single version to tag. Commit the result yourself, then publish with <code>pnpm publish -r</code>.</p>
+<h3 id="first-releases">First releases<a class="hash-link" href="#first-releases" aria-label="Direct link to First releases">#</a></h3>
+<p>Since v11.16.0, the first release of a package publishes the version written in its manifest verbatim, instead of bumping off it. <code>pnpm version -r</code> and <code>pnpm change status</code> check the registry for each release's current version; when that version is not yet published, the package debuts at it and its pending change intents apply only from the next release. A newly added package seeded at <code>1100.0.0</code> with a <code>minor</code> intent is therefore published as <code>1100.0.0</code> rather than skipping straight to <code>1100.1.0</code>.</p>
+<p>Private packages (<code>"private": true</code>) are never published, so they skip this registry check: their pending change intents are always applied on top of the version in their manifest.</p>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<p>Release behavior is configured under the <code>versioning</code> key of <code>pnpm-workspace.yaml</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">fixed:</span>
+    <span class="hljs-bullet">-</span> [<span class="hljs-string">'@example/cli'</span>, <span class="hljs-string">'@example/napi'</span>]
+  <span class="hljs-attr">ignore:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">'@example/internal'</span>
+  <span class="hljs-attr">maxBump:</span> <span class="hljs-string">minor</span>
+  <span class="hljs-attr">lanes:</span>
+    <span class="hljs-attr">'@example/cli':</span> <span class="hljs-string">alpha</span>
+  <span class="hljs-attr">changelog:</span>
+    <span class="hljs-attr">storage:</span> <span class="hljs-string">repository</span>
+</code></pre></div>
+<p>Every key is described in <a href="/settings/versioning">Versioning Settings</a>.</p>
+<p>Where two workspace projects publish the same name, a project can be referenced by its workspace-relative directory instead of its name, with a <code>./</code> prefix (e.g. <code>"./packages/cli"</code>). This works in intent files and in <code>versioning.lanes</code>, <code>versioning.fixed</code>, and <code>versioning.ignore</code>.</p>
+<h3 id="fixed-groups">Fixed groups<a class="hash-link" href="#fixed-groups" aria-label="Direct link to Fixed groups">#</a></h3>
+<p>Packages listed together in <code>versioning.fixed</code> always release at one shared version — the highest current version in the group, bumped by the largest bump any member needs. A fixed group must move between lanes together, and must sit entirely inside or entirely outside an epic.</p>
+<h3 id="lanes">Lanes<a class="hash-link" href="#lanes" aria-label="Direct link to Lanes">#</a></h3>
+<p>A lane is a parallel release track. While a package is on one, it releases <code>X.Y.Z-&#x3C;lane>.N</code> prereleases from the same runs that release stable versions of everything on the main lane. This lets a rewrite or a major-version line bake in public while the rest of the workspace keeps shipping.</p>
+<pre><code class="hljs language-sh">pnpm lane alpha --filter @example/cli   <span class="hljs-comment"># move onto the alpha lane</span>
+pnpm lane main --filter @example/cli    <span class="hljs-comment"># graduate back to stable</span>
+pnpm lane                               <span class="hljs-comment"># show membership</span>
+</code></pre>
+<p>See <a href="/cli/lane"><code>pnpm lane</code></a> for how the prerelease versions are computed.</p>
+<h3 id="epics">Epics<a class="hash-link" href="#epics" aria-label="Direct link to Epics">#</a></h3>
+<p>An epic ties a group of member packages to a lead package, constraining every member's major version to a band derived from the lead's major: while the lead is on major <code>M</code>, members live in <code>M*100</code> … <code>M*100+99</code>.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">epics:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">lead:</span> <span class="hljs-string">'@example/app'</span>
+      <span class="hljs-attr">packages:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">'./packages/**'</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">'!./packages/private-*'</span>
+</code></pre></div>
+<p>With the lead on <code>11.x</code>, members occupy majors <code>1100</code>–<code>1199</code>. Members move independently inside the band — patch, minor, and even a <code>major</code> intent that stays in-band. A bump that would carry a member past the band ceiling is rejected until the lead advances its own major. When a release plan takes the lead to a new stable major, every member re-bases to the band floor in the same plan.</p>
+<p>Membership is matched with pnpm's package selectors: name globs, <code>./</code>-prefixed directory globs, and <code>!</code>-prefixed negations. Selectors are evaluated in order and the last one to match decides, so a later include can re-admit a package an earlier negation excluded. The lead is never a member of its own band.</p>
+<h2 id="checking-committed-versions">Checking committed versions<a class="hash-link" href="#checking-committed-versions" aria-label="Direct link to Checking committed versions">#</a></h2>
+<p><a href="/cli/change#check"><code>pnpm change check</code></a> validates the versions already committed in the workspace against the <code>versioning.epics</code> bands and the <code>versioning.fixed</code> groups, without reading any change intent. Run it in CI, next to the lint and test steps, so a version that drifted out of its band is caught on the pull request that introduced it rather than at release time.</p>
+<h2 id="changelogs">Changelogs<a class="hash-link" href="#changelogs" aria-label="Direct link to Changelogs">#</a></h2>
+<p>By default (<code>versioning.changelog.storage: registry</code>) no <code>CHANGELOG.md</code> is committed. Each release's section is composed at publish time and packed into the published tarball on top of the previously published version's changelog. Consumed change intents are garbage-collected by a later <code>pnpm version -r</code> only once the registry confirms the version was published with its section.</p>
+<p>Set <code>versioning.changelog.storage: repository</code> to keep committed <code>CHANGELOG.md</code> files in every package instead.</p>
+<p>Private packages are never published, so no tarball could carry their changelog. Their releases always use <code>repository</code> storage, whatever is configured: the section is prepended to the package's committed <code>CHANGELOG.md</code>, and the release counts as consumed without a registry confirmation. An intent file that also names other projects is still deleted only once all of them have released.</p>
+<h2 id="the-ledger">The ledger<a class="hash-link" href="#the-ledger" aria-label="Direct link to The ledger">#</a></h2>
+<p><code>pnpm version -r</code> records every consumed intent in <code>.changeset/ledger.yaml</code>, a committed, append-only file:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">"@example/core@1.3.0":</span>
+  <span class="hljs-attr">dir:</span> <span class="hljs-string">packages/core</span>
+  <span class="hljs-attr">intents:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">calm-cats-resolve</span>
+</code></pre>
+<p>Consumption is tracked per project: an intent file is deleted only once every project it names has released. This is what makes cherry-picks and merge-backs between release branches safe — a release branch that has already consumed an intent will not consume it again when the commit is merged forward, and a package on a lane can half-consume an intent whose prose still has a stable release to compose.</p></article></main></div>
+  </body>
+</html>

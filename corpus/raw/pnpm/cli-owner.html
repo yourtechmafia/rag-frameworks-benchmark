@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm owner | pnpm</title>
+    <meta name="description" content="Added in: v11.1.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm owner | pnpm" />
+    <meta property="og:description" content="Added in: v11.1.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm owner | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.1.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/owner" />
+    <meta property="og:url" content="https://pnpm.io/cli/owner" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/owner" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/owner" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/owner" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/owner" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/owner" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/owner" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/owner" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/owner" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/owner" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/owner" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/owner" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/owner" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/owner" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/owner" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm owner</h1><p>Added in: v11.1.0</p>
+<p>Aliases: <code>owners</code></p>
+<p>Manages package owners on the registry.</p>
+<h2 id="commands">Commands<a class="hash-link" href="#commands" aria-label="Direct link to Commands">#</a></h2>
+<h3 id="ls">ls<a class="hash-link" href="#ls" aria-label="Direct link to ls">#</a></h3>
+<pre><code class="hljs language-sh">pnpm owner <span class="hljs-built_in">ls</span> &#x3C;package>
+</code></pre>
+<p>Aliases: <code>list</code></p>
+<p>List all owners of a package. This is the default subcommand if no other subcommand is given.</p>
+<h3 id="add">add<a class="hash-link" href="#add" aria-label="Direct link to add">#</a></h3>
+<pre><code class="hljs language-sh">pnpm owner add &#x3C;package> &#x3C;user>
+</code></pre>
+<p>Add a user as an owner of a package. Requires authentication.</p>
+<h3 id="rm">rm<a class="hash-link" href="#rm" aria-label="Direct link to rm">#</a></h3>
+<pre><code class="hljs language-sh">pnpm owner <span class="hljs-built_in">rm</span> &#x3C;package> &#x3C;user>
+</code></pre>
+<p>Remove a user from the list of owners of a package. Requires authentication.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--registry-url">--registry &#x3C;url><a class="hash-link" href="#--registry-url" aria-label="Direct link to --registry <url>">#</a></h3>
+<p>The base URL of the npm registry to use for the operation. Per-scope and named registries (configured via <a href="/settings/dependency-resolution#registries"><code>registries</code></a> and <a href="/settings/dependency-resolution#namedregistries"><code>namedRegistries</code></a>) are respected for the package being modified.</p>
+<h3 id="--otp-otp">--otp &#x3C;otp><a class="hash-link" href="#--otp-otp" aria-label="Direct link to --otp <otp>">#</a></h3>
+<p>When the registry requires two-factor authentication, this option supplies a one-time password.</p></article></main></div>
+  </body>
+</html>

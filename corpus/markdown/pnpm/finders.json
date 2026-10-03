@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/finders",
+ "file": "markdown/pnpm/finders.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.0,
+ "markdown_chars": 2497,
+ "raw_html_chars": 8866,
+ "sha256": "5ecc87fba0cdaa1783eb37fa6fc11c46cec419b3e9cfa85d16d95c07ff841f23",
+ "fetched_at": "2026-10-03T08:58:46+00:00"
+}

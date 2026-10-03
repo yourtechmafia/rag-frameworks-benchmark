@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/workspaces",
+ "file": "markdown/pnpm/workspaces.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.18,
+ "markdown_chars": 19103,
+ "raw_html_chars": 36647,
+ "sha256": "f2f479e69f6d29a35e716996944073f7a098a871b12b283df9c1bf3e800fe322",
+ "fetched_at": "2026-10-03T08:59:16+00:00"
+}

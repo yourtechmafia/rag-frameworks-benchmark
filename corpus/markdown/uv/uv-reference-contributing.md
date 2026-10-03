@@ -1,0 +1,571 @@
+[Skip to content](#contributing)
+
+[![logo](../../assets/logo-letter.svg)](../.. "uv")
+uv
+
+[uv](https://github.com/astral-sh/uv "Go to repository")
+
+* [Introduction](../..)
+* [Getting started](../../getting-started/)
+
+  Getting started
+  + [Installation](../../getting-started/installation/)
+  + [First steps](../../getting-started/first-steps/)
+  + [Features](../../getting-started/features/)
+  + [Getting help](../../getting-started/help/)
+* [Guides](../../guides/)
+
+  Guides
+  + [Installing Python](../../guides/install-python/)
+  + [Running scripts](../../guides/scripts/)
+  + [Using tools](../../guides/tools/)
+  + [Working on projects](../../guides/projects/)
+  + [Publishing packages](../../guides/package/)
+  + [Migration](../../guides/migration/)
+
+    Migration
+    - [From pip to a uv project](../../guides/migration/pip-to-project/)
+  + [Integrations](../../guides/integration/)
+
+    Integrations
+    - [Docker](../../guides/integration/docker/)
+    - [Jupyter](../../guides/integration/jupyter/)
+    - [marimo](../../guides/integration/marimo/)
+    - [GitHub Actions](../../guides/integration/github/)
+    - [GitLab CI/CD](../../guides/integration/gitlab/)
+    - [Pre-commit](../../guides/integration/pre-commit/)
+    - [PyTorch](../../guides/integration/pytorch/)
+    - [FastAPI](../../guides/integration/fastapi/)
+    - [Bazel](../../guides/integration/bazel/)
+    - [Azure Artifacts](../../guides/integration/azure/)
+    - [Google Artifact Registry](../../guides/integration/google/)
+    - [AWS CodeArtifact](../../guides/integration/aws/)
+    - [JFrog Artifactory](../../guides/integration/jfrog/)
+    - [Renovate](../../guides/integration/renovate/)
+    - [Dependabot](../../guides/integration/dependabot/)
+    - [AWS Lambda](../../guides/integration/aws-lambda/)
+    - [Coiled](../../guides/integration/coiled/)
+* [Concepts](../../concepts/)
+
+  Concepts
+  + [Projects](../../concepts/projects/)
+
+    Projects
+    - [Structure and files](../../concepts/projects/layout/)
+    - [Creating projects](../../concepts/projects/init/)
+    - [Managing dependencies](../../concepts/projects/dependencies/)
+    - [Running commands](../../concepts/projects/run/)
+    - [Locking and syncing](../../concepts/projects/sync/)
+    - [Configuring projects](../../concepts/projects/config/)
+    - [Building distributions](../../concepts/projects/build/)
+    - [Exporting lockfiles](../../concepts/projects/export/)
+    - [Using workspaces](../../concepts/projects/workspaces/)
+  + [Tools](../../concepts/tools/)
+  + [Python versions](../../concepts/python-versions/)
+  + [Configuration files](../../concepts/configuration-files/)
+  + [Package indexes](../../concepts/indexes/)
+  + [Resolution](../../concepts/resolution/)
+  + [Build backend](../../concepts/build-backend/)
+  + [Authentication](../../concepts/authentication/)
+
+    Authentication
+    - [The auth CLI](../../concepts/authentication/cli/)
+    - [HTTP credentials](../../concepts/authentication/http/)
+    - [Git credentials](../../concepts/authentication/git/)
+    - [TLS certificates](../../concepts/authentication/certificates/)
+    - [Third-party services](../../concepts/authentication/third-party/)
+  + [Caching](../../concepts/cache/)
+  + [Preview features](../../concepts/preview/)
+  + [The pip interface](../../pip/)
+
+    The pip interface
+    - [Using environments](../../pip/environments/)
+    - [Managing packages](../../pip/packages/)
+    - [Inspecting environments](../../pip/inspection/)
+    - [Declaring dependencies](../../pip/dependencies/)
+    - [Locking environments](../../pip/compile/)
+    - [Compatibility with pip](../../pip/compatibility/)
+* [Reference](../)
+
+  Reference
+  + [Commands](../cli/)
+  + [Settings](../settings/)
+  + [Environment variables](../environment/)
+  + [Storage](../storage/)
+  + [Installer options](../installer/)
+  + [Troubleshooting](../troubleshooting/)
+
+    Troubleshooting
+    - [Build failures](../troubleshooting/build-failures/)
+    - [Reproducible examples](../troubleshooting/reproducible-examples/)
+  + Contributing
+
+    [Contributing](./)
+
+
+
+    Table of contents
+    - [Finding ways to help](#finding-ways-to-help)
+    - [Use of AI](#use-of-ai)
+    - [Setup](#setup)
+    - [Testing](#testing)
+
+      * [Python](#python)
+      * [Snapshot testing](#snapshot-testing)
+      * [Git and Git LFS](#git-and-git-lfs)
+      * [Local testing](#local-testing)
+    - [Formatting](#formatting)
+    - [Linting](#linting)
+
+      * [Compiling for Windows from Unix](#compiling-for-windows-from-unix)
+    - [Crate structure](#crate-structure)
+    - [Running inside a Docker container](#running-inside-a-docker-container)
+    - [Profiling and Benchmarking](#profiling-and-benchmarking)
+
+      * [Analyzing concurrency](#analyzing-concurrency)
+      * [Trace-level logging](#trace-level-logging)
+    - [Documentation](#documentation)
+    - [Development code signing on macOS](#development-code-signing-on-macos)
+
+      * [Acquiring a development certificate](#acquiring-a-development-certificate)
+    - [Releases](#releases)
+  + [Internals](../internals/)
+
+    Internals
+    - [Resolver](../internals/resolver/)
+    - [Workspace Metadata](../internals/metadata/)
+  + [Benchmarks](../benchmarks/)
+  + [Policies](../policies/)
+
+    Policies
+    - [Versioning](../policies/versioning/)
+    - [Platform support](../policies/platforms/)
+    - [Python support](../policies/python/)
+    - [Rust support](../policies/rust/)
+    - [License](../policies/license/)
+
+Table of contents
+
+* [Finding ways to help](#finding-ways-to-help)
+* [Use of AI](#use-of-ai)
+* [Setup](#setup)
+* [Testing](#testing)
+
+  + [Python](#python)
+  + [Snapshot testing](#snapshot-testing)
+  + [Git and Git LFS](#git-and-git-lfs)
+  + [Local testing](#local-testing)
+* [Formatting](#formatting)
+* [Linting](#linting)
+
+  + [Compiling for Windows from Unix](#compiling-for-windows-from-unix)
+* [Crate structure](#crate-structure)
+* [Running inside a Docker container](#running-inside-a-docker-container)
+* [Profiling and Benchmarking](#profiling-and-benchmarking)
+
+  + [Analyzing concurrency](#analyzing-concurrency)
+  + [Trace-level logging](#trace-level-logging)
+* [Documentation](#documentation)
+* [Development code signing on macOS](#development-code-signing-on-macos)
+
+  + [Acquiring a development certificate](#acquiring-a-development-certificate)
+* [Releases](#releases)
+
+1. [Introduction](../..)
+2. [Reference](../)
+
+[Contributing](#contributing)
+=============================
+
+[Finding ways to help](#finding-ways-to-help)
+---------------------------------------------
+
+We label issues that we think are a good opportunity for subsequent contributions as
+[`help wanted`](https://github.com/astral-sh/uv/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
+These require varying levels of experience with Rust and uv. Often, we want to accomplish these
+tasks but do not have the resources to do so ourselves.
+
+You don't need our permission to start on an issue we have labeled as appropriate for community
+contribution as described above. However, it's a good idea to indicate that you are going to work on
+an issue to avoid concurrent attempts to solve the same problem.
+
+Please check in with us before starting work on an issue that has not been labeled as appropriate
+for community contribution. We're happy to receive contributions for other issues, but it's
+important to make sure we have consensus on the solution to the problem first.
+
+Outside of issues with the labels above, issues labeled as
+[`bug`](https://github.com/astral-sh/uv/issues?q=is%3Aopen+is%3Aissue+label%3A%22bug%22) are the
+best candidates for contribution. In contrast, issues labeled with `needs-decision` or
+`needs-design` are *not* good candidates for contribution. Please do not open pull requests for
+issues with these labels.
+
+Please do not open pull requests for new features without prior discussion. While we appreciate
+exploration of new features, we will almost always close these pull requests immediately. Adding a
+new feature to uv creates a long-term maintenance burden and requires strong consensus from the uv
+team before it is appropriate to begin work on an implementation.
+
+[Use of AI](#use-of-ai)
+-----------------------
+
+We **require all use of AI in contributions to follow our
+[AI Policy](https://github.com/astral-sh/.github/blob/main/AI_POLICY.md)**.
+
+If your contribution does not follow the policy, it will be closed.
+
+[Setup](#setup)
+---------------
+
+[Rust](https://rustup.rs/) (and a C compiler) are required to build uv.
+
+On Ubuntu and other Debian-based distributions, you can install a C compiler with:
+
+```
+sudo apt install build-essential
+```
+
+On Fedora-based distributions, you can install a C compiler with:
+
+```
+sudo dnf install gcc
+```
+
+On Windows, [NASM](https://www.nasm.us/) is required for building the TLS backend (`aws-lc-sys`). If
+it is not present, a prebuilt blob provided by `aws-lc-sys` will be used instead. WinGet can be used
+to install NASM:
+
+```
+winget install NASM.NASM
+```
+
+After installation, add `C:\Program Files\NASM` to your `PATH`. While the prebuilt blob will not be
+used when NASM is found, you can guarantee this behavior by setting `AWS_LC_SYS_PREBUILT_NASM=0`.
+
+[Testing](#testing)
+-------------------
+
+For running tests, we recommend [nextest](https://nexte.st/).
+
+To run a specific test by name:
+
+```
+cargo nextest run -E 'test(test_name)'
+```
+
+The test suite ignores `RUST_LOG` to avoid snapshot pollution. To enable logging in test
+subprocesses, use `UV_INTERNAL__TEST_RUST_LOG`, for example:
+
+```
+UV_INTERNAL__TEST_RUST_LOG=uv=debug cargo nextest run -E 'test(test_name)'
+```
+
+To run all tests and accept snapshot changes:
+
+```
+cargo insta test --accept --test-runner nextest
+```
+
+To update snapshots for a specific test:
+
+```
+cargo insta test --accept --test-runner nextest -- <test_name>
+```
+
+### [Python](#python)
+
+Testing uv requires multiple specific Python versions; they can be installed with:
+
+```
+cargo run python install
+```
+
+The storage directory can be configured with `UV_PYTHON_INSTALL_DIR`. (It must be an absolute path.)
+
+### [Snapshot testing](#snapshot-testing)
+
+uv uses [insta](https://insta.rs/) for snapshot testing. It's recommended (but not necessary) to use
+`cargo-insta` for a better snapshot review experience. See the
+[installation guide](https://insta.rs/docs/cli/) for more information.
+
+In tests, you can use `uv_snapshot!` macro to simplify creating snapshots for uv commands. For
+example:
+
+```
+#[test]
+fn test_add() {
+    let context = TestContext::new("3.12");
+    uv_snapshot!(context.filters(), context.add().arg("requests"), @"");
+}
+```
+
+To run and review a specific snapshot test:
+
+```
+cargo test --package <package> --test <test> -- <test_name> -- --exact
+cargo insta review
+```
+
+A script is available to update the snapshots based on results in CI. This is useful for updating
+snapshots without re-running the test suite and for updating platform-specific snapshots.
+
+```
+./scripts/apply-ci-snapshots.sh
+```
+
+### [Git and Git LFS](#git-and-git-lfs)
+
+A subset of uv tests require both [Git](https://git-scm.com) and [Git LFS](https://git-lfs.com/) to
+execute properly.
+
+These tests can be disabled by turning off either `git` or `git-lfs` uv features.
+
+### [Local testing](#local-testing)
+
+You can invoke your development version of uv with `cargo run -- <args>`. For example:
+
+```
+cargo run -- venv
+cargo run -- pip install requests
+```
+
+Development builds omit Git metadata from the version string so commits do not trigger
+recompilation. To include the commit hash and date, set `UV_INTERNAL__BUILD_GIT_INFO=1` when
+building:
+
+```
+UV_INTERNAL__BUILD_GIT_INFO=1 cargo run -- --version
+```
+
+Release builds, including profiles that inherit from `release`, include Git metadata by default.
+
+[Formatting](#formatting)
+-------------------------
+
+```
+# Rust
+cargo fmt --all
+
+# Python
+uv run --only-group=check ruff format .
+
+# Markdown, YAML, and other files (requires Node.js)
+npx [email protected] --write .
+# or in Docker
+docker run --rm -v .:/src/ -w /src/ node:alpine npx [email protected] --write .
+```
+
+[Linting](#linting)
+-------------------
+
+Linting requires [shellcheck](https://github.com/koalaman/shellcheck) and
+[hawk](https://github.com/astral-sh/hawk/) to be installed separately. Validating `pyproject.toml`
+against the checked-in uv schema also requires [jq](https://jqlang.org/).
+
+```
+# Rust
+CARGO_BUILD_WARNINGS=deny cargo clippy --workspace --all-targets --all-features --locked
+cargo +1.99.0 hawk check --target-dir target/hawk -D warnings
+
+# Python
+uv run --only-group=check ruff check .
+
+# Python type checking
+uv run --only-group=check ty check python/uv
+
+# Python project metadata and uv schema
+./scripts/validate-pyproject.sh
+
+# Generated files
+cargo dev generate-all --mode dry-run
+
+# Shell scripts
+shellcheck <script>
+
+# Spell checking
+uv run --only-group=check typos
+
+# Unused Rust dependencies
+uv run --only-group=check cargo-shear
+```
+
+### [Compiling for Windows from Unix](#compiling-for-windows-from-unix)
+
+To run clippy for a Windows target from Linux or macOS, you can use `cargo-xwin`. We provide a build
+of `cargo-xwin` as part of our development toolchain, but you'll need to install one or more Windows
+targets:
+
+```
+# Add the Windows target
+rustup target add x86_64-pc-windows-msvc
+
+# Run clippy for Windows
+CARGO_BUILD_WARNINGS=deny uv run --only-dev cargo xwin clippy --workspace --all-targets --all-features --locked
+```
+
+[Crate structure](#crate-structure)
+-----------------------------------
+
+Rust does not allow circular dependencies between crates. To visualize the crate hierarchy, install
+[cargo-depgraph](https://github.com/jplatte/cargo-depgraph) and graphviz, then run:
+
+```
+cargo depgraph --dedup-transitive-deps --workspace-only | dot -Tpng > graph.png
+```
+
+[Running inside a Docker container](#running-inside-a-docker-container)
+-----------------------------------------------------------------------
+
+Source distributions can run arbitrary code on build and can make unwanted modifications to your
+system
+(["Someone's Been Messing With My Subnormals!" on Blogspot](https://moyix.blogspot.com/2022/09/someones-been-messing-with-my-subnormals.html),
+["nvidia-pyindex" on PyPI](https://pypi.org/project/nvidia-pyindex/)), which can even occur when
+just resolving requirements. To prevent this, there's a Docker container you can run commands in:
+
+```
+$ docker build -t uv-builder -f crates/uv-dev/builder.dockerfile --load .
+# Build for musl to avoid glibc errors, might not be required with your OS version
+cargo build --target x86_64-unknown-linux-musl --profile profiling
+docker run --rm -it -v $(pwd):/app uv-builder /app/target/x86_64-unknown-linux-musl/profiling/uv-dev resolve-many --cache-dir /app/cache-docker /app/scripts/popular_packages/pypi_10k_most_dependents.txt
+```
+
+We recommend using this container if you don't trust the dependency tree of the package(s) you are
+trying to resolve or install.
+
+[Profiling and Benchmarking](#profiling-and-benchmarking)
+---------------------------------------------------------
+
+Please refer to Ruff's
+[Profiling Guide](https://github.com/astral-sh/ruff/blob/main/CONTRIBUTING.md#profiling-projects),
+it applies to uv, too.
+
+We provide diverse sets of requirements for testing and benchmarking the resolver in
+`test/requirements` and for the installer in `test/requirements/compiled`.
+
+You can use `scripts/benchmark` to benchmark predefined workloads between uv versions and with other
+tools, e.g., from the `scripts/benchmark` directory:
+
+```
+uv run resolver \
+    --uv-pip \
+    --poetry \
+    --benchmark \
+    resolve-cold \
+    ../test/requirements/trio.in
+```
+
+### [Analyzing concurrency](#analyzing-concurrency)
+
+You can use [tracing-durations-export](https://github.com/konstin/tracing-durations-export) to
+visualize parallel requests and find any spots where uv is CPU-bound. Example usage, with `uv` and
+`uv-dev` respectively:
+
+```
+RUST_LOG=uv=info TRACING_DURATIONS_FILE=target/traces/jupyter.ndjson cargo run --features tracing-durations-export --profile profiling -- pip compile test/requirements/jupyter.in
+```
+
+```
+RUST_LOG=uv=info TRACING_DURATIONS_FILE=target/traces/jupyter.ndjson cargo run --features tracing-durations-export --bin uv-dev --profile profiling -- resolve jupyter
+```
+
+### [Trace-level logging](#trace-level-logging)
+
+You can enable `trace` level logging using the `RUST_LOG` environment variable, i.e.
+
+```
+RUST_LOG=trace uv
+```
+
+[Documentation](#documentation)
+-------------------------------
+
+To preview any changes to the documentation locally:
+
+1. Install the [Rust toolchain](https://www.rust-lang.org/tools/install).
+2. Install [Node](https://nodejs.org/en/download) - needed to run Prettier to format the docs
+3. Run `cargo dev generate-all`, to update any auto-generated documentation.
+4. Run the development server with:
+
+```
+uv run --only-group docs mkdocs serve -f mkdocs.yml
+```
+
+The documentation should then be available locally at
+<http://127.0.0.1:8000/uv/>.
+
+Documentation is deployed automatically on release by publishing to the
+[Astral documentation](https://github.com/astral-sh/docs) repository, which itself deploys via
+Cloudflare Pages.
+
+After making changes to the documentation, [format the markdown files](#formatting) using Prettier.
+
+[Development code signing on macOS](#development-code-signing-on-macos)
+-----------------------------------------------------------------------
+
+Code signing can only be performed by Astral team members.
+
+Code signing on macOS can improve developer experience when running tests, e.g., when running tests
+that access the macOS keychain, a signed binary can be approved once but an unsigned binary will
+need to be approved on each re-compile.
+
+### [Acquiring a development certificate](#acquiring-a-development-certificate)
+
+1. Generate a
+   [request for the certificate](https://developer.apple.com/help/account/certificates/create-a-certificate-signing-request)
+2. Create a certificate in the
+   [Apple Developer portal](https://developer.apple.com/account/resources/certificates/list)
+3. Download and install the certificate to your login keychain
+
+```
+security import ~/Downloads/mac_development.cer -k ~/Library/Keychains/login.keychain-db
+```
+
+1. Identify your code signing identity
+
+```
+security find-identity -v -p codesigning
+```
+
+1. If the above fails to find your identity, install the intermediate certificates
+
+```
+curl -sLO "https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer"
+security import AppleWWDRCAG3.cer -k ~/Library/Keychains/login.keychain-db
+rm AppleWWDRCAG3.cer
+```
+
+1. Set `UV_TEST_CODESIGN_IDENTITY`
+
+```
+export UV_TEST_CODESIGN_IDENTITY="Mac Developer: Your Name (TEAM_ID)"
+```
+
+Note `UV_TEST_CODESIGN_IDENTITY` is only supported via `nextest`.
+
+[Releases](#releases)
+---------------------
+
+Releases can only be performed by Astral team members.
+
+Changelog entries and version bumps are automated. First, run:
+
+```
+./scripts/release.sh
+```
+
+If release preparation detects a new workspace crate, add it to
+[`astral-sh/crates-policies`](https://github.com/astral-sh/crates-policies).
+
+Then, editorialize the `CHANGELOG.md` file to ensure entries are consistently styled.
+
+Then, open a pull request, e.g., `Bump version to ...`.
+
+Binary builds will automatically be tested for the release.
+
+After merging the pull request, run the
+[release workflow](https://github.com/astral-sh/uv/actions/workflows/release.yml). The workflow
+reads the version from project metadata and rejects versions that already have a GitHub release.
+Enable `dry-run` to build artifacts without publishing. Otherwise, the release will automatically be
+created on GitHub after everything else publishes.
+
+July 18, 2026
+
+Back to top

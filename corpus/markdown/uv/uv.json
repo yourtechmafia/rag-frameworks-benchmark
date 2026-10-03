@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/",
+ "file": "markdown/uv/uv.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.65,
+ "markdown_chars": 11499,
+ "raw_html_chars": 83232,
+ "sha256": "27249bfa62254fafdade24ca3eec96ba52f5b00f1f943f67710f5a6154ca944c",
+ "fetched_at": "2026-10-03T08:57:16+00:00"
+}

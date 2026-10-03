@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StackBlitz WebContainers | pnpm</title>
+    <meta name="description" content="The experimental WebAssembly distribution runs pnpm's Rust CLI inside a StackBlitz WebContainer. The npm package selects WebAssembly automatically in WebContainers. It requires Node.js 22.13 or newer and shared WebAssembly memory. Native pnpm installations continue to use the native executable." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="StackBlitz WebContainers | pnpm" />
+    <meta property="og:description" content="The experimental WebAssembly distribution runs pnpm's Rust CLI inside a StackBlitz WebContainer. The npm package selects WebAssembly automatically in WebContainers. It requires Node.js 22.13 or newer and shared WebAssembly memory. Native pnpm installations continue to use the native executable." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="StackBlitz WebContainers | pnpm" />
+    <meta name="twitter:description" content="The experimental WebAssembly distribution runs pnpm's Rust CLI inside a StackBlitz WebContainer. The npm package selects WebAssembly automatically in WebContainers. It requires Node.js 22.13 or newer and shared WebAssembly memory. Native pnpm installations continue to use the native executable." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/webcontainers" />
+    <meta property="og:url" content="https://pnpm.io/webcontainers" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/webcontainers" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/webcontainers" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/webcontainers" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/webcontainers" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/webcontainers" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/webcontainers" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/webcontainers" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/webcontainers" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/webcontainers" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/webcontainers" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/webcontainers" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/webcontainers" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/webcontainers" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/webcontainers" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>StackBlitz WebContainers</h1><p>The experimental WebAssembly distribution runs pnpm's Rust CLI inside a
+StackBlitz WebContainer. The npm package selects WebAssembly automatically in
+WebContainers. It requires Node.js 22.13 or newer and shared WebAssembly memory.
+Native pnpm installations continue to use the native executable.</p>
+<h2 id="install-pnpm">Install pnpm<a class="hash-link" href="#install-pnpm" aria-label="Direct link to Install pnpm">#</a></h2>
+<p>Install a release that includes WebContainer support through npm:</p>
+<pre><code class="hljs language-sh">npm install pnpm@12
+npx pnpm --version
+npx pnpm install
+</code></pre>
+<p>The package includes the WebAssembly runtime, so no separate WASM package or
+runtime setting is needed. Its launchers also work when npm skips installation
+scripts. Global installation works with a writable npm prefix.</p>
+<p>The Corepack entry point selects the same runtime. A cold download with Corepack
+0.36.0 failed in the tested WebContainer runtime's streaming hash implementation
+before pnpm started. Use npm if Corepack reports a hash-related host error.
+The npm package is larger because it includes that payload; native installations
+still launch the native executable directly.</p>
+<h2 id="build-the-distribution">Build the distribution<a class="hash-link" href="#build-the-distribution" aria-label="Direct link to Build the distribution">#</a></h2>
+<p>Check out the pnpm repository and follow the toolchain setup in
+<a href="https://github.com/pnpm/pnpm/tree/main/pnpm/wasm">the WASM runtime guide</a>.
+From the repository root, run:</p>
+<pre><code class="hljs language-sh">pnpm build:pnpm:wasm
+pnpm pack:pnpm:wasm
+</code></pre>
+<p>The result is <code>target/pnpm-wasm.tgz</code>. The <code>pnpm WebAssembly</code> CI workflow also
+uploads this tarball after its browser tests pass.</p>
+<p>Copy the tarball into the WebContainer, then install it with npm:</p>
+<pre><code class="hljs language-sh">npm install --global ./pnpm-wasm.tgz
+pnpm --version
+pnpm install
+</code></pre>
+<p>The standalone tarball is useful for testing a build before release. Native
+executable archives cannot run inside a WebContainer. Projects that pin a different
+package-manager version receive <code>ERR_PNPM_UNSUPPORTED_RUNTIME</code> when switching
+would require installing a native distribution.
+To keep using the installed WebAssembly distribution for such a project, disable
+automatic version switching for the command:</p>
+<pre><code class="hljs language-sh">npm_config_manage_package_manager_versions=<span class="hljs-literal">false</span> pnpm install
+</code></pre>
+<h2 id="runtime-differences">Runtime differences<a class="hash-link" href="#runtime-differences" aria-label="Direct link to Runtime differences">#</a></h2>
+<p>Filesystem access, HTTP requests, and child processes use the WebContainer's
+Node.js APIs. Lifecycle scripts run inside the same container and keep pnpm's
+build-approval rules. Packages that require native executables or native Node.js
+addons remain subject to WebContainer limitations.</p>
+<p>WebContainer's bundled npm applies its own package compatibility replacements.
+This runtime does not use those private integrations. Select
+WebAssembly alternatives explicitly when a dependency normally downloads native
+code. For example, a Vite project can use these entries in <code>pnpm-workspace.yaml</code>:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">overrides:</span>
+  <span class="hljs-attr">esbuild:</span> <span class="hljs-string">npm:esbuild-wasm@^0.27.0</span>
+  <span class="hljs-attr">rollup:</span> <span class="hljs-string">npm:@rollup/wasm-node@^4.43.1</span>
+</code></pre>
+<p>Choose replacement versions compatible with your project's dependency versions,
+then run <code>pnpm install</code> and commit the updated lockfile. These overrides apply
+wherever that workspace configuration is used, including outside WebContainers.</p>
+<p>When pnpm redirects a subprocess's stdout or stderr to a file, it waits for the
+redirected output to finish writing. A background descendant that inherits that
+stream can keep pnpm waiting after the original subprocess exits. Close or replace
+inherited redirected streams in background children.</p>
+<p>The browser manages HTTP connections. Custom certificate authorities, client
+certificates, explicit proxy settings, local network addresses, and DNS pinning
+are unavailable. Unsupported network settings produce an error.</p>
+<p>The package store uses a separate <code>v11-wasm</code> directory with the same package
+file and index formats. It cannot share a live store with native pnpm because
+their file locks differ. The WASM store uses SQLite rollback journals and a
+process lease. Concurrent
+commands sharing a store wait for its owner. A nested pnpm command cannot acquire
+the same store while its parent holds it; use a separate store for that command.</p>
+<p>Automatic restoration of changed installation metadata after an error is
+unavailable because WebContainers cannot securely pin the parent directory.
+pnpm reports this limitation instead of restoring through a replaced directory.</p>
+<p>Automatic provenance signing, Cargo workspace integration, <code>pnpm setup</code>,
+<code>pnpm self-update</code>, and <code>pnpm pack-app</code> are unavailable in this distribution.
+These operations fail explicitly before performing unsupported work.</p>
+<p>To update pnpm in a WebContainer, install the newer pnpm release with npm or
+select it through Corepack. For a standalone test build, install the newer
+<code>pnpm-wasm.tgz</code> package with npm.</p></article></main></div>
+  </body>
+</html>

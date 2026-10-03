@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpm-vs-npm",
+ "file": "markdown/pnpm/pnpm-vs-npm.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.13,
+ "markdown_chars": 2294,
+ "raw_html_chars": 7693,
+ "sha256": "44bdfb58c9150080e563096acaaf5b5dce9f595a90f7efe5fe86126720a069eb",
+ "fetched_at": "2026-10-03T08:58:52+00:00"
+}

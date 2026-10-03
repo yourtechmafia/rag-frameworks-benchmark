@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/prefix",
+ "file": "markdown/pnpm/cli-prefix.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.19,
+ "markdown_chars": 287,
+ "raw_html_chars": 5003,
+ "sha256": "a1fd80bc904f3342d16340bc89cc88b88b2138acb4c2f4060756c4f9024ecc60",
+ "fetched_at": "2026-10-03T08:58:25+00:00"
+}

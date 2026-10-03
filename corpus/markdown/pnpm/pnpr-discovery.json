@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/discovery",
+ "file": "markdown/pnpm/pnpr-discovery.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.6,
+ "markdown_chars": 2955,
+ "raw_html_chars": 9017,
+ "sha256": "9ee6468139187461261b5e913d783942ae5fc3b3a13467f79a632889628bbc39",
+ "fetched_at": "2026-10-03T08:58:53+00:00"
+}

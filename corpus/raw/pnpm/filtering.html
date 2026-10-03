@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filtering | pnpm</title>
+    <meta name="description" content="Filtering allows you to restrict commands to specific subsets of packages." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Filtering | pnpm" />
+    <meta property="og:description" content="Filtering allows you to restrict commands to specific subsets of packages." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Filtering | pnpm" />
+    <meta name="twitter:description" content="Filtering allows you to restrict commands to specific subsets of packages." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/filtering" />
+    <meta property="og:url" content="https://pnpm.io/filtering" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/filtering" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/filtering" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/filtering" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/filtering" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/filtering" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/filtering" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/filtering" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/filtering" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/filtering" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/filtering" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/filtering" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/filtering" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/filtering" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/filtering" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Filtering</h1><p>Filtering allows you to restrict commands to specific subsets of packages.</p>
+<p>pnpm supports a rich selector syntax for picking packages by name or by
+relation.</p>
+<p>Selectors may be specified via the <code>--filter</code> (or <code>-F</code>) flag:</p>
+<pre><code class="hljs language-sh">pnpm --filter &#x3C;package_selector> &#x3C;<span class="hljs-built_in">command</span>>
+</code></pre>
+<h2 id="matching">Matching<a class="hash-link" href="#matching" aria-label="Direct link to Matching">#</a></h2>
+<h3 id="--filter-package_name">--filter &#x3C;package_name><a class="hash-link" href="#--filter-package_name" aria-label="Direct link to --filter <package_name>">#</a></h3>
+<p>To select an exact package, just specify its name (<code>@scope/pkg</code>) or use a
+pattern to select a set of packages (<code>@scope/*</code>).</p>
+<p>Examples:</p>
+<pre><code class="hljs language-sh">pnpm --filter <span class="hljs-string">"@babel/core"</span> <span class="hljs-built_in">test</span>
+pnpm --filter <span class="hljs-string">"@babel/*"</span> <span class="hljs-built_in">test</span>
+pnpm --filter <span class="hljs-string">"*core"</span> <span class="hljs-built_in">test</span>
+</code></pre>
+<p>Specifying the scope of the package is optional, so <code>--filter=core</code> will pick <code>@babel/core</code> if <code>core</code> is not found.
+However, if the workspace has multiple packages with the same name (for instance, <code>@babel/core</code> and <code>@types/core</code>),
+then filtering without scope will pick nothing.</p>
+<h3 id="--filter-package_name-1">--filter &#x3C;package_name>...<a class="hash-link" href="#--filter-package_name-1" aria-label="Direct link to --filter <package_name>...">#</a></h3>
+<p>To select a package and its dependencies (direct and non-direct), suffix the
+package name with an ellipsis: <code>&#x3C;package_name>...</code>. For instance, the next
+command will run tests of <code>foo</code> and all of its dependencies:</p>
+<pre><code class="hljs language-sh">pnpm --filter foo... <span class="hljs-built_in">test</span>
+</code></pre>
+<p>You may use a pattern to select a set of root packages:</p>
+<pre><code class="hljs language-sh">pnpm --filter <span class="hljs-string">"@babel/preset-*..."</span> <span class="hljs-built_in">test</span>
+</code></pre>
+<h3 id="--filter-package_name-2">--filter &#x3C;package_name>^...<a class="hash-link" href="#--filter-package_name-2" aria-label="Direct link to --filter <package_name>^...">#</a></h3>
+<p>To ONLY select the dependencies of a package (both direct and non-direct),
+suffix the name with the aforementioned ellipsis preceded by a chevron. For
+instance, the next command will run tests for all of <code>foo</code>'s
+dependencies:</p>
+<pre><code class="hljs language-sh">pnpm --filter <span class="hljs-string">"foo^..."</span> <span class="hljs-built_in">test</span>
+</code></pre>
+<h3 id="--filter-package_name-3">--filter ...&#x3C;package_name><a class="hash-link" href="#--filter-package_name-3" aria-label="Direct link to --filter ...<package_name>">#</a></h3>
+<p>To select a package and its dependent packages (direct and non-direct), prefix
+the package name with an ellipsis: <code>...&#x3C;package_name></code>. For instance, this will
+run the tests of <code>foo</code> and all packages dependent on it:</p>
+<pre><code class="hljs language-sh">pnpm --filter ...foo <span class="hljs-built_in">test</span>
+</code></pre>
+<h3 id="--filter-package_name-4">--filter "...^&#x3C;package_name>"<a class="hash-link" href="#--filter-package_name-4" aria-label="Direct link to --filter &#x22;...^<package_name>&#x22;">#</a></h3>
+<p>To ONLY select a package's dependents (both direct and non-direct), prefix the
+package name with an ellipsis followed by a chevron. For instance, this will
+run tests for all packages dependent on <code>foo</code>:</p>
+<pre><code class="hljs language-text">pnpm --filter "...^foo" test
+</code></pre>
+<h3 id="--filter-glob---filter-glob">--filter <code>./&#x3C;glob></code>, --filter <code>{&#x3C;glob>}</code><a class="hash-link" href="#--filter-glob---filter-glob" aria-label="Direct link to --filter ./<glob>, --filter {<glob>}">#</a></h3>
+<p>A glob pattern relative to the current working directory matching projects.</p>
+<pre><code class="hljs language-sh">pnpm --filter <span class="hljs-string">"./packages/**"</span> &#x3C;cmd>
+</code></pre>
+<p>Includes all projects that are under the specified directory.</p>
+<p>It may be used with the ellipsis and chevron operators to select
+dependents/dependencies as well:</p>
+<pre><code class="hljs language-sh">pnpm --filter ...{&#x3C;directory>} &#x3C;cmd>
+pnpm --filter {&#x3C;directory>}... &#x3C;cmd>
+pnpm --filter ...{&#x3C;directory>}... &#x3C;cmd>
+</code></pre>
+<p>It may also be combined with <code>[&#x3C;since>]</code>. For instance, to select all changed
+projects inside a directory:</p>
+<pre><code class="hljs language-sh">pnpm --filter <span class="hljs-string">"{packages/**}[origin/master]"</span> &#x3C;cmd>
+pnpm --filter <span class="hljs-string">"...{packages/**}[origin/master]"</span> &#x3C;cmd>
+pnpm --filter <span class="hljs-string">"{packages/**}[origin/master]..."</span> &#x3C;cmd>
+pnpm --filter <span class="hljs-string">"...{packages/**}[origin/master]..."</span> &#x3C;cmd>
+</code></pre>
+<p>The pattern language is the usual one: <code>*</code> and <code>?</code> match within one path
+segment, <code>**</code> crosses segments, and a character class such as <code>[ab]</code> matches one
+of the listed characters. Neither <code>*</code> nor <code>?</code> matches a name that begins with a
+dot, so <code>packages/*</code> skips <code>packages/.cache</code>. Name a dot-prefixed directory
+explicitly to select it.</p>
+<p>Or you may select all packages from a directory with names matching the given
+pattern:</p>
+<pre><code class="hljs language-text">pnpm --filter "@babel/*{components/**}" &#x3C;cmd>
+pnpm --filter "@babel/*{components/**}[origin/master]" &#x3C;cmd>
+pnpm --filter "...@babel/*{components/**}[origin/master]" &#x3C;cmd>
+</code></pre>
+<h4 id="legacydirfiltering">legacyDirFiltering<a class="hash-link" href="#legacydirfiltering" aria-label="Direct link to legacyDirFiltering">#</a></h4>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p><code>{&#x3C;dir>}</code> is matched as a glob pattern: <code>{packages/*}</code> selects the projects one
+level below <code>packages/</code>, and it takes a <code>**</code> to reach deeper. Set
+<code>legacyDirFiltering</code> to <code>true</code> in <code>pnpm-workspace.yaml</code> to restore the older
+behavior, where the selector named a directory and matched <strong>every</strong> project in
+the subtree below it:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">legacyDirFiltering:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>The setting only applies to the selectors you write. The workspace-root
+selectors pnpm generates for itself — the <code>!{&#x3C;workspace-root>}</code> a recursive
+<code>run</code> / <code>exec</code> / <code>add</code> / <code>test</code> appends, and the <code>{&#x3C;workspace-root>}</code> that
+<code>--workspace-root</code> appends — are always matched as globs, since v11.24.0. Read
+as subtree matches they named every project below the root, so a recursive
+command under this setting selected nothing at all, and <code>--workspace-root</code>
+pulled in the whole workspace instead of the root alone
+(<a href="https://github.com/pnpm/pnpm/issues/14101">#14101</a>).</p>
+<h3 id="--filter-since">--filter "[&#x3C;since>]"<a class="hash-link" href="#--filter-since" aria-label="Direct link to --filter &#x22;[<since>]&#x22;">#</a></h3>
+<p>Selects all the packages changed since the specified commit/branch. May be
+suffixed or prefixed with <code>...</code> to include dependencies/dependents.</p>
+<p>For example, the next command will run tests in all changed packages since
+<code>master</code> and on any dependent packages:</p>
+<pre><code class="hljs language-sh">pnpm --filter <span class="hljs-string">"...[origin/master]"</span> <span class="hljs-built_in">test</span>
+</code></pre>
+<p>Since v12.7.0, <code>&#x3C;since></code> is compared against the commit where the current
+branch forked from it (the merge base), so projects changed only by newer
+commits on <code>&#x3C;since></code> are not selected. Uncommitted changes are still included.
+In a shallow clone that lacks the merge base, pnpm compares against <code>&#x3C;since></code>
+directly.</p>
+<p>A project also counts as changed when:</p>
+<ul>
+<li>a version it takes from a <a href="/catalogs">catalog</a> changes in
+<code>pnpm-workspace.yaml</code>;</li>
+<li>files were moved out of it and git detects the move as a rename.</li>
+</ul>
+<h3 id="--fail-if-no-match">--fail-if-no-match<a class="hash-link" href="#--fail-if-no-match" aria-label="Direct link to --fail-if-no-match">#</a></h3>
+<p>Use this flag if you want the CLI to fail if no packages have matched the filters.</p>
+<p>You may also set this permanently with a <a href="/workspaces#failifnomatch"><code>failIfNoMatch</code> setting</a>.</p>
+<h2 id="excluding">Excluding<a class="hash-link" href="#excluding" aria-label="Direct link to Excluding">#</a></h2>
+<p>Any of the filter selectors may work as exclusion operators when they have a
+leading "!". In zsh (and possibly other shells), "!" should be escaped: <code>\!</code>.</p>
+<p>For instance, this will run a command in all projects except for <code>foo</code>:</p>
+<pre><code class="hljs language-sh">pnpm --filter=!foo &#x3C;cmd>
+</code></pre>
+<p>And this will run a command in all projects that are not under the <code>lib</code>
+directory:</p>
+<pre><code class="hljs language-sh">pnpm --filter=!./lib &#x3C;cmd>
+</code></pre>
+<p>Since v12.7.0, selectors are evaluated in the order they are given, so a later
+inclusion can bring back a project that an earlier exclusion removed:</p>
+<pre><code class="hljs language-sh">pnpm --filter <span class="hljs-string">"!./packages/**"</span> --filter @scope/core &#x3C;cmd>
+</code></pre>
+<h2 id="multiplicity">Multiplicity<a class="hash-link" href="#multiplicity" aria-label="Direct link to Multiplicity">#</a></h2>
+<p>When packages are filtered, every package is taken that matches at least one of
+the inclusion selectors, unless a later <a href="#excluding">exclusion</a> removes it. When
+the first selector is an exclusion, filtering starts from every project in the
+workspace. You can use as many filters as you want:</p>
+<pre><code class="hljs language-sh">pnpm --filter ...foo --filter bar --filter baz... <span class="hljs-built_in">test</span>
+</code></pre>
+<h2 id="--filter-prod-filtering_pattern">--filter-prod &#x3C;filtering_pattern><a class="hash-link" href="#--filter-prod-filtering_pattern" aria-label="Direct link to --filter-prod <filtering_pattern>">#</a></h2>
+<p>Acts the same as <code>--filter</code> but omits <code>devDependencies</code> when selecting dependency projects
+from the workspace.</p>
+<h2 id="--test-pattern-glob">--test-pattern &#x3C;glob><a class="hash-link" href="#--test-pattern-glob" aria-label="Direct link to --test-pattern <glob>">#</a></h2>
+<p><code>test-pattern</code> allows detecting whether the modified files are related to tests.
+If they are, the dependent packages of such modified packages are not included.</p>
+<p>This option is useful with the "changed since" filter. For instance, the next
+command will run tests in all changed packages, and if the changes are in the
+source code of the package, tests will run in the dependent packages as well:</p>
+<pre><code class="hljs language-sh">pnpm --filter=<span class="hljs-string">"...[origin/master]"</span> --test-pattern=<span class="hljs-string">"test/*"</span> <span class="hljs-built_in">test</span>
+</code></pre>
+<h2 id="--changed-files-ignore-pattern-glob">--changed-files-ignore-pattern &#x3C;glob><a class="hash-link" href="#--changed-files-ignore-pattern-glob" aria-label="Direct link to --changed-files-ignore-pattern <glob>">#</a></h2>
+<p>Allows to ignore changed files by glob patterns when filtering for changed projects since the specified commit/branch.</p>
+<p>Usage example:</p>
+<pre><code class="hljs language-sh">pnpm --filter=<span class="hljs-string">"...[origin/master]"</span> --changed-files-ignore-pattern=<span class="hljs-string">"**/README.md"</span> run build
+</code></pre></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm tasks | pnpm</title>
+    <meta name="description" content="Added in: v12.6.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm tasks | pnpm" />
+    <meta property="og:description" content="Added in: v12.6.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm tasks | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.6.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/tasks" />
+    <meta property="og:url" content="https://pnpm.io/cli/tasks" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/tasks" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/tasks" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/tasks" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/tasks" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/tasks" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/tasks" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/tasks" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/tasks" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/tasks" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/tasks" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/tasks" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/tasks" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/tasks" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/tasks" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm tasks</h1><p>Added in: v12.6.0</p>
+<p>Inspect tasks in <a href="/workspace-task-orchestration#concurrencygroups">concurrency groups</a>.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>If your package or workspace defines a script named <code>"tasks"</code> in <code>package.json</code>, that script takes precedence when running <code>pnpm tasks</code>. Use <a href="/cli/pm"><code>pnpm pm tasks</code></a> to force the built-in command.</p>
+</div>
+<h2 id="commands">Commands<a class="hash-link" href="#commands" aria-label="Direct link to Commands">#</a></h2>
+<h3 id="status">status<a class="hash-link" href="#status" aria-label="Direct link to status">#</a></h3>
+<p>Show running and waiting tasks in <a href="/workspace-task-orchestration#concurrencygroups">concurrency groups</a>.</p>
+<pre><code class="hljs language-sh">pnpm tasks status [<span class="hljs-built_in">groups</span>...]
+</code></pre>
+<p>Lists the running (active holders) and waiting tasks across <a href="/workspace-task-orchestration#concurrencygroups">concurrency groups</a>, including how long each task has been running or waiting, its process ID, working directory, and its <a href="/workspace-task-orchestration#task-priority">task priority</a>.</p>
+<h4 id="examples">Examples<a class="hash-link" href="#examples" aria-label="Direct link to Examples">#</a></h4>
+<p>Show all active concurrency groups used by pnpm processes sharing the same <a href="/settings/other#statedir"><code>stateDir</code></a>:</p>
+<pre><code class="hljs language-sh">pnpm tasks status
+</code></pre>
+<p>If no concurrency groups are currently in use, pnpm outputs:</p>
+<pre><code>No concurrency groups are in use.
+</code></pre>
+<p>Inspect specific concurrency groups:</p>
+<pre><code class="hljs language-sh">pnpm tasks status cargo typescript
+</code></pre>
+<p>When group names are specified, pnpm outputs the status of only those groups, including idle groups:</p>
+<pre><code>cargo
+  running
+    build:native  12s
+      pid 45123 in /workspace/crates/native
+  waiting
+    1. test:native  3s  priority 2
+      pid 45201 in /workspace/crates/native
+    2. bench:native  1s  priority 0
+      pid 45210 in /workspace/crates/native
+
+typescript: idle
+</code></pre>
+<h4 id="script-precedence">Script precedence<a class="hash-link" href="#script-precedence" aria-label="Direct link to Script precedence">#</a></h4>
+<p>If your project defines a <code>"tasks"</code> script in <code>package.json</code>:</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Runs the "tasks" script from package.json</span>
+pnpm tasks status
+
+<span class="hljs-comment"># Runs the built-in pnpm tasks status command</span>
+pnpm pm tasks status
+</code></pre>
+<h2 id="see-also">See also<a class="hash-link" href="#see-also" aria-label="Direct link to See also">#</a></h2>
+<ul>
+<li><a href="/workspace-task-orchestration#concurrency-groups">Workspace task orchestration</a></li>
+<li><a href="/workspace-task-orchestration#task-priority">Task priority</a></li>
+<li><a href="/cli/pm">pnpm pm</a></li>
+</ul></article></main></div>
+  </body>
+</html>

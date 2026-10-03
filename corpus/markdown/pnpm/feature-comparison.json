@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/feature-comparison",
+ "file": "markdown/pnpm/feature-comparison.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.69,
+ "markdown_chars": 1513,
+ "raw_html_chars": 8203,
+ "sha256": "00a384162e09f2ff8400eb34c91b5de1b902709422c76d787d17493b01a87c13",
+ "fetched_at": "2026-10-03T08:58:45+00:00"
+}

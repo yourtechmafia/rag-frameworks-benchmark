@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm approve-builds | pnpm</title>
+    <meta name="description" content="Added in: v10.1.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm approve-builds | pnpm" />
+    <meta property="og:description" content="Added in: v10.1.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm approve-builds | pnpm" />
+    <meta name="twitter:description" content="Added in: v10.1.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/approve-builds" />
+    <meta property="og:url" content="https://pnpm.io/cli/approve-builds" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/approve-builds" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/approve-builds" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/approve-builds" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/approve-builds" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/approve-builds" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/approve-builds" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/approve-builds" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/approve-builds" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/approve-builds" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/approve-builds" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/approve-builds" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/approve-builds" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/approve-builds" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/approve-builds" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm approve-builds</h1><p>Added in: v10.1.0</p>
+<p>Approve dependencies for running scripts during installation.</p>
+<p>The approved dependencies are added to the <a href="/settings/build#allowbuilds"><code>allowBuilds</code></a> map in <code>pnpm-workspace.yaml</code> with a value of <code>true</code>, while unapproved ones are saved with a value of <code>false</code>. You can also update these settings manually if you prefer.</p>
+<h2 id="usage">Usage<a class="hash-link" href="#usage" aria-label="Direct link to Usage">#</a></h2>
+<p>You can run <code>pnpm approve-builds</code> without arguments to get an interactive prompt, or pass package names as positional arguments:</p>
+<pre><code class="hljs language-sh">pnpm approve-builds esbuild fsevents !core-js
+</code></pre>
+<p>Prefix a package name with <code>!</code> to deny it. Only mentioned packages are affected; the rest are left untouched.</p>
+<p>Since v12.4.0, a decision is saved even when nothing is awaiting approval, so a policy can be written before the package is installed. A named package that is not awaiting approval is reported with a warning rather than an error, and is not rebuilt: it may not be installed yet, and rebuilding it would need a lockfile the project may not have. An argument that names no package at all is rejected before anything is written.</p>
+<p>During install, packages with ignored builds that are not yet listed in <code>allowBuilds</code> are automatically added to <code>pnpm-workspace.yaml</code> with a placeholder value, so you can manually set them to <code>true</code> or <code>false</code>.</p>
+<p>Since v11.23.0, writing <code>allowBuilds</code> also removes <code>onlyBuiltDependencies</code>, <code>onlyBuiltDependenciesFile</code>, <code>neverBuiltDependencies</code>, and <code>ignoredBuiltDependencies</code> from <code>pnpm-workspace.yaml</code>. <code>allowBuilds</code> replaced those settings in pnpm 11 and they have been ignored since, so a workspace migrated from pnpm 10 kept them around looking active.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--all">--all<a class="hash-link" href="#--all" aria-label="Direct link to --all">#</a></h3>
+<p>Added in: v10.32.0</p>
+<p>Approve all pending builds without interactive prompts.</p>
+<h3 id="--global--g">--global, -g<a class="hash-link" href="#--global--g" aria-label="Direct link to --global, -g">#</a></h3>
+<p>Approve builds for <a href="/global-packages">globally installed packages</a>.</p>
+<p>pnpm gathers the packages awaiting approval across <strong>every</strong> <a href="/global-packages#isolated-installations">isolated install
+group</a>, asks about them once, and
+writes a single policy into the <code>pnpm-workspace.yaml</code> of the global packages
+directory. Only the groups that actually contain an approved package are then
+rebuilt.</p>
+<div class="admonition admonition-info"><p class="admonition-title">Removed in v11.0.0, back in v11.24.0</p>
+<p>Isolated global installs gave every install group its own manifest, and
+<code>pnpm approve-builds -g</code> was removed rather than made to guess which one to
+write to. Since v11.24.0 it writes one policy for all of them, so it works
+again. In between — and still, if you would rather decide at install time — use
+<code>--allow-build</code> when installing globally (e.g.
+<code>pnpm add -g --allow-build=esbuild esbuild</code>), or answer the prompt pnpm shows
+during a global install.</p>
+</div></article></main></div>
+  </body>
+</html>

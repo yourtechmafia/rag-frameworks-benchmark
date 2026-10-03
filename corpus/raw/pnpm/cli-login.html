@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm login | pnpm</title>
+    <meta name="description" content="Added in: v11.0.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm login | pnpm" />
+    <meta property="og:description" content="Added in: v11.0.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm login | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.0.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/login" />
+    <meta property="og:url" content="https://pnpm.io/cli/login" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/login" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/login" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/login" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/login" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/login" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/login" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/login" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/login" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/login" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/login" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/login" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/login" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/login" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/login" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm login</h1><p>Added in: v11.0.0</p>
+<p>Aliases: <code>adduser</code></p>
+<p>Authenticate with an npm registry.</p>
+<pre><code class="hljs language-sh">pnpm login [--registry &#x3C;url>] [--scope &#x3C;scope>]
+</code></pre>
+<p>Supports web-based login with QR code as well as classic username/password authentication.</p>
+<p>Since v11.19.0, web-based login no longer requires an interactive terminal: without a TTY, <code>pnpm login</code> prints the authentication URL (skipping the QR code and the prompt to open the URL in a browser) and polls the registry until the browser approval completes. Only the classic username/password login still fails with <code>ERR_PNPM_LOGIN_NON_INTERACTIVE</code> in a non-interactive terminal.</p>
+<p>In pnpm 12.1 and newer, the granted token is written to the global
+<a href="/cli/config"><code>config.yaml</code></a>, under the structured <a href="/npmrc#_auth"><code>_auth</code></a>
+setting. When <code>--scope</code> is present, the same write routes that scope to the
+registry under the global <a href="/registries"><code>registries</code></a> setting. pnpm 11.25
+writes the token and scoped route to
+<a href="/npmrc#auth-file-locations"><code>&#x3C;pnpm config>/auth.ini</code></a>; pnpm 12.1 continues
+to read tokens written there.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--registry-url">--registry &#x3C;url><a class="hash-link" href="#--registry-url" aria-label="Direct link to --registry <url>">#</a></h3>
+<p>The registry to authenticate with. Defaults to the configured default registry.</p>
+<h3 id="--scope-scope">--scope &#x3C;scope><a class="hash-link" href="#--scope-scope" aria-label="Direct link to --scope <scope>">#</a></h3>
+<p>Associate the credentials with the specified scope. The registry for that scope will be used.</p>
+<p>Since v12.1.0, a <code>scope</code> setting in a project's
+<code>pnpm-workspace.yaml</code> is ignored with a warning. A repository must not be able
+to choose the machine-wide route a later login writes. Pass <code>--scope</code>, set
+<code>PNPM_CONFIG_SCOPE</code>, or set the machine's default with:</p>
+<pre><code class="hljs language-sh">pnpm config <span class="hljs-built_in">set</span> --global scope @acme
+</code></pre></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How peers are resolved | pnpm</title>
+    <meta name="description" content="One of the best features of pnpm is that in one project, a specific version of a package will always have one set of dependencies. There is one exception from this rule, though - packages with peer dependencies." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="How peers are resolved | pnpm" />
+    <meta property="og:description" content="One of the best features of pnpm is that in one project, a specific version of a package will always have one set of dependencies. There is one exception from this rule, though - packages with peer dependencies." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="How peers are resolved | pnpm" />
+    <meta name="twitter:description" content="One of the best features of pnpm is that in one project, a specific version of a package will always have one set of dependencies. There is one exception from this rule, though - packages with peer dependencies." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/how-peers-are-resolved" />
+    <meta property="og:url" content="https://pnpm.io/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/how-peers-are-resolved" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/how-peers-are-resolved" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>How peers are resolved</h1><p>One of the best features of pnpm is that in one project, a specific version of a
+package will always have one set of dependencies. There is one exception from
+this rule, though - packages with <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-json#peerdependencies">peer dependencies</a>.</p>
+<p>Peer dependencies are resolved from dependencies installed higher in the
+dependency graph, since they share the same version as their parent. That means
+that if <code>foo@1.0.0</code> has two peers (<code>bar@^1</code> and <code>baz@^1</code>) then it might have
+multiple different sets of dependencies in the same project.</p>
+<pre><code class="hljs language-text">- foo-parent-1
+  - bar@1.0.0
+  - baz@1.0.0
+  - foo@1.0.0
+- foo-parent-2
+  - bar@1.0.0
+  - baz@1.1.0
+  - foo@1.0.0
+</code></pre>
+<p>In the example above, <code>foo@1.0.0</code> is installed for <code>foo-parent-1</code> and
+<code>foo-parent-2</code>. Both packages have <code>bar</code> and <code>baz</code> as well, but they depend on
+different versions of <code>baz</code>. As a result, <code>foo@1.0.0</code> has two different sets of
+dependencies: one with <code>baz@1.0.0</code> and the other one with <code>baz@1.1.0</code>. To
+support these use cases, pnpm has to hard link <code>foo@1.0.0</code> as many times as
+there are different dependency sets.</p>
+<p>Normally, if a package does not have peer dependencies, it is hard linked to a
+<code>node_modules</code> folder next to symlinks of its dependencies, like so:</p>
+<pre><code class="hljs language-text">node_modules
+└── .pnpm
+    ├── foo@1.0.0
+    │   └── node_modules
+    │       ├── foo
+    │       ├── qux   -> ../../qux@1.0.0/node_modules/qux
+    │       └── plugh -> ../../plugh@1.0.0/node_modules/plugh
+    ├── qux@1.0.0
+    ├── plugh@1.0.0
+</code></pre>
+<p>However, if <code>foo</code> has peer dependencies, there may be multiple sets of
+dependencies for it, so we create different sets for different peer dependency
+resolutions:</p>
+<pre><code class="hljs language-text">node_modules
+└── .pnpm
+    ├── foo@1.0.0_bar@1.0.0+baz@1.0.0
+    │   └── node_modules
+    │       ├── foo
+    │       ├── bar   -> ../../bar@1.0.0/node_modules/bar
+    │       ├── baz   -> ../../baz@1.0.0/node_modules/baz
+    │       ├── qux   -> ../../qux@1.0.0/node_modules/qux
+    │       └── plugh -> ../../plugh@1.0.0/node_modules/plugh
+    ├── foo@1.0.0_bar@1.0.0+baz@1.1.0
+    │   └── node_modules
+    │       ├── foo
+    │       ├── bar   -> ../../bar@1.0.0/node_modules/bar
+    │       ├── baz   -> ../../baz@1.1.0/node_modules/baz
+    │       ├── qux   -> ../../qux@1.0.0/node_modules/qux
+    │       └── plugh -> ../../plugh@1.0.0/node_modules/plugh
+    ├── bar@1.0.0
+    ├── baz@1.0.0
+    ├── baz@1.1.0
+    ├── qux@1.0.0
+    ├── plugh@1.0.0
+</code></pre>
+<p>We create symlinks either to the <code>foo</code> that is inside
+<code>foo@1.0.0_bar@1.0.0+baz@1.0.0</code> or to the one in
+<code>foo@1.0.0_bar@1.0.0+baz@1.1.0</code>.
+As a consequence, the Node.js module resolver will find the correct peers.</p>
+<p><em>If a package has no peer dependencies but has dependencies with peers that are
+resolved higher in the graph</em>, then that transitive package can appear in the
+project with different sets of dependencies. For instance, there's package
+<code>a@1.0.0</code> with a single dependency <code>b@1.0.0</code>. <code>b@1.0.0</code> has a peer dependency
+<code>c@^1</code>. <code>a@1.0.0</code> will never resolve the peers of <code>b@1.0.0</code>, so it becomes
+dependent from the peers of <code>b@1.0.0</code> as well.</p>
+<p>Here's how that structure will look in <code>node_modules</code>. In this example,
+<code>a@1.0.0</code> will need to appear twice in the project's <code>node_modules</code> - resolved
+once with <code>c@1.0.0</code> and again with <code>c@1.1.0</code>.</p>
+<pre><code class="hljs language-text">node_modules
+└── .pnpm
+    ├── a@1.0.0_c@1.0.0
+    │   └── node_modules
+    │       ├── a
+    │       └── b -> ../../b@1.0.0_c@1.0.0/node_modules/b
+    ├── a@1.0.0_c@1.1.0
+    │   └── node_modules
+    │       ├── a
+    │       └── b -> ../../b@1.0.0_c@1.1.0/node_modules/b
+    ├── b@1.0.0_c@1.0.0
+    │   └── node_modules
+    │       ├── b
+    │       └── c -> ../../c@1.0.0/node_modules/c
+    ├── b@1.0.0_c@1.1.0
+    │   └── node_modules
+    │       ├── b
+    │       └── c -> ../../c@1.1.0/node_modules/c
+    ├── c@1.0.0
+    ├── c@1.1.0
+</code></pre>
+<h2 id="cyclic-dependencies">Cyclic dependencies<a class="hash-link" href="#cyclic-dependencies" aria-label="Direct link to Cyclic dependencies">#</a></h2>
+<p>Added in: v12.0.0-rc.5 (pnpm v12 only)</p>
+<p>Packages may depend on each other in a cycle: <code>a</code> depends on <code>b</code>, and <code>b</code> — directly, or through further packages — depends back on <code>a</code>. When a package inside such a cycle has peer dependencies, there is no single point "higher in the graph" to resolve them from, because entering the cycle at <code>a</code> and entering it at <code>b</code> lead to different parents.</p>
+<p>pnpm cuts every cycle at a fixed place. The packages that form a cycle are ordered by their package IDs, and the edges that close it are cut at the same point no matter where the installation walks into it. The cut edge is still a real dependency — it is resolved against an occurrence of its target taken at the project level — but the walk never travels around the cycle, so a package inside a cycle is no longer resolved once per path that reaches it. Peer dependencies of packages inside a cycle still resolve to the nearest match along that order.</p>
+<p>Because the cut no longer depends on the path the installation takes, the lockfile is a function of the dependency graph alone. Repeated installs, reordered <code>packages</code> globs in <code>pnpm-workspace.yaml</code>, and reordered entries in <code>package.json</code> all produce a byte-identical lockfile. Projects with cycle-heavy dependency graphs also end up with a smaller lockfile, since packages inside a cycle no longer get a separate peer variant per path that reaches them.</p>
+<p>Existing lockfiles keep working: <a href="/cli/install#--frozen-lockfile"><code>--frozen-lockfile</code></a> installs consume them unchanged, and installs that skip resolution leave them untouched. The first install that re-resolves — after a dependency change, for instance — re-keys the peer variants of cyclic packages once, which shows up as a one-time lockfile diff.</p>
+<p>In pnpm v11, where the cut depends on the order the graph is walked, the same dependencies can produce different lockfiles depending on the order projects and dependencies are listed in.</p></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/options/xAxis",
+ "file": "markdown/go-echarts/go-echarts-en-us-options-xAxis.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 2.87,
+ "markdown_chars": 10574,
+ "raw_html_chars": 3769,
+ "sha256": "146d415db4d1ba82505b833b51d52db85ec1238f35414cf8c905055c4e6383d9",
+ "fetched_at": "2026-10-03T08:59:28+00:00"
+}

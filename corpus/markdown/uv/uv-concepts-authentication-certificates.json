@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/authentication/certificates/",
+ "file": "markdown/uv/uv-concepts-authentication-certificates.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.51,
+ "markdown_chars": 9511,
+ "raw_html_chars": 69413,
+ "sha256": "f2f8361388bdb745b1987904acfb97e19b0293cb1332b6eb123c61957afd1e21",
+ "fetched_at": "2026-10-03T08:57:19+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr",
+ "file": "markdown/pnpm/pnpr.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.77,
+ "markdown_chars": 3353,
+ "raw_html_chars": 9271,
+ "sha256": "fe962a97e303ecdfa4009a1371bd20d95a2082e404120b319807e67d056d856d",
+ "fetched_at": "2026-10-03T08:58:52+00:00"
+}

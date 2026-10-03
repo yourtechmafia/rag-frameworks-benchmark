@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/create",
+ "file": "markdown/pnpm/cli-create.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.88,
+ "markdown_chars": 851,
+ "raw_html_chars": 5923,
+ "sha256": "5bdc67ab2f4191c5362fd0e121e9b04ca039d04503d79368fe4777bb0df4287c",
+ "fetched_at": "2026-10-03T08:57:56+00:00"
+}

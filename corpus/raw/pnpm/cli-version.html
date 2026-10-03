@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm version | pnpm</title>
+    <meta name="description" content="Added in: v11.0.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm version | pnpm" />
+    <meta property="og:description" content="Added in: v11.0.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm version | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.0.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/version" />
+    <meta property="og:url" content="https://pnpm.io/cli/version" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/version" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/version" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/version" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/version" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/version" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/version" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/version" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/version" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/version" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/version" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/version" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/version" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/version" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/version" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm version</h1><p>Added in: v11.0.0</p>
+<p>Bump the package version.</p>
+<pre><code class="hljs language-sh">pnpm version &#x3C;newversion>
+pnpm version &#x3C;major|minor|patch|premajor|preminor|prepatch|prerelease|from-git>
+pnpm version -r [--dry-run]
+</code></pre>
+<p><code>&#x3C;newversion></code> can be any of the bump types above or an explicit semver version (e.g. <code>1.2.3</code>). Workspaces and the <code>workspace:</code> protocol are supported, so cross-references between workspace packages are updated correctly.</p>
+<p>When run inside a git repository, <code>pnpm version</code> creates a git commit and an annotated tag for the bump. The working tree must be clean (see <code>--no-git-checks</code> below) and commits/tags can be disabled with <code>--no-git-tag-version</code>. Git commits and tags are always skipped in recursive mode because multiple packages may be bumped to different versions in a single run.</p>
+<h2 id="usage">Usage<a class="hash-link" href="#usage" aria-label="Direct link to Usage">#</a></h2>
+<pre><code class="hljs language-sh">pnpm version patch
+pnpm version minor
+pnpm version major
+pnpm version 2.0.0
+pnpm version prerelease --preid beta
+</code></pre>
+<h2 id="recursive-releases">Recursive releases<a class="hash-link" href="#recursive-releases" aria-label="Direct link to Recursive releases">#</a></h2>
+<p>Added in: v11.13.0</p>
+<p>Run with <code>-r</code> and <strong>no version argument</strong> to consume the pending change intents recorded by <a href="/cli/change"><code>pnpm change</code></a>:</p>
+<pre><code class="hljs language-sh">pnpm version -r
+</code></pre>
+<p>This assembles a release plan from the <code>.changeset/*.md</code> intent files and applies it: every package named by an intent is bumped, and so is every package that depends on it through a <code>workspace:</code> range. It then writes changelogs and records the consumed intents in <code>.changeset/ledger.yaml</code>.</p>
+<p>Private packages (<code>"private": true</code>) are bumped without checking the registry for their <a href="/versioning#first-releases">first release</a>, and their changelog is always written to the committed <code>CHANGELOG.md</code>, even when <a href="/settings/versioning#versioningchangelogstorage"><code>versioning.changelog.storage</code></a> is <code>registry</code>.</p>
+<p>Preview the plan without touching anything:</p>
+<pre><code class="hljs language-sh">pnpm version -r --dry-run
+</code></pre>
+<p>Narrow it to part of the workspace with <code>--filter</code>. The selection is expanded until it settles, so fixed-group companions and dependents whose ranges the bump invalidates are pulled in automatically.</p>
+<p>The working tree must be clean unless <code>--dry-run</code> or <code>--no-git-checks</code> is passed. See <a href="/versioning">Release management</a> for the full workflow.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--preid-prerelease-id">--preid &#x3C;prerelease-id><a class="hash-link" href="#--preid-prerelease-id" aria-label="Direct link to --preid <prerelease-id>">#</a></h3>
+<p>The "prerelease identifier" to use as a prefix for the prerelease part of a semver.</p>
+<pre><code class="hljs language-sh">pnpm version prerelease --preid beta
+</code></pre>
+<h3 id="--message--m-message">--message, -m &#x3C;message><a class="hash-link" href="#--message--m-message" aria-label="Direct link to --message, -m <message>">#</a></h3>
+<p>Commit message. Any <code>%s</code> in the message is replaced with the new version. Defaults to <code>%s</code>.</p>
+<pre><code class="hljs language-sh">pnpm version patch --message <span class="hljs-string">"chore: release v%s"</span>
+</code></pre>
+<h3 id="--tag-version-prefix-prefix">--tag-version-prefix &#x3C;prefix><a class="hash-link" href="#--tag-version-prefix-prefix" aria-label="Direct link to --tag-version-prefix <prefix>">#</a></h3>
+<p>Prefix used when creating the git tag. Defaults to <code>v</code> (e.g. <code>v1.2.3</code>). Set to an empty string to drop the prefix entirely.</p>
+<h3 id="--no-git-tag-version">--no-git-tag-version<a class="hash-link" href="#--no-git-tag-version" aria-label="Direct link to --no-git-tag-version">#</a></h3>
+<p>Do not create a git commit or tag for the version change.</p>
+<h3 id="--no-commit-hooks">--no-commit-hooks<a class="hash-link" href="#--no-commit-hooks" aria-label="Direct link to --no-commit-hooks">#</a></h3>
+<p>Skip git commit hooks (<code>--no-verify</code>) when committing the version bump.</p>
+<h3 id="--sign-git-tag">--sign-git-tag<a class="hash-link" href="#--sign-git-tag" aria-label="Direct link to --sign-git-tag">#</a></h3>
+<p>Sign the generated git tag with GPG (<code>git tag -s</code>).</p>
+<h3 id="--no-git-checks">--no-git-checks<a class="hash-link" href="#--no-git-checks" aria-label="Direct link to --no-git-checks">#</a></h3>
+<p>Do not check whether the working tree is clean before bumping the version.</p>
+<h3 id="--allow-same-version">--allow-same-version<a class="hash-link" href="#--allow-same-version" aria-label="Direct link to --allow-same-version">#</a></h3>
+<p>Allow setting the version to the current version. This can be useful for CI pipelines.</p>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Apply the version bump to every package in the workspace (optionally narrowed with <code>--filter</code>). Git commit and tag creation are skipped in recursive mode.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>Output the list of bumped packages in JSON format.</p></article></main></div>
+  </body>
+</html>

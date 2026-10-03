@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm init | pnpm</title>
+    <meta name="description" content="Create a package.json file." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm init | pnpm" />
+    <meta property="og:description" content="Create a package.json file." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm init | pnpm" />
+    <meta name="twitter:description" content="Create a package.json file." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/init" />
+    <meta property="og:url" content="https://pnpm.io/cli/init" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/init" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/init" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/init" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/init" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/init" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/init" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/init" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/init" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/init" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/init" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/init" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/init" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/init" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/init" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm init</h1><p>Create a <code>package.json</code> file.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--bare">--bare<a class="hash-link" href="#--bare" aria-label="Direct link to --bare">#</a></h3>
+<p>Added in: v10.25.0</p>
+<p>Creates a <code>package.json</code> with only the required fields.</p>
+<h3 id="--init-type-type">--init-type &#x3C;type><a class="hash-link" href="#--init-type-type" aria-label="Direct link to --init-type <type>">#</a></h3>
+<ul>
+<li>Default: <strong>module</strong></li>
+<li>Type: <strong>commonjs</strong>, <strong>module</strong></li>
+</ul>
+<p>Set the module system for the package.</p>
+<h3 id="--init-package-manager">--init-package-manager<a class="hash-link" href="#--init-package-manager" aria-label="Direct link to --init-package-manager">#</a></h3>
+<p>Pin the project to a pnpm version.</p>
+<p>Since v11, the pin is written as a <a href="/package_json#devenginespackagemanager"><code>devEngines.packageManager</code></a> entry, so the resolved version is captured in <code>pnpm-lock.yaml</code>. Since v11.23.0 it is also written to the legacy <code>packageManager</code> field, as an exact version rather than a <code>^</code> range, because Corepack reads only <code>packageManager</code> and accepts nothing but an exact version.</p>
+<p>Since v11.25.0, the pin can be newer than the pnpm that ran the command, so a project scaffolded by an outdated pnpm no longer inherits that staleness through its own pin (<a href="https://github.com/pnpm/pnpm/issues/7490">#7490</a>). pnpm looks up the version published under the <code>latest</code> tag on the package-manager registries, and pins it <strong>only when it is newer than the running version</strong> — the lookup raises the pin, it never lowers it.</p>
+<p>Two things follow from that. <code>latest</code> is a tag rather than "the newest release", so the pin tracks whichever line the tag points at: with <code>latest</code> on the pnpm 12 line, a pnpm 11.25 running <code>pnpm init</code> pins the newest pnpm 12, while a pnpm 12 newer than the <code>latest</code> tag pins itself (so does anything older than 11.25, which predates the lookup). And when the lookup cannot answer — no network, an unreachable or slow registry, <code>--offline</code>, or a <code>latest</code> that <a href="/settings/dependency-resolution#minimumreleaseage"><code>minimumReleaseAge</code></a> or <a href="/settings/dependency-resolution#trustpolicy"><code>trustPolicy</code></a> rejects — the running version is pinned, as before. The lookup never fails or hangs the command.</p>
+<p>Inside a workspace subpackage this flag has no effect — the pin is only added to the workspace root's <code>package.json</code>, and the subpackage follows it. Pass <code>--no-init-package-manager</code> to scaffold a manifest with no pin at all.</p>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<p>These settings fill in fields of the scaffolded <code>package.json</code>. They may be set in <code>pnpm-workspace.yaml</code>, in the <a href="/cli/config">global configuration file</a>, or through the environment as <code>PNPM_CONFIG_INIT_VERSION</code> and friends.</p>
+<h3 id="initversion">initVersion<a class="hash-link" href="#initversion" aria-label="Direct link to initVersion">#</a></h3>
+<ul>
+<li>Default: <strong>1.0.0</strong></li>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>The <code>version</code> written into the new <code>package.json</code>.</p>
+<h3 id="initlicense">initLicense<a class="hash-link" href="#initlicense" aria-label="Direct link to initLicense">#</a></h3>
+<ul>
+<li>Default: <strong>ISC</strong></li>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>The <code>license</code> written into the new <code>package.json</code>.</p>
+<h3 id="initauthorname-initauthoremail-initauthorurl">initAuthorName, initAuthorEmail, initAuthorUrl<a class="hash-link" href="#initauthorname-initauthoremail-initauthorurl" aria-label="Direct link to initAuthorName, initAuthorEmail, initAuthorUrl">#</a></h3>
+<ul>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>Assembled into the <code>author</code> field, in npm's <code>Name &#x3C;email> (url)</code> form. A field left unset is left out of the string; with none of the three set, no <code>author</code> field is written.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">initLicense:</span> <span class="hljs-string">MIT</span>
+<span class="hljs-attr">initAuthorName:</span> <span class="hljs-string">Zoltan</span> <span class="hljs-string">Kochan</span>
+<span class="hljs-attr">initAuthorUrl:</span> <span class="hljs-string">https://kochan.io</span>
+</code></pre></div></article></main></div>
+  </body>
+</html>

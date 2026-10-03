@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/git",
+ "file": "markdown/pnpm/git.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.23,
+ "markdown_chars": 978,
+ "raw_html_chars": 5901,
+ "sha256": "98fd31f7a3cb4fc28a34bfed571f8aee9b5dd70bcedcb9420cf379c837dde03b",
+ "fetched_at": "2026-10-03T08:58:46+00:00"
+}

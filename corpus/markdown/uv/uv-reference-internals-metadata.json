@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/internals/metadata/",
+ "file": "markdown/uv/uv-reference-internals-metadata.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.94,
+ "markdown_chars": 22775,
+ "raw_html_chars": 134674,
+ "sha256": "52b95d9fe2c9c72d8b011d4cc71ffac0e142e324c64dce129e226ba1e202870d",
+ "fetched_at": "2026-10-03T08:57:41+00:00"
+}

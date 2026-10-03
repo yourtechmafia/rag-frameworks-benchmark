@@ -1,0 +1,1698 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+Preview features | uv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          Skip to content
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            uv
+          
+
+
+
+            
+              Preview features
+            
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Initializing search
+          
+
+
+
+
+
+
+
+
+
+
+
+
+    uv
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    uv
+  
+
+
+
+
+
+
+    uv
+  
+
+
+
+
+
+
+    
+  
+    Introduction
+  
+
+    
+  
+
+
+
+
+
+
+
+    
+  
+    Getting started
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Getting started
+  
+
+          
+
+
+
+
+    
+  
+    Installation
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    First steps
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Features
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Getting help
+  
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+    
+  
+    Guides
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Guides
+  
+
+          
+
+
+
+
+    
+  
+    Installing Python
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Running scripts
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Using tools
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Working on projects
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Publishing packages
+  
+
+    
+  
+
+
+
+
+
+
+
+    
+  
+    Migration
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Migration
+  
+
+          
+
+
+
+
+    
+  
+    From pip to a uv project
+  
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+    
+  
+    Integrations
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Integrations
+  
+
+          
+
+
+
+
+    
+  
+    Docker
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Jupyter
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    marimo
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    GitHub Actions
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    GitLab CI/CD
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Pre-commit
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    PyTorch
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    FastAPI
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Bazel
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Azure Artifacts
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Google Artifact Registry
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    AWS CodeArtifact
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    JFrog Artifactory
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Renovate
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Dependabot
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    AWS Lambda
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Coiled
+  
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+    Concepts
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Concepts
+  
+
+          
+
+
+
+
+
+
+    
+  
+    Projects
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Projects
+  
+
+          
+
+
+
+
+    
+  
+    Structure and files
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Creating projects
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Managing dependencies
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Running commands
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Locking and syncing
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Configuring projects
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Building distributions
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Exporting lockfiles
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Using workspaces
+  
+
+    
+  
+
+
+
+
+
+
+
+
+    
+  
+    Tools
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Python versions
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Configuration files
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Package indexes
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Resolution
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Build backend
+  
+
+    
+  
+
+
+
+
+
+
+
+    
+  
+    Authentication
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Authentication
+  
+
+          
+
+
+
+
+    
+  
+    The auth CLI
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    HTTP credentials
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Git credentials
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    TLS certificates
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Third-party services
+  
+
+    
+  
+
+
+
+
+
+
+
+
+    
+  
+    Caching
+  
+
+    
+  
+
+
+
+
+
+
+    
+  
+    Preview features
+  
+
+    
+  
+
+
+
+
+    
+  
+    Preview features
+  
+
+    
+  
+
+
+
+
+      Table of contents
+    
+
+
+
+
+      
+        Enabling preview features
+      
+    
+
+
+
+
+
+      
+        Using preview features
+      
+    
+
+
+
+
+
+      
+        Available preview features
+      
+    
+
+
+
+
+
+      
+        Disabling preview features
+      
+    
+
+
+
+
+
+
+
+
+
+
+    
+  
+    The pip interface
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    The pip interface
+  
+
+          
+
+
+
+
+    
+  
+    Using environments
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Managing packages
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Inspecting environments
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Declaring dependencies
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Locking environments
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Compatibility with pip
+  
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+    Reference
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Reference
+  
+
+          
+
+
+
+
+    
+  
+    Commands
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Settings
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Environment variables
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Storage
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Installer options
+  
+
+    
+  
+
+
+
+
+
+
+
+    
+  
+    Troubleshooting
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Troubleshooting
+  
+
+          
+
+
+
+
+    
+  
+    Build failures
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Reproducible examples
+  
+
+    
+  
+
+
+
+
+
+
+
+
+    
+  
+    Contributing
+  
+
+    
+  
+
+
+
+
+
+
+
+    
+  
+    Internals
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Internals
+  
+
+          
+
+
+
+
+    
+  
+    Resolver
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Workspace Metadata
+  
+
+    
+  
+
+
+
+
+
+
+
+
+    
+  
+    Benchmarks
+  
+
+    
+  
+
+
+
+
+
+
+
+    
+  
+    Policies
+  
+
+    
+  
+
+
+
+
+
+
+
+
+            
+  
+    Policies
+  
+
+          
+
+
+
+
+    
+  
+    Versioning
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Platform support
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Python support
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    Rust support
+  
+
+    
+  
+
+
+
+
+
+    
+  
+    License
+  
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      Table of contents
+    
+
+
+
+
+      
+        Enabling preview features
+      
+    
+
+
+
+
+
+      
+        Using preview features
+      
+    
+
+
+
+
+
+      
+        Available preview features
+      
+    
+
+
+
+
+
+      
+        Disabling preview features
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Introduction
+  
+
+
+
+
+
+    Concepts
+  
+
+
+
+
+
+Preview features
+uv includes opt-in preview features to provide an opportunity for community feedback and increase
+confidence that changes are a net-benefit before enabling them for everyone.
+Enabling preview features
+To enable all preview features, use the --preview flag:
+$ uv run --preview ...
+
+Or, set the UV_PREVIEW environment variable:
+$ UV_PREVIEW=1 uv run ...
+
+To enable specific preview features, use the --preview-features flag:
+$ uv run --preview-features foo ...
+
+The --preview-features flag can be repeated to enable multiple features:
+$ uv run --preview-features foo --preview-features bar ...
+
+Or, features can be provided in a comma separated list:
+$ uv run --preview-features foo,bar ...
+
+The UV_PREVIEW_FEATURES environment variable can be used similarly, e.g.:
+$ UV_PREVIEW_FEATURES=foo,bar uv run ...
+
+Preview features can also be enabled in uv.toml, or under [tool.uv] in pyproject.toml and PEP
+723 metadata:
+preview-features = ["foo", "bar"]
+
+Set preview-features = true to enable all preview features.
+Some preview features take effect before configuration files are loaded and cannot be enabled from
+configuration.
+For backwards compatibility, enabling preview features that do not exist will warn, but not error,
+regardless of the source.
+Using preview features
+Often, preview features can be used without changing any preview settings if the behavior change is
+gated by some sort of user interaction, For example, while pylock.toml support is in preview, you
+can use uv pip install with a pylock.toml file without additional configuration because
+specifying the pylock.toml file indicates you want to use the feature. However, a warning will be
+displayed that the feature is in preview. The preview feature can be enabled to silence the warning.
+Available preview features
+The following preview features are available:
+
+add-bounds: Allows configuring the default bounds for uv add invocations.
+adjust-ulimit: On Unix, raises the process's soft open-file limit at startup, up to the hard limit.
+artifact-hash-filtering: Restricts generated requirement hashes to artifacts allowed by binary and build policies.
+audit-command: Allows using uv audit and uv tool audit.
+auth-helper: Allows using uv auth helper as a credential helper for external tools.
+azure-endpoint: Allows signing requests to Azure Blob Storage endpoints with Azure credentials.
+batch-export: Allows using uv export --batch.
+build-dependency-check: Checks build dependencies before nonisolated builds with uv build.
+build-lazy-imports: Enables lazy imports in build backend invocations on CPython 3.15 and later.
+  This can affect import-time side effects in third-party build backends.
+cache-physical-space: Reports the physical disk space reclaimed by cache cleanup, accounting for hardlinks and copy-on-write clones.
+cache-size: Allows using uv cache size.
+centralized-project-envs: Stores project virtual environments
+  in the uv cache.
+check-command: Allows using uv check.
+content-addressed-cache: Enables content-addressed wheel archives in the cache.
+detect-module-conflicts: Warns when multiple packages would install conflicting Python modules into the same
+  environment.
+extra-build-dependencies: Allows specifying additional dependencies for package builds.
+format-command: Allows using uv format.
+gcs-endpoint: Allows signing requests to configured Google Cloud Storage endpoints.
+index-by-name: Allows selecting configured package indexes by name with --index and --default-index.
+index-exclude-newer: Allows setting exclude-newer on configured package indexes.
+index-hash-algorithm: Allows requiring a hash algorithm for configured package indexes.
+init-project-flag: Rejects the deprecated --project option in uv init.
+json-output: Allows --output-format json for various uv commands.
+lock-without-metadata: Omit package.metadata from uv.lock, except for remote URL dependencies.
+lockfile-format-check: Rejects non-canonical lockfile formatting when using --locked or --check.
+lockfile-normalization: Combines equivalent dependency declarations when writing lockfiles.
+malware-check: Allows uv sync and other commands to check for malware using OSV before
+  installing packages.
+metadata-json: Includes JSON metadata files in built wheels.
+minimum-libc-version: Allows setting minimum libc versions for universal resolutions.
+missing-exclude-newer-package-lock: Exclude exclude-newer-package entries from the lockfile when not included in the
+  project's resolved dependencies.
+native-auth: Enables storage of credentials in a system-native location.
+no-distutils-patch: Stops installing the _virtualenv.py / _virtualenv.pth distutils configuration monkeypatch
+  in virtual environments for Python 3.10 and later.
+package-conflicts: Allows defining workspace conflicts at the package level.
+packaged-init: Makes uv init create a packaged application with a src/ layout, build system, and script
+  entry point by default.
+project-directory-must-exist: Rejects an invalid --project path instead of warning and continuing. Except for uv init,
+  the path must already exist as a directory or point to a pyproject.toml file. This feature
+  takes effect before configuration is loaded.
+publish-require-normalized: Requires normalized distribution filenames when publishing, skipping files whose names are
+  not normalized.
+pylock: Allows installing from pylock.toml files.
+python-install-default: Allows installing python and python3 executables.
+relocatable-envs-default: Creates relocatable virtual environments by default.
+resolution-inputs: Omits redundant runtime constraints and records consultations to omit unused overrides, exclusions,
+  dependency metadata, and package-specific upload cutoffs from the lockfile.
+s3-endpoint: Allows signing requests to configured S3-compatible endpoints.
+sbom-export: Allows using uv export --format=cyclonedx1.5.
+special-conda-env-names: Stops treating Conda environments named base or root as special.
+tar-codec: Uses the new tar-codec encoding/decoding backend, instead of astral-tokio-tar.
+target-workspace-discovery: Uses the directory containing a local uv run target, rather than the current working
+  directory, as the starting point for project and workspace discovery. This feature takes
+  effect before configuration is loaded.
+toml-backwards-compatibility: Rewrites pyproject.toml as TOML 1.0 when building source distributions, preserving the
+  original as pyproject.toml.orig to ensure compatibility with older build tools.
+tool-install-locks: Stores a uv.lock alongside each installed tool and reuses it for reproducible installations,
+  upgrades, and audits.
+venv-safe-clear: Prevents uv venv --clear from clearing a directory that does not contain a pyvenv.cfg file
+  unless --force is provided.
+workspace-dir: Allows using uv workspace dir.
+workspace-list: Allows using uv workspace list.
+workspace-list-scripts: Allows using uv workspace list --scripts.
+workspace-metadata: Allows using uv workspace metadata.
+
+Disabling preview features
+The --no-preview option can be used to disable preview features.
+
+
+
+
+
+July 24, 2026
+
+
+
+
+
+
+
+
+
+  Back to top
+
+
+
+
+
+
+
+
+
+
+                Previous
+              
+
+                Caching
+              
+
+
+
+
+
+                Next
+              
+
+                The pip interface
+              
+
+
+
+
+
+
+
+
+
+  
+  
+    Made with
+    
+      Material for MkDocs
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/package-managers",
+ "file": "markdown/pnpm/package-managers.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.92,
+ "markdown_chars": 7975,
+ "raw_html_chars": 15592,
+ "sha256": "d4c61fda30ecb8a79c2400b990a33fcf33be873c721d739d0fd8b7427d003f0c",
+ "fetched_at": "2026-10-03T08:58:50+00:00"
+}

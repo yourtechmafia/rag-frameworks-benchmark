@@ -1,0 +1,13 @@
+{
+ "site": "docsify",
+ "url": "https://docsify.js.org/#/pwa",
+ "file": "markdown/docsify/pwa.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 1.97,
+ "markdown_chars": 5620,
+ "raw_html_chars": 7894,
+ "sha256": "bebaa14cd4cdd49da3ae378ea3e4a852de103e7752fece0568e3cda012f05ce7",
+ "fetched_at": "2026-10-03T09:00:02+00:00"
+}

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLI &amp; Node.js Settings | pnpm</title>
+    <meta name="description" content="Controls colors in the output." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="CLI &amp; Node.js Settings | pnpm" />
+    <meta property="og:description" content="Controls colors in the output." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="CLI &amp; Node.js Settings | pnpm" />
+    <meta name="twitter:description" content="Controls colors in the output." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/cli" />
+    <meta property="og:url" content="https://pnpm.io/settings/cli" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/cli" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/cli" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/cli" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/cli" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/cli" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/cli" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/cli" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/cli" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/cli" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/cli" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/cli" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/cli" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/cli" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/cli" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>CLI &amp; Node.js Settings</h1><h2 id="cli-settings">CLI Settings<a class="hash-link" href="#cli-settings" aria-label="Direct link to CLI Settings">#</a></h2>
+<h3 id="no-color">[no-]color<a class="hash-link" href="#no-color" aria-label="Direct link to [no-]color">#</a></h3>
+<ul>
+<li>Default: <strong>auto</strong></li>
+<li>Type: <strong>auto</strong>, <strong>always</strong>, <strong>never</strong></li>
+</ul>
+<p>Controls colors in the output.</p>
+<ul>
+<li><strong>auto</strong> - output uses colors when the standard output is a terminal or TTY.</li>
+<li><strong>always</strong> - ignore the difference between terminals and pipes. You’ll rarely
+want this; in most scenarios, if you want color codes in your redirected
+output, you can instead pass a <code>--color</code> flag to the pnpm command to force it
+to use color codes. The default setting is almost always what you’ll want.</li>
+<li><strong>never</strong> - turns off colors. This is the setting used by <code>--no-color</code>.</li>
+</ul>
+<h3 id="progress">progress<a class="hash-link" href="#progress" aria-label="Direct link to progress">#</a></h3>
+<p>Added in: v12.6.0</p>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Controls whether dependency and download progress lines are printed during installation. When set to <code>false</code> (or <code>--no-progress</code> is passed), progress output is suppressed. Warnings, lifecycle script output, and the dependency summary are still printed.</p>
+<h3 id="loglevel">loglevel<a class="hash-link" href="#loglevel" aria-label="Direct link to loglevel">#</a></h3>
+<ul>
+<li>Default: <strong>info</strong></li>
+<li>Type: <strong>debug</strong>, <strong>info</strong>, <strong>warn</strong>, <strong>error</strong></li>
+</ul>
+<p>Any logs at or higher than the given level will be shown.
+You can instead pass <code>--silent</code> to turn off all output logs.</p>
+<h3 id="reporter">reporter<a class="hash-link" href="#reporter" aria-label="Direct link to reporter">#</a></h3>
+<p>Selects the log reporter. See <a href="/cli/install#--reportername"><code>--reporter</code></a>
+for the available reporters and terminal-dependent defaults.</p>
+<h3 id="usebetacli">useBetaCli<a class="hash-link" href="#usebetacli" aria-label="Direct link to useBetaCli">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Experimental option that enables beta features of the CLI. This means that you
+may get some changes to the CLI functionality that are breaking changes, or
+potentially bugs.</p>
+<h3 id="recursiveinstall">recursiveInstall<a class="hash-link" href="#recursiveinstall" aria-label="Direct link to recursiveInstall">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If this is enabled, the primary behaviour of <code>pnpm install</code> becomes that of
+<code>pnpm install -r</code>, meaning the install is performed on all workspace or
+subdirectory packages.</p>
+<p>Else, <code>pnpm install</code> will exclusively build the package in the current
+directory.</p>
+<h3 id="enginestrict">engineStrict<a class="hash-link" href="#enginestrict" aria-label="Direct link to engineStrict">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If this is enabled, pnpm will not install any package that claims to not be
+compatible with the current Node version.</p>
+<p>Regardless of this configuration, installation will always fail if a project
+(not a dependency) specifies an incompatible version in its <code>engines</code> field.</p>
+<p>Optional dependencies are exempt, because a package that pnpm may skip is not
+required to be compatible. Since v12.0.0 the exemption follows the edge rather
+than the subtree: an incompatible package reached through a regular
+<code>dependencies</code> edge of a package that is being installed fails the install, even
+when the subtree it sits in hangs off an <code>optionalDependencies</code> entry. pnpm 11
+installs it and prints an install-check warning instead. A package reachable
+only through optional edges, or through a package that was itself skipped, is
+still skipped in both versions (<a href="https://github.com/pnpm/pnpm/issues/13286">#13286</a>).</p>
+<h3 id="npmpath">npmPath<a class="hash-link" href="#npmpath" aria-label="Direct link to npmPath">#</a></h3>
+<ul>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>The location of the npm binary that pnpm uses for some actions, like publishing.</p>
+<h3 id="pmonfail">pmOnFail<a class="hash-link" href="#pmonfail" aria-label="Direct link to pmOnFail">#</a></h3>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>download</strong></li>
+<li>Type: <strong>download</strong>, <strong>error</strong>, <strong>warn</strong>, <strong>ignore</strong></li>
+</ul>
+<p>Overrides the <code>onFail</code> behavior of both the <code>packageManager</code> field and <code>devEngines.packageManager</code> when the running pnpm version does not match the declared one.</p>
+<ul>
+<li><code>download</code> — download and run the declared pnpm version (this is the default and matches the previous <code>managePackageManagerVersions: true</code> behavior).</li>
+<li><code>error</code> — fail the command (equivalent to the previous <code>packageManagerStrictVersion: true</code>).</li>
+<li><code>warn</code> — print a warning but continue (equivalent to the previous <code>packageManagerStrict: false</code> or <code>COREPACK_ENABLE_STRICT=0</code>).</li>
+<li><code>ignore</code> — skip the check entirely (equivalent to the previous <code>managePackageManagerVersions: false</code>). Useful when version management is handled by an external tool such as asdf, mise, or Volta.</li>
+</ul>
+<p>Can be set via CLI flag, environment variable, or <code>pnpm-workspace.yaml</code>:</p>
+<pre><code class="hljs language-sh">pnpm install --pm-on-fail=ignore
+pnpm_config_pm_on_fail=ignore pnpm install
+</code></pre>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">pmOnFail:</span> <span class="hljs-string">ignore</span>
+</code></pre></div>
+<p>This setting replaces the removed <code>managePackageManagerVersions</code>, <code>packageManagerStrict</code>, and <code>packageManagerStrictVersion</code> settings, as well as the <code>COREPACK_ENABLE_STRICT</code> environment variable.</p>
+<p>Migration:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Removed setting</th><th>Replace with</th></tr></thead><tbody><tr><td><code>managePackageManagerVersions: true</code></td><td><code>pmOnFail: download</code> (default)</td></tr><tr><td><code>managePackageManagerVersions: false</code></td><td><code>pmOnFail: ignore</code></td></tr><tr><td><code>packageManagerStrict: false</code></td><td><code>pmOnFail: warn</code></td></tr><tr><td><code>packageManagerStrictVersion: true</code></td><td><code>pmOnFail: error</code></td></tr><tr><td><code>COREPACK_ENABLE_STRICT=0</code></td><td><code>pmOnFail: warn</code></td></tr></tbody></table></div>
+<p>See also <a href="/cli/with"><code>pnpm with</code></a> for running pnpm at a specific version without changing this setting.</p>
+<h3 id="ignoreworkspacerootcheck">ignoreWorkspaceRootCheck<a class="hash-link" href="#ignoreworkspacerootcheck" aria-label="Direct link to ignoreWorkspaceRootCheck">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If this is enabled, running <code>pnpm install</code>/<code>pnpm add</code> from the project's root
+folder will no longer error when <code>-w</code>/<code>--ignore-workspace-root-check</code> is not
+provided.</p>
+<h2 id="nodejs-settings">Node.js Settings<a class="hash-link" href="#nodejs-settings" aria-label="Direct link to Node.js Settings">#</a></h2>
+<h3 id="nodeversion">nodeVersion<a class="hash-link" href="#nodeversion" aria-label="Direct link to nodeVersion">#</a></h3>
+<ul>
+<li>Default: the value returned by <strong>node -v</strong>, without the v prefix</li>
+<li>Type: <strong>exact semver version (not a range)</strong></li>
+</ul>
+<p>The Node.js version to use when checking a package's <code>engines</code> setting.</p>
+<p>If you want to prevent contributors of your project from adding new incompatible dependencies, use <code>nodeVersion</code> and <code>engineStrict</code> in a <code>pnpm-workspace.yaml</code> file at the root of the project:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">nodeVersion:</span> <span class="hljs-number">12.22</span><span class="hljs-number">.0</span>
+<span class="hljs-attr">engineStrict:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>This way, even if someone is using Node.js v22, they will not be able to install a new dependency that doesn't support Node.js v12.22.0.</p>
+<h3 id="runtimeonfail">runtimeOnFail<a class="hash-link" href="#runtimeonfail" aria-label="Direct link to runtimeOnFail">#</a></h3>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>download</strong>, <strong>error</strong>, <strong>warn</strong>, <strong>ignore</strong></li>
+</ul>
+<p>Overrides the <code>onFail</code> field of <a href="/package_json#devenginesruntime"><code>devEngines.runtime</code></a> (and <code>engines.runtime</code>) in the root project's <code>package.json</code>. This is useful when you want a different local behavior than what is written in the manifest — for instance, forcing pnpm to download the declared runtime even when the manifest sets <code>onFail: "warn"</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">runtimeOnFail:</span> <span class="hljs-string">download</span>
+</code></pre></div>
+<p>Since v12.5.0, this setting also controls Python interpreter downloads when no installed interpreter satisfies a project. The unset default permits Python downloads. <code>warn</code> and <code>ignore</code> use an available interpreter even when it does not satisfy <code>requires-python</code>; <code>error</code> refuses the install.</p>
+<h3 id="tools">tools<a class="hash-link" href="#tools" aria-label="Direct link to tools">#</a></h3>
+<p>Added in: v12.5.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>Object</strong></li>
+</ul>
+<p>Configure download sources for the programs pnpm installs. Set <code>tools</code> in the <a href="/cli/config">global configuration file</a> or as JSON in <code>PNPM_CONFIG_TOOLS</code>. Tool mirrors in <code>pnpm-workspace.yaml</code> are ignored.</p>
+<div class="code-block"><div class="code-block-title">config.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tools:</span>
+  <span class="hljs-attr">node:</span>
+    <span class="hljs-attr">mirror:</span> <span class="hljs-string">https://mirror.example.com/node/download</span>
+    <span class="hljs-attr">channels:</span>
+      <span class="hljs-attr">nightly:</span> <span class="hljs-string">https://nightly.example.com/</span>
+  <span class="hljs-attr">bun:</span>
+    <span class="hljs-attr">mirror:</span> <span class="hljs-string">https://mirror.example.com/bun</span>
+  <span class="hljs-attr">python:</span>
+    <span class="hljs-attr">mirror:</span> <span class="hljs-string">https://mirror.example.com/python-build-standalone/releases</span>
+</code></pre></div>
+<p><code>mirror</code> supplies the base URL for the tool's own download layout. Only <code>node</code>, <code>bun</code>, and <code>python</code> are accepted. Only Node.js supports <code>channels</code>: a channel entry overrides the mirror for that release channel, and other channels use <code>mirror</code>.</p>
+<p><code>pnpm pack-app</code> downloads its embedded Node.js through <code>tools.node</code>. The legacy <code>node-mirror:&#x3C;channel></code> setting continues to work as a channel mirror.</p>
+<h3 id="nodedownloadmirrors">nodeDownloadMirrors<a class="hash-link" href="#nodedownloadmirrors" aria-label="Direct link to nodeDownloadMirrors">#</a></h3>
+<p>For pnpm v12.5.0, prefer <a href="#tools"><code>tools.node</code></a> for machine-level mirrors. <code>nodeDownloadMirrors</code> remains supported for compatibility; <code>pnpm pack-app</code> uses only <code>tools.node</code>.</p>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>Record&#x3C;string, string></strong></li>
+</ul>
+<p>Configure custom Node.js download mirrors in <code>pnpm-workspace.yaml</code>. The keys are release channels (<code>release</code>, <code>rc</code>, <code>nightly</code>, <code>v8-canary</code>, etc.) and the values are base URLs.</p>
+<p>Here is how pnpm may be configured to download Node.js from a mirror in China:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">nodeDownloadMirrors:</span>
+  <span class="hljs-attr">release:</span> <span class="hljs-string">https://npmmirror.com/mirrors/node/</span>
+  <span class="hljs-attr">rc:</span> <span class="hljs-string">https://npmmirror.com/mirrors/node-rc/</span>
+  <span class="hljs-attr">nightly:</span> <span class="hljs-string">https://npmmirror.com/mirrors/node-nightly/</span>
+</code></pre>
+<p>Since v12.4.0, a mirror is machine-level configuration as well: set it in the
+<a href="/cli/config">global configuration file</a> with
+<code>pnpm config set --global node-download-mirrors</code>, or in the environment as
+<code>PNPM_CONFIG_NODE_DOWNLOAD_MIRRORS</code>, so every project on the machine downloads
+Node.js from it.</p>
+<p>Since v12.2.0, downloads from a mirror carry the npm registry credentials
+configured for that URL, including bearer tokens, basic auth, and <code>tokenHelper</code>,
+so a mirror behind an authenticating proxy works without a separate credential.</p></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Packages | pnpm</title>
+    <meta name="description" content="Global packages are CLI tools and utilities installed system-wide with pnpm add -g. In pnpm v11, global package management was redesigned for better isolation and reliability." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Global Packages | pnpm" />
+    <meta property="og:description" content="Global packages are CLI tools and utilities installed system-wide with pnpm add -g. In pnpm v11, global package management was redesigned for better isolation and reliability." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Global Packages | pnpm" />
+    <meta name="twitter:description" content="Global packages are CLI tools and utilities installed system-wide with pnpm add -g. In pnpm v11, global package management was redesigned for better isolation and reliability." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/global-packages" />
+    <meta property="og:url" content="https://pnpm.io/global-packages" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/global-packages" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/global-packages" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/global-packages" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/global-packages" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/global-packages" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/global-packages" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/global-packages" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/global-packages" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/global-packages" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/global-packages" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/global-packages" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/global-packages" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/global-packages" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/global-packages" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Global Packages</h1><p>Global packages are CLI tools and utilities installed system-wide with <code>pnpm add -g</code>. In pnpm v11, global package management was redesigned for better isolation and reliability.</p>
+<h2 id="installing-global-packages">Installing global packages<a class="hash-link" href="#installing-global-packages" aria-label="Direct link to Installing global packages">#</a></h2>
+<pre><code class="hljs language-sh">pnpm add -g &#x3C;pkg>
+</code></pre>
+<p>For example:</p>
+<pre><code class="hljs language-sh">pnpm add -g typescript prettier eslint
+</code></pre>
+<div class="admonition admonition-caution"><p class="admonition-title">Caution</p>
+<p>Do not run these commands through <code>sudo</code>. pnpm keeps global packages and configuration in the invoking user's home directory. Commands that modify the global installation fail under <code>sudo</code> with <code>ERR_PNPM_SUDO_NOT_SUPPORTED</code>; read-only commands such as <code>pnpm bin -g</code> are unaffected.</p>
+</div>
+<h2 id="isolated-installations">Isolated installations<a class="hash-link" href="#isolated-installations" aria-label="Direct link to Isolated installations">#</a></h2>
+<p>Each globally installed package (or group of packages installed together) gets its own isolated installation directory with its own <code>package.json</code>, <code>node_modules/</code>, and lockfile. This prevents global packages from interfering with each other through peer dependency conflicts, hoisting changes, or version resolution shifts.</p>
+<p>Isolated installations are stored at <code>{pnpmHomeDir}/global/v11/{hash}/</code>, where the hash is derived from the set of packages installed together.</p>
+<p>For example, running the following two commands:</p>
+<pre><code class="hljs language-sh">pnpm add -g typescript
+pnpm add -g prettier
+</code></pre>
+<p>creates two separate isolated installations — <code>typescript</code> and <code>prettier</code> each get their own <code>node_modules</code> tree and cannot affect each other's dependency resolution.</p>
+<p>Installing multiple <strong>space-separated</strong> packages in a single command also creates a separate isolated install for each one:</p>
+<pre><code class="hljs language-sh">pnpm add -g eslint prettier
+</code></pre>
+<p><code>eslint</code> and <code>prettier</code> each get their own <code>node_modules</code> tree and lockfile and can be removed independently — <code>pnpm remove -g eslint</code> leaves <code>prettier</code> untouched.</p>
+<p>To bundle multiple packages into the <em>same</em> isolated install — so they share a <code>node_modules</code> tree and lockfile, resolve peer dependencies against each other, and are removed together — pass them as a <strong>comma-separated</strong> list:</p>
+<pre><code class="hljs language-sh">pnpm add -g eslint,prettier
+</code></pre>
+<p>Here <code>eslint</code> and <code>prettier</code> form a single install group. Removing either with <code>pnpm remove -g</code> removes the whole group.</p>
+<p>The two forms can be mixed. For example:</p>
+<pre><code class="hljs language-sh">pnpm add -g eslint,prettier typescript
+</code></pre>
+<p>bundles <code>eslint</code> and <code>prettier</code> into one isolated install while installing <code>typescript</code> on its own.</p>
+<h2 id="directory-layout">Directory layout<a class="hash-link" href="#directory-layout" aria-label="Direct link to Directory layout">#</a></h2>
+<p>The contents of <code>{pnpmHomeDir}/global/v11/</code> look like:</p>
+<pre><code class="hljs language-text">{pnpmHomeDir}/global/v11/
+├── {hash-A}              → symlink → ./{hash-A-target}/
+├── {hash-A-target}/      ← isolated install dir
+│   ├── package.json      ← lists the packages installed together
+│   ├── pnpm-lock.yaml    ← lockfile for this install group
+│   └── node_modules/
+│       ├── &#x3C;pkg>/        ← top-level dep, symlinked into the global virtual store
+│       └── .pnpm/
+├── {hash-B}              → symlink → ./{hash-B-target}/
+├── {hash-B-target}/      ← another isolated install dir
+└── store/                ← shared global virtual store
+    └── ...
+</code></pre>
+<ul>
+<li>The <code>{hash}</code> entries are symlinks; pnpm scans for them to enumerate active installs.</li>
+<li>The targets are real directories that act as ordinary pnpm projects — each has its own <code>package.json</code> and lockfile.</li>
+<li>The shared <code>store/</code> directory holds the <a href="/global-virtual-store">global virtual store</a>. Each install group's direct dependencies — the entries at the root of its <code>node_modules/</code> — are symlinks into that store, so the actual package contents are shared rather than copied per group.</li>
+<li>Bin shims live in <code>{pnpmHomeDir}/bin/</code> and point through the appropriate install group's <code>node_modules</code>.</li>
+</ul>
+<p>When a package is removed or its install group is replaced, the hash symlink is updated and orphaned target directories are eventually cleaned up by <code>pnpm store prune</code>.</p>
+<h2 id="listing-global-packages">Listing global packages<a class="hash-link" href="#listing-global-packages" aria-label="Direct link to Listing global packages">#</a></h2>
+<pre><code class="hljs language-sh">pnpm list -g
+pnpm list -g --json        <span class="hljs-comment"># machine-readable</span>
+pnpm list -g --parseable   <span class="hljs-comment"># paths only</span>
+</code></pre>
+<p>Because each install group has its own lockfile, listing across multiple groups can only reliably aggregate the top-level packages they were installed with — transitive dependency trees from different groups can't be coherently merged. As a result:</p>
+<ul>
+<li><code>pnpm list -g</code> (default <code>--depth=0</code>) always works and shows every globally installed package.</li>
+<li><code>pnpm list -g --depth=&#x3C;n></code> (with <code>n > 0</code>) shows the full dependency tree only when:
+<ul>
+<li>there is just one global install group, or</li>
+<li>a positional argument narrows the request to a single install group, e.g. <code>pnpm list -g eslint --depth=1</code>.</li>
+</ul>
+</li>
+</ul>
+<p>If <code>--depth>0</code> is requested but the request can't be narrowed to a single install group, pnpm errors with <code>ERR_PNPM_GLOBAL_LS_DEPTH_NOT_SUPPORTED</code>.</p>
+<h2 id="managing-global-packages">Managing global packages<a class="hash-link" href="#managing-global-packages" aria-label="Direct link to Managing global packages">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>pnpm add -g &#x3C;pkg></code></td><td>Install a package globally</td></tr><tr><td><code>pnpm remove -g &#x3C;pkg></code></td><td>Remove a globally installed package (if it was bundled into an install group, the whole group is removed)</td></tr><tr><td><code>pnpm update -g [pkg]</code></td><td>Update global packages (re-installs a package into a new isolated directory when its resolved dependency graph changed)</td></tr><tr><td><code>pnpm list -g</code></td><td>List all globally installed packages</td></tr></tbody></table></div>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p><code>pnpm install -g</code> (without arguments) is not supported. Use <code>pnpm add -g &#x3C;pkg></code> to install specific packages.</p>
+</div>
+<h2 id="binaries-location">Binaries location<a class="hash-link" href="#binaries-location" aria-label="Direct link to Binaries location">#</a></h2>
+<p>Globally installed binaries are stored in a <code>bin</code> subdirectory of <code>PNPM_HOME</code> (i.e., <code>$PNPM_HOME/bin/</code>). This keeps the <code>PNPM_HOME</code> directory clean — internal directories like <code>global/</code> and <code>store/</code> don't pollute shell autocompletion when <code>PNPM_HOME</code> is on PATH.</p>
+<p>After upgrading to pnpm v11, run <a href="/cli/setup"><code>pnpm setup</code></a> to update your shell configuration so that <code>$PNPM_HOME/bin</code> is on your PATH.</p>
+<p>You can check the current global bin directory with:</p>
+<pre><code class="hljs language-sh">pnpm bin -g
+</code></pre>
+<h2 id="project-aware-global-bins">Project-aware global bins<a class="hash-link" href="#project-aware-global-bins" aria-label="Direct link to Project-aware global bins">#</a></h2>
+<p>Added in: v12.0.0-rc.2 (pnpm v12 only)</p>
+<p>Global commands can follow the project you are standing in. When you run a global command from inside a project that asks for a different version of the same tool, pnpm runs the version the project asks for.</p>
+<p>The most useful case is Node.js itself. Given a project that pins its runtime:</p>
+<div class="code-block"><div class="code-block-title">package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"devEngines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"node"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^22.0.0"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"onFail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"download"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>a bare <code>node</code> inside that directory runs Node.js 22, even if your global Node.js is a different major:</p>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">cd</span> ~/projects/legacy-app
+node --version   <span class="hljs-comment"># v22.x.x — the version the project pins</span>
+<span class="hljs-built_in">cd</span> ~
+node --version   <span class="hljs-comment"># your globally installed version</span>
+</code></pre>
+<p>No shell hooks, <code>.bashrc</code> edits, or <code>use</code>-style commands are involved — the shims pnpm writes into the global bin directory do the dispatch themselves.</p>
+<h3 id="how-a-version-is-chosen">How a version is chosen<a class="hash-link" href="#how-a-version-is-chosen" aria-label="Direct link to How a version is chosen">#</a></h3>
+<p>pnpm walks up from the current working directory to the nearest project that provides the command, then:</p>
+<ul>
+<li>For the <strong>runtimes</strong> (<code>node</code>, <code>deno</code>, <code>bun</code>), only a runtime pin counts — <a href="/package_json#devenginesruntime"><code>devEngines.runtime</code></a>, then <code>engines.runtime</code>. For <code>node</code>, since v12.7.0, a <code>.node-version</code> or <code>.nvmrc</code> file also counts (see <a href="#nvmrc-and-node-version">below</a>). The pinned version is downloaded into the <a href="/global-virtual-store">global virtual store</a> on demand and executed directly. The project's <code>node_modules/.bin</code> is never consulted for a runtime, so a dependency cannot supply the <code>node</code> you run.</li>
+<li>For the <strong><a href="/package-managers">package managers</a></strong> (<code>npm</code>, <code>yarn</code>, <code>bun</code>), added in v12.0.0-rc.6, the project's <code>packageManager</code> or <a href="/package_json#devenginespackagemanager"><code>devEngines.packageManager</code></a> pin counts, and pnpm provisions that version on demand. The pin outranks a copy of that package manager installed globally, because it is the project's own statement of what installs it.</li>
+<li>For <strong>any other package</strong>, the project's <code>node_modules/.bin/&#x3C;name></code> is used.</li>
+</ul>
+<p>Directories inside the pnpm home are skipped, since global installs are not projects.</p>
+<p>If the project provides nothing, or the lookup is declined, the globally installed version runs — commands never fail merely because dispatch did not apply.</p>
+<h3 id="nvmrc-and-node-version"><code>.nvmrc</code> and <code>.node-version</code><a class="hash-link" href="#nvmrc-and-node-version" aria-label="Direct link to .nvmrc and .node-version">#</a></h3>
+<p>Added in: v12.7.0</p>
+<p>The <code>node</code> shim also reads the Node.js version from a <code>.node-version</code> or <code>.nvmrc</code>
+file, so projects set up for nvm, fnm, or n work without a <code>devEngines.runtime</code>
+entry:</p>
+<div class="code-block"><div class="code-block-title">.nvmrc</div><pre><code class="hljs language-text">22
+</code></pre></div>
+<p>The nearest directory that declares a Node.js runtime in any of these ways
+decides the version. Within one directory, <code>package.json</code> takes precedence
+over <code>.node-version</code>, which takes precedence over <code>.nvmrc</code>.</p>
+<p>Both files accept a version or range, optionally prefixed with <code>v</code>, as well as
+<code>node</code>, <code>stable</code>, <code>lts/*</code>, and LTS codenames such as <code>lts/jod</code>. Comments are
+ignored. A value that only nvm can act on, such as <code>system</code>, <code>default</code>, or a
+custom alias, is ignored, and the directory counts as unpinned.</p>
+<h3 id="trust">Trust<a class="hash-link" href="#trust" aria-label="Direct link to Trust">#</a></h3>
+<p>A project you <code>cd</code> into is not automatically allowed to run its own binaries in place of your global ones.</p>
+<p>This section describes the default <code>auto</code> policy. Under <code>auto</code>:</p>
+<ul>
+<li>
+<p>A <strong>stable Node.js release</strong> is verified against the Node.js release team's signatures before it runs, so it switches without asking. (On musl-based systems the matching builds are unsigned, so they fall under the prompt instead.)</p>
+</li>
+<li>
+<p><strong>Everything else</strong> — Deno, Bun, Node.js prereleases, and any ordinary package you enable — asks once, per project and per candidate:</p>
+<pre><code class="hljs language-text">The project at "/home/user/projects/app" provides its own "tsc", which will be used
+instead of the globally installed one.
+Do you trust this project? [y/N]
+</code></pre>
+</li>
+</ul>
+<p>Answers are remembered in a machine-local registry, keyed to the project directory <em>and</em> to a fingerprint of the exact binary. If the binary or the providing package changes, pnpm asks again rather than reusing the old approval.</p>
+<p>In CI and any non-interactive session, the question cannot be asked, so the global version runs and nothing is recorded.</p>
+<p>The other two <a href="/settings/other#globalshims">policies</a> change which candidates reach that question. <code>prompt</code> sends every candidate through it, including a signature-verified stable Node.js release; answers are still remembered, so it asks once per project and candidate rather than on every run. <code>always</code> skips the question entirely and switches straight away — which is also what makes it usable in CI, where a prompt would otherwise fall back to the global version.</p>
+<p>There is one more guard that applies regardless of policy: the project's command must come from the <strong>same package</strong> as the global one. A project that ships a lookalike <code>tsc</code> from some other package does not match, and your global <code>tsc</code> runs.</p>
+<h3 id="which-packages-participate">Which packages participate<a class="hash-link" href="#which-packages-participate" aria-label="Direct link to Which packages participate">#</a></h3>
+<p>Only the runtimes participate by default. Since v12.0.0-rc.6, installing a package manager globally (<code>pnpm add -g yarn</code>) also adds an entry for it, so it follows a project's pin the way a globally installed Node.js already follows <code>devEngines.runtime</code>. An entry you set yourself, including <code>false</code>, is left as you set it.</p>
+<p>Enable others with <a href="/settings/other#globalshims"><code>globalShims</code></a>, keyed by the providing package's name:</p>
+<div class="code-block"><div class="code-block-title">~/.config/pnpm/config.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">globalShims:</span>
+  <span class="hljs-attr">typescript:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>Because pnpm decides at install time which bins to give dispatching shims, a package that is already installed globally needs to be reinstalled after you enable it:</p>
+<pre><code class="hljs language-sh">pnpm add -g typescript
+</code></pre>
+<p>Turning a package <em>off</em> needs no reinstall — the setting is re-read on every dispatch. The same setting disables dispatch per package, or entirely with <code>globalShims: false</code>. For a single command, set <code>PNPM_SHIM_BYPASS=1</code>:</p>
+<pre><code class="hljs language-sh">PNPM_SHIM_BYPASS=1 node --version
+</code></pre>
+<p>A package that is not installed globally at all can still get a dispatching command, with <a href="/cli/shim"><code>pnpm shim add</code></a> — that is what makes <code>yarn</code> work inside a Yarn project on a machine that has only pnpm.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p><code>globalShims</code> is deliberately not read from a project's <code>pnpm-workspace.yaml</code> — only from the global configuration file, the pnpm home directory's own <code>pnpm-workspace.yaml</code>, and the environment. See the <a href="/settings/other#globalshims">setting's documentation</a> for details.</p>
+</div>
+<h2 id="global-virtual-store">Global virtual store<a class="hash-link" href="#global-virtual-store" aria-label="Direct link to Global virtual store">#</a></h2>
+<p>Global installs use the <a href="/global-virtual-store">global virtual store</a>. Packages are stored at <code>{storeDir}/links</code> and shared across global installations. This avoids redundant fetches when multiple global packages depend on the same libraries.</p>
+<h2 id="registering-local-packages-globally">Registering local packages globally<a class="hash-link" href="#registering-local-packages-globally" aria-label="Direct link to Registering local packages globally">#</a></h2>
+<p>To make a local package's binaries available system-wide, use <code>pnpm add -g .</code> from the package directory:</p>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">cd</span> ~/projects/my-tool
+pnpm add -g .
+</code></pre>
+<p>This registers the package's <code>bin</code> entries so they can be invoked from anywhere. See <a href="/cli/link#add-a-binary-globally"><code>pnpm link</code></a> for more details.</p>
+<h2 id="build-script-approval">Build script approval<a class="hash-link" href="#build-script-approval" aria-label="Direct link to Build script approval">#</a></h2>
+<p>Global packages that have build scripts (e.g., <code>postinstall</code>) require approval. When you install a global package that needs to run build scripts, pnpm will prompt you to approve or deny the build interactively.</p>
+<p>You can also pre-approve builds using the <code>--allow-build</code> flag:</p>
+<pre><code class="hljs language-sh">pnpm add -g --allow-build=esbuild esbuild
+</code></pre>
+<p>Since v11.24.0, <a href="/cli/approve-builds#--global--g"><code>pnpm approve-builds --global</code></a>
+lets you decide after the fact instead. It collects the packages awaiting approval from every
+install group, asks about them once, and writes one <code>allowBuilds</code> policy into the
+<code>pnpm-workspace.yaml</code> of the global packages directory — then rebuilds only the
+groups that contain something you approved:</p>
+<pre><code class="hljs language-sh">pnpm approve-builds -g
+</code></pre></article></main></div>
+  </body>
+</html>

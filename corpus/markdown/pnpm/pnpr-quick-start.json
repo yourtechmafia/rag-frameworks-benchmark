@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/quick-start",
+ "file": "markdown/pnpm/pnpr-quick-start.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.36,
+ "markdown_chars": 3080,
+ "raw_html_chars": 10399,
+ "sha256": "48aab0643a81a866d3c219a7fa4e972968588b1539a1bd58f1e36e6e28a4e6ae",
+ "fetched_at": "2026-10-03T08:58:57+00:00"
+}

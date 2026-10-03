@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/projects/export/",
+ "file": "markdown/uv/uv-concepts-projects-export.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.69,
+ "markdown_chars": 10115,
+ "raw_html_chars": 74658,
+ "sha256": "c73da20be012687828b59db624d32497d228f24c108ad08f7853ec6e3e093ff6",
+ "fetched_at": "2026-10-03T08:57:22+00:00"
+}

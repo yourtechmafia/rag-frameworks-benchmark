@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/container-images",
+ "file": "markdown/pnpm/pnpr-container-images.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.51,
+ "markdown_chars": 10090,
+ "raw_html_chars": 18158,
+ "sha256": "ca2379c3c15c6e8c02c97d3aa2f56b34529f6a462de0ee3638ab6552c19a79b2",
+ "fetched_at": "2026-10-03T08:58:54+00:00"
+}

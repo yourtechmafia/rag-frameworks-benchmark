@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/completion",
+ "file": "markdown/pnpm/completion.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.1,
+ "markdown_chars": 1554,
+ "raw_html_chars": 7377,
+ "sha256": "cc9d4efa76a40667aa38596c8f9ad79b9f11c4a05ad57d153e9430629f2f05ad",
+ "fetched_at": "2026-10-03T08:58:42+00:00"
+}

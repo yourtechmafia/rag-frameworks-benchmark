@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/whoami",
+ "file": "markdown/pnpm/cli-whoami.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.17,
+ "markdown_chars": 420,
+ "raw_html_chars": 5202,
+ "sha256": "1d3fe3998a8c5644abc73e2596918dfdb38d8f64fb20171b5b28be0629e784a4",
+ "fetched_at": "2026-10-03T08:58:41+00:00"
+}

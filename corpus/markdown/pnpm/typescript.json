@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/typescript",
+ "file": "markdown/pnpm/typescript.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.04,
+ "markdown_chars": 1620,
+ "raw_html_chars": 6872,
+ "sha256": "76c14c029f867226209b55143d705ba6a576a03f1f18b07a34ddd07eca646769",
+ "fetched_at": "2026-10-03T08:59:10+00:00"
+}

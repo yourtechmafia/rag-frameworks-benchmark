@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/licenses",
+ "file": "markdown/pnpm/cli-licenses.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.71,
+ "markdown_chars": 1402,
+ "raw_html_chars": 6969,
+ "sha256": "ce5862aa2fbc2160c4a00569e7ae5e2f094071fb78980593b7699a742531c214",
+ "fetched_at": "2026-10-03T08:58:11+00:00"
+}

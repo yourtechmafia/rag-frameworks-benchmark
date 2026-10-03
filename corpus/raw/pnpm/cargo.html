@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cargo dependencies | pnpm</title>
+    <meta name="description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Cargo dependencies | pnpm" />
+    <meta property="og:description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Cargo dependencies | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cargo" />
+    <meta property="og:url" content="https://pnpm.io/cargo" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cargo" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cargo" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cargo" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cargo" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cargo" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cargo" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cargo" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cargo" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cargo" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cargo" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cargo" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cargo" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cargo" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cargo" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Cargo dependencies</h1><p>Added in: v12.4.0 (pnpm v12 only)</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>Multi-ecosystem support is experimental. The settings and the layout it writes may change.</p>
+</div>
+<p>pnpm can install the crates a Cargo workspace depends on, next to the npm packages in the same repository. One <code>pnpm install</code> resolves both graphs, fetches over one shared connection budget, and puts each crate in pnpm's content-addressable store, so a crate downloaded for one project is not downloaded again for the next.</p>
+<p>Turn it on in <code>pnpm-workspace.yaml</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">cargo:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>Then install as usual:</p>
+<pre><code class="hljs language-sh">pnpm install
+</code></pre>
+<h2 id="adding-a-crate">Adding a crate<a class="hash-link" href="#adding-a-crate" aria-label="Direct link to Adding a crate">#</a></h2>
+<p>Prefix the crate name with <code>crate:</code>:</p>
+<pre><code class="hljs language-sh">pnpm add crate:serde
+pnpm add crate:serde@^1.0.200
+</code></pre>
+<p>pnpm writes the dependency into <code>Cargo.toml</code> without reformatting anything else in the file, and regenerates <code>Cargo.lock</code>. With no version requirement, the latest stable release is selected. A repository that has only a <code>Cargo.toml</code> needs no <code>package.json</code>: <code>pnpm add crate:</code> does not scaffold one.</p>
+<h2 id="what-an-install-does">What an install does<a class="hash-link" href="#what-an-install-does" aria-label="Direct link to What an install does">#</a></h2>
+<ol>
+<li>Reads the workspace's <code>Cargo.toml</code>, including its members.</li>
+<li>Resolves the graph against the sparse index and writes a deterministic <code>Cargo.lock</code>. When <code>Cargo.lock</code> is already there, it is used as-is.</li>
+<li>Verifies each locked <code>.crate</code> archive against its checksum and unpacks it into pnpm's store.</li>
+<li>Links the store slots into a Cargo <a href="https://doc.rust-lang.org/cargo/reference/source-replacement.html">directory source</a> under <code>.pnpm/crates/crates-io</code>, generating the <code>.cargo-checksum.json</code> files Cargo expects.</li>
+<li>Writes a source-replacement block into <code>.cargo/config.toml</code>, between the markers <code># >>> pnpm-managed cargo sources >>></code> and <code># &#x3C;&#x3C;&#x3C; pnpm-managed cargo sources &#x3C;&#x3C;&#x3C;</code>. Anything you wrote outside those markers is left alone.</li>
+</ol>
+<p><code>cargo build</code> then compiles offline against the vendored sources. pnpm does not compile anything itself.</p>
+<p>Crates are recorded in <code>Cargo.lock</code>, never in <code>pnpm-lock.yaml</code>. The two lockfiles stay independent.</p>
+<p><code>--lockfile-only</code>, <code>--frozen-lockfile</code>, and <code>--offline</code> mean for crates what they mean for npm packages: resolve without materializing, fail rather than change the lockfile, and refuse the network.</p>
+<h2 id="registries">Registries<a class="hash-link" href="#registries" aria-label="Direct link to Registries">#</a></h2>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">cargo:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">https://index.crates.io/:</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">cargo</span>
+</code></pre></div>
+<p>Declare the sparse index through <a href="/registries#ecosystem"><code>registries</code></a> with <code>ecosystem: cargo</code>. Without a declaration, pnpm uses crates.io. The registry a crate came from is recorded in <code>Cargo.lock</code>, and pnpm points Cargo's source replacement at that registry, so a local resolve and a <a href="/pnpr/install-acceleration">pnpr-accelerated</a> one record the same source.</p>
+<p>A dependency that names a third-party registry of its own (<code>registry = "..."</code> in <code>Cargo.toml</code>) is rejected: pnpm resolves one index per workspace.</p>
+<h3 id="authentication">Authentication<a class="hash-link" href="#authentication" aria-label="Direct link to Authentication">#</a></h3>
+<p>Index and archive requests go through pnpm's URL-scoped credentials, the same map that authenticates npm registries. For crates.io, pnpm also reads <code>CARGO_REGISTRY_TOKEN</code> and <code>$CARGO_HOME/credentials.toml</code>. Cargo tokens keep their bare <code>Authorization</code> form and are only ever sent to the index host they belong to.</p>
+<h2 id="git-sourced-crates">Git-sourced crates<a class="hash-link" href="#git-sourced-crates" aria-label="Direct link to Git-sourced crates">#</a></h2>
+<p>A crate pinned to a git revision, whether through <code>[patch.crates-io]</code> or a plain git dependency, is checked out at the commit <code>Cargo.lock</code> names and vendored the way <code>cargo vendor</code> lays a git package out: the package's own directory, a <code>.cargo-checksum.json</code> with a null <code>package</code>, and a source replacement for the git source. Vendored git packages get their own directory, <code>.pnpm/crates/git</code>, because a git package and a registry crate may share a name and version, and one directory source cannot hold both.</p>
+<p>The store slot is keyed by the commit, so a second install links it without cloning again, offline included. <code>--frozen-lockfile</code> leaves the pinned revision untouched.</p>
+<h2 id="source-overrides">Source overrides<a class="hash-link" href="#source-overrides" aria-label="Direct link to Source overrides">#</a></h2>
+<p>pnpm honors root Cargo.toml <code>[patch]</code> and <code>[replace]</code> overrides when generating
+<code>Cargo.lock</code> or adding, removing, and updating crates. Path overrides stay local.
+Git overrides are pinned to the commit Cargo resolves and vendored for offline
+builds.</p>
+<p>Workspaces with source overrides or direct Git dependencies use Cargo for
+resolution. This requires the default crates.io sparse index. With a custom index,
+generate and commit <code>Cargo.lock</code> using Cargo before installing with pnpm.</p>
+<p>Cargo resolution reads only settings for artifact dependencies and Rust version
+resolution from checkout <code>.cargo</code> configuration. User Cargo home configuration
+still applies. <code>--offline</code> requires the index and Git repositories needed for
+resolution to be cached. <code>--frozen-lockfile</code> does not generate a missing
+<code>Cargo.lock</code> or change an existing revision.</p>
+<p>Git resolution permits the <code>file</code>, <code>git</code>, <code>http</code>, <code>https</code>, and <code>ssh</code> protocols.
+When Cargo uses command-line Git fetching, pnpm preserves stricter protocol
+settings from the workspace Git configuration and <code>GIT_ALLOW_PROTOCOL</code>. Unsupported transport helpers cannot run during lockfile resolution.</p>
+<h2 id="faster-resolution-through-pnpr">Faster resolution through pnpr<a class="hash-link" href="#faster-resolution-through-pnpr" aria-label="Direct link to Faster resolution through pnpr">#</a></h2>
+<p>With <a href="/pnpr/install-acceleration"><code>pnprServer</code></a> set, pnpm asks the server to resolve the Cargo graph instead of fetching one sparse-index file per crate. A server that does not answer for Cargo makes pnpm fall back to resolving locally.</p>
+<h2 id="settings">Settings<a class="hash-link" href="#settings" aria-label="Direct link to Settings">#</a></h2>
+<h3 id="cargoenabled">cargo.enabled<a class="hash-link" href="#cargoenabled" aria-label="Direct link to cargo.enabled">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Whether <code>pnpm install</code> resolves and installs the workspace's Cargo dependencies.</p>
+<h3 id="cargo-index">Cargo index<a class="hash-link" href="#cargo-index" aria-label="Direct link to Cargo index">#</a></h3>
+<p>Since v12.5.0, declare a custom sparse index through <a href="/registries#ecosystem"><code>registries</code></a> with <code>ecosystem: cargo</code>. Without a declaration, pnpm uses <code>https://index.crates.io</code>. Only one Cargo index may be declared. <code>cargo.indexUrl</code> is no longer supported.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">cargo:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">https://crates.example.org/index/:</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">cargo</span>
+</code></pre></div></article></main></div>
+  </body>
+</html>

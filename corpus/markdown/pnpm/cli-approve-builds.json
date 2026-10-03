@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/approve-builds",
+ "file": "markdown/pnpm/cli-approve-builds.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.41,
+ "markdown_chars": 2751,
+ "raw_html_chars": 8155,
+ "sha256": "eb321176872c5d6f1166c9c17f9d86383bc5a0d58d224f0a2e959a1833bac7ba",
+ "fetched_at": "2026-10-03T08:57:48+00:00"
+}

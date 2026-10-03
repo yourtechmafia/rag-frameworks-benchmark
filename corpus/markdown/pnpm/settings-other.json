@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/settings/other",
+ "file": "markdown/pnpm/settings-other.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.97,
+ "markdown_chars": 20463,
+ "raw_html_chars": 34439,
+ "sha256": "82a633bdb1af7022a4a5a7bd47cf13223bbb168a55571fcb9ea0420f5446ce7b",
+ "fetched_at": "2026-10-03T08:59:06+00:00"
+}

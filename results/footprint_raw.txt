@@ -1,0 +1,7 @@
+baseline 60 861
+langchain 85 879
+llamaindex 113 967
+haystack 85 910
+dspy 91 990
+lightrag 98 954
+graphrag 140 798

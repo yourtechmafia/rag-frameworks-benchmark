@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/policies/",
+ "file": "markdown/uv/uv-reference-policies.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.65,
+ "markdown_chars": 4744,
+ "raw_html_chars": 61465,
+ "sha256": "7dea1e9f648a9a4419e8f86da05e9bc10fc8ae06ebe935b6213b083c0d54757f",
+ "fetched_at": "2026-10-03T08:57:42+00:00"
+}

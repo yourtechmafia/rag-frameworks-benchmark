@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm docs | pnpm</title>
+    <meta name="description" content="Added in: v11.0.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm docs | pnpm" />
+    <meta property="og:description" content="Added in: v11.0.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm docs | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.0.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/docs" />
+    <meta property="og:url" content="https://pnpm.io/cli/docs" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/docs" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/docs" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/docs" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/docs" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/docs" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/docs" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/docs" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/docs" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/docs" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/docs" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/docs" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/docs" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/docs" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/docs" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm docs</h1><p>Added in: v11.0.0</p>
+<p>Aliases: <code>home</code></p>
+<p>Open a package's documentation (or homepage) in the browser.</p>
+<pre><code class="hljs language-sh">pnpm docs [&#x3C;pkg> ...]
+</code></pre>
+<p>When run without arguments inside a package directory, it opens the documentation for the current project.</p>
+<p>If the package does not declare a valid <code>homepage</code>, pnpm falls back to <code>https://npmx.dev/package/&#x3C;name></code>.</p>
+<h2 id="examples">Examples<a class="hash-link" href="#examples" aria-label="Direct link to Examples">#</a></h2>
+<p>Open the documentation for a published package:</p>
+<pre><code class="hljs language-sh">pnpm docs lodash
+</code></pre>
+<p>Open the documentation for multiple packages at once:</p>
+<pre><code class="hljs language-sh">pnpm docs react react-dom
+</code></pre>
+<p>Open the documentation for the current project:</p>
+<pre><code class="hljs language-sh">pnpm docs
+</code></pre></article></main></div>
+  </body>
+</html>

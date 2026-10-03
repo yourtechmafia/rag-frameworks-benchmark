@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/installation",
+ "file": "markdown/pnpm/pnpr-installation.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.82,
+ "markdown_chars": 843,
+ "raw_html_chars": 6147,
+ "sha256": "91c8549961805bcb237e548c11d9ad1af2727a50d5906d60bc0eaa62a6abf11a",
+ "fetched_at": "2026-10-03T08:58:55+00:00"
+}

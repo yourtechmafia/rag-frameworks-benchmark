@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/clean",
+ "file": "markdown/pnpm/cli-clean.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.81,
+ "markdown_chars": 733,
+ "raw_html_chars": 5493,
+ "sha256": "bb2688dee97725b77a24b40b3b61d8fd282994f8e4c267940bdab195f3507056",
+ "fetched_at": "2026-10-03T08:57:54+00:00"
+}

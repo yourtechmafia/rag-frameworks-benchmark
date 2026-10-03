@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/scatter",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-scatter.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 7.74,
+ "markdown_chars": 4349,
+ "raw_html_chars": 3769,
+ "sha256": "9138c5ffdd05425cd418f94f6410d0334f8a825d0dbfee6b23d84e8f592c5847",
+ "fetched_at": "2026-10-03T08:59:38+00:00"
+}

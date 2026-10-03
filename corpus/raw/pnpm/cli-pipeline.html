@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm pipeline | pnpm</title>
+    <meta name="description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm pipeline | pnpm" />
+    <meta property="og:description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm pipeline | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.4.0 (pnpm v12 only)" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/pipeline" />
+    <meta property="og:url" content="https://pnpm.io/cli/pipeline" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/pipeline" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/pipeline" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/pipeline" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/pipeline" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/pipeline" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/pipeline" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/pipeline" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/pipeline" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/pipeline" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/pipeline" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/pipeline" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/pipeline" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/pipeline" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/pipeline" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm pipeline</h1><p>Added in: v12.4.0 (pnpm v12 only)</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p><code>pnpm pipeline</code> is experimental. Its configuration and output may change.</p>
+</div>
+<p>Runs a named set of workspace tasks the way a CI job would: a frozen install first, then the affected projects' task graph, with cached results restored instead of re-run.</p>
+<pre><code class="hljs language-sh">pnpm pipeline [name]
+</code></pre>
+<p>The pipeline named <code>default</code> runs when no name is given.</p>
+<h2 id="declaring-a-pipeline">Declaring a pipeline<a class="hash-link" href="#declaring-a-pipeline" aria-label="Direct link to Declaring a pipeline">#</a></h2>
+<p>A pipeline is a set of task names, listed under <code>pipelines</code> in <code>pnpm-workspace.yaml</code>. It is a set, not a sequence: the order in which its tasks run comes from <a href="/workspace-task-orchestration#configure-task-dependencies"><code>tasks.dependsOn</code></a>.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">dependsOn:</span> [<span class="hljs-string">'^build'</span>]
+    <span class="hljs-attr">outputs:</span> [<span class="hljs-string">'dist/**'</span>]
+  <span class="hljs-attr">test:</span>
+    <span class="hljs-attr">dependsOn:</span> [<span class="hljs-string">'build'</span>]
+    <span class="hljs-attr">outputs:</span> []
+  <span class="hljs-attr">lint:</span>
+    <span class="hljs-attr">outputs:</span> []
+
+<span class="hljs-attr">pipelines:</span>
+  <span class="hljs-attr">default:</span> [<span class="hljs-string">build</span>, <span class="hljs-string">test</span>, <span class="hljs-string">lint</span>]
+  <span class="hljs-attr">release:</span> [<span class="hljs-string">build</span>]
+</code></pre></div>
+<pre><code class="hljs language-sh">pnpm pipeline          <span class="hljs-comment"># build, test and lint</span>
+pnpm pipeline release  <span class="hljs-comment"># build only</span>
+</code></pre>
+<h2 id="what-a-run-does">What a run does<a class="hash-link" href="#what-a-run-does" aria-label="Direct link to What a run does">#</a></h2>
+<ol>
+<li>Installs with a frozen lockfile.</li>
+<li>Selects the projects affected since the base revision, plus the projects that depend on them.</li>
+<li>Builds the task graph over that selection and runs it.</li>
+<li>Restores each cacheable task whose key it has seen before, and runs the rest.</li>
+<li>Keeps going after a task fails, so one run reports every failure rather than the first.</li>
+</ol>
+<p>The workspace root is left out of the selection unless <a href="/workspaces#includeworkspaceroot"><code>includeWorkspaceRoot</code></a> is <code>true</code>.</p>
+<p>Use <code>--dry-run</code> to see the graph without installing configuration dependencies, running workspace hooks, or executing anything. Add <code>--json</code> for the nodes and edges.</p>
+<h2 id="caching-a-task">Caching a task<a class="hash-link" href="#caching-a-task" aria-label="Direct link to Caching a task">#</a></h2>
+<p>A task becomes cacheable by declaring <code>outputs</code>. Declaring <code>outputs: []</code> is the positive statement that a task produces no files, which is what makes a linter or a test run cacheable. A task with no <code>outputs</code> key runs every time.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">dependsOn:</span> [<span class="hljs-string">'^build'</span>]
+    <span class="hljs-attr">outputs:</span> [<span class="hljs-string">'dist/**'</span>]
+    <span class="hljs-attr">inputs:</span> [<span class="hljs-string">'src/**'</span>, <span class="hljs-string">'tsconfig.json'</span>]
+    <span class="hljs-attr">env:</span> [<span class="hljs-string">'NODE_ENV'</span>]
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Meaning</th></tr></thead><tbody><tr><td><code>outputs</code></td><td>Globs, relative to the project directory, naming the files the task produces. Their presence makes the task cacheable.</td></tr><tr><td><code>inputs</code></td><td>Globs narrowing what goes into the cache key. Without it, every tracked file of the project counts. An entry prefixed with <code>+</code> adds to that default instead of replacing it.</td></tr><tr><td><code>env</code></td><td>Environment variable names whose values take part in the key. The values are hashed, never stored.</td></tr><tr><td><code>cache</code></td><td><code>false</code> opts a task with declared <code>outputs</code> back out of the cache.</td></tr></tbody></table></div>
+<p>Besides the declared inputs, a task's key covers the script text, the keys of the tasks it depends on, the lockfile, and the runtime. A cache hit restores the output files and replays the recorded log, so the run reads the same either way.</p>
+<p><code>--no-cache</code> runs everything and neither reads nor writes cache entries.</p>
+<h2 id="reusing-cargo-build-state">Reusing Cargo build state<a class="hash-link" href="#reusing-cargo-build-state" aria-label="Direct link to Reusing Cargo build state">#</a></h2>
+<p>A <a href="/cargo">Cargo</a> task can keep its local build state between runs, and between git worktrees of the same repository:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">cargoTargetDir:</span> <span class="hljs-string">target</span>
+</code></pre></div>
+<p>pnpm points Cargo's target and build directories at that path and always executes the task, restoring an immutable snapshot of the previous build state rather than the task's own outputs. The directory must be relative to the project and ignored by git. Snapshots are stored apart from installed packages, so evicting one can never break an installation.</p>
+<h2 id="reporting-a-run">Reporting a run<a class="hash-link" href="#reporting-a-run" aria-label="Direct link to Reporting a run">#</a></h2>
+<p>Every run writes a summary and an event stream under pnpm's pipeline data directory. <code>--report</code> submits them to the <a href="/pnpr/pipeline-runs">pnpr</a> server named by <a href="/pnpr/install-acceleration"><code>pnprServer</code></a>; <code>--report-to &#x3C;url></code> submits them elsewhere, which is the better spelling when the server that stores runs is not the one that accelerates installs. A failed run is reported before the command exits non-zero.</p>
+<h2 id="watching-a-repository">Watching a repository<a class="hash-link" href="#watching-a-repository" aria-label="Direct link to Watching a repository">#</a></h2>
+<pre><code class="hljs language-sh">pnpm pipeline --repo https://github.com/acme/app.git --watch
+</code></pre>
+<p>The watch agent polls the repository and runs the pipeline for every new revision of the followed branch. It is a proof of concept, not a hosted CI service.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--dry-run">--dry-run<a class="hash-link" href="#--dry-run" aria-label="Direct link to --dry-run">#</a></h3>
+<p>Print the task graph and exit, without installing or running anything.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>With <code>--dry-run</code>, print the tasks and their resolved dependency edges as JSON.</p>
+<h3 id="--full">--full<a class="hash-link" href="#--full" aria-label="Direct link to --full">#</a></h3>
+<p>Run over every workspace project instead of the affected-since-base selection.</p>
+<h3 id="--base-ref">--base &#x3C;ref><a class="hash-link" href="#--base-ref" aria-label="Direct link to --base <ref>">#</a></h3>
+<p>The git ref the affected selection diffs against, through its merge base with <code>HEAD</code>. Overrides the <code>pipelineBase</code> setting, which itself defaults to <code>origin/main</code>.</p>
+<h3 id="--no-cache">--no-cache<a class="hash-link" href="#--no-cache" aria-label="Direct link to --no-cache">#</a></h3>
+<p>Run every task, reading and writing neither task results nor Cargo snapshots.</p>
+<h3 id="--report">--report<a class="hash-link" href="#--report" aria-label="Direct link to --report">#</a></h3>
+<p>Publish the run's summary and event stream to the configured pnpr server once the run settles.</p>
+<h3 id="--report-to-url">--report-to &#x3C;url><a class="hash-link" href="#--report-to-url" aria-label="Direct link to --report-to <url>">#</a></h3>
+<p>Publish the run to this pnpr server instead of the one in <code>pnprServer</code>.</p>
+<h3 id="--repo-repo">--repo &#x3C;repo><a class="hash-link" href="#--repo-repo" aria-label="Direct link to --repo <repo>">#</a></h3>
+<p>The repository the watch agent polls: a URL or a local path, anything git accepts as a remote.</p>
+<h3 id="--watch">--watch<a class="hash-link" href="#--watch" aria-label="Direct link to --watch">#</a></h3>
+<p>Watch <code>--repo</code> and run the pipeline for every new revision instead of running once in the current directory.</p>
+<h3 id="--branch-name">--branch &#x3C;name><a class="hash-link" href="#--branch-name" aria-label="Direct link to --branch <name>">#</a></h3>
+<p>The branch the watch agent follows. Defaults to <code>main</code>.</p>
+<h3 id="--interval-seconds">--interval &#x3C;seconds><a class="hash-link" href="#--interval-seconds" aria-label="Direct link to --interval <seconds>">#</a></h3>
+<p>Seconds between polls of the watched repository. Defaults to <code>30</code>.</p>
+<h3 id="--once">--once<a class="hash-link" href="#--once" aria-label="Direct link to --once">#</a></h3>
+<p>With <code>--watch</code>, poll once, build if there is a new revision, and exit.</p>
+<h2 id="settings">Settings<a class="hash-link" href="#settings" aria-label="Direct link to Settings">#</a></h2>
+<h3 id="pipelines">pipelines<a class="hash-link" href="#pipelines" aria-label="Direct link to pipelines">#</a></h3>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>Record&#x3C;string, string[]></strong></li>
+</ul>
+<p>Named sets of task names, keyed by pipeline name.</p>
+<h3 id="pipelinebase">pipelineBase<a class="hash-link" href="#pipelinebase" aria-label="Direct link to pipelineBase">#</a></h3>
+<ul>
+<li>Default: <strong>origin/main</strong></li>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>The git ref the affected selection resolves its merge base against.</p></article></main></div>
+  </body>
+</html>

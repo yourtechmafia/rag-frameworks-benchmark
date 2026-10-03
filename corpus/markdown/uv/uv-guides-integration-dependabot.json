@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/dependabot/",
+ "file": "markdown/uv/uv-guides-integration-dependabot.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 9.85,
+ "markdown_chars": 6140,
+ "raw_html_chars": 67102,
+ "sha256": "b218c7508147642568bd2f5c00ea1a9d8b99694d5da81eeae93eb96dd03c1da2",
+ "fetched_at": "2026-10-03T08:57:38+00:00"
+}

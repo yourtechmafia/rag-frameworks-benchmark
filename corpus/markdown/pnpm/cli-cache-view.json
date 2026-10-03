@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/cache-view",
+ "file": "markdown/pnpm/cli-cache-view.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.77,
+ "markdown_chars": 233,
+ "raw_html_chars": 4924,
+ "sha256": "397428f4ca51e385f8c2c3feb960f927cd917b4442af38ff8a90142dbb9d9d40",
+ "fetched_at": "2026-10-03T08:57:51+00:00"
+}

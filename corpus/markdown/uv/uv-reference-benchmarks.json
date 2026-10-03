@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/benchmarks/",
+ "file": "markdown/uv/uv-reference-benchmarks.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.12,
+ "markdown_chars": 4904,
+ "raw_html_chars": 61477,
+ "sha256": "61df9a5940ac821c9b19038ef983b9d1abf574d9f45a07d038b68a442eaccc12",
+ "fetched_at": "2026-10-03T08:57:39+00:00"
+}

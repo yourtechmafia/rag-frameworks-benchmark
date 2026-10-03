@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/pnx",
+ "file": "markdown/pnpm/cli-pnx.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.27,
+ "markdown_chars": 4365,
+ "raw_html_chars": 10168,
+ "sha256": "1e5eae342403da7716b2dc6106d5a1cd7189bb3cf3606f684a7bac686752cbe9",
+ "fetched_at": "2026-10-03T08:58:23+00:00"
+}

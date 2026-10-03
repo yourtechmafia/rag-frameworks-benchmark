@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/projects/",
+ "file": "markdown/uv/uv-guides-projects.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.33,
+ "markdown_chars": 13628,
+ "raw_html_chars": 89307,
+ "sha256": "5d4c751c8d0becf0f0a8cf4f709a170144b70f45928d7e95767df3096cc14c3e",
+ "fetched_at": "2026-10-03T08:57:26+00:00"
+}

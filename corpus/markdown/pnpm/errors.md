@@ -1,0 +1,97 @@
+Error Codes
+===========
+
+ERR\_PNPM\_TASK\_CYCLE[#](#err_pnpm_task_cycle)
+-----------------------------------------------
+
+A recursive run's task graph contains a dependency cycle. The error lists the
+participating tasks as `<project>#<script>` identifiers.
+
+Remove or change the cycle under [`tasks`](/workspace-task-orchestration).
+If it is deliberate, set
+[`ignoreWorkspaceCycles`](/workspaces#ignoreworkspacecycles) to `true` to
+downgrade the error to a warning and run the cycle's tasks without a guaranteed
+order.
+
+ERR\_PNPM\_UNEXPECTED\_STORE[#](#err_pnpm_unexpected_store)
+-----------------------------------------------------------
+
+A modules directory is present and is linked to a different store directory.
+
+If you changed the store directory intentionally, run `pnpm install` and pnpm will reinstall the dependencies using the new store.
+
+ERR\_PNPM\_NO\_MATCHING\_VERSION\_INSIDE\_WORKSPACE[#](#err_pnpm_no_matching_version_inside_workspace)
+------------------------------------------------------------------------------------------------------
+
+A project has a workspace dependency that does not exist in the workspace.
+
+For instance, package `foo` has `bar@1.0.0` in the `dependencies`:
+
+```
+{
+  "name": "foo",
+  "version": "1.0.0",
+  "dependencies": {
+    "bar": "workspace:1.0.0"
+  }
+}
+```
+
+However, there is only `bar@2.0.0` in the workspace, so `pnpm install` will fail.
+
+To fix this error, all dependencies that use the [workspace protocol](/workspaces#workspace-protocol-workspace) should be updated to use versions of packages that are present in the workspace. This can be done either manually or using the `pnpm -r update` command.
+
+ERR\_PNPM\_PEER\_DEP\_ISSUES[#](#err_pnpm_peer_dep_issues)
+----------------------------------------------------------
+
+`pnpm install` will fail if the project has unresolved peer dependencies or the peer dependencies are not matching the wanted ranges. To fix this, install the missing peer dependencies.
+
+You may also selectively ignore these errors using the [peerDependencyRules.ignoreMissing](/settings/peer-dependencies#peerdependencyrulesignoremissing) and [peerDependencyRules.allowedVersions](/settings/peer-dependencies#peerdependencyrulesallowedversions) settings.
+
+ERR\_PNPM\_OUTDATED\_LOCKFILE[#](#err_pnpm_outdated_lockfile)
+-------------------------------------------------------------
+
+This error happens when installation cannot be performed without changes to the lockfile. This might happen in a CI environment if someone has changed a `package.json` file in the repository without running `pnpm install` afterwards. Or someone forgot to commit the changes to the lockfile.
+
+To fix this error, just run `pnpm install` and commit the changes to the lockfile.
+
+ERR\_PNPM\_TARBALL\_INTEGRITY[#](#err_pnpm_tarball_integrity)
+-------------------------------------------------------------
+
+This error indicates that the downloaded package's tarball did not match the expected integrity checksum.
+
+If you use the npm registry (`registry.npmjs.org`), then this probably means that the integrity in your lockfile is incorrect.
+This might happen if a lockfile had badly resolved merge conflicts.
+
+If you use a registry that allows to override existing versions of a package, then it might mean that in your local metadata cache you have the integrity checksum of an older version of the package. In this case, you should run `pnpm store prune`. This command will remove your local metadata cache. Then you can retry the command that failed.
+
+But also be careful and verify that the package is downloaded from the right URL. The URL should be printed in the error message.
+
+ERR\_PNPM\_MISMATCHED\_RELEASE\_CHANNEL[#](#err_pnpm_mismatched_release_channel)
+--------------------------------------------------------------------------------
+
+The config field `use-node-version` defines a release channel different from version suffix.
+
+For example:
+
+* `rc/20.0.0` defines an `rc` channel but the version is that of a stable release.
+* `release/20.0.0-rc.0` defines a `release` channel but the version is that of an RC release.
+
+To fix this error, either remove the release channel prefix or correct the version suffix.
+
+Note that it is not allowed to specify node versions like `lts/Jod`.
+The correct syntax for stable release is strictly X.Y.Z or release/X.Y.Z.
+
+ERR\_PNPM\_INVALID\_NODE\_VERSION[#](#err_pnpm_invalid_node_version)
+--------------------------------------------------------------------
+
+The value of config field `use-node-version` has an invalid syntax.
+
+Below are the valid forms of `use-node-version`:
+
+* Stable release:
+  + `X.Y.Z` (`X`, `Y`, `Z` are integers)
+  + `release/X.Y.Z` (`X`, `Y`, `Z` are integers)
+* RC release:
+  + `X.Y.Z-rc.W` (`X`, `Y`, `Z`, `W` are integers)
+  + `rc/X.Y.Z-rc.W` (`X`, `Y`, `Z`, `W` are integers)

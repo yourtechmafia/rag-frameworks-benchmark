@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/audit",
+ "file": "markdown/pnpm/cli-audit.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.31,
+ "markdown_chars": 5948,
+ "raw_html_chars": 14303,
+ "sha256": "883a6bde8e87a31f99f1c9132599422e6070a93cc37073804886f1c7056c696c",
+ "fetched_at": "2026-10-03T08:57:48+00:00"
+}

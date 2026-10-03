@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/line",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-line.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 2.97,
+ "markdown_chars": 10555,
+ "raw_html_chars": 3769,
+ "sha256": "af1e30d1850cc986e1ff061db5115349375872da5e4b9b5088ffbe081f8f5c70",
+ "fetched_at": "2026-10-03T08:59:30+00:00"
+}

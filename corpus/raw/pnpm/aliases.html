@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aliases | pnpm</title>
+    <meta name="description" content="Aliases let you install packages with custom names." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Aliases | pnpm" />
+    <meta property="og:description" content="Aliases let you install packages with custom names." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Aliases | pnpm" />
+    <meta name="twitter:description" content="Aliases let you install packages with custom names." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/aliases" />
+    <meta property="og:url" content="https://pnpm.io/aliases" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/aliases" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/aliases" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/aliases" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/aliases" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/aliases" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/aliases" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/aliases" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/aliases" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/aliases" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/aliases" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/aliases" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/aliases" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/aliases" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/aliases" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Aliases</h1><p>Aliases let you install packages with custom names.</p>
+<p>Let's assume you use <code>lodash</code> all over your project. There is a bug in <code>lodash</code>
+that breaks your project. You have a fix but <code>lodash</code> won't merge it. Normally
+you would either install <code>lodash</code> from your fork directly (as a git-hosted
+dependency) or publish it with a different name. If you use the second solution
+you have to replace all the requires in your project with the new dependency
+name (<code>require('lodash')</code> => <code>require('awesome-lodash')</code>). With aliases, you
+have a third option.</p>
+<p>Publish a new package called <code>awesome-lodash</code> and install it using <code>lodash</code> as
+its alias:</p>
+<pre><code>pnpm add lodash@npm:awesome-lodash
+</code></pre>
+<p>No changes in code are needed. All the requires of <code>lodash</code> will now resolve to
+<code>awesome-lodash</code>.</p>
+<p>An npm alias selector has this form:</p>
+<pre><code class="hljs language-text">&#x3C;alias>@npm:&#x3C;package>
+&#x3C;alias>@npm:&#x3C;package>@&#x3C;version-or-tag>
+</code></pre>
+<p>The target package may be scoped. For example, this installs a specific version
+of <code>@babel/core</code> under the local name <code>babel-core</code>:</p>
+<pre><code class="hljs language-sh">pnpm add babel-core@npm:@babel/core@8.0.6
+</code></pre>
+<p>The alias is the dependency name written to <code>package.json</code> and used by your
+code. The package after <code>npm:</code> is the package pnpm resolves. <code>npm:</code> here is the
+package-alias protocol, not a <a href="/package-sources#named-registries">named registry</a>;
+the target package still uses its default or scope-specific npm registry configuration.</p>
+<p>Sometimes you'll want to use two different versions of a package in your
+project. Easy:</p>
+<pre><code class="hljs language-sh">pnpm add lodash1@npm:lodash@1
+pnpm add lodash2@npm:lodash@2
+</code></pre>
+<p>Now you can require the first version of lodash via <code>require('lodash1')</code> and the
+second via <code>require('lodash2')</code>.</p>
+<p>This gets even more powerful when combined with hooks. Maybe you want to replace
+<code>lodash</code> with <code>awesome-lodash</code> in all the packages in <code>node_modules</code>. You can
+easily achieve that with the following <code>.pnpmfile.mjs</code>:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">readPackage</span>(<span class="hljs-params">pkg</span>) {
+  <span class="hljs-keyword">if</span> (pkg.<span class="hljs-property">dependencies</span> &#x26;&#x26; pkg.<span class="hljs-property">dependencies</span>.<span class="hljs-property">lodash</span>) {
+    pkg.<span class="hljs-property">dependencies</span>.<span class="hljs-property">lodash</span> = <span class="hljs-string">'npm:awesome-lodash@^1.0.0'</span>
+  }
+  <span class="hljs-keyword">return</span> pkg
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> hooks = {
+  readPackage
+}
+</code></pre></article></main></div>
+  </body>
+</html>

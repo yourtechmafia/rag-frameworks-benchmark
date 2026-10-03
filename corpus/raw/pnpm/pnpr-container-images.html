@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Container images | pnpm</title>
+    <meta name="description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Container images | pnpm" />
+    <meta property="og:description" content="Added in: v0.1.0-alpha.11" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Container images | pnpm" />
+    <meta name="twitter:description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/container-images" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/container-images" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/container-images" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/container-images" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/container-images" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/container-images" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/container-images" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/container-images" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/container-images" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/container-images" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/container-images" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/container-images" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/container-images" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/container-images" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/container-images" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/container-images" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Container images</h1><p>Added in: v0.1.0-alpha.11</p>
+<p>pnpr serves the OCI distribution API, so <code>docker</code>, <code>podman</code>, and <code>skopeo</code> can
+push to and pull from the same server that hosts your packages.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">images:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">oci</span>
+    <span class="hljs-attr">org:</span> <span class="hljs-string">images</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'acme/*':</span> {}
+
+<span class="hljs-attr">defaultRegistry:</span> <span class="hljs-string">images</span>
+</code></pre>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">printf</span> <span class="hljs-string">'%s'</span> <span class="hljs-string">"<span class="hljs-variable">$PNPR_TOKEN</span>"</span> | docker login pnpr.example.com -u alice --password-stdin
+docker push pnpr.example.com/acme/app:1.0
+docker pull pnpr.example.com/acme/app:1.0
+skopeo copy docker://pnpr.example.com/acme/app:1.0 oci:./app:1.0
+</code></pre>
+<p>Use a pnpr token as the password. The username is not checked, as on every
+registry that takes a personal access token.</p>
+<h2 id="why-v2-is-at-the-root">Why <code>/v2/</code> is at the root<a class="hash-link" href="#why-v2-is-at-the-root" aria-label="Direct link to Why /v2/ is at the root">#</a></h2>
+<p>A client derives the API root from the image reference's host, so
+<code>pnpr.example.com/acme/app:1.0</code> always requests
+<code>/v2/acme/app/manifests/1.0</code>. <code>/v2/</code> therefore answers at the host root
+whatever else pnpr serves, and this is the one ecosystem that cannot be moved
+under a prefix. There is no reserved path segment: the image name you push is
+the image name, and the repository name alone selects the registry through the
+same declared-provenance rules every other surface uses.</p>
+<p><code>/oci/v2/</code> and <code>/oci/~&#x3C;name>/v2/</code> answer as well, for <code>podman</code> and
+<code>containerd</code>, whose <code>registries.conf</code> <code>location</code> and <code>hosts.toml</code> <code>server</code> both
+accept a path.</p>
+<p>A <code>packages:</code> key is either one repository name or <code>&#x3C;namespace>/*</code>, which claims
+every repository under one leading path component. The namespace is a single
+component, so two namespace claims are either identical or disjoint. Repository
+names follow the distribution spec's grammar and are folded to lowercase, so
+<code>ACME/App</code> and <code>acme/app</code> are one repository rather than two directories on a
+case-insensitive filesystem.</p>
+<h2 id="authentication">Authentication<a class="hash-link" href="#authentication" aria-label="Direct link to Authentication">#</a></h2>
+<p><code>GET /v2/</code> answers <code>401</code> with a <code>Basic</code> challenge to an anonymous caller even
+where reads are open. A client settles its authentication scheme on that one
+response, so a <code>200</code> would leave it with no way to authenticate a later push. A
+client with no credentials carries on regardless, and a repository that admits
+anonymous reads still answers its later requests.</p>
+<p>Set <code>oci.bearerAuth: true</code> to offer a Bearer challenge instead. Clients then
+exchange their pnpr credential at <code>/v2/token</code> for a five-minute token scoped to
+<code>pull</code>, <code>push</code>, or <code>delete</code> on one repository. The endpoint grants only the
+actions the caller already has; the parent credential's revocation, read-only
+flag, and network restrictions all still apply. Anonymous tokens can pull public
+repositories. Scoped tokens reach neither the other pnpr APIs nor the whole
+catalog. Use the same <a href="/pnpr/configuration#secret"><code>secret:</code></a> and registry
+configuration on every replica so their tokens interoperate.</p>
+<h2 id="uploads-and-limits">Uploads and limits<a class="hash-link" href="#uploads-and-limits" aria-label="Direct link to Uploads and limits">#</a></h2>
+<p>Blobs are uploaded in one request or in chunks, streamed to disk rather than
+held in memory, and verified against the digest the client promised before
+anything is stored.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">oci:</span>
+  <span class="hljs-attr">maxBlobBytes:</span> <span class="hljs-number">10737418240</span>   <span class="hljs-comment"># 10 GiB, the default</span>
+  <span class="hljs-attr">maxManifestBytes:</span> <span class="hljs-number">4194304</span>   <span class="hljs-comment"># 4 MiB, the default</span>
+</code></pre>
+<p>The blob limit applies to a whole resumable upload, mounted layers included, and
+also bounds an uncached upstream download.</p>
+<p>The manifest write is the point a release becomes visible. It goes through the
+same publish journal as every other ecosystem, so it either lands whole or
+leaves nothing behind. A blob no manifest references is invisible rather than
+half-published, which also means unreferenced blobs accumulate until they are
+collected.</p>
+<h2 id="what-the-api-supports">What the API supports<a class="hash-link" href="#what-the-api-supports" aria-label="Direct link to What the API supports">#</a></h2>
+<ul>
+<li>Ranged blob downloads on filesystem and S3 storage, including open-ended and
+suffix ranges. Responses carry <code>Accept-Ranges</code> and an ETag; <code>If-Range</code> resumes
+a matching blob or returns the whole one. Unsupported or malformed ranges are
+ignored.</li>
+<li>Cross-repository blob mounts, reusing a layer from a repository the caller may
+read. The caller also needs publish permission on the destination. A missing or
+inaccessible source starts an ordinary upload. Mounts stream through local
+scratch for digest verification rather than asking the client to resend.</li>
+<li><code>GET /v2/&#x3C;name>/referrers/&#x3C;digest></code>, returning an image index of the manifests
+and indexes attached to that subject, with the <code>artifactType</code> filter and
+annotations. A push acknowledges its subject with <code>OCI-Subject</code>. Follow the
+<code>Link</code> header to collect every page, even when a filtered page is empty. Each
+page reads at most 32 manifests and 8 MiB of manifest content.</li>
+<li>Pagination on <code>tags/list</code> and <code>_catalog</code> through <code>n</code> and <code>last</code>, with a <code>Link</code>
+header when another page follows. <code>last</code> is an exclusive lexical cursor, and
+<code>n=0</code> returns an empty list with no continuation link.</li>
+</ul>
+<h2 id="uploads-across-replicas">Uploads across replicas<a class="hash-link" href="#uploads-across-replicas" aria-label="Direct link to Uploads across replicas">#</a></h2>
+<p>With S3 storage, upload sessions and their accepted chunks live in the bucket, so
+a client can continue an upload on another replica that shares the storage prefix
+and registry configuration. Each request stores only its new chunk. Completion
+streams the accepted chunks to local scratch for digest verification, then
+streams large blobs back to S3 in 8 MiB parts, so allow scratch space for
+concurrent requests and completed layers.</p>
+<p>Concurrent changes to one session are rejected; a client can query the session's
+current offset and retry. A session accepts up to 10,000 nonempty chunks.
+Completion freezes the chunk list and digest before promotion; if promotion
+fails, retry completion with that digest and an empty body. Frozen sessions
+reject further chunks and cancellation, and expire after 24 hours of inactivity.</p>
+<p>Startup removes upload sessions idle for more than 24 hours, chunks included. On
+a long-running deployment, restart rolling to reclaim abandoned uploads, and
+configure the bucket's lifecycle policy to abort incomplete multipart uploads as
+well, since a process killed mid-request cannot send its abort.</p>
+<p>Filesystem storage keeps upload sessions local, so every request for one session
+must reach the same instance.</p>
+<h2 id="reclaiming-space">Reclaiming space<a class="hash-link" href="#reclaiming-space" aria-label="Direct link to Reclaiming space">#</a></h2>
+<p>To collect blobs that no retained manifest references, stop <strong>every writer</strong>
+sharing the store and run:</p>
+<pre><code class="hljs language-sh">pnpr -c config.yaml oci-gc --registry images --dry-run
+pnpr -c config.yaml oci-gc --registry images
+</code></pre>
+<p><code>--registry</code> takes the concrete hosted OCI registry's config name. The command
+recovers the local publish journal before scanning, so recover journals on every
+replica's scratch volume before collecting shared storage, and keep writers
+stopped for the whole scan and deletion. <code>--dry-run</code> reports candidates without
+deleting them. <code>--min-age-secs</code> defaults to <code>86400</code>, which preserves recent
+uploads so an interrupted push can resume; set it to zero to collect every
+unreferenced blob.</p>
+<p>Collection keeps untagged manifests, the children of retained indexes, and their
+config and layer blobs, so removing a tag alone does not make its image
+collectible. A missing or corrupt retained manifest stops collection before any
+blob is deleted. The inventory covers unpublished repositories and nested
+repository names, and is streamed into a temporary SQLite database, so local
+temporary storage needs room for it.</p>
+<p><code>DELETE /v2/&#x3C;name>/blobs/&#x3C;digest></code> removes an unreferenced blob for a caller with
+<code>unpublish</code> permission, which the registry default denies. A blob reachable from
+any retained manifest or index is refused. A stored deletion marker blocks
+concurrent manifest publication, and a generation counter rejects publishes
+staged before the deletion. If a deletion is interrupted, stop all writers and
+run <code>oci-gc</code> without <code>--dry-run</code> to finish it and unblock the repository;
+recovering an explicit deletion ignores <code>--min-age-secs</code>. Every replica sharing a
+store must run this version before online deletion is used.</p>
+<h2 id="caching-docker-hub-and-ghcr">Caching Docker Hub and GHCR<a class="hash-link" href="#caching-docker-hub-and-ghcr" aria-label="Direct link to Caching Docker Hub and GHCR">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">dockerhub:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">ecosystem:</span> <span class="hljs-string">oci</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://registry-1.docker.io/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-attr">defaultRegistry:</span> <span class="hljs-string">dockerhub</span>
+</code></pre>
+<p>An official Hub image is then pulled as <code>pnpr.example.com/library/alpine:latest</code>.
+For GHCR, use <code>https://ghcr.io/</code> and the full repository name. Private origins
+use the ordinary upstream <a href="/pnpr/configuration#upstream-registries"><code>auth:</code></a>
+configuration and access rules.</p>
+<p>pnpr negotiates repository-scoped pull tokens and restricts layer redirects to
+the origin's known CDN hosts, so configured credentials never travel to a layer
+CDN. A custom origin may use a token endpoint and downloads on its own origin.</p>
+<p>Manifest bodies are verified before caching. Blob bodies are verified while
+streaming and cached only after a successful digest check; a mismatch aborts the
+response stream, and clients still verify the bytes they received. Tags refresh
+on the configured upstream cache lifetime, and digest-addressed content is
+immutable. <code>cache: false</code> disables the cache.</p>
+<p>Upstream writes, catalog enumeration, tag listing, and referrer discovery are not
+proxied.</p>
+<h2 id="publishing-a-manifest-in-a-batch">Publishing a manifest in a batch<a class="hash-link" href="#publishing-a-manifest-in-a-batch" aria-label="Direct link to Publishing a manifest in a batch">#</a></h2>
+<p>An OCI entry in the <a href="/pnpr/ecosystems#one-publish-for-a-workspace-that-spans-ecosystems">cross-ecosystem publish</a>
+publishes a manifest whose layers have already been uploaded:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"ecosystem"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"oci"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"acme/app"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"reference"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"manifest"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"&#x3C;base64-encoded manifest bytes>"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p><code>contentType</code> is optional when the manifest carries its own media type. An
+index's child manifests must already be published. The batch body keeps the
+endpoint's size limit, so upload large layers through the streaming <code>/v2/</code> API
+first.</p></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm pack-app | pnpm</title>
+    <meta name="description" content="Added in: v11.0.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm pack-app | pnpm" />
+    <meta property="og:description" content="Added in: v11.0.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm pack-app | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.0.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/pack-app" />
+    <meta property="og:url" content="https://pnpm.io/cli/pack-app" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/pack-app" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/pack-app" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/pack-app" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/pack-app" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/pack-app" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/pack-app" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/pack-app" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/pack-app" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/pack-app" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/pack-app" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/pack-app" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/pack-app" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/pack-app" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/pack-app" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm pack-app</h1><p>Added in: v11.0.0</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Experimental</p>
+<p><code>pnpm pack-app</code> is experimental. Its flags, <code>pnpm.app</code> configuration schema, and output layout may change in future releases.</p>
+</div>
+<p>Pack a CommonJS entry file into a standalone executable for one or more target platforms, using the <a href="https://nodejs.org/api/single-executable-applications.html">Node.js Single Executable Applications</a> API under the hood.</p>
+<pre><code class="hljs language-sh">pnpm pack-app --entry &#x3C;path> --target &#x3C;triplet> [--target &#x3C;triplet> ...]
+</code></pre>
+<p>Each target produces an executable under <code>&#x3C;output-dir>/&#x3C;target>/</code> (default <code>dist-app/&#x3C;target>/</code>). On Windows targets the output is suffixed with <code>.exe</code>; macOS outputs are ad-hoc signed automatically (via <code>codesign</code> on macOS hosts or <code>ldid</code> on Linux hosts) because SEA injection invalidates the existing code signature.</p>
+<h2 id="requirements">Requirements<a class="hash-link" href="#requirements" aria-label="Direct link to Requirements">#</a></h2>
+<ul>
+<li>The host must run Node.js v25.5+ to perform the SEA injection. If the running Node.js is older (or does not match the embedded runtime version — SEA blobs are not compatible across minor releases), pnpm downloads a matching builder automatically.</li>
+<li>Cross-compiling macOS targets from Linux requires <a href="https://github.com/ProcursusTeam/ldid"><code>ldid</code></a> on <code>$PATH</code>. Windows hosts cannot ad-hoc sign macOS outputs; build macOS targets on macOS or Linux.</li>
+</ul>
+<h2 id="supported-targets">Supported targets<a class="hash-link" href="#supported-targets" aria-label="Direct link to Supported targets">#</a></h2>
+<p>Targets use the format <code>&#x3C;os>-&#x3C;arch>[-&#x3C;libc>]</code>:</p>
+<ul>
+<li><code>linux-x64</code>, <code>linux-x64-musl</code>, <code>linux-arm64</code>, <code>linux-arm64-musl</code></li>
+<li><code>darwin-x64</code>, <code>darwin-arm64</code></li>
+<li><code>win32-x64</code>, <code>win32-arm64</code></li>
+</ul>
+<p>The <code>-musl</code> suffix is only valid for <code>linux</code> targets. The <code>&#x3C;os></code> segment matches <code>process.platform</code> values so the flag is consistent with pnpm's <code>--os</code> flag and with <code>supportedArchitectures.os</code> in <code>pnpm-workspace.yaml</code>.</p>
+<h2 id="known-limitations">Known limitations<a class="hash-link" href="#known-limitations" aria-label="Direct link to Known limitations">#</a></h2>
+<h3 id="darwin-x64-binaries-crash-on-intel-macs"><code>darwin-x64</code> binaries crash on Intel Macs<a class="hash-link" href="#darwin-x64-binaries-crash-on-intel-macs" aria-label="Direct link to darwin-x64 binaries crash on Intel Macs">#</a></h3>
+<p><code>darwin-x64</code> outputs segfault at startup on Intel Macs because of an upstream Node.js bug in the <code>--build-sea</code> injection step. LIEF's Mach-O surgery for x64 leaves <code>LC_DYLD_CHAINED_FIXUPS</code> chain entries pointing at stale targets after the SEA segment is inserted; dyld then dereferences a raw chain-encoded value as a pointer and the binary crashes in <code>__cxx_global_var_init</code> before any user code runs. This is reproducible with the canonical <code>node --build-sea</code> + <code>codesign --sign -</code> flow with no pnpm involvement.</p>
+<p>The Node.js team has opted not to fix this on the grounds that x64 macOS is being phased out. Signature-related workarounds do not help — the corruption happens in the injection step, <em>before</em> signing, so swapping <code>ldid</code> for <code>codesign</code> (or vice versa) makes no difference. Re-signing produces a valid signature over already-broken bytes.</p>
+<p>Tracking:</p>
+<ul>
+<li><a href="https://github.com/nodejs/node/issues/62893">nodejs/node#62893</a> — minimal <code>node --build-sea</code> repro</li>
+<li><a href="https://github.com/nodejs/node/issues/59553">nodejs/node#59553</a> — long-running SEA test failures on macOS x64 with the same root cause</li>
+<li><a href="https://github.com/nodejs/node/pull/60250">nodejs/node#60250</a> — Node.js skipping the SEA tests on x64 macOS rather than fixing them</li>
+</ul>
+<p>If you need to ship a CLI that runs on Intel Macs, build the <code>darwin-x64</code> artifact with a non-SEA tool such as <a href="https://github.com/yao-pkg/pkg"><code>@yao-pkg/pkg</code></a> (which appends to the binary tail rather than mutating Mach-O sections). Note that Rosetta is <em>not</em> an escape hatch — it only translates x64 → arm64 (for Apple Silicon Macs running Intel binaries), not the other direction, so Intel Macs cannot run a <code>darwin-arm64</code> build.</p>
+<h2 id="examples">Examples<a class="hash-link" href="#examples" aria-label="Direct link to Examples">#</a></h2>
+<p>Build for Linux and Windows at once:</p>
+<pre><code class="hljs language-sh">pnpm pack-app --entry dist/index.cjs --target linux-x64 --target win32-x64
+</code></pre>
+<p>Embed a specific Node.js version:</p>
+<pre><code class="hljs language-sh">pnpm pack-app --entry dist/index.cjs --target linux-x64-musl --runtime node@25.5.0
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--entry-path">--entry &#x3C;path><a class="hash-link" href="#--entry-path" aria-label="Direct link to --entry <path>">#</a></h3>
+<p>Path to the CJS entry file to embed in the executable. Required unless <a href="#configuration"><code>pnpm.app.entry</code></a> is set in <code>package.json</code>. A bare positional argument is also accepted (e.g. <code>pnpm pack-app dist/index.cjs</code>).</p>
+<h3 id="--target--t-triplet">--target, -t &#x3C;triplet><a class="hash-link" href="#--target--t-triplet" aria-label="Direct link to --target, -t <triplet>">#</a></h3>
+<p>Target to build for. May be specified multiple times. See <a href="#supported-targets">Supported targets</a> for the accepted values. Required unless <a href="#configuration"><code>pnpm.app.targets</code></a> is set. When passed on the CLI, <code>--target</code> entirely replaces the configured list so you can narrow the build at invocation time.</p>
+<h3 id="--runtime-spec">--runtime &#x3C;spec><a class="hash-link" href="#--runtime-spec" aria-label="Direct link to --runtime <spec>">#</a></h3>
+<p>Runtime to embed in the output executables, as a <code>&#x3C;name>@&#x3C;version></code> spec (e.g. <code>node@25</code>, <code>node@25.5.0</code>). Only <code>node</code> is supported today; the <code>&#x3C;name>@</code> prefix leaves room for future runtimes (<code>bun</code>, <code>deno</code>). The version must be >= v25.5 (the minimum that supports <code>--build-sea</code>). Defaults to the running Node.js version.</p>
+<h3 id="--output-dir--o-dir">--output-dir, -o &#x3C;dir><a class="hash-link" href="#--output-dir--o-dir" aria-label="Direct link to --output-dir, -o <dir>">#</a></h3>
+<p>Output directory for the built executables. Defaults to <code>dist-app</code>.</p>
+<h3 id="--output-name-name">--output-name &#x3C;name><a class="hash-link" href="#--output-name-name" aria-label="Direct link to --output-name <name>">#</a></h3>
+<p>Name for the output executable (without extension). Defaults to the unscoped <code>name</code> from <code>package.json</code> (e.g. <code>my-cli</code> for <code>@acme/my-cli</code>).</p>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<p>Defaults for every flag can be set in <code>package.json</code> under <code>pnpm.app</code>. CLI flags override the config:</p>
+<div class="code-block"><div class="code-block-title">package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"my-cli"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"pnpm"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"app"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"entry"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dist/index.cjs"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"targets"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">"linux-x64"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-string">"linux-arm64"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-string">"darwin-x64"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-string">"darwin-arm64"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-string">"win32-x64"</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"node@25.5.0"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"outputDir"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dist-app"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"outputName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"my-cli"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>With this config in place, <code>pnpm pack-app</code> can be run with no arguments. <code>--target</code> on the CLI replaces the configured <code>targets</code> list, which is useful for narrowing a build (e.g. <code>pnpm pack-app --target linux-x64</code>).</p></article></main></div>
+  </body>
+</html>

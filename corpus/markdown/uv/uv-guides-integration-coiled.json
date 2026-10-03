@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/coiled/",
+ "file": "markdown/uv/uv-guides-integration-coiled.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.23,
+ "markdown_chars": 9640,
+ "raw_html_chars": 74324,
+ "sha256": "e8d68001d80912d2d04fac3b06910b976a32019576f8e7e06bbe21174499935d",
+ "fetched_at": "2026-10-03T08:57:28+00:00"
+}

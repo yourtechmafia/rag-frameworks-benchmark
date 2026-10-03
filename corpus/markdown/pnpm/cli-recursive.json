@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/recursive",
+ "file": "markdown/pnpm/cli-recursive.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.96,
+ "markdown_chars": 3107,
+ "raw_html_chars": 9612,
+ "sha256": "7abbc16811a6d94e474bb3f171bdb43ce50114d7b1a3bb0a626f1d7c878385f9",
+ "fetched_at": "2026-10-03T08:58:26+00:00"
+}

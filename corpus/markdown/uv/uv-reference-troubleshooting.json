@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/troubleshooting/",
+ "file": "markdown/uv/uv-reference-troubleshooting.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.86,
+ "markdown_chars": 4898,
+ "raw_html_chars": 61598,
+ "sha256": "5ef8c7e79985e7290b2b3b18303583251d123344d95758272deebb44e75d4d16",
+ "fetched_at": "2026-10-03T08:57:44+00:00"
+}

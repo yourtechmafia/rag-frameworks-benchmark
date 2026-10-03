@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/github/",
+ "file": "markdown/uv/uv-guides-integration-github.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.25,
+ "markdown_chars": 18810,
+ "raw_html_chars": 127303,
+ "sha256": "84e80efa63b1a2975f7f958751783f7d83db5dbd5a983aacfdbc285e6a158bf6",
+ "fetched_at": "2026-10-03T08:57:30+00:00"
+}

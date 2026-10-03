@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm env &lt;cmd&gt; | pnpm</title>
+    <meta name="description" content="pnpm env is deprecated. Use pnpm runtime instead. For example, pnpm env use --global lts becomes pnpm runtime set node lts -g." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm env &lt;cmd&gt; | pnpm" />
+    <meta property="og:description" content="pnpm env is deprecated. Use pnpm runtime instead. For example, pnpm env use --global lts becomes pnpm runtime set node lts -g." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm env &lt;cmd&gt; | pnpm" />
+    <meta name="twitter:description" content="pnpm env is deprecated. Use pnpm runtime instead. For example, pnpm env use --global lts becomes pnpm runtime set node lts -g." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/env" />
+    <meta property="og:url" content="https://pnpm.io/cli/env" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/env" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/env" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/env" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/env" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/env" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/env" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/env" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/env" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/env" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/env" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/env" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/env" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/env" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/env" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm env &lt;cmd&gt;</h1><div class="admonition admonition-warning"><p class="admonition-title">Deprecated</p>
+<p><code>pnpm env</code> is deprecated. Use <a href="/cli/runtime"><code>pnpm runtime</code></a> instead. For example, <code>pnpm env use --global lts</code> becomes <code>pnpm runtime set node lts -g</code>.</p>
+</div>
+<p>Manages the Node.js environment.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/84-MzN_0Cng" title="The pnpm patch command demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
+<h2 id="commands">Commands<a class="hash-link" href="#commands" aria-label="Direct link to Commands">#</a></h2>
+<h3 id="use">use<a class="hash-link" href="#use" aria-label="Direct link to use">#</a></h3>
+<p>Install and use the specified version of Node.js</p>
+<p>Install the LTS version of Node.js:</p>
+<pre><code>pnpm env use --global lts
+</code></pre>
+<p>Install Node.js v16:</p>
+<pre><code>pnpm env use --global 16
+</code></pre>
+<p>Install a prerelease version of Node.js:</p>
+<pre><code>pnpm env use --global nightly
+pnpm env use --global rc
+pnpm env use --global 16.0.0-rc.0
+pnpm env use --global rc/14
+</code></pre>
+<p>Install the latest version of Node.js:</p>
+<pre><code>pnpm env use --global latest
+</code></pre>
+<p>Install an LTS version of Node.js using its <a href="https://github.com/nodejs/Release/blob/main/CODENAMES.md">codename</a>:</p>
+<pre><code>pnpm env use --global argon
+</code></pre>
+<h3 id="add">add<a class="hash-link" href="#add" aria-label="Direct link to add">#</a></h3>
+<p>Installs the specified version(s) of Node.js without activating them as the current version.</p>
+<p>Example:</p>
+<pre><code>pnpm env add --global lts 18 20.0.1
+</code></pre>
+<h3 id="remove-rm">remove, rm<a class="hash-link" href="#remove-rm" aria-label="Direct link to remove, rm">#</a></h3>
+<p>Removes the specified version(s) of Node.js.</p>
+<p>Usage example:</p>
+<pre><code>pnpm env remove --global 14.0.0
+pnpm env remove --global 14.0.0 16.2.3
+</code></pre>
+<h3 id="list-ls">list, ls<a class="hash-link" href="#list-ls" aria-label="Direct link to list, ls">#</a></h3>
+<p>List Node.js versions available locally or remotely.</p>
+<p>Print locally installed versions:</p>
+<pre><code>pnpm env list
+</code></pre>
+<p>Print remotely available Node.js versions:</p>
+<pre><code>pnpm env list --remote
+</code></pre>
+<p>Print remotely available Node.js v16 versions:</p>
+<pre><code>pnpm env list --remote 16
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--global--g">--global, -g<a class="hash-link" href="#--global--g" aria-label="Direct link to --global, -g">#</a></h3>
+<p>The changes are made systemwide.</p></article></main></div>
+  </body>
+</html>

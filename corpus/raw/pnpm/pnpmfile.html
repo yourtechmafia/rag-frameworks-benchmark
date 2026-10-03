@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>.pnpmfile.mjs | pnpm</title>
+    <meta name="description" content="pnpm lets you hook directly into the installation process via special functions (hooks). Hooks can be declared in a file called .pnpmfile.mjs (ESM) or .pnpmfile.cjs (CommonJS)." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content=".pnpmfile.mjs | pnpm" />
+    <meta property="og:description" content="pnpm lets you hook directly into the installation process via special functions (hooks). Hooks can be declared in a file called .pnpmfile.mjs (ESM) or .pnpmfile.cjs (CommonJS)." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content=".pnpmfile.mjs | pnpm" />
+    <meta name="twitter:description" content="pnpm lets you hook directly into the installation process via special functions (hooks). Hooks can be declared in a file called .pnpmfile.mjs (ESM) or .pnpmfile.cjs (CommonJS)." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpmfile" />
+    <meta property="og:url" content="https://pnpm.io/pnpmfile" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpmfile" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpmfile" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpmfile" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpmfile" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpmfile" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpmfile" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpmfile" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpmfile" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpmfile" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpmfile" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpmfile" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpmfile" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpmfile" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpmfile" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>.pnpmfile.mjs</h1><p>pnpm lets you hook directly into the installation process via special functions
+(hooks). Hooks can be declared in a file called <code>.pnpmfile.mjs</code> (ESM) or <code>.pnpmfile.cjs</code> (CommonJS).</p>
+<p>By default, <code>.pnpmfile.mjs</code> should be located in the same directory as the
+lockfile. For instance, in a <a href="/workspaces">workspace</a> with a shared lockfile,
+<code>.pnpmfile.mjs</code> should be in the root of the monorepo.</p>
+<h2 id="hooks">Hooks<a class="hash-link" href="#hooks" aria-label="Direct link to Hooks">#</a></h2>
+<h3 id="tldr">TL;DR<a class="hash-link" href="#tldr" aria-label="Direct link to TL;DR">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Hook Function</th><th>Process</th><th>Uses</th></tr></thead><tbody><tr><td><code>hooks.readPackage(pkg, context): pkg</code></td><td>Called after pnpm parses the dependency's package manifest</td><td>Allows you to mutate a dependency's <code>package.json</code>.</td></tr><tr><td><code>hooks.afterAllResolved(lockfile, context): lockfile</code></td><td>Called after the dependencies have been resolved.</td><td>Allows you to mutate the lockfile.</td></tr><tr><td><code>hooks.beforePacking(pkg): pkg</code></td><td>Called before creating a tarball during pack/publish</td><td>Allows you to customize the published <code>package.json</code></td></tr><tr><td><code>resolvers</code></td><td>Called during package resolution.</td><td>Allows you to register custom package resolvers.</td></tr><tr><td><code>fetchers</code></td><td>Called during package fetching.</td><td>Allows you to register custom package fetchers.</td></tr></tbody></table></div>
+<h3 id="hooksreadpackagepkg-context-pkg--promisepkg"><code>hooks.readPackage(pkg, context): pkg | Promise&#x3C;pkg></code><a class="hash-link" href="#hooksreadpackagepkg-context-pkg--promisepkg" aria-label="Direct link to hooks.readPackage(pkg, context): pkg | Promise<pkg>">#</a></h3>
+<p>Allows you to mutate a dependency's <code>package.json</code> after parsing and prior to
+resolution. These mutations are not saved to the filesystem, however, they will
+affect what gets resolved in the lockfile and therefore what gets installed.</p>
+<p>Note that you will need to delete the <code>pnpm-lock.yaml</code> if you have already
+resolved the dependency you want to modify.</p>
+<div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>If you need changes to <code>package.json</code> saved to the filesystem, you need to use the <a href="/cli/patch"><code>pnpm patch</code></a> command and patch the <code>package.json</code> file.
+This might be useful if you want to remove the <code>bin</code> field of a dependency for instance.</p>
+</div>
+<h4 id="arguments">Arguments<a class="hash-link" href="#arguments" aria-label="Direct link to Arguments">#</a></h4>
+<ul>
+<li><code>pkg</code> - The manifest of the package. Either the response from the registry or
+the <code>package.json</code> content.</li>
+<li><code>context</code> - Context object for the step. Method <code>#log(msg)</code> allows you to use
+a debug log for the step.</li>
+</ul>
+<h4 id="usage">Usage<a class="hash-link" href="#usage" aria-label="Direct link to Usage">#</a></h4>
+<p>Example <code>.pnpmfile.mjs</code> (changes the dependencies of a dependency):</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">readPackage</span>(<span class="hljs-params">pkg, context</span>) {
+  <span class="hljs-comment">// Override the manifest of foo@1.x after downloading it from the registry</span>
+  <span class="hljs-keyword">if</span> (pkg.<span class="hljs-property">name</span> === <span class="hljs-string">'foo'</span> &#x26;&#x26; pkg.<span class="hljs-property">version</span>?.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">'1.'</span>)) {
+    <span class="hljs-comment">// Replace bar@x.x.x with bar@2.0.0</span>
+    pkg.<span class="hljs-property">dependencies</span> = {
+      ...pkg.<span class="hljs-property">dependencies</span>,
+      <span class="hljs-attr">bar</span>: <span class="hljs-string">'^2.0.0'</span>
+    }
+    context.<span class="hljs-title function_">log</span>(<span class="hljs-string">'bar@1 => bar@2 in dependencies of foo'</span>)
+  }
+
+  <span class="hljs-comment">// This will change any packages using baz@x.x.x to use baz@1.2.3</span>
+  <span class="hljs-keyword">if</span> (pkg.<span class="hljs-property">dependencies</span>?.<span class="hljs-property">baz</span>) {
+    pkg.<span class="hljs-property">dependencies</span>.<span class="hljs-property">baz</span> = <span class="hljs-string">'1.2.3'</span>;
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> hooks = {
+  readPackage
+}
+</code></pre>
+<h4 id="known-limitations">Known limitations<a class="hash-link" href="#known-limitations" aria-label="Direct link to Known limitations">#</a></h4>
+<p>Removing the <code>scripts</code> field from a dependency's manifest via <code>readPackage</code> will
+not prevent pnpm from building the dependency. When building a dependency, pnpm
+reads the <code>package.json</code> of the package from the package's archive, which is not
+affected by the hook. In order to ignore a package's build, use the
+<a href="/settings/build#allowbuilds">allowBuilds</a> field.</p>
+<h3 id="hooksupdateconfigconfig-config--promiseconfig"><code>hooks.updateConfig(config): config | Promise&#x3C;config></code><a class="hash-link" href="#hooksupdateconfigconfig-config--promiseconfig" aria-label="Direct link to hooks.updateConfig(config): config | Promise<config>">#</a></h3>
+<p>Added in: v10.8.0</p>
+<p>Allows you to modify the configuration settings used by pnpm. This hook is most useful when paired with <a href="config-dependencies">configDependencies</a>, allowing you to share and reuse settings across different Git repositories.</p>
+<p>For example, <a href="https://github.com/pnpm/plugin-better-defaults">@pnpm/plugin-better-defaults</a> uses the <code>updateConfig</code> hook to apply a curated set of recommended settings.</p>
+<h4 id="usage-example">Usage example<a class="hash-link" href="#usage-example" aria-label="Direct link to Usage example">#</a></h4>
+<div class="code-block"><div class="code-block-title">.pnpmfile.mjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> hooks = {
+  <span class="hljs-title function_">updateConfig</span> (config) {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(config, {
+      <span class="hljs-attr">enablePrePostScripts</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">optimisticRepeatInstall</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">resolutionMode</span>: <span class="hljs-string">'lowest-direct'</span>,
+      <span class="hljs-attr">verifyDepsBeforeRun</span>: <span class="hljs-string">'install'</span>,
+    })
+  }
+}
+</code></pre></div>
+<h4 id="what-the-hook-receives">What the hook receives<a class="hash-link" href="#what-the-hook-receives" aria-label="Direct link to What the hook receives">#</a></h4>
+<p>Since v12.4.1, <code>config</code> is the resolved configuration: every setting pnpm will
+act on, wherever it came from, including <code>.npmrc</code>, the command line, and the
+built-in defaults. A setting nobody set is absent from the object rather than
+present as <code>null</code>.</p>
+<p>Two entries describe registry routing and credentials:</p>
+<ul>
+<li><code>registriesByScope</code> maps a scope (<code>@acme</code>, or <code>default</code> for the main
+registry) to the registry URL packages of that scope are fetched from.
+Rewriting the map redirects those fetches, except for the routes given on
+the command line.</li>
+<li><code>configByUri</code> maps a registry URI to its credentials, the way pnpm 11
+reports them.</li>
+</ul>
+<h4 id="settings-given-on-the-command-line">Settings given on the command line<a class="hash-link" href="#settings-given-on-the-command-line" aria-label="Direct link to Settings given on the command line">#</a></h4>
+<p>Since v12.8.0, a setting given on the command line takes precedence over the
+hook. The hook still receives the command-line value, but pnpm puts it back
+after the hook returns, so changing it in the hook has no effect. This covers
+flags such as <code>--registry</code>, <code>--config.@acme:registry</code>, <code>--store-dir</code>, <code>--state-dir</code>,
+<code>--config.&#x3C;key></code> overrides, and setting flags such as <code>--no-optional</code>.</p>
+<h4 id="which-commands-load-the-pnpmfile">Which commands load the pnpmfile<a class="hash-link" href="#which-commands-load-the-pnpmfile" aria-label="Direct link to Which commands load the pnpmfile">#</a></h4>
+<p>Since v12.3.0, <code>pnpm run</code>, <code>pnpm exec</code>, <code>pnpm rebuild</code>, the script
+shortcuts such as <code>pnpm test</code>, and <code>pnpm link</code>, <code>pnpm outdated</code>, <code>pnpm import</code>,
+<code>pnpm pack</code>, <code>pnpm publish</code>, and <code>pnpm stage publish</code> all load the pnpmfile
+before doing their work, so <code>updateConfig</code> settings such as <code>extraEnv</code> and
+<code>extraBinPaths</code> reach the processes they spawn and hook-provided catalogs
+resolve at pack time.</p>
+<h3 id="hooksafterallresolvedlockfile-context-lockfile--promiselockfile"><code>hooks.afterAllResolved(lockfile, context): lockfile | Promise&#x3C;lockfile></code><a class="hash-link" href="#hooksafterallresolvedlockfile-context-lockfile--promiselockfile" aria-label="Direct link to hooks.afterAllResolved(lockfile, context): lockfile | Promise<lockfile>">#</a></h3>
+<p>Allows you to mutate the lockfile output before it is serialized.</p>
+<h4 id="arguments-1">Arguments<a class="hash-link" href="#arguments-1" aria-label="Direct link to Arguments">#</a></h4>
+<ul>
+<li><code>lockfile</code> - The lockfile resolutions object that is serialized to
+<code>pnpm-lock.yaml</code>.</li>
+<li><code>context</code> - Context object for the step. Method <code>#log(msg)</code> allows you to use
+a debug log for the step.</li>
+</ul>
+<h4 id="usage-example-1">Usage example<a class="hash-link" href="#usage-example-1" aria-label="Direct link to Usage example">#</a></h4>
+<div class="code-block"><div class="code-block-title">.pnpmfile.mjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">afterAllResolved</span>(<span class="hljs-params">lockfile, context</span>) {
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">return</span> lockfile
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> hooks = {
+  afterAllResolved
+}
+</code></pre></div>
+<h4 id="known-limitations-1">Known Limitations<a class="hash-link" href="#known-limitations-1" aria-label="Direct link to Known Limitations">#</a></h4>
+<p>There are none - anything that can be done with the lockfile can be modified via
+this function, and you can even extend the lockfile's functionality.</p>
+<h3 id="hooksbeforepackingpkg-pkg--promisepkg"><code>hooks.beforePacking(pkg): pkg | Promise&#x3C;pkg></code><a class="hash-link" href="#hooksbeforepackingpkg-pkg--promisepkg" aria-label="Direct link to hooks.beforePacking(pkg): pkg | Promise<pkg>">#</a></h3>
+<p>Added in: v10.28.0</p>
+<p>Allows you to modify the <code>package.json</code> manifest before it is packed into a tarball during <code>pnpm pack</code> or <code>pnpm publish</code>. This is useful for customizing the published package without affecting your local development <code>package.json</code>.</p>
+<p>Unlike <code>hooks.readPackage</code>, which modifies how dependencies are resolved during installation, <code>beforePacking</code> only affects the contents of the tarball that gets published.</p>
+<h4 id="arguments-2">Arguments<a class="hash-link" href="#arguments-2" aria-label="Direct link to Arguments">#</a></h4>
+<ul>
+<li><code>pkg</code> - The package manifest object that will be included in the published tarball.</li>
+</ul>
+<h4 id="usage-example-2">Usage example<a class="hash-link" href="#usage-example-2" aria-label="Direct link to Usage example">#</a></h4>
+<div class="code-block"><div class="code-block-title">.pnpmfile.mjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">beforePacking</span>(<span class="hljs-params">pkg</span>) {
+  <span class="hljs-comment">// Remove development-only fields from published package</span>
+  <span class="hljs-keyword">delete</span> pkg.<span class="hljs-property">devDependencies</span>
+  <span class="hljs-keyword">delete</span> pkg.<span class="hljs-property">scripts</span>?.<span class="hljs-property">test</span>
+
+  <span class="hljs-comment">// Add publication metadata</span>
+  pkg.<span class="hljs-property">publishedAt</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toISOString</span>()
+
+  <span class="hljs-comment">// Modify package exports for production</span>
+  <span class="hljs-keyword">if</span> (pkg.<span class="hljs-property">name</span> === <span class="hljs-string">'my-package'</span>) {
+    pkg.<span class="hljs-property">main</span> = <span class="hljs-string">'./dist/index.js'</span>
+  }
+
+  <span class="hljs-keyword">return</span> pkg
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> hooks = {
+  beforePacking
+}
+</code></pre></div>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>The modifications made by this hook only affect the <code>package.json</code> inside the tarball. Your local <code>package.json</code> file remains unchanged.</p>
+</div>
+<h3 id="hookspreresolutionoptions-promisevoid"><code>hooks.preResolution(options): Promise&#x3C;void></code><a class="hash-link" href="#hookspreresolutionoptions-promisevoid" aria-label="Direct link to hooks.preResolution(options): Promise<void>">#</a></h3>
+<p>This hook is executed after reading and parsing the lockfiles of the project, but before resolving dependencies. It allows modifications to the lockfile objects.</p>
+<h4 id="arguments-3">Arguments<a class="hash-link" href="#arguments-3" aria-label="Direct link to Arguments">#</a></h4>
+<ul>
+<li><code>options.existsCurrentLockfile</code> - A boolean that is true if the lockfile at <code>node_modules/.pnpm/lock.yaml</code> exists.</li>
+<li><code>options.currentLockfile</code> - The lockfile object from <code>node_modules/.pnpm/lock.yaml</code>.</li>
+<li><code>options.existsNonEmptyWantedLockfile</code> - A boolean that is true if the lockfile at <code>pnpm-lock.yaml</code> exists.</li>
+<li><code>options.wantedLockfile</code> - The lockfile object from <code>pnpm-lock.yaml</code>.</li>
+<li><code>options.lockfileDir</code> - The directory where the wanted lockfile is found.</li>
+<li><code>options.storeDir</code> - The location of the store directory.</li>
+<li><code>options.registries</code> - A map of scopes to registry URLs.</li>
+</ul>
+<h3 id="hooksimportpackagedestinationdir-options-promisestring--undefined"><code>hooks.importPackage(destinationDir, options): Promise&#x3C;string | undefined></code><a class="hash-link" href="#hooksimportpackagedestinationdir-options-promisestring--undefined" aria-label="Direct link to hooks.importPackage(destinationDir, options): Promise<string | undefined>">#</a></h3>
+<div class="admonition admonition-warning"><p class="admonition-title">Deprecated in v11.23.0</p>
+<p><code>importPackage</code> is deprecated and will be removed in the next major version. pnpm warns when a pnpmfile defines it, and defining it opts the installation out of the parallel package importer, making installation slower. If you rely on this hook, comment on <a href="https://github.com/pnpm/pnpm/issues/14101">#14101</a>.</p>
+</div>
+<p>This hook allows to change how packages are written to <code>node_modules</code>. The return value is optional and states what method was used for importing the dependency, e.g.: clone, hardlink.</p>
+<h4 id="arguments-4">Arguments<a class="hash-link" href="#arguments-4" aria-label="Direct link to Arguments">#</a></h4>
+<ul>
+<li><code>destinationDir</code> - The destination directory where the package should be written.</li>
+<li><code>options.disableRelinkLocalDirDeps</code></li>
+<li><code>options.filesMap</code></li>
+<li><code>options.force</code></li>
+<li><code>options.resolvedFrom</code></li>
+<li><code>options.keepModulesDir</code></li>
+</ul>
+<h3 id="hooksfilterlog"><code>hooks.filterLog(log): boolean</code><a class="hash-link" href="#hooksfilterlog" aria-label="Direct link to hooks.filterLog(log): boolean">#</a></h3>
+<div class="admonition admonition-warning"><p class="admonition-title">Deprecated in v12.0.0</p>
+<p><code>filterLog</code> returns <code>false</code> for a log entry to keep it out of pnpm's reporter
+output. pnpm 12 ignores the hook and warns when a pnpmfile defines it, so remove
+it rather than relying on it. Use <a href="/settings/cli#loglevel"><code>loglevel</code></a> to
+choose how much pnpm reports.</p>
+</div>
+<h3 id="hooksfetchers"><code>hooks.fetchers</code><a class="hash-link" href="#hooksfetchers" aria-label="Direct link to hooks.fetchers">#</a></h3>
+<div class="admonition admonition-danger"><p class="admonition-title">Removed in v11.0.0</p>
+<p><code>hooks.fetchers</code> has been removed. Use top-level <code>fetchers</code> instead. See the <a href="#custom-fetchers">Custom Fetchers</a> section for the new API.</p>
+</div>
+<h2 id="finders">Finders<a class="hash-link" href="#finders" aria-label="Direct link to Finders">#</a></h2>
+<p>Added in: v10.16.0</p>
+<p>Finder functions are used with <code>pnpm list</code> and <code>pnpm why</code> via the <code>--find-by</code> flag.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-block-title">.pnpmfile.mjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> finders = {
+  <span class="hljs-attr">react17</span>: <span class="hljs-function">(<span class="hljs-params">ctx</span>) =></span> {
+    <span class="hljs-keyword">return</span> ctx.<span class="hljs-title function_">readManifest</span>().<span class="hljs-property">peerDependencies</span>?.<span class="hljs-property">react</span> === <span class="hljs-string">"^17.0.0"</span>
+  }
+}
+</code></pre></div>
+<p>Usage:</p>
+<pre><code>pnpm why --find-by=react17
+</code></pre>
+<p>See <a href="/finders">Finders</a> for more details.</p>
+<h2 id="custom-resolvers-and-fetchers">Custom Resolvers and Fetchers<a class="hash-link" href="#custom-resolvers-and-fetchers" aria-label="Direct link to Custom Resolvers and Fetchers">#</a></h2>
+<p>Added in: v11.0.0</p>
+<p>Custom resolvers and fetchers allow you to implement custom package resolution and fetching logic for new package identifier schemes (like <code>my-protocol:package-name</code>). They are registered as top-level exports in <code>.pnpmfile.cjs</code>:</p>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">resolvers</span>: [customResolver1, customResolver2],
+  <span class="hljs-attr">fetchers</span>: [customFetcher1, customFetcher2],
+}
+</code></pre>
+<h4 id="typescript-interfaces">TypeScript Interfaces<a class="hash-link" href="#typescript-interfaces" aria-label="Direct link to TypeScript Interfaces">#</a></h4>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomResolver</span> {
+  <span class="hljs-attr">canResolve</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">wantedDependency</span>: <span class="hljs-title class_">WantedDependency</span></span>) =></span> <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-built_in">boolean</span>>
+  <span class="hljs-attr">resolve</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">wantedDependency</span>: <span class="hljs-title class_">WantedDependency</span>, <span class="hljs-attr">opts</span>: <span class="hljs-title class_">ResolveOptions</span></span>) =></span> <span class="hljs-title class_">ResolveResult</span> | <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">ResolveResult</span>>
+  <span class="hljs-attr">shouldRefreshResolution</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">depPath</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">pkgSnapshot</span>: <span class="hljs-title class_">PackageSnapshot</span></span>) =></span> <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-built_in">boolean</span>>
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">CustomFetcher</span> {
+  <span class="hljs-attr">canFetch</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">pkgId</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">resolution</span>: <span class="hljs-title class_">Resolution</span></span>) =></span> <span class="hljs-built_in">boolean</span> | <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-built_in">boolean</span>>
+  <span class="hljs-attr">fetch</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">cafs</span>: <span class="hljs-title class_">Cafs</span>, <span class="hljs-attr">resolution</span>: <span class="hljs-title class_">Resolution</span>, <span class="hljs-attr">opts</span>: <span class="hljs-title class_">FetchOptions</span>, <span class="hljs-attr">fetchers</span>: <span class="hljs-title class_">Fetchers</span></span>) =></span> <span class="hljs-title class_">FetchResult</span> | <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">FetchResult</span>>
+}
+</code></pre>
+<h3 id="custom-resolvers">Custom Resolvers<a class="hash-link" href="#custom-resolvers" aria-label="Direct link to Custom Resolvers">#</a></h3>
+<p>Custom resolvers convert package descriptors (e.g., <code>foo@^1.0.0</code>) into resolutions that are stored in the lockfile.</p>
+<h4 id="resolver-interface">Resolver Interface<a class="hash-link" href="#resolver-interface" aria-label="Direct link to Resolver Interface">#</a></h4>
+<p>A custom resolver is an object that can implement any combination of the following methods:</p>
+<h5 id="canresolvewanteddependency-boolean--promiseboolean"><code>canResolve(wantedDependency): boolean | Promise&#x3C;boolean></code><a class="hash-link" href="#canresolvewanteddependency-boolean--promiseboolean" aria-label="Direct link to canResolve(wantedDependency): boolean | Promise<boolean>">#</a></h5>
+<p>Determines whether this resolver can resolve a given wanted dependency.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>wantedDependency</code> - Object with:
+<ul>
+<li><code>alias</code> - The package name or alias as it appears in package.json</li>
+<li><code>bareSpecifier</code> - The version range, git URL, file path, or other specifier</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns:</strong> <code>true</code> if this resolver can handle the package, <code>false</code> otherwise. This determines whether <code>resolve</code> will be called.</p>
+<h5 id="resolvewanteddependency-opts-resolveresult--promiseresolveresult"><code>resolve(wantedDependency, opts): ResolveResult | Promise&#x3C;ResolveResult></code><a class="hash-link" href="#resolvewanteddependency-opts-resolveresult--promiseresolveresult" aria-label="Direct link to resolve(wantedDependency, opts): ResolveResult | Promise<ResolveResult>">#</a></h5>
+<p>Resolves a wanted dependency to specific package metadata and resolution information.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>wantedDependency</code> - The wanted dependency (same as <code>canResolve</code>)</li>
+<li><code>opts</code> - Object with:
+<ul>
+<li><code>lockfileDir</code> - Directory containing the lockfile</li>
+<li><code>projectDir</code> - The project root directory</li>
+<li><code>preferredVersions</code> - Map of package names to preferred versions</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns:</strong> Object with:</p>
+<ul>
+<li><code>id</code> - Unique package identifier (e.g., <code>'custom-pkg@1.0.0'</code>)</li>
+<li><code>resolution</code> - Resolution metadata. This can be:
+<ul>
+<li>Standard resolution, e.g. <code>{ tarball: 'https://...', integrity: '...' }</code></li>
+<li>Custom resolution: <code>{ type: 'custom:cdn', url: '...' }</code></li>
+</ul>
+</li>
+</ul>
+<p>Custom resolutions must be handled by a corresponding custom fetcher.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Custom Resolution Types</p>
+<p>Custom resolutions must use the <code>custom:</code> prefix in their type field (e.g., <code>custom:cdn</code>, <code>custom:artifactory</code>) to differentiate them from pnpm's built-in resolution types.</p>
+</div>
+<h5 id="shouldrefreshresolutiondeppath-pkgsnapshot-boolean--promiseboolean"><code>shouldRefreshResolution(depPath, pkgSnapshot): boolean | Promise&#x3C;boolean></code><a class="hash-link" href="#shouldrefreshresolutiondeppath-pkgsnapshot-boolean--promiseboolean" aria-label="Direct link to shouldRefreshResolution(depPath, pkgSnapshot): boolean | Promise<boolean>">#</a></h5>
+<p>Return <code>true</code> to trigger full resolution of all packages, skipping the "Lockfile is up to date" optimization. This is useful for implementing time-based cache invalidation or other custom re-resolution logic.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>depPath</code> - The package identifier string (e.g., <code>lodash@4.17.21</code>)</li>
+<li><code>pkgSnapshot</code> - The lockfile entry for this package, providing direct access to the resolution, dependencies, etc.</li>
+</ul>
+<p><strong>Returns:</strong> <code>true</code> to force re-resolution, <code>false</code> otherwise.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p><code>shouldRefreshResolution</code> is skipped during frozen lockfile installs, as no resolution is allowed in that mode.</p>
+</div>
+<h3 id="custom-fetchers">Custom Fetchers<a class="hash-link" href="#custom-fetchers" aria-label="Direct link to Custom Fetchers">#</a></h3>
+<p>Custom fetchers completely handle fetching for custom package types, downloading package contents from custom sources and storing them in pnpm's content-addressable file system.</p>
+<h4 id="fetcher-interface">Fetcher Interface<a class="hash-link" href="#fetcher-interface" aria-label="Direct link to Fetcher Interface">#</a></h4>
+<p>A custom fetcher is an object that can implement the following methods:</p>
+<h5 id="canfetchpkgid-resolution-boolean--promiseboolean"><code>canFetch(pkgId, resolution): boolean | Promise&#x3C;boolean></code><a class="hash-link" href="#canfetchpkgid-resolution-boolean--promiseboolean" aria-label="Direct link to canFetch(pkgId, resolution): boolean | Promise<boolean>">#</a></h5>
+<p>Determines whether this fetcher can fetch a package with the given resolution.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>pkgId</code> - The unique package identifier from the resolution phase</li>
+<li><code>resolution</code> - The resolution object from a resolver's <code>resolve</code> method</li>
+</ul>
+<p><strong>Returns:</strong> <code>true</code> if this fetcher can handle fetching this package, <code>false</code> otherwise.</p>
+<h5 id="fetchcafs-resolution-opts-fetchers-fetchresult--customfetcherdelegation--promisefetchresult--customfetcherdelegation"><code>fetch(cafs, resolution, opts, fetchers): FetchResult | CustomFetcherDelegation | Promise&#x3C;FetchResult | CustomFetcherDelegation></code><a class="hash-link" href="#fetchcafs-resolution-opts-fetchers-fetchresult--customfetcherdelegation--promisefetchresult--customfetcherdelegation" aria-label="Direct link to fetch(cafs, resolution, opts, fetchers): FetchResult | CustomFetcherDelegation | Promise<FetchResult | CustomFetcherDelegation>">#</a></h5>
+<p>Fetches package files and returns metadata about the fetched package.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>cafs</code> - Content-addressable file system interface for storing files</li>
+<li><code>resolution</code> - The resolution object (same as passed to <code>canFetch</code>)</li>
+<li><code>opts</code> - Fetch options including:
+<ul>
+<li><code>lockfileDir</code> - Directory containing the lockfile</li>
+<li><code>filesIndexFile</code> - Path for the files index</li>
+<li><code>onStart</code> - Optional callback when fetch starts</li>
+<li><code>onProgress</code> - Optional progress callback</li>
+</ul>
+</li>
+<li><code>fetchers</code> - Object containing pnpm's standard fetchers for delegation:
+<ul>
+<li><code>remoteTarball</code> - Fetcher for remote tarballs</li>
+<li><code>localTarball</code> - Fetcher for local tarballs</li>
+<li><code>gitHostedTarball</code> - Fetcher for GitHub/GitLab/Bitbucket tarballs</li>
+<li><code>directory</code> - Fetcher for local directories</li>
+<li><code>git</code> - Fetcher for git repositories</li>
+</ul>
+</li>
+</ul>
+<p><strong>Returns:</strong> either a fetch result, or a <a href="#delegating-to-the-built-in-fetchers">delegation envelope</a>.</p>
+<p>A fetch result is an object with:</p>
+<ul>
+<li><code>filesIndex</code> - Map of relative file paths to their physical locations. For remote packages, these are paths in pnpm's content-addressable store (CAFS). For local packages (when <code>local: true</code>), these are absolute paths to files on disk.</li>
+<li><code>manifest</code> - Optional. The package.json from the fetched package. If not provided, pnpm will read it from disk when needed. Providing it avoids an extra file I/O operation and is recommended when you have the manifest data readily available (e.g., already parsed during fetch).</li>
+<li><code>requiresBuild</code> - Boolean indicating whether the package has build scripts that need to be executed. Set to <code>true</code> if the package has <code>preinstall</code>, <code>install</code>, or <code>postinstall</code> scripts, or contains <code>binding.gyp</code> or <code>.hooks/</code> files. Standard fetchers determine this automatically using the manifest and file list.</li>
+<li><code>local</code> - Optional. Set to <code>true</code> to load the package directly from disk without copying to pnpm's store. When <code>true</code>, <code>filesIndex</code> should contain absolute paths to files on disk, and pnpm will hardlink them to <code>node_modules</code> instead of copying. This is how the directory fetcher handles local dependencies (e.g., <code>file:../my-package</code>).</li>
+</ul>
+<h4 id="delegating-to-the-built-in-fetchers">Delegating to the built-in fetchers<a class="hash-link" href="#delegating-to-the-built-in-fetchers" aria-label="Direct link to Delegating to the built-in fetchers">#</a></h4>
+<p>Added in: v11.12.0</p>
+<p>Rather than fetching the package itself, a custom fetcher may hand the work back to pnpm. There are two ways to do this.</p>
+<p><strong>Return a <code>{ delegate }</code> envelope.</strong> Instead of a fetch result, return an object with a single <code>delegate</code> key holding the resolution pnpm should fetch instead. pnpm rewrites the package's resolution to that shape and runs its built-in fetch path on it:</p>
+<div class="code-block"><div class="code-block-title">.pnpmfile.cjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> customFetcher = {
+  <span class="hljs-attr">canFetch</span>: <span class="hljs-function">(<span class="hljs-params">pkgId, resolution</span>) =></span> resolution.<span class="hljs-property">type</span> === <span class="hljs-string">'custom:url'</span>,
+  <span class="hljs-attr">fetch</span>: <span class="hljs-function">(<span class="hljs-params">cafs, resolution</span>) =></span> ({
+    <span class="hljs-attr">delegate</span>: {
+      <span class="hljs-attr">tarball</span>: resolution.<span class="hljs-property">customUrl</span>,
+      <span class="hljs-attr">integrity</span>: resolution.<span class="hljs-property">integrity</span>,
+    },
+  }),
+}
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = { <span class="hljs-attr">fetchers</span>: [customFetcher] }
+</code></pre></div>
+<p>The delegated resolution must be a complete, fetchable shape (for example <code>{ tarball, integrity }</code>). Delegation is single-step: a <code>delegate</code> that is itself custom-typed is rejected.</p>
+<p><strong>Call <code>fetchers.*</code> directly.</strong> The <code>fetchers</code> argument gives you pnpm's standard fetchers, so you can transform the resolution and invoke one yourself.</p>
+<div class="admonition admonition-tip"><p class="admonition-title">Prefer the envelope for portability</p>
+<p>The <code>{ delegate }</code> envelope is the only delegation form that works in every pnpm version. From <a href="/blog/releases/12.0">pnpm 12</a>, <code>cafs</code> and <code>fetchers</code> arrive as <code>null</code>, so a fetcher that should run on pnpm 11 and 12 must return the envelope rather than calling <code>fetchers.*</code>.</p>
+</div>
+<h4 id="usage-examples">Usage Examples<a class="hash-link" href="#usage-examples" aria-label="Direct link to Usage Examples">#</a></h4>
+<h5 id="basic-custom-resolver">Basic Custom Resolver<a class="hash-link" href="#basic-custom-resolver" aria-label="Direct link to Basic Custom Resolver">#</a></h5>
+<p>This example shows a custom resolver that resolves packages from a custom registry:</p>
+<div class="code-block"><div class="code-block-title">.pnpmfile.cjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> customResolver = {
+  <span class="hljs-comment">// Only handle packages with @company scope</span>
+  <span class="hljs-attr">canResolve</span>: <span class="hljs-function">(<span class="hljs-params">wantedDependency</span>) =></span> {
+    <span class="hljs-keyword">return</span> wantedDependency.<span class="hljs-property">alias</span>.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">'@company/'</span>)
+  },
+
+  <span class="hljs-attr">resolve</span>: <span class="hljs-title function_">async</span> (wantedDependency, opts) => {
+    <span class="hljs-comment">// Fetch metadata from custom registry</span>
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(
+      <span class="hljs-string">`https://custom-registry.company.com/<span class="hljs-subst">${wantedDependency.alias}</span>/<span class="hljs-subst">${wantedDependency.bareSpecifier}</span>`</span>
+    )
+    <span class="hljs-keyword">const</span> metadata = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>()
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">id</span>: <span class="hljs-string">`<span class="hljs-subst">${metadata.name}</span>@<span class="hljs-subst">${metadata.version}</span>`</span>,
+      <span class="hljs-attr">resolution</span>: {
+        <span class="hljs-attr">tarball</span>: metadata.<span class="hljs-property">tarballUrl</span>,
+        <span class="hljs-attr">integrity</span>: metadata.<span class="hljs-property">integrity</span>
+      }
+    }
+  }
+}
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">resolvers</span>: [customResolver]
+}
+</code></pre></div>
+<h5 id="custom-resolver-and-fetcher-with-shouldrefreshresolution">Custom Resolver and Fetcher with <code>shouldRefreshResolution</code><a class="hash-link" href="#custom-resolver-and-fetcher-with-shouldrefreshresolution" aria-label="Direct link to Custom Resolver and Fetcher with shouldRefreshResolution">#</a></h5>
+<p>This example shows a resolver and fetcher working together with a custom resolution type and time-based cache invalidation:</p>
+<div class="code-block"><div class="code-block-title">.pnpmfile.cjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> customResolver = {
+  <span class="hljs-attr">canResolve</span>: <span class="hljs-function">(<span class="hljs-params">wantedDependency</span>) =></span> {
+    <span class="hljs-keyword">return</span> wantedDependency.<span class="hljs-property">alias</span>.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">'company-cdn:'</span>)
+  },
+
+  <span class="hljs-attr">resolve</span>: <span class="hljs-title function_">async</span> (wantedDependency, opts) => {
+    <span class="hljs-keyword">const</span> actualName = wantedDependency.<span class="hljs-property">alias</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-string">'company-cdn:'</span>, <span class="hljs-string">''</span>)
+    <span class="hljs-keyword">const</span> version = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchVersionFromCompanyCDN</span>(actualName, wantedDependency.<span class="hljs-property">bareSpecifier</span>)
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">id</span>: <span class="hljs-string">`company-cdn:<span class="hljs-subst">${actualName}</span>@<span class="hljs-subst">${version}</span>`</span>,
+      <span class="hljs-attr">resolution</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'custom:cdn'</span>,
+        <span class="hljs-attr">cdnUrl</span>: <span class="hljs-string">`https://cdn.company.com/packages/<span class="hljs-subst">${actualName}</span>/<span class="hljs-subst">${version}</span>.tgz`</span>,
+        <span class="hljs-attr">cachedAt</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(), <span class="hljs-comment">// Custom metadata for shouldRefreshResolution</span>
+      },
+    }
+  },
+
+  <span class="hljs-attr">shouldRefreshResolution</span>: <span class="hljs-function">(<span class="hljs-params">depPath, pkgSnapshot</span>) =></span> {
+    <span class="hljs-comment">// Check custom metadata stored in the resolution</span>
+    <span class="hljs-keyword">const</span> cachedAt = pkgSnapshot.<span class="hljs-property">resolution</span>?.<span class="hljs-property">cachedAt</span>
+    <span class="hljs-keyword">if</span> (cachedAt &#x26;&#x26; <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - cachedAt > <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> <span class="hljs-comment">// Re-resolve if cached more than 24 hours ago</span>
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  },
+}
+
+<span class="hljs-keyword">const</span> customFetcher = {
+  <span class="hljs-attr">canFetch</span>: <span class="hljs-function">(<span class="hljs-params">pkgId, resolution</span>) =></span> {
+    <span class="hljs-keyword">return</span> resolution.<span class="hljs-property">type</span> === <span class="hljs-string">'custom:cdn'</span>
+  },
+
+  <span class="hljs-attr">fetch</span>: <span class="hljs-title function_">async</span> (cafs, resolution, opts, fetchers) => {
+    <span class="hljs-comment">// Delegate to pnpm's standard tarball fetcher</span>
+    <span class="hljs-keyword">const</span> tarballResolution = {
+      <span class="hljs-attr">tarball</span>: resolution.<span class="hljs-property">cdnUrl</span>,
+      <span class="hljs-attr">integrity</span>: resolution.<span class="hljs-property">integrity</span>,
+    }
+
+    <span class="hljs-keyword">return</span> fetchers.<span class="hljs-title function_">remoteTarball</span>(cafs, tarballResolution, opts)
+  },
+}
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">resolvers</span>: [customResolver],
+  <span class="hljs-attr">fetchers</span>: [customFetcher],
+}
+</code></pre></div>
+<h5 id="basic-custom-fetcher">Basic Custom Fetcher<a class="hash-link" href="#basic-custom-fetcher" aria-label="Direct link to Basic Custom Fetcher">#</a></h5>
+<p>This example shows a custom fetcher that fetches certain packages from a different source:</p>
+<div class="code-block"><div class="code-block-title">.pnpmfile.cjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> customFetcher = {
+  <span class="hljs-attr">canFetch</span>: <span class="hljs-function">(<span class="hljs-params">pkgId, resolution</span>) =></span> {
+    <span class="hljs-keyword">return</span> pkgId.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">'@company/'</span>)
+  },
+
+  <span class="hljs-attr">fetch</span>: <span class="hljs-title function_">async</span> (cafs, resolution, opts, fetchers) => {
+    <span class="hljs-comment">// Delegate to pnpm's tarball fetcher with modified URL</span>
+    <span class="hljs-keyword">const</span> tarballResolution = {
+      <span class="hljs-attr">tarball</span>: resolution.<span class="hljs-property">tarball</span>.<span class="hljs-title function_">replace</span>(
+        <span class="hljs-string">'https://registry.npmjs.org/'</span>,
+        <span class="hljs-string">'https://custom-registry.company.com/'</span>
+      ),
+      <span class="hljs-attr">integrity</span>: resolution.<span class="hljs-property">integrity</span>
+    }
+
+    <span class="hljs-keyword">return</span> fetchers.<span class="hljs-title function_">remoteTarball</span>(cafs, tarballResolution, opts)
+  }
+}
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">fetchers</span>: [customFetcher]
+}
+</code></pre></div>
+<h5 id="custom-resolution-type-with-resolver-and-fetcher">Custom Resolution Type with Resolver and Fetcher<a class="hash-link" href="#custom-resolution-type-with-resolver-and-fetcher" aria-label="Direct link to Custom Resolution Type with Resolver and Fetcher">#</a></h5>
+<p>This example shows a custom resolver and fetcher working together with a custom resolution type:</p>
+<div class="code-block"><div class="code-block-title">.pnpmfile.cjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">const</span> customResolver = {
+  <span class="hljs-attr">canResolve</span>: <span class="hljs-function">(<span class="hljs-params">wantedDependency</span>) =></span> {
+    <span class="hljs-keyword">return</span> wantedDependency.<span class="hljs-property">alias</span>.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">'@internal/'</span>)
+  },
+
+  <span class="hljs-attr">resolve</span>: <span class="hljs-title function_">async</span> (wantedDependency) => {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">id</span>: <span class="hljs-string">`<span class="hljs-subst">${wantedDependency.alias}</span>@<span class="hljs-subst">${wantedDependency.bareSpecifier}</span>`</span>,
+      <span class="hljs-attr">resolution</span>: {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'custom:internal-directory'</span>,
+        <span class="hljs-attr">directory</span>: <span class="hljs-string">`/packages/<span class="hljs-subst">${wantedDependency.alias}</span>/<span class="hljs-subst">${wantedDependency.bareSpecifier}</span>`</span>
+      }
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> customFetcher = {
+  <span class="hljs-attr">canFetch</span>: <span class="hljs-function">(<span class="hljs-params">pkgId, resolution</span>) =></span> {
+    <span class="hljs-keyword">return</span> resolution.<span class="hljs-property">type</span> === <span class="hljs-string">'custom:internal-directory'</span>
+  },
+
+  <span class="hljs-attr">fetch</span>: <span class="hljs-title function_">async</span> (cafs, resolution, opts, fetchers) => {
+    <span class="hljs-comment">// Delegate to pnpm's directory fetcher for local packages</span>
+    <span class="hljs-keyword">const</span> directoryResolution = {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">'directory'</span>,
+      <span class="hljs-attr">directory</span>: resolution.<span class="hljs-property">directory</span>
+    }
+
+    <span class="hljs-keyword">return</span> fetchers.<span class="hljs-title function_">directory</span>(cafs, directoryResolution, opts)
+  }
+}
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">resolvers</span>: [customResolver],
+  <span class="hljs-attr">fetchers</span>: [customFetcher]
+}
+</code></pre></div>
+<h4 id="priority-and-ordering">Priority and Ordering<a class="hash-link" href="#priority-and-ordering" aria-label="Direct link to Priority and Ordering">#</a></h4>
+<p>When multiple resolvers are registered, they are checked in order. The first resolver where <code>canResolve</code> returns <code>true</code> will be used for resolution. The same applies for fetchers: The first fetcher where <code>canFetch</code> returns <code>true</code> will be used during the fetch phase.</p>
+<p>Custom resolvers are tried before pnpm's built-in resolvers (npm, git, tarball, etc.), giving you full control over package resolution.</p>
+<h4 id="performance-considerations">Performance Considerations<a class="hash-link" href="#performance-considerations" aria-label="Direct link to Performance Considerations">#</a></h4>
+<p><code>canResolve()</code>, <code>canFetch()</code>, and <code>shouldRefreshResolution()</code> should be cheap checks (ideally synchronous), as they're called for every dependency during resolution.</p>
+<h2 id="related-configuration">Related Configuration<a class="hash-link" href="#related-configuration" aria-label="Direct link to Related Configuration">#</a></h2>
+<h3 id="ignorepnpmfile">ignorePnpmfile<a class="hash-link" href="#ignorepnpmfile" aria-label="Direct link to ignorePnpmfile">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>The pnpmfile will be ignored. Useful together with <code>--ignore-scripts</code> when you
+want to make sure that no script gets executed during install.</p>
+<h3 id="pnpmfile">pnpmfile<a class="hash-link" href="#pnpmfile" aria-label="Direct link to pnpmfile">#</a></h3>
+<ul>
+<li>Default: <strong>['.pnpmfile.mjs']</strong></li>
+<li>Type: <strong>path[]</strong></li>
+<li>Example: <strong>['.pnpm/.pnpmfile.mjs']</strong></li>
+</ul>
+<p>The location of the local pnpmfile(s).</p>
+<h3 id="globalpnpmfile">globalPnpmfile<a class="hash-link" href="#globalpnpmfile" aria-label="Direct link to globalPnpmfile">#</a></h3>
+<ul>
+<li>Default: <strong>null</strong></li>
+<li>Type: <strong>path</strong></li>
+<li>Example: <strong>~/.pnpm/global_pnpmfile.mjs</strong></li>
+</ul>
+<p>The location of a global pnpmfile. A global pnpmfile is used by all projects
+during installation.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>It is recommended to use local pnpmfiles. Only use a global pnpmfile
+if you use pnpm on projects that don't use pnpm as the primary package manager.</p>
+</div></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/doctor",
+ "file": "markdown/pnpm/cli-doctor.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.87,
+ "markdown_chars": 3382,
+ "raw_html_chars": 10307,
+ "sha256": "852b176e0507e8f306819dd0181a2d24dc44ee224a70610f5b1af453d43588e3",
+ "fetched_at": "2026-10-03T08:58:00+00:00"
+}

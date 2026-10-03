@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/production",
+ "file": "markdown/pnpm/production.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.88,
+ "markdown_chars": 935,
+ "raw_html_chars": 6324,
+ "sha256": "19891a28939311fab1923238a26cc824c1cbc73bc67037a7789f878993e9d03c",
+ "fetched_at": "2026-10-03T08:58:58+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/fetch",
+ "file": "markdown/pnpm/cli-fetch.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.04,
+ "markdown_chars": 3532,
+ "raw_html_chars": 11461,
+ "sha256": "90d98c8ef54c0e4e4679323fbd93e612b1523e63bd82a10b74a49c5426e6de19",
+ "fetched_at": "2026-10-03T08:58:03+00:00"
+}

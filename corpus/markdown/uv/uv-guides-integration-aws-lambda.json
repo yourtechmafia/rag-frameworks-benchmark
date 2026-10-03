@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/aws-lambda/",
+ "file": "markdown/uv/uv-guides-integration-aws-lambda.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.0,
+ "markdown_chars": 24655,
+ "raw_html_chars": 138895,
+ "sha256": "5e8beb704d4c92d77af4096fef4b1253743bf17d283e5a527398f5fb22f939da",
+ "fetched_at": "2026-10-03T08:57:28+00:00"
+}

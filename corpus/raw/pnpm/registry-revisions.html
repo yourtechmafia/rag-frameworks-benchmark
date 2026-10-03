@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registry Revisions | pnpm</title>
+    <meta name="description" content="Added in: v12.0.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Registry Revisions | pnpm" />
+    <meta property="og:description" content="Added in: v12.0.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Registry Revisions | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.0.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/registry-revisions" />
+    <meta property="og:url" content="https://pnpm.io/registry-revisions" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/registry-revisions" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/registry-revisions" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/registry-revisions" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/registry-revisions" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/registry-revisions" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/registry-revisions" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/registry-revisions" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/registry-revisions" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/registry-revisions" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/registry-revisions" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/registry-revisions" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/registry-revisions" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/registry-revisions" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/registry-revisions" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Registry Revisions</h1><p>Added in: v12.0.0</p>
+<p>Some registries can serve a <strong>replacement artifact</strong> for a version that is
+already published — a rebuild with a vulnerability patched out, for example —
+without changing the version number and without rewriting the bytes the original
+<code>name@version</code> URL has always served. pnpm calls each such artifact a <em>revision</em>
+of that version.</p>
+<p>Revision 0 is always the original. A registry that replaces an artifact
+advertises the replacement as revision 1, the one after that as revision 2, and
+so on, per registry and per <code>name@version</code>.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Revisions are a registry capability, not something pnpm can add to a registry
+that does not implement them. <a href="/pnpr">pnpr</a> serves them, both for the packages it
+hosts and — as a proxy — for an upstream registry that advertises them.
+<code>registry.npmjs.org</code> does not.</p>
+</div>
+<h2 id="how-a-revision-is-addressed">How a revision is addressed<a class="hash-link" href="#how-a-revision-is-addressed" aria-label="Direct link to How a revision is addressed">#</a></h2>
+<p>A revision is fetched by its own digest, from an immutable route on the
+registry:</p>
+<pre><code class="hljs language-text">&#x3C;registry-base>/-/tarballs/sha512/&#x3C;base64url-digest>
+</code></pre>
+<p>Registry metadata advertises that URL together with an ordinary Subresource
+Integrity value and the revision number:</p>
+<pre><code class="hljs language-jsonc"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"ejs"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2.7.4"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dist"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"tarball"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://registry.example/-/tarballs/sha512/AbCd..."</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"integrity"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"sha512-AbCd..."</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"revision"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p><code>dist.revision</code> is present exactly when the selected artifact is a replacement.
+<code>dist.revisions</code> carries the history — every advertised revision with its own
+integrity, digest URL, and manifest.</p>
+<p>pnpm validates all of that during resolution: the URL must sit on the selected
+registry's integrity-tarball route, its base64url digest must decode to exactly
+the digest in <code>dist.integrity</code>, and the revision number must be a canonical
+integer in <code>0 &#x3C; N ≤ 2^53 − 1</code>. Anything else fails with
+<code>ERR_PNPM_MALFORMED_METADATA</code>. The fetch itself is a single authenticated
+request with no retry and no fallback, and <strong>every</strong> redirect — same-origin
+included — fails it.</p>
+<p>A registry may also serve an <em>original</em> through the digest route. pnpm normalizes
+that back to a plain integrity-only lockfile entry, rather than storing an
+absolute URL that would pin the lockfile to one deployment's hostname.</p>
+<h2 id="in-the-lockfile">In the lockfile<a class="hash-link" href="#in-the-lockfile" aria-label="Direct link to In the lockfile">#</a></h2>
+<p>An entry with no <code>revision</code> field means revision 0, and is byte-identical to
+what pnpm has always written — the canonical <code>name@version</code> URL is pinned to the
+original forever, so nothing about an unpatched dependency changes:</p>
+<div class="code-block"><div class="code-block-title">pnpm-lock.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-attr">ejs@2.7.4:</span>
+    <span class="hljs-attr">resolution:</span>
+      <span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-&#x3C;original-digest></span>
+
+  <span class="hljs-attr">lodash@4.17.21:</span>
+    <span class="hljs-attr">resolution:</span>
+      <span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-&#x3C;replacement-digest></span>
+      <span class="hljs-attr">revision:</span> <span class="hljs-number">1</span>
+</code></pre></div>
+<p>The <code>revision</code> line is what tells pnpm to fetch by digest instead of
+reconstructing the canonical URL. It also makes the diff readable: a change from
+<code>revision: 1</code> to <code>revision: 2</code> beside a changed integrity says <em>why</em> the
+integrity changed.</p>
+<p>Because originals are unmarked, a workspace that has adopted no replacements
+produces a lockfile an older pnpm can still read, and pointing the lockfile at a
+registry without the digest route keeps the whole unpatched graph installable —
+only the <code>revision</code> entries fail, and they fail as plain unavailability.</p>
+<p>An installed lockfile is never silently upgraded: a fetch keeps the locked
+revision rather than adopting whatever the registry currently selects.</p>
+<h2 id="selecting-a-revision">Selecting a revision<a class="hash-link" href="#selecting-a-revision" aria-label="Direct link to Selecting a revision">#</a></h2>
+<p>A specifier may pin a revision with <code>+rN</code>, carried as semver build metadata:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">overrides:</span>
+  <span class="hljs-attr">ejs@2.7.4:</span> <span class="hljs-number">2.7</span><span class="hljs-number">.4</span><span class="hljs-string">+r1</span>
+</code></pre></div>
+<ul>
+<li><code>+r0</code> keeps the original — the opt-out from a replacement the registry has
+selected.</li>
+<li>A positive number adopts a replacement the registry advertises but has not
+selected, or freezes one it has.</li>
+</ul>
+<p>It works as an override target and as a directly declared dependency, across
+npm, JSR, aliases, and <a href="/registries#prefix">named registries</a>. The version
+half resolves normally — build metadata is ignored for version matching — and
+then the named revision is selected out of <code>dist.revisions</code>, with <strong>that
+entry's own manifest</strong> driving subtree resolution. Revisions may legitimately
+differ in their dependencies, peer dependencies, <code>bin</code>, <code>engines</code>, and
+install-script posture, so reading the current version's top-level fields would
+be wrong.</p>
+<p>The rules around it:</p>
+<ul>
+<li>A revision the registry does not advertise is a hard error
+(<code>ERR_PNPM_NO_MATCHING_REVISION</code>); pnpm never falls forward to the selected
+one.</li>
+<li>On a version that is not revision-aware, <code>+r0</code> is trivially satisfied by the
+only artifact, and a positive number is an error.</li>
+<li>Version-changing targets compose: <code>"ejs@2.7.4": "2.7.5+r1"</code> rewrites the spec
+to <code>2.7.5</code> and then selects its revision 1.</li>
+<li>Rewriting applies once, so revision selection can neither chain nor cycle.</li>
+<li>Only the <code>r&#x3C;digits></code> build-metadata namespace is reserved. A spec carrying any
+other build metadata is an ordinary spec.</li>
+<li>Two specs demanding different revisions of one <code>name@version</code> in the same
+graph fail with <code>ERR_PNPM_REVISION_CONFLICT</code>. One package key can hold only one
+artifact, and pnpm will not silently unify them.</li>
+</ul>
+<p>Like every exact-selector override, a <code>+rN</code> override <strong>pins the version</strong> too: a
+dependency declared <code>^2.7.0</code> stays on <code>2.7.4</code> after upstream publishes <code>2.7.5</code>,
+until the override is changed or removed.</p>
+<p>Selection is a preference, not a security boundary. A registry whose policy
+refuses a revision's bytes answers its digest URL with a <code>403</code>, and the pinned
+install then fails loudly, naming the policy and the advertised revisions.</p>
+<h2 id="refreshing-revisions">Refreshing revisions<a class="hash-link" href="#refreshing-revisions" aria-label="Direct link to Refreshing revisions">#</a></h2>
+<p>To move to the artifacts a registry currently selects, without changing any
+package version:</p>
+<pre><code class="hljs language-sh">pnpm update --patches
+</code></pre>
+<p>For every locked registry package, pnpm resolves current metadata for the same
+exact <code>name@version</code>. When the selected artifact changed, it updates the
+integrity, the <code>revision</code> field, and the whole package snapshot together —
+dependency metadata may differ between revisions, so changing only the checksum
+would be wrong.</p>
+<p>A package whose revision is pinned explicitly is skipped, and the pin holds: that
+covers an override with a <code>+rN</code> target and a dependency declared as one, so
+<code>"ejs": "2.7.4+r1"</code> stays on revision 1 across every refresh.</p>
+<p><code>--patches</code> cannot be combined with package selectors, <code>--latest</code>,
+<code>--interactive</code>, or <code>--global</code> (<code>ERR_PNPM_PATCHES_WITH_SELECTOR</code>).</p>
+<p>The refresh can be resolved server-side by a pnpr server, either from
+<a href="/pnpr/install-acceleration"><code>pnprServer</code></a> or from <code>--pnpr-server &#x3C;url></code> on the
+command line. An explicit refresh bypasses frozen reuse and pnpr's
+whole-resolution cache, and the registry resolver revalidates metadata even when
+its caches are warm — otherwise the command could hand back exactly the
+revisions it was asked to look past.</p></article></main></div>
+  </body>
+</html>

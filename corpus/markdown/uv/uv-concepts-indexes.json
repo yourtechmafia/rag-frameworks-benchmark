@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/indexes/",
+ "file": "markdown/uv/uv-concepts-indexes.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.48,
+ "markdown_chars": 21084,
+ "raw_html_chars": 102620,
+ "sha256": "96768f9cd437e14f361bbeee0de3475900c8ef63147977b2354cc2f50ef792a3",
+ "fetched_at": "2026-10-03T08:57:17+00:00"
+}

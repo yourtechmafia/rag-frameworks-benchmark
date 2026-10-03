@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/resolution/",
+ "file": "markdown/uv/uv-concepts-resolution.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.28,
+ "markdown_chars": 49735,
+ "raw_html_chars": 159972,
+ "sha256": "95b0d714e956cd3881c3b9063ef4dca2ad8961467b7757ee508048be6d32f76e",
+ "fetched_at": "2026-10-03T08:57:17+00:00"
+}

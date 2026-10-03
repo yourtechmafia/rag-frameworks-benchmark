@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/gitlab/",
+ "file": "markdown/uv/uv-guides-integration-gitlab.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.12,
+ "markdown_chars": 7255,
+ "raw_html_chars": 71885,
+ "sha256": "5f977114f468be9af5198f7a9f8b8b7f4ca9a1633ea03e795460ef997cedf7fa",
+ "fetched_at": "2026-10-03T08:57:30+00:00"
+}

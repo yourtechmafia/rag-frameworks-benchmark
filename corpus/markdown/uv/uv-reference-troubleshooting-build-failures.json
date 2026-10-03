@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/troubleshooting/build-failures/",
+ "file": "markdown/uv/uv-reference-troubleshooting-build-failures.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.34,
+ "markdown_chars": 22003,
+ "raw_html_chars": 100099,
+ "sha256": "ae1bbc31dda189cf7c494b9357a928ba09832e9f42cdcbf697c138af776e001a",
+ "fetched_at": "2026-10-03T08:57:45+00:00"
+}

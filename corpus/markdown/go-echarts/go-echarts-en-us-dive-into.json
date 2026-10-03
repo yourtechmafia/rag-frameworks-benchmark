@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/dive-into",
+ "file": "markdown/go-echarts/go-echarts-en-us-dive-into.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.84,
+ "markdown_chars": 5566,
+ "raw_html_chars": 3769,
+ "sha256": "fdf74a3d6aa34a39aae1bc5a0d2cc9b70cebb53ad18c642132a55d58d4d60341",
+ "fetched_at": "2026-10-03T08:59:20+00:00"
+}

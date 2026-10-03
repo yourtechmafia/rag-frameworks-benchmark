@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/access",
+ "file": "markdown/pnpm/cli-access.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.69,
+ "markdown_chars": 3110,
+ "raw_html_chars": 9612,
+ "sha256": "247436315a7d0eb93264d17082bcb97c8b92835cc7c15ad1feff8834031af3e0",
+ "fetched_at": "2026-10-03T08:57:47+00:00"
+}

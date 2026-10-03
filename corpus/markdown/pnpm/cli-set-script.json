@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/set-script",
+ "file": "markdown/pnpm/cli-set-script.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.95,
+ "markdown_chars": 880,
+ "raw_html_chars": 6660,
+ "sha256": "6d3071fc0dd31d86f6bf726c0d04ec5c32ca0ef287d24d150c49e142a9a1d388",
+ "fetched_at": "2026-10-03T08:58:32+00:00"
+}

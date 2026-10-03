@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/logos",
+ "file": "markdown/pnpm/logos.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.98,
+ "markdown_chars": 955,
+ "raw_html_chars": 5983,
+ "sha256": "a3aff3b674aa111924e57c886608535f103828dc0f71484e2b3f813b87b1c107",
+ "fetched_at": "2026-10-03T08:58:49+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/registry-revisions",
+ "file": "markdown/pnpm/registry-revisions.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.85,
+ "markdown_chars": 7089,
+ "raw_html_chars": 14588,
+ "sha256": "62636bef026ceaeaf99bf8332b36678936bdef06644648de3695583f6fc88d08",
+ "fetched_at": "2026-10-03T08:59:00+00:00"
+}

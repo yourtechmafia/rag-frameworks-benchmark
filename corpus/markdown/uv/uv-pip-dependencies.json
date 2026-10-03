@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/pip/dependencies/",
+ "file": "markdown/uv/uv-pip-dependencies.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.44,
+ "markdown_chars": 6938,
+ "raw_html_chars": 67249,
+ "sha256": "3ad2581e9301dab3d06b074408544560b588c98d5df7057a9395619e00b2b852",
+ "fetched_at": "2026-10-03T08:57:36+00:00"
+}

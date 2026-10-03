@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/auth-backends",
+ "file": "markdown/pnpm/pnpr-auth-backends.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.65,
+ "markdown_chars": 3807,
+ "raw_html_chars": 11960,
+ "sha256": "a3765aad25a1fbdf92916c06b2bf70119868f0c71d0149021b170740acd4e6f2",
+ "fetched_at": "2026-10-03T08:58:52+00:00"
+}

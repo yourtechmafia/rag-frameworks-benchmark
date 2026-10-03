@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/patch-commit",
+ "file": "markdown/pnpm/cli-patch-commit.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.51,
+ "markdown_chars": 861,
+ "raw_html_chars": 6083,
+ "sha256": "498f7d5f4dd8316441e1072120facf37d59cf43d6e2a746b126d70f7073797ec",
+ "fetched_at": "2026-10-03T08:58:18+00:00"
+}

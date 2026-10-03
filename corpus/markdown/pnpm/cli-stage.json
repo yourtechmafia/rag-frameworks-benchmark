@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/stage",
+ "file": "markdown/pnpm/cli-stage.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.97,
+ "markdown_chars": 3225,
+ "raw_html_chars": 9901,
+ "sha256": "d1139469a88c7d1230aa543a7435fefa09c4c2fc515f86502a9fae225c4973fd",
+ "fetched_at": "2026-10-03T08:58:34+00:00"
+}

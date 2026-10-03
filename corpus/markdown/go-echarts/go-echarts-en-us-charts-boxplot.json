@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/boxplot",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-boxplot.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.76,
+ "markdown_chars": 4518,
+ "raw_html_chars": 3769,
+ "sha256": "c8d0db4eb2182b4ad7acfabe5a3f6eefe752b5f2f66097fa30891482374ef908",
+ "fetched_at": "2026-10-03T08:59:39+00:00"
+}

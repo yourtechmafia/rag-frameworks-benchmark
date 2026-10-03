@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm patch &lt;pkg&gt; | pnpm</title>
+    <meta name="description" content="Prepare a package for patching (inspired by a similar command in Yarn)." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm patch &lt;pkg&gt; | pnpm" />
+    <meta property="og:description" content="Prepare a package for patching (inspired by a similar command in Yarn)." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm patch &lt;pkg&gt; | pnpm" />
+    <meta name="twitter:description" content="Prepare a package for patching (inspired by a similar command in Yarn)." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/patch" />
+    <meta property="og:url" content="https://pnpm.io/cli/patch" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/patch" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/patch" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/patch" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/patch" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/patch" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/patch" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/patch" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/patch" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/patch" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/patch" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/patch" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/patch" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/patch" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/patch" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm patch &lt;pkg&gt;</h1><p>Prepare a package for patching (inspired by a similar command in Yarn).</p>
+<p>This command will cause a package to be extracted in a temporary directory intended to be editable at will.</p>
+<p>Once you're done with your changes, run <code>pnpm patch-commit &#x3C;path></code> (with <code>&#x3C;path></code> being the temporary directory you received) to generate a patchfile and register it into your top-level manifest via the <a href="#patcheddependencies"><code>patchedDependencies</code></a> field.</p>
+<p>Usage:</p>
+<pre><code>pnpm patch &#x3C;pkg name>@&#x3C;version>
+</code></pre>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>To change a package's dependencies, don't use <code>pnpm patch</code> to modify its <code>package.json</code>! Use <a href="/settings/dependency-resolution#overrides">overrides</a> or a <a href="../pnpmfile#hooksreadpackagepkg-context-pkg--promisepkg">package hook</a> instead.</p>
+</div>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0GjLqRGRbcY" title="The pnpm patch command demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--edit-dir-dir">--edit-dir &#x3C;dir><a class="hash-link" href="#--edit-dir-dir" aria-label="Direct link to --edit-dir <dir>">#</a></h3>
+<p>The package that needs to be patched will be extracted to this directory.</p>
+<h3 id="--ignore-existing">--ignore-existing<a class="hash-link" href="#--ignore-existing" aria-label="Direct link to --ignore-existing">#</a></h3>
+<p>Ignore existing patch files when patching.</p>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<h3 id="patcheddependencies">patchedDependencies<a class="hash-link" href="#patcheddependencies" aria-label="Direct link to patchedDependencies">#</a></h3>
+<p>This field is added/updated automatically when you run <a href="/cli/patch-commit">pnpm patch-commit</a>. It defines patches for dependencies using a dictionary where:</p>
+<ul>
+<li><strong>Keys</strong>: Package names with an exact version, a version range, or just the name.</li>
+<li><strong>Values</strong>: Relative paths to patch files.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">patchedDependencies:</span>
+  <span class="hljs-attr">express@4.18.1:</span> <span class="hljs-string">patches/express@4.18.1.patch</span>
+</code></pre>
+<p>Dependencies can be patched by version range. The priority order is:</p>
+<ol>
+<li>Exact versions (highest priority)</li>
+<li>Version ranges</li>
+<li>Name-only patches (applies to all versions unless overridden)</li>
+</ol>
+<p>A special case: the version range <code>*</code> behaves like a name-only patch but does not ignore patch failures.</p>
+<p>Example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">patchedDependencies:</span>
+  <span class="hljs-attr">foo:</span> <span class="hljs-string">patches/foo-1.patch</span>
+  <span class="hljs-string">foo@^2.0.0:</span> <span class="hljs-string">patches/foo-2.patch</span>
+  <span class="hljs-attr">foo@2.1.0:</span> <span class="hljs-string">patches/foo-3.patch</span>
+</code></pre>
+<ul>
+<li><code>patches/foo-3.patch</code> is applied to <code>foo@2.1.0</code>.</li>
+<li><code>patches/foo-2.patch</code> applies to all foo versions matching <code>^2.0.0</code>, except <code>2.1.0</code>.</li>
+<li><code>patches/foo-1.patch</code> applies to all other foo versions.</li>
+</ul>
+<p>Avoid overlapping version ranges. If you need to specialize a sub-range, explicitly exclude it from the broader range.</p>
+<p>Example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">patchedDependencies:</span>
+  <span class="hljs-comment"># Specialized sub-range</span>
+  <span class="hljs-attr">"foo@2.2.0-2.8.0":</span> <span class="hljs-string">patches/foo.2.2.0-2.8.0.patch</span>
+  <span class="hljs-comment"># General patch, excluding the sub-range above</span>
+  <span class="hljs-string">"foo@>=2.0.0 &#x3C;2.2.0 || >2.8.0"</span><span class="hljs-string">:</span> <span class="hljs-string">patches/foo.gte2.patch</span>
+</code></pre>
+<p>In most cases, defining an exact version is enough to override a broader range.</p>
+<h3 id="allowunusedpatches">allowUnusedPatches<a class="hash-link" href="#allowunusedpatches" aria-label="Direct link to allowUnusedPatches">#</a></h3>
+<p>Added in: v10.7.0 (Previously named <code>allowNonAppliedPatches</code>)</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, installation won't fail if some of the patches from the <code>patchedDependencies</code> field were not applied.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">patchedDependencies:</span>
+  <span class="hljs-attr">express@4.18.1:</span> <span class="hljs-string">patches/express@4.18.1.patch</span>
+<span class="hljs-attr">allowUnusedPatches:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>In v11, patch application failures always throw an error — the <code>ignorePatchFailures</code> setting has been removed. When multiple patches in a group are applied, a failure in one does not prevent the rest from being attempted; all patch errors are reported together at the end.</p>
+</div></article></main></div>
+  </body>
+</html>

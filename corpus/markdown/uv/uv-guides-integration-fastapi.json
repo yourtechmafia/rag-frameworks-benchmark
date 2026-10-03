@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/fastapi/",
+ "file": "markdown/uv/uv-guides-integration-fastapi.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.91,
+ "markdown_chars": 8020,
+ "raw_html_chars": 73944,
+ "sha256": "673d6a63e9fa6eb3999a103ba648ef1acec17df411fe127a8857af8426fce17b",
+ "fetched_at": "2026-10-03T08:57:30+00:00"
+}

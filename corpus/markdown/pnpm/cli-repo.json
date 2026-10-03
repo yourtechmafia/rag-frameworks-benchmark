@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/repo",
+ "file": "markdown/pnpm/cli-repo.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.49,
+ "markdown_chars": 1199,
+ "raw_html_chars": 6218,
+ "sha256": "d4d135496951d20ec94fec791f7eb9edb66f88fcd2a1636bc98a5a0cca6e053d",
+ "fetched_at": "2026-10-03T08:58:28+00:00"
+}

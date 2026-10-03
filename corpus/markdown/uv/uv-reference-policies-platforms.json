@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/policies/platforms/",
+ "file": "markdown/uv/uv-reference-policies-platforms.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.67,
+ "markdown_chars": 8580,
+ "raw_html_chars": 67801,
+ "sha256": "a3528f82880044647990e18b94d1bbe0f6c2b07fa49d29a6f4f351ebb8b69a48",
+ "fetched_at": "2026-10-03T08:57:43+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/team",
+ "file": "markdown/pnpm/cli-team.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.36,
+ "markdown_chars": 1937,
+ "raw_html_chars": 8035,
+ "sha256": "24ac427b8d907fa75620be55665bf1a16ab99203cf23aa8fd76cc1a89f0a46d4",
+ "fetched_at": "2026-10-03T08:58:38+00:00"
+}

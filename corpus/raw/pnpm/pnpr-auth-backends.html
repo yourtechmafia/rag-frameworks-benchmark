@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth backends (shared SQL) | pnpm</title>
+    <meta name="description" content="Auth state — the registered users and their bearer tokens — is per-instance disk state. By default users live in an htpasswd file and tokens in a local SQLite database (see auth), so two pnpr replicas don't see each other's accounts." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Auth backends (shared SQL) | pnpm" />
+    <meta property="og:description" content="Auth state — the registered users and their bearer tokens — is per-instance disk state. By default users live in an htpasswd file and tokens in a local SQLite database (see auth), so two pnpr replicas don't see each other's accounts." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Auth backends (shared SQL) | pnpm" />
+    <meta name="twitter:description" content="Auth state — the registered users and their bearer tokens — is per-instance disk state. By default users live in an htpasswd file and tokens in a local SQLite database (see auth), so two pnpr replicas don't see each other's accounts." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/auth-backends" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/auth-backends" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/auth-backends" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Auth backends (shared SQL)</h1><p>Auth state — the registered users and their bearer tokens — is per-instance disk
+state. By default users live in an htpasswd file and tokens in a local SQLite
+database (see <a href="/pnpr/configuration#auth"><code>auth</code></a>), so two pnpr replicas don't see
+each other's accounts.</p>
+<p>Adding a <code>backend:</code> block moves both into one shared SQL database, so several
+stateless replicas share a consistent set of logins and tokens — the auth half
+of running pnpr horizontally scaled. Only one backend may be selected in a
+config file.</p>
+<p>Database drivers are Cargo-feature gated:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Backend</th><th>Config key</th><th>Cargo feature</th></tr></thead><tbody><tr><td>libsql / Turso</td><td><code>backend.libsql</code></td><td><code>backend-libsql</code> (enabled by default)</td></tr><tr><td>PostgreSQL</td><td><code>backend.postgres</code> or <code>backend.postgresql</code></td><td><code>backend-postgres</code></td></tr><tr><td>MySQL-compatible</td><td><code>backend.mysql</code></td><td><code>backend-mysql</code></td></tr></tbody></table></div>
+<p>For PostgreSQL or MySQL support, build pnpr with the matching Cargo feature, for
+example <code>cargo build -p pnpr --features backend-postgres</code>.</p>
+<div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>Token lookups happen on the request hot path, so the database should be
+low-latency from the server.</p>
+</div>
+<h2 id="libsql--turso">libsql / Turso<a class="hash-link" href="#libsql--turso" aria-label="Direct link to libsql / Turso">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">storage:</span> <span class="hljs-string">./storage</span>
+
+<span class="hljs-attr">backend:</span>
+  <span class="hljs-attr">libsql:</span>
+    <span class="hljs-comment"># libsql/Turso database URL. `libsql://…` for Turso, or</span>
+    <span class="hljs-comment"># `http://127.0.0.1:8080` for a local `sqld`.</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">${PNPR_LIBSQL_URL}</span>
+    <span class="hljs-comment"># Bearer token for the database. Omit for an unauthenticated local `sqld`.</span>
+    <span class="hljs-attr">authToken:</span> <span class="hljs-string">${PNPR_LIBSQL_TOKEN}</span>
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>url</code></td><td>yes</td><td>Database URL — <code>libsql://&#x3C;db>.turso.io</code> (Turso) or <code>http://&#x3C;host>:&#x3C;port></code> (self-hosted <code>sqld</code>).</td></tr><tr><td><code>authToken</code></td><td>no</td><td>Bearer token for the database. Omit for an unauthenticated local <code>sqld</code>.</td></tr><tr><td><code>replicaPath</code></td><td>no</td><td>Path to a local <strong>embedded replica</strong>. When set, reads (token lookups) hit this local file instead of a network round-trip; writes still go to the primary. Absent ⇒ every read is a remote query.</td></tr><tr><td><code>syncIntervalSecs</code></td><td>no</td><td>How often (seconds) the embedded replica pulls from the primary. Only meaningful with <code>replicaPath</code>; bounds how stale a read can be (token-revocation lag). <code>0</code> disables background sync. Defaults to <code>60</code>.</td></tr></tbody></table></div>
+<p>For a remote primary (e.g. Turso), serve reads from a local replica:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">backend:</span>
+  <span class="hljs-attr">libsql:</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">${PNPR_LIBSQL_URL}</span>
+    <span class="hljs-attr">authToken:</span> <span class="hljs-string">${PNPR_LIBSQL_TOKEN}</span>
+    <span class="hljs-attr">replicaPath:</span> <span class="hljs-string">./auth-replica.db</span>
+    <span class="hljs-attr">syncIntervalSecs:</span> <span class="hljs-number">60</span>
+</code></pre>
+<p>The trade-off is read freshness: an embedded replica reflects another replica's
+writes (a token issued or revoked elsewhere) only after the next background
+sync, so a lower <code>syncIntervalSecs</code> means less revocation lag. Omit
+<code>replicaPath</code> to always read the primary directly.</p>
+<h2 id="postgresql">PostgreSQL<a class="hash-link" href="#postgresql" aria-label="Direct link to PostgreSQL">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">backend:</span>
+  <span class="hljs-attr">postgres:</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">${PNPR_POSTGRES_URL}</span>
+    <span class="hljs-attr">maxConnections:</span> <span class="hljs-number">16</span>
+    <span class="hljs-attr">timeout:</span> <span class="hljs-string">30s</span>
+    <span class="hljs-attr">startupTimeout:</span> <span class="hljs-string">5m</span>
+</code></pre>
+<h2 id="mysql">MySQL<a class="hash-link" href="#mysql" aria-label="Direct link to MySQL">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">backend:</span>
+  <span class="hljs-attr">mysql:</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">${PNPR_MYSQL_URL}</span>
+    <span class="hljs-attr">maxConnections:</span> <span class="hljs-number">16</span>
+    <span class="hljs-attr">timeout:</span> <span class="hljs-string">30s</span>
+    <span class="hljs-attr">startupTimeout:</span> <span class="hljs-string">5m</span>
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>url</code></td><td>yes</td><td>Driver connection URL, such as <code>postgres://user:pass@host/db</code> or <code>mysql://user:pass@host/db</code>.</td></tr><tr><td><code>maxConnections</code></td><td>no</td><td>Maximum connections in the backend pool. Omit to use the driver's default.</td></tr><tr><td><code>timeout</code></td><td>no</td><td>Request-path auth database deadline. Defaults to <code>30s</code>.</td></tr><tr><td><code>startupTimeout</code></td><td>no</td><td>Startup connection and schema setup deadline. Defaults to <code>5m</code>.</td></tr></tbody></table></div>
+<p>When the <code>backend:</code> block is absent, auth stays on local disk and the
+<code>auth.htpasswd</code> / <code>auth.tokens</code> settings apply as before. The
+<code>auth.htpasswd.max_users</code> registration cap is honored either way. Omitted
+<code>max_users</code> and <code>max_users: -1</code> both disable self-registration; set a
+non-negative cap to let new users register.</p></article></main></div>
+  </body>
+</html>

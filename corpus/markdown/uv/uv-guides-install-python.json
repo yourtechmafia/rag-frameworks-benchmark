@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/install-python/",
+ "file": "markdown/uv/uv-guides-install-python.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.22,
+ "markdown_chars": 10473,
+ "raw_html_chars": 74333,
+ "sha256": "8118fcbc9e7125079fee9efa32cdbe3a80bb9a720df787a7c7b37270685e6d49",
+ "fetched_at": "2026-10-03T08:57:26+00:00"
+}

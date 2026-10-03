@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/using-changesets",
+ "file": "markdown/pnpm/using-changesets.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.71,
+ "markdown_chars": 3959,
+ "raw_html_chars": 12581,
+ "sha256": "4538ff02d656478b7ccd0e6e055e836b9ba4476d6f321ba745f5129454eb990e",
+ "fetched_at": "2026-10-03T08:59:13+00:00"
+}

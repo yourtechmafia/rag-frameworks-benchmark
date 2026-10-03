@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Continuous Integration | pnpm</title>
+    <meta name="description" content="pnpm can easily be used in various continuous integration systems." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Continuous Integration | pnpm" />
+    <meta property="og:description" content="pnpm can easily be used in various continuous integration systems." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Continuous Integration | pnpm" />
+    <meta name="twitter:description" content="pnpm can easily be used in various continuous integration systems." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/continuous-integration" />
+    <meta property="og:url" content="https://pnpm.io/continuous-integration" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/continuous-integration" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/continuous-integration" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/continuous-integration" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/continuous-integration" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/continuous-integration" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/continuous-integration" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/continuous-integration" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/continuous-integration" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/continuous-integration" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/continuous-integration" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/continuous-integration" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/continuous-integration" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/continuous-integration" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/continuous-integration" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Continuous Integration</h1><p>pnpm can easily be used in various continuous integration systems.</p>
+<h2 id="installing-pnpm">Installing pnpm<a class="hash-link" href="#installing-pnpm" aria-label="Direct link to Installing pnpm">#</a></h2>
+<p>Outside of GitHub Actions, which has <a href="#github-actions">its own action</a>, install pnpm
+with the standalone script:</p>
+<pre><code class="hljs language-sh">curl -fsSL https://get.pnpm.io/install.sh | sh -
+</code></pre>
+<p>Two things make this convenient in CI:</p>
+<ul>
+<li><strong>It needs no Node.js.</strong> pnpm is a self-contained executable, and it can install
+the runtime for you afterwards with <code>pnpm runtime set node lts -g</code>, so a job
+does not need a Node.js image to begin with.</li>
+<li><strong>It follows the project's version.</strong> The bootstrap installs the newest stable
+pnpm, then, if your <code>package.json</code> has a <code>packageManager</code> or
+<code>devEngines.packageManager</code> field, pnpm switches to that version on first use,
+so the pipeline does not pin a version in two places.</li>
+</ul>
+<p>The script installs into <code>PNPM_HOME</code> and appends to a shell profile, which a CI
+job never reloads. Declare <code>PNPM_HOME</code> and put <code>$PNPM_HOME/bin</code> on <code>PATH</code>
+yourself, using whatever mechanism the platform provides — the examples below
+show it for each one.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Earlier versions of this page used Corepack. Corepack installs a JavaScript shim
+in place of pnpm, so every <code>pnpm</code> call starts Node.js to run the shim before pnpm
+itself starts — a cost paid on each invocation, and CI jobs make many of them.
+Installing pnpm itself avoids that entirely.</p>
+</div>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>In all the provided configuration files the store is cached. However, this is not required, and it is not guaranteed that caching the store will make installation faster. So feel free to not cache the pnpm store in your job.</p>
+</div>
+<div class="admonition admonition-tip"><p class="admonition-title">Cache the metadata cache too</p>
+<p>Since v11.22.0, <a href="/cli/cache-path"><code>pnpm cache path</code></a> prints the directory pnpm
+uses for its metadata cache, so a job can cache it without mirroring pnpm's own
+path resolution. That directory also holds the lockfile verification log, which
+lets a job skip re-checking an unchanged lockfile against the configured
+<a href="/supply-chain-security">supply-chain policies</a> — the dominant cost of an
+install in CI once the store is warm.</p>
+</div>
+<div class="admonition admonition-important"><p class="admonition-title">Important</p>
+<p>Only cache pnpm's store and cache directories in locations writable by trusted jobs. Do not let untrusted CI jobs write to a store or metadata cache that trusted jobs later restore. These directories are trusted caches; see the <a href="/settings/store#storedir"><code>storeDir</code></a> and <a href="/settings/other#cachedir"><code>cacheDir</code></a> settings for details.</p>
+</div>
+<div class="admonition admonition-tip"><p class="admonition-title">Lockfile behavior in CI</p>
+<p>When pnpm detects that it is running in CI, it switches to frozen-lockfile mode automatically. Since v11, pnpm also fails on incompatible lockfiles in CI — if the lockfile was written by a newer pnpm major version, the install will error out instead of silently rewriting it. Upgrade your CI pnpm version to match the one used to generate the lockfile.</p>
+</div>
+<h2 id="appveyor">AppVeyor<a class="hash-link" href="#appveyor" aria-label="Direct link to AppVeyor">#</a></h2>
+<p>On <a href="https://www.appveyor.com">AppVeyor</a>, you can use pnpm for installing your dependencies by adding this
+to your <code>appveyor.yml</code>:</p>
+<div class="code-block"><div class="code-block-title">appveyor.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">environment:</span>
+  <span class="hljs-attr">PNPM_HOME:</span> <span class="hljs-string">C:\pnpm</span>
+
+<span class="hljs-attr">install:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">ps:</span> <span class="hljs-string">$env:PATH</span> <span class="hljs-string">=</span> <span class="hljs-string">"$env:PNPM_HOME;$env:PNPM_HOME\bin;$env:PATH"</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">ps:</span> <span class="hljs-string">Invoke-WebRequest</span> <span class="hljs-string">https://get.pnpm.io/install.ps1</span> <span class="hljs-string">-UseBasicParsing</span> <span class="hljs-string">|</span> <span class="hljs-string">Invoke-Expression</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">ps:</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">install</span>
+</code></pre></div>
+<p>pnpm brings its own runtime, so <code>Install-Product node</code> is no longer needed. Add
+<code>pnpm runtime set node lts -g</code> if your build scripts call <code>node</code> directly.</p>
+<h2 id="azure-pipelines">Azure Pipelines<a class="hash-link" href="#azure-pipelines" aria-label="Direct link to Azure Pipelines">#</a></h2>
+<p>On Azure Pipelines, you can use pnpm for installing and caching your dependencies by adding this to your <code>azure-pipelines.yml</code>. The example below avoids a top-level <code>variables:</code> block, so it can also be copied into a steps template:</p>
+<div class="code-block"><div class="code-block-title">azure-pipelines.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">steps:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">task:</span> <span class="hljs-string">Cache@2</span>
+    <span class="hljs-attr">inputs:</span>
+      <span class="hljs-attr">key:</span> <span class="hljs-string">'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'</span>
+      <span class="hljs-attr">path:</span> <span class="hljs-string">$(Pipeline.Workspace)/.pnpm-store</span>
+    <span class="hljs-attr">displayName:</span> <span class="hljs-string">Cache</span> <span class="hljs-string">pnpm</span>
+
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">bash:</span> <span class="hljs-string">|
+      curl -fsSL https://get.pnpm.io/install.sh | sh -
+      echo "##vso[task.prependpath]$PNPM_HOME/bin"
+      "$PNPM_HOME/bin/pnpm" config set store-dir "$pnpm_config_cache"
+</span>    <span class="hljs-attr">displayName:</span> <span class="hljs-string">"Setup pnpm"</span>
+    <span class="hljs-attr">env:</span>
+      <span class="hljs-attr">PNPM_HOME:</span> <span class="hljs-string">$(Pipeline.Workspace)/.pnpm</span>
+      <span class="hljs-attr">pnpm_config_cache:</span> <span class="hljs-string">$(Pipeline.Workspace)/.pnpm-store</span>
+
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">bash:</span> <span class="hljs-string">|
+      pnpm install
+      pnpm run build
+</span>    <span class="hljs-attr">displayName:</span> <span class="hljs-string">"pnpm install and build"</span>
+    <span class="hljs-attr">env:</span>
+      <span class="hljs-attr">PNPM_HOME:</span> <span class="hljs-string">$(Pipeline.Workspace)/.pnpm</span>
+</code></pre></div>
+<p>Use a Linux or macOS agent for this example. Azure Pipelines expands
+<code>$(Pipeline.Workspace)</code> in task inputs and environment values before each step.
+The setup script reads its variables using Bash syntax. <code>task.prependpath</code> puts
+pnpm on <code>PATH</code> for subsequent steps.</p>
+<h2 id="bitbucket-pipelines">Bitbucket Pipelines<a class="hash-link" href="#bitbucket-pipelines" aria-label="Direct link to Bitbucket Pipelines">#</a></h2>
+<p>You can use pnpm for installing and caching your dependencies:</p>
+<div class="code-block"><div class="code-block-title">.bitbucket-pipelines.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">definitions:</span>
+  <span class="hljs-attr">caches:</span>
+    <span class="hljs-attr">pnpm:</span> <span class="hljs-string">$BITBUCKET_CLONE_DIR/.pnpm-store</span>
+
+<span class="hljs-attr">pipelines:</span>
+  <span class="hljs-attr">pull-requests:</span>
+    <span class="hljs-attr">"**":</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">step:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">test</span>
+          <span class="hljs-attr">image:</span> <span class="hljs-string">debian:stable-slim</span>
+          <span class="hljs-attr">script:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">apt-get</span> <span class="hljs-string">update</span> <span class="hljs-string">&#x26;&#x26;</span> <span class="hljs-string">apt-get</span> <span class="hljs-string">install</span> <span class="hljs-string">-y</span> <span class="hljs-string">--no-install-recommends</span> <span class="hljs-string">ca-certificates</span> <span class="hljs-string">curl</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">export</span> <span class="hljs-string">PNPM_HOME="$HOME/.local/share/pnpm"</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">export</span> <span class="hljs-string">PATH="$PNPM_HOME/bin:$PATH"</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">curl</span> <span class="hljs-string">-fsSL</span> <span class="hljs-string">https://get.pnpm.io/install.sh</span> <span class="hljs-string">|</span> <span class="hljs-string">sh</span> <span class="hljs-bullet">-</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">config</span> <span class="hljs-string">set</span> <span class="hljs-string">store-dir</span> <span class="hljs-string">"$BITBUCKET_CLONE_DIR/.pnpm-store"</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">runtime</span> <span class="hljs-string">set</span> <span class="hljs-string">node</span> <span class="hljs-string">lts</span> <span class="hljs-string">-g</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">install</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">run</span> <span class="hljs-string">build</span> <span class="hljs-comment"># Replace with your build/test…etc. commands</span>
+          <span class="hljs-attr">caches:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span>
+</code></pre></div>
+<p>All the lines of a step run in one shell, so <code>export</code> carries to the ones that
+follow, and <code>store-dir</code> is pointed at the directory the cache saves.</p>
+<p>This example starts from a plain image and lets pnpm install Node.js. Keep your
+existing <code>node</code> image and drop the <code>pnpm runtime set</code> line if you would rather
+not change it.</p>
+<h2 id="circleci">CircleCI<a class="hash-link" href="#circleci" aria-label="Direct link to CircleCI">#</a></h2>
+<p>On CircleCI, you can use pnpm for installing and caching your dependencies by adding this to your <code>.circleci/config.yml</code>:</p>
+<div class="code-block"><div class="code-block-title">.circleci/config.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">build:</span> <span class="hljs-comment"># this can be any name you choose</span>
+    <span class="hljs-attr">docker:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">node:24</span>
+    <span class="hljs-attr">resource_class:</span> <span class="hljs-string">large</span>
+    <span class="hljs-attr">parallelism:</span> <span class="hljs-number">10</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">PNPM_HOME:</span> <span class="hljs-string">/root/.local/share/pnpm</span>
+
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">checkout</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">restore_cache:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Restore</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">Package</span> <span class="hljs-string">Cache</span>
+          <span class="hljs-attr">keys:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm-packages-{{</span> <span class="hljs-string">checksum</span> <span class="hljs-string">"pnpm-lock.yaml"</span> <span class="hljs-string">}}</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">package</span> <span class="hljs-string">manager</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">|
+            curl -fsSL https://get.pnpm.io/install.sh | sh -
+            echo 'export PATH="$PNPM_HOME/bin:$PATH"' >> "$BASH_ENV"
+            "$PNPM_HOME/bin/pnpm" config set store-dir .pnpm-store
+</span>      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">Dependencies</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">|
+            pnpm install
+</span>      <span class="hljs-bullet">-</span> <span class="hljs-attr">save_cache:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Save</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">Package</span> <span class="hljs-string">Cache</span>
+          <span class="hljs-attr">key:</span> <span class="hljs-string">pnpm-packages-{{</span> <span class="hljs-string">checksum</span> <span class="hljs-string">"pnpm-lock.yaml"</span> <span class="hljs-string">}}</span>
+          <span class="hljs-attr">paths:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">.pnpm-store</span>
+</code></pre></div>
+<p>CircleCI sources <code>$BASH_ENV</code> before every step, which is how pnpm reaches the
+steps that follow.</p>
+<h2 id="github-actions">GitHub Actions<a class="hash-link" href="#github-actions" aria-label="Direct link to GitHub Actions">#</a></h2>
+<p>On GitHub Actions, you can use pnpm for installing and caching your dependencies
+like so (belongs in <code>.github/workflows/NAME.yml</code>):</p>
+<div class="code-block"><div class="code-block-title">.github/workflows/NAME.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">Example</span> <span class="hljs-string">Workflow</span>
+<span class="hljs-attr">on:</span>
+  <span class="hljs-attr">push:</span>
+
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-24.04</span>
+    <span class="hljs-attr">strategy:</span>
+      <span class="hljs-attr">matrix:</span>
+        <span class="hljs-attr">node-version:</span> [<span class="hljs-number">24</span>]
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v6</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">and</span> <span class="hljs-string">Node.js</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">pnpm/setup@c9883cc79df532ad1a7b81bf9ab944ceb090d65c</span> <span class="hljs-comment"># v2.0.0</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">runtime:</span> <span class="hljs-string">node@${{</span> <span class="hljs-string">matrix.node-version</span> <span class="hljs-string">}}</span>
+          <span class="hljs-attr">cache:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p><a href="https://github.com/pnpm/setup"><code>pnpm/setup</code></a> installs pnpm, then uses it to install the requested
+runtime, so no separate <code>actions/setup-node</code> step is needed. It also runs <code>pnpm install</code> for you, and <code>cache: true</code> caches the pnpm store between runs. Set
+<code>install: false</code> if you would rather run the install yourself.</p>
+<p>The pnpm version comes from the <code>packageManager</code> or <code>devEngines.packageManager</code>
+field of your <code>package.json</code>, so the workflow never needs updating when you
+change it. Add a <code>version</code> input if your <code>package.json</code> declares neither.</p>
+<h2 id="gitlab-ci">GitLab CI<a class="hash-link" href="#gitlab-ci" aria-label="Direct link to GitLab CI">#</a></h2>
+<p>On GitLab, you can use pnpm for installing and caching your dependencies
+like so (belongs in <code>.gitlab-ci.yml</code>):</p>
+<div class="code-block"><div class="code-block-title">.gitlab-ci.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">stages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">build</span>
+
+<span class="hljs-attr">build:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">build</span>
+  <span class="hljs-attr">image:</span> <span class="hljs-string">node:24.14.1</span>
+  <span class="hljs-attr">variables:</span>
+    <span class="hljs-attr">PNPM_HOME:</span> <span class="hljs-string">"$CI_PROJECT_DIR/.pnpm"</span>
+  <span class="hljs-attr">before_script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">export</span> <span class="hljs-string">PATH="$PNPM_HOME/bin:$PATH"</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">curl</span> <span class="hljs-string">-fsSL</span> <span class="hljs-string">https://get.pnpm.io/install.sh</span> <span class="hljs-string">|</span> <span class="hljs-string">sh</span> <span class="hljs-bullet">-</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">config</span> <span class="hljs-string">set</span> <span class="hljs-string">store-dir</span> <span class="hljs-string">.pnpm-store</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">install</span> <span class="hljs-comment"># install dependencies</span>
+  <span class="hljs-attr">cache:</span>
+    <span class="hljs-attr">key:</span>
+      <span class="hljs-attr">files:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm-lock.yaml</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">.pnpm-store</span>
+</code></pre></div>
+<h2 id="jenkins">Jenkins<a class="hash-link" href="#jenkins" aria-label="Direct link to Jenkins">#</a></h2>
+<p>You can use pnpm for installing and caching your dependencies:</p>
+<pre><code class="hljs language-title=&#x22;Jenkinsfile&#x22;">pipeline {
+    agent {
+        docker {
+            image 'node:lts-bookworm-slim'
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        PNPM_HOME = "${WORKSPACE}/.pnpm"
+        PATH = "${PNPM_HOME}/bin:${PATH}"
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'curl -fsSL https://get.pnpm.io/install.sh | sh -'
+                sh 'pnpm install'
+            }
+        }
+    }
+}
+</code></pre>
+<p>Each <code>sh</code> step runs in its own shell, so <code>PATH</code> is set in the pipeline's
+<code>environment</code> block rather than exported inside a step.</p>
+<h2 id="semaphore">Semaphore<a class="hash-link" href="#semaphore" aria-label="Direct link to Semaphore">#</a></h2>
+<p>On <a href="https://semaphoreci.com">Semaphore</a>, you can use pnpm for installing and caching your dependencies by
+adding this to your <code>.semaphore/semaphore.yml</code> file:</p>
+<div class="code-block"><div class="code-block-title">.semaphore/semaphore.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">v1.0</span>
+<span class="hljs-attr">name:</span> <span class="hljs-string">Semaphore</span> <span class="hljs-string">CI</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">example</span>
+<span class="hljs-attr">agent:</span>
+  <span class="hljs-attr">machine:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">e1-standard-2</span>
+    <span class="hljs-attr">os_image:</span> <span class="hljs-string">ubuntu2404</span>
+<span class="hljs-attr">blocks:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">dependencies</span>
+    <span class="hljs-attr">task:</span>
+      <span class="hljs-attr">env_vars:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">PNPM_HOME</span>
+          <span class="hljs-attr">value:</span> <span class="hljs-string">/home/semaphore/.local/share/pnpm</span>
+      <span class="hljs-attr">jobs:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">install</span>
+          <span class="hljs-attr">commands:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">export</span> <span class="hljs-string">PATH="$PNPM_HOME/bin:$PATH"</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">curl</span> <span class="hljs-string">-fsSL</span> <span class="hljs-string">https://get.pnpm.io/install.sh</span> <span class="hljs-string">|</span> <span class="hljs-string">sh</span> <span class="hljs-bullet">-</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">checkout</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">cache</span> <span class="hljs-string">restore</span> <span class="hljs-string">node-$(checksum</span> <span class="hljs-string">pnpm-lock.yaml)</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">install</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">cache</span> <span class="hljs-string">store</span> <span class="hljs-string">node-$(checksum</span> <span class="hljs-string">pnpm-lock.yaml)</span> <span class="hljs-string">$(pnpm</span> <span class="hljs-string">store</span> <span class="hljs-string">path)</span>
+</code></pre></div>
+<h2 id="travis">Travis<a class="hash-link" href="#travis" aria-label="Direct link to Travis">#</a></h2>
+<p>On <a href="https://travis-ci.org">Travis CI</a>, you can use pnpm for installing your dependencies by adding this
+to your <code>.travis.yml</code> file:</p>
+<div class="code-block"><div class="code-block-title">.travis.yml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">cache:</span>
+  <span class="hljs-attr">npm:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">directories:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">"~/.pnpm-store"</span>
+<span class="hljs-attr">env:</span>
+  <span class="hljs-attr">global:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">PNPM_HOME="$HOME/.local/share/pnpm"</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">PATH="$PNPM_HOME/bin:$PATH"</span>
+<span class="hljs-attr">before_install:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">curl</span> <span class="hljs-string">-fsSL</span> <span class="hljs-string">https://get.pnpm.io/install.sh</span> <span class="hljs-string">|</span> <span class="hljs-string">sh</span> <span class="hljs-bullet">-</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">config</span> <span class="hljs-string">set</span> <span class="hljs-string">store-dir</span> <span class="hljs-string">~/.pnpm-store</span>
+<span class="hljs-attr">install:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">install</span>
+</code></pre></div></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick start | pnpm</title>
+    <meta name="description" content="pnpr routes packages through declared registries: every origin — a locally-hosted registry, an upstream like npmjs — is declared explicitly and claims the package names it serves, and a router resolves each name to exactly one of them. Save this as pnpr.yaml:" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Quick start | pnpm" />
+    <meta property="og:description" content="pnpr routes packages through declared registries: every origin — a locally-hosted registry, an upstream like npmjs — is declared explicitly and claims the package names it serves, and a router resolves each name to exactly one of them. Save this as pnpr.yaml:" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Quick start | pnpm" />
+    <meta name="twitter:description" content="pnpr routes packages through declared registries: every origin — a locally-hosted registry, an upstream like npmjs — is declared explicitly and claims the package names it serves, and a router resolves each name to exactly one of them. Save this as pnpr.yaml:" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/quick-start" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/quick-start" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/quick-start" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/quick-start" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/quick-start" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/quick-start" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/quick-start" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/quick-start" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/quick-start" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/quick-start" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/quick-start" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/quick-start" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/quick-start" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/quick-start" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/quick-start" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/quick-start" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Quick start</h1><h2 id="write-a-config">Write a config<a class="hash-link" href="#write-a-config" aria-label="Direct link to Write a config">#</a></h2>
+<p>pnpr routes packages through declared
+<a href="/pnpr/configuration#registries-and-defaultregistry">registries</a>: every origin —
+a locally-hosted registry, an upstream like npmjs — is declared explicitly and
+claims the package names it serves, and a router resolves each name to exactly
+one of them. Save this as <code>pnpr.yaml</code>:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">storage:</span> <span class="hljs-string">./storage</span>
+
+<span class="hljs-attr">auth:</span>
+  <span class="hljs-attr">htpasswd:</span>
+    <span class="hljs-attr">file:</span> <span class="hljs-string">./htpasswd</span>
+    <span class="hljs-comment"># Allow one user to self-register, for the publish step below.</span>
+    <span class="hljs-attr">max_users:</span> <span class="hljs-number">1</span>
+
+<span class="hljs-attr">registries:</span>
+  <span class="hljs-comment"># Packages published to this server. The `packages:` map is this</span>
+  <span class="hljs-comment"># registry's namespace: only these names can live here.</span>
+  <span class="hljs-attr">local:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'@mycompany/*':</span>
+        <span class="hljs-attr">publish:</span> <span class="hljs-string">$authenticated</span>
+
+  <span class="hljs-comment"># The public npm registry. No `packages:` map — it serves every name,</span>
+  <span class="hljs-comment"># so it must be the last source in the router below.</span>
+  <span class="hljs-attr">npmjs:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://registry.npmjs.org/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-comment"># A package resolves to the first source that claims its name:</span>
+  <span class="hljs-comment"># your scope goes to the local registry, everything else to npm.</span>
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">router</span>
+    <span class="hljs-attr">sources:</span> [<span class="hljs-string">local</span>, <span class="hljs-string">npmjs</span>]
+
+<span class="hljs-comment"># The bare server URL serves the router.</span>
+<span class="hljs-attr">defaultRegistry:</span> <span class="hljs-string">main</span>
+</code></pre>
+<p>Replace <code>@mycompany</code> with your own scope. There is no fall-through between
+registries: a <code>@mycompany/*</code> package that isn't published locally is a
+definitive 404, never a request to npmjs — which is exactly what closes
+dependency confusion.</p>
+<h2 id="start-the-server">Start the server<a class="hash-link" href="#start-the-server" aria-label="Direct link to Start the server">#</a></h2>
+<pre><code class="hljs language-sh">pnpr -c ./pnpr.yaml
+</code></pre>
+<p>It listens on <code>127.0.0.1:7677</code>. (Running plain <code>pnpr</code> with no config works
+too, but the bundled default config is shaped for pnpm's own test registry —
+for anything real, pass your own config.)</p>
+<h2 id="point-a-client-at-it">Point a client at it<a class="hash-link" href="#point-a-client-at-it" aria-label="Direct link to Point a client at it">#</a></h2>
+<p>Configure pnpm (or npm/yarn) to use the local server as its registry:</p>
+<pre><code class="hljs language-sh">pnpm config <span class="hljs-built_in">set</span> registry http://127.0.0.1:7677/
+</code></pre>
+<p>Now <code>pnpm install</code> fetches packages through pnpr. Packages proxied from the
+upstream are cached, so subsequent installs are served locally.</p>
+<p>Each registry is also directly addressable at
+<code>http://127.0.0.1:7677/~&#x3C;name>/</code> — for example, you can point just your scope
+at the hosted registry instead of using the router.</p>
+<h2 id="publish-a-package">Publish a package<a class="hash-link" href="#publish-a-package" aria-label="Direct link to Publish a package">#</a></h2>
+<p>Create a user and publish:</p>
+<pre><code class="hljs language-sh">pnpm login --registry http://127.0.0.1:7677/
+pnpm publish --registry http://127.0.0.1:7677/
+</code></pre>
+<p>The publish routes through the router to the <code>local</code> hosted registry —
+publishing a package that resolves to an upstream, or whose name no registry
+claims, is rejected.</p>
+<h2 id="where-to-go-next">Where to go next<a class="hash-link" href="#where-to-go-next" aria-label="Direct link to Where to go next">#</a></h2>
+<ul>
+<li><a href="/pnpr/cli">CLI reference</a> — every flag <code>pnpr</code> accepts.</li>
+<li><a href="/pnpr/configuration">Configuration</a> — write your own config: registries,
+access rules, and auth.</li>
+<li><a href="/pnpr/install-acceleration">Install acceleration</a> — let pnpr resolve your
+dependency graph to speed up installs.</li>
+</ul></article></main></div>
+  </body>
+</html>

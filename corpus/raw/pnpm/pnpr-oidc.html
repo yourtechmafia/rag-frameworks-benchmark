@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenID Connect | pnpm</title>
+    <meta name="description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="OpenID Connect | pnpm" />
+    <meta property="og:description" content="Added in: v0.1.0-alpha.11" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="OpenID Connect | pnpm" />
+    <meta name="twitter:description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/oidc" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/oidc" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/oidc" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/oidc" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/oidc" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/oidc" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/oidc" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/oidc" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/oidc" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/oidc" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/oidc" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/oidc" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/oidc" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/oidc" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/oidc" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/oidc" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>OpenID Connect</h1><p>Added in: v0.1.0-alpha.11</p>
+<p>pnpr supports OIDC browser sign-in and keyless npm publishing from workloads
+such as GitHub Actions. Both use discovery and signed ID tokens from explicitly
+configured issuers. Local password authentication keeps working alongside them.</p>
+<h2 id="browser-sign-in">Browser sign-in<a class="hash-link" href="#browser-sign-in" aria-label="Direct link to Browser sign-in">#</a></h2>
+<p>Register a web application with your identity provider. Set its callback to
+<code>https://registry.example/-/oidc/company/callback</code>, replacing the hostname and
+<code>company</code> with your pnpr provider name, and enable the authorization code flow.
+Start pnpr with <code>--public-url https://registry.example</code>, its HTTPS origin
+without a path prefix.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">auth:</span>
+  <span class="hljs-attr">oidc:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">company</span>
+      <span class="hljs-attr">issuer:</span> <span class="hljs-string">https://accounts.google.com</span>
+      <span class="hljs-attr">audience:</span> <span class="hljs-string">your-client-id</span>
+      <span class="hljs-attr">login:</span>
+        <span class="hljs-attr">clientSecret:</span> <span class="hljs-string">${OIDC_CLIENT_SECRET}</span>
+        <span class="hljs-attr">users:</span>
+          <span class="hljs-bullet">-</span> <span class="hljs-attr">subject:</span> <span class="hljs-string">'the-users-stable-sub-claim'</span>
+            <span class="hljs-attr">username:</span> <span class="hljs-string">alice</span>
+            <span class="hljs-attr">claims:</span>
+              <span class="hljs-attr">hd:</span> <span class="hljs-string">example.com</span>
+</code></pre>
+<p><code>audience</code> is the application's client ID. <code>clientSecret</code> can be omitted for
+providers that support public clients with PKCE. <code>subject</code> is the exact <code>sub</code>
+claim issued to this application, not an email address. Each binding maps that
+subject to a pnpr username, and the registry's existing access rules and teams
+then apply. Extra <code>claims</code> are exact string matches and all of them must match.
+There is no automatic account creation, and no linking by email.</p>
+<p>Use the issuer your provider publishes:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Provider</th><th>Issuer</th></tr></thead><tbody><tr><td>Google Workspace</td><td><code>https://accounts.google.com</code></td></tr><tr><td>Microsoft Entra ID</td><td><code>https://login.microsoftonline.com/&#x3C;tenant-id>/v2.0</code></td></tr><tr><td>Okta org authorization server</td><td><code>https://&#x3C;your-org>.okta.com</code></td></tr><tr><td>Okta custom authorization server</td><td><code>https://&#x3C;your-org>.okta.com/oauth2/&#x3C;authorization-server-id></code></td></tr></tbody></table></div>
+<p>Use a tenant-specific Entra issuer. For Google Workspace, require the <code>hd</code> claim
+for your organization's domain, as shown above. See the provider documentation
+for <a href="https://developers.google.com/identity/openid-connect/reference">Google</a>,
+<a href="https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc">Entra</a>,
+and <a href="https://developer.okta.com/docs/concepts/auth-servers/">Okta</a>.</p>
+<p>Open <code>https://registry.example/-/oidc/company/login</code> in a browser. After
+sign-in, pnpr displays a token to put in the registry's <code>_authToken</code> setting,
+for example in your private user <code>.npmrc</code>:</p>
+<pre><code class="hljs language-ini">//registry.example/:<span class="hljs-attr">_authToken</span>=THE_DISPLAYED_TOKEN
+</code></pre>
+<p>The browser session expires at the earlier of one hour or the ID token's expiry,
+and <code>npm logout</code> revokes it. Sessions live in memory and disappear on restart,
+so a multi-replica deployment needs affinity for both the login flow and the
+authenticated requests that follow. They do not appear in <code>npm token list</code>. This
+sign-in URL is separate from the npm CLI's <code>npm login</code> web protocol. An OIDC
+session cannot yet be exchanged for an <a href="/pnpr/container-images#authentication">OCI scoped bearer token</a>.</p>
+<h2 id="github-actions-keyless-publishing">GitHub Actions keyless publishing<a class="hash-link" href="#github-actions-keyless-publishing" aria-label="Direct link to GitHub Actions keyless publishing">#</a></h2>
+<p>Configure a dedicated workload username, a named hosted npm registry, and exact
+package names. The package's normal <code>publish</code> rule must grant that username
+access too.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">private:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'@example/widget':</span>
+        <span class="hljs-attr">publish:</span> [<span class="hljs-string">release-ci</span>]
+<span class="hljs-attr">auth:</span>
+  <span class="hljs-attr">oidc:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">github</span>
+      <span class="hljs-attr">issuer:</span> <span class="hljs-string">https://token.actions.githubusercontent.com</span>
+      <span class="hljs-attr">audience:</span> <span class="hljs-string">https://registry.example</span>
+      <span class="hljs-attr">workloads:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">identity:</span>
+            <span class="hljs-attr">subject:</span> <span class="hljs-string">repo:example/widgets:ref:refs/heads/main</span>
+            <span class="hljs-attr">username:</span> <span class="hljs-string">release-ci</span>
+            <span class="hljs-attr">claims:</span>
+              <span class="hljs-attr">repository_id:</span> <span class="hljs-string">'123456789'</span>
+              <span class="hljs-attr">repository_owner_id:</span> <span class="hljs-string">'987654321'</span>
+              <span class="hljs-attr">workflow_ref:</span> <span class="hljs-string">example/widgets/.github/workflows/release.yml@refs/heads/main</span>
+          <span class="hljs-attr">registry:</span> <span class="hljs-string">private</span>
+          <span class="hljs-attr">packages:</span> [<span class="hljs-string">'@example/widget'</span>]
+</code></pre>
+<p>Use immutable repository and owner IDs so trust does not transfer when names are
+reused. For reusable workflows, also require <code>job_workflow_ref</code> to pin the
+workflow that performs the publication. A job using a GitHub environment has an
+environment-based subject, such as
+<code>repo:example/widgets:environment:production</code>. Configure the exact subject and
+the additional claims you intend to trust. See
+<a href="https://docs.github.com/en/actions/reference/security/oidc">GitHub's OIDC reference</a>.</p>
+<p>The publishing job needs <code>id-token: write</code>. Request an ID token with pnpr's
+configured audience and prefix it with <code>pnpr_workload_</code> as the registry token.
+No pnpr password, persistent API key, or token exchange is involved:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">permissions:</span>
+  <span class="hljs-attr">contents:</span> <span class="hljs-string">read</span>
+  <span class="hljs-attr">id-token:</span> <span class="hljs-string">write</span>
+<span class="hljs-attr">steps:</span>
+  <span class="hljs-comment"># Check out, install dependencies, and build before requesting the token.</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Publish</span> <span class="hljs-string">to</span> <span class="hljs-string">pnpr</span>
+    <span class="hljs-attr">shell:</span> <span class="hljs-string">bash</span>
+    <span class="hljs-attr">run:</span> <span class="hljs-string">|
+      response=$(curl --fail --silent --show-error \
+        -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+        "${ACTIONS_ID_TOKEN_REQUEST_URL}&#x26;audience=https%3A%2F%2Fregistry.example")
+      token=$(jq -er '.value' &#x3C;&#x3C;&#x3C; "$response")
+      echo "::add-mask::$token"
+      export NODE_AUTH_TOKEN="pnpr_workload_${token}"
+      npm publish --registry=https://registry.example/~private/
+</span></code></pre>
+<p>The project's <code>.npmrc</code> holds only the environment reference:</p>
+<pre><code class="hljs language-ini">//registry.example/~private/:<span class="hljs-attr">_authToken</span>=<span class="hljs-variable">${NODE_AUTH_TOKEN}</span>
+</code></pre>
+<p>On a server with more than one ecosystem, use <code>/npm/~private/</code> in both places.</p>
+<p>The credential permits ordinary <code>PUT</code> publications to the configured packages
+through that named registry and nothing else. It cannot read packages, unpublish,
+change dist-tags separately, manage accounts, publish batches, or reach other
+pnpr services. Request the token after building so it stays valid through the
+publish request; its issuer's expiry applies to every request.</p>
+<h2 id="validation-and-operations">Validation and operations<a class="hash-link" href="#validation-and-operations" aria-label="Direct link to Validation and operations">#</a></h2>
+<p>pnpr accepts RS256 and ES256 signatures and verifies the issuer, audience,
+authorized party where present, expiry, issue time, and not-before claims.
+Browser login also verifies a browser-bound state, a nonce, and S256 PKCE.
+Unmapped and ambiguous identities are rejected, and user subjects must be unique
+within a provider, its workload bindings included.</p>
+<p>The <code>pnpr_oidc_</code> and <code>pnpr_workload_</code> credential prefixes are reserved for OIDC,
+and workload credentials bypass the persistent token backend.</p>
+<p>Discovery and JWKS use HTTPS with redirects disabled and bounded response sizes
+and deadlines. Literal and DNS-resolved destinations must be public IP addresses,
+and OIDC requests ignore environment-configured HTTP proxies. Metadata is cached
+for five minutes, and a verification failure can trigger a refresh at most once
+every 30 seconds per provider, so an unavailable provider can never turn an
+invalid credential into anonymous access.</p>
+<p>Login state lives in a signed HttpOnly cookie for five minutes. Anonymous login
+starts reserve no server-side entries. Successful login replays and browser
+sessions are each capped at 1,024 per process, and a separate 1,024-entry
+callback-attempt history rejects recent failed and concurrent replays before
+token exchange, evicting the oldest attempt when full. At most 16 browser
+callbacks perform network operations concurrently.</p>
+<p>pnpr omits OIDC callback query strings from its request logs. Configure reverse
+proxies to omit them too.</p></article></main></div>
+  </body>
+</html>

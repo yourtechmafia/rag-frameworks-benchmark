@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/pack-app",
+ "file": "markdown/pnpm/cli-pack-app.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.86,
+ "markdown_chars": 6014,
+ "raw_html_chars": 14513,
+ "sha256": "b7d64d099009834e9cae58cdf6a1b7bcc76aad931dd40264b7dbfd1d7f4e8ce0",
+ "fetched_at": "2026-10-03T08:58:16+00:00"
+}

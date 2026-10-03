@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/patch",
+ "file": "markdown/pnpm/cli-patch.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.42,
+ "markdown_chars": 3208,
+ "raw_html_chars": 10279,
+ "sha256": "6e2685cd1d68fdff77818ebeaa3220d91ce657c9a7277dace2776ae27edd1504",
+ "fetched_at": "2026-10-03T08:58:18+00:00"
+}

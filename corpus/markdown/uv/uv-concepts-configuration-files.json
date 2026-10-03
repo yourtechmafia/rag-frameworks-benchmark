@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/configuration-files/",
+ "file": "markdown/uv/uv-concepts-configuration-files.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 6.9,
+ "markdown_chars": 10865,
+ "raw_html_chars": 72518,
+ "sha256": "11a97cbff2c38a2d640fadb4a8cb642d1e07032c98916faeb7d329a440155dd8",
+ "fetched_at": "2026-10-03T08:57:21+00:00"
+}

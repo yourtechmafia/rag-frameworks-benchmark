@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/liquid",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-liquid.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.16,
+ "markdown_chars": 4573,
+ "raw_html_chars": 3769,
+ "sha256": "e972b300f865d395b7e42028695309a05092a0798412346d631bb71a14941828",
+ "fetched_at": "2026-10-03T08:59:50+00:00"
+}

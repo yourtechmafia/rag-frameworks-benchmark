@@ -1,0 +1,13 @@
+{
+ "site": "docsify",
+ "url": "https://docsify.js.org/#/awesome",
+ "file": "markdown/docsify/awesome.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.53,
+ "markdown_chars": 45541,
+ "raw_html_chars": 7894,
+ "sha256": "2e7f45f0f665d82bf378cc4b9740ebd91b730c566953173c87d83c03fed8cc58",
+ "fetched_at": "2026-10-03T09:00:05+00:00"
+}

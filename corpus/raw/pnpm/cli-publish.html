@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm publish | pnpm</title>
+    <meta name="description" content="Publishes a package to the registry." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm publish | pnpm" />
+    <meta property="og:description" content="Publishes a package to the registry." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm publish | pnpm" />
+    <meta name="twitter:description" content="Publishes a package to the registry." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/publish" />
+    <meta property="og:url" content="https://pnpm.io/cli/publish" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/publish" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/publish" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/publish" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/publish" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/publish" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/publish" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/publish" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/publish" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/publish" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/publish" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/publish" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/publish" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/publish" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/publish" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm publish</h1><p>Publishes a package to the registry.</p>
+<pre><code class="hljs language-sh">pnpm [-r] publish [&#x3C;tarball|folder>] [--tag &#x3C;tag>]
+     [--access &#x3C;public|restricted>] [options]
+</code></pre>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Since v11, <code>pnpm publish</code> is implemented natively and no longer delegates to the <code>npm</code> CLI. If you rely on a feature that is now gone, please open an issue at <a href="https://github.com/pnpm/pnpm/issues">pnpm/pnpm</a>. As a workaround, you can still run <code>pnpm pack &#x26;&#x26; npm publish *.tgz</code>.</p>
+</div>
+<p>When publishing a folder or a tarball, pnpm includes a package-root README in
+the registry metadata if the manifest has no <code>readme</code> value. It recognizes
+<code>README.md</code>, other README files with npm-compatible Markdown extensions (such
+as <code>README.markdown</code> and <code>README.mdown</code>), and <code>README</code>. It prefers <code>README.md</code>,
+then another Markdown README, then <code>README</code>.</p>
+<p>When publishing a package inside a <a href="/workspaces">workspace</a>, the LICENSE file
+from the root of the workspace is packed with the package (unless the package
+has a license of its own).</p>
+<p>You may override some fields before publish, using the
+<a href="/package_json#publishconfig">publishConfig</a> field in <code>package.json</code>.
+You also can use the <a href="/package_json#publishconfigdirectory"><code>publishConfig.directory</code></a> to customize the published subdirectory (usually using third party build tools).</p>
+<p>When running this command recursively (<code>pnpm -r publish</code>), pnpm will publish all
+the packages that have versions not yet published to the registry.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Publish all packages from the workspace.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>Show information in JSON format.</p>
+<h3 id="--tag-tag">--tag &#x3C;tag><a class="hash-link" href="#--tag-tag" aria-label="Direct link to --tag <tag>">#</a></h3>
+<p>Publishes the package with the given tag. By default, <code>pnpm publish</code> updates
+the <code>latest</code> tag.</p>
+<p>For example:</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># inside the foo package directory</span>
+pnpm publish --tag next
+<span class="hljs-comment"># in a project where you want to use the next version of foo</span>
+pnpm add foo@next
+</code></pre>
+<h3 id="--access-publicrestricted">--access &#x3C;public|restricted><a class="hash-link" href="#--access-publicrestricted" aria-label="Direct link to --access <public|restricted>">#</a></h3>
+<p>Tells the registry whether the published package should be public or restricted.</p>
+<h3 id="--no-git-checks">--no-git-checks<a class="hash-link" href="#--no-git-checks" aria-label="Direct link to --no-git-checks">#</a></h3>
+<p>Don't check if current branch is your publish branch, clean, and up-to-date with remote.</p>
+<h3 id="--publish-branch-branch">--publish-branch &#x3C;branch><a class="hash-link" href="#--publish-branch-branch" aria-label="Direct link to --publish-branch <branch>">#</a></h3>
+<ul>
+<li>Default: <strong>master</strong> and <strong>main</strong></li>
+<li>Types: <strong>String</strong></li>
+</ul>
+<p>The primary branch of the repository which is used for publishing the latest
+changes.</p>
+<h3 id="--force">--force<a class="hash-link" href="#--force" aria-label="Direct link to --force">#</a></h3>
+<p>Try to publish packages even if their current version is already found in the
+registry.</p>
+<h3 id="--batch">--batch<a class="hash-link" href="#--batch" aria-label="Direct link to --batch">#</a></h3>
+<p>Added in: v11.7.0</p>
+<p>When publishing recursively (<code>pnpm -r publish</code>), send all selected packages to the registry in a single <code>PUT /-/pnpm/v1/publish</code> request instead of one request per package.</p>
+<p>The target registry has to implement the batch publish endpoint (<a href="https://github.com/pnpm/pnpm/tree/main/pnpr">pnpr</a> does); registries that don't are reported with an <code>ERR_PNPM_BATCH_PUBLISH_UNSUPPORTED</code> error. The batch is processed all-or-nothing: if any package in the batch fails validation, none of the packages are published.</p>
+<p>Since v11.24.0, the selected packages are grouped by the registry each one
+publishes to, and one request is sent per group. Every package in a group must
+authenticate with the same credential — a scope-specific token shared across the
+group is fine, and mismatched credentials for one registry are rejected <em>before</em>
+anything is published, rather than after part of the release went out. The
+<code>publish</code> and <code>postpublish</code> scripts run after each completed group.</p>
+<h3 id="--skip-manifest-obfuscation">--skip-manifest-obfuscation<a class="hash-link" href="#--skip-manifest-obfuscation" aria-label="Direct link to --skip-manifest-obfuscation">#</a></h3>
+<p>Added in: v11.3.0</p>
+<p>Keep the original <code>packageManager</code> field and publish lifecycle scripts in the published manifest instead of stripping them. The pnpm-specific <code>pnpm</code> field is still omitted.</p>
+<h3 id="--publish-wait-timeout-milliseconds">--publish-wait-timeout &#x3C;milliseconds><a class="hash-link" href="#--publish-wait-timeout-milliseconds" aria-label="Direct link to --publish-wait-timeout <milliseconds>">#</a></h3>
+<p>Added in: v12.7.0</p>
+<ul>
+<li>Default: <strong>0</strong></li>
+<li>Type: <strong>Number</strong> (non-negative integer)</li>
+</ul>
+<p>Wait for the exact published version to appear in the registry's install metadata.
+Then check that a <code>HEAD</code> request to its tarball URL returns HTTP <code>200</code>.
+This helps release workflows handle registry delays, such as npm's <a href="https://github.blog/changelog/2026-07-28-npm-publish-time-malware-scanning-and-dual-use-metadata/">publish-time malware scanning</a>.
+A value of <code>0</code> disables the check.</p>
+<pre><code class="hljs language-sh">pnpm publish --publish-wait-timeout 600000
+pnpm -r publish --publish-wait-timeout 600000 --report-summary
+</code></pre>
+<p>The timeout is in milliseconds and includes registry requests and retry delays.
+Each package has its own timeout, including selected versions that already exist.
+For a new upload, the timeout starts after the registry accepts it.
+For an existing version, it starts when pnpm begins its availability check.
+With <code>--batch</code>, each uploaded registry group shares one timeout.</p>
+<p>Recursive publishing also checks selected versions that already exist in the
+registry. Without <code>--batch</code>, pnpm confirms availability before publishing dependent
+packages. With <code>--batch</code>, pnpm checks each registry group after its upload.
+The <code>publish</code> and <code>postpublish</code> scripts run after the corresponding check succeeds.</p>
+<p>If confirmation times out, the command fails with
+<code>ERR_PNPM_PUBLISH_AVAILABILITY_TIMEOUT</code>. The upload remains accepted and may
+become available later. Do not publish the same version again.
+Use <a href="#--report-summary"><code>--report-summary</code></a> with recursive publishing to record
+accepted uploads even if the command fails.</p>
+<p>Invalid registry responses or non-retryable HTTP errors, such as authentication
+failures, cause <code>ERR_PNPM_PUBLISH_AVAILABILITY_CHECK_FAILED</code>.</p>
+<p><code>--dry-run</code> skips availability checks. <code>pnpm stage publish</code> ignores the configured
+default and rejects an explicit positive <code>--publish-wait-timeout</code>, because
+staged versions cannot be installed.
+The check does not download the archive or install the package. It does not
+verify the archive's contents.</p>
+<p>Use <a href="#publishwaittimeout"><code>publishWaitTimeout</code></a> to set a default.</p>
+<h3 id="--report-summary">--report-summary<a class="hash-link" href="#--report-summary" aria-label="Direct link to --report-summary">#</a></h3>
+<p>Save the list of published packages to <code>pnpm-publish-summary.json</code>. Useful when some other tooling is used to report the list of published packages.</p>
+<p>An example of a <code>pnpm-publish-summary.json</code> file:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"publishedPackages"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"bar"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2.0.0"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>When a recursive publish fails after the registry accepted some of the
+uploads, the summary still lists the packages that were published.</p>
+<h3 id="--dry-run">--dry-run<a class="hash-link" href="#--dry-run" aria-label="Direct link to --dry-run">#</a></h3>
+<p>Does everything a publish would do except actually publishing to the registry.</p>
+<h3 id="--otp">--otp<a class="hash-link" href="#--otp" aria-label="Direct link to --otp">#</a></h3>
+<p>When publishing packages that require two-factor authentication, this option can specify a one-time password.</p>
+<p>You can also provide the OTP via the <code>PNPM_CONFIG_OTP</code> environment variable:</p>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">export</span> PNPM_CONFIG_OTP=<span class="hljs-string">'&#x3C;your OTP here>'</span>
+pnpm publish --no-git-checks
+</code></pre>
+<p>If the registry requests OTP and you have not provided it via the environment variable or the <code>--otp</code> flag, pnpm will prompt you directly for an OTP code.</p>
+<p>If the registry requests web-based authentication, pnpm will print a scannable QR code along with the URL.</p>
+<h3 id="--provenance">--provenance<a class="hash-link" href="#--provenance" aria-label="Direct link to --provenance">#</a></h3>
+<p>When publishing from a supported cloud CI/CD system, the package will be publicly linked to where it was built and published from.</p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<p>You can also set <code>gitChecks</code>, <code>publishBranch</code>, and <code>publishWaitTimeout</code> options in the <code>pnpm-workspace.yaml</code> file.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">gitChecks:</span> <span class="hljs-literal">false</span>
+<span class="hljs-attr">publishBranch:</span> <span class="hljs-string">production</span>
+</code></pre></div>
+<h3 id="publishwaittimeout">publishWaitTimeout<a class="hash-link" href="#publishwaittimeout" aria-label="Direct link to publishWaitTimeout">#</a></h3>
+<p>Added in: v12.7.0</p>
+<ul>
+<li>Default: <strong>0</strong></li>
+<li>Type: <strong>Number</strong> (non-negative integer)</li>
+</ul>
+<p>Sets the default timeout in milliseconds for
+<a href="#--publish-wait-timeout-milliseconds"><code>--publish-wait-timeout</code></a>.
+Configure it in <code>pnpm-workspace.yaml</code> or the global <code>config.yaml</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">publishWaitTimeout:</span> <span class="hljs-number">600000</span>
+</code></pre></div>
+<p>The <code>PNPM_CONFIG_PUBLISH_WAIT_TIMEOUT</code> environment variable overrides the
+configuration files. The command-line option takes precedence over both,
+including <code>--publish-wait-timeout=0</code> to disable waiting for one command.</p>
+<h2 id="life-cycle-scripts">Life Cycle Scripts<a class="hash-link" href="#life-cycle-scripts" aria-label="Direct link to Life Cycle Scripts">#</a></h2>
+<ul>
+<li><code>prepublishOnly</code></li>
+<li><code>prepublish</code></li>
+<li><code>prepack</code></li>
+<li><code>prepare</code></li>
+<li><code>postpack</code></li>
+<li><code>publish</code></li>
+<li><code>postpublish</code></li>
+</ul></article></main></div>
+  </body>
+</html>

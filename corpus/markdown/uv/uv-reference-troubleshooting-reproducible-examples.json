@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/troubleshooting/reproducible-examples/",
+ "file": "markdown/uv/uv-reference-troubleshooting-reproducible-examples.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.59,
+ "markdown_chars": 11396,
+ "raw_html_chars": 77405,
+ "sha256": "3013b5f07f9dda6fb7655e933e7edeea3a9874a5c42559d6a3baec43f284a440",
+ "fetched_at": "2026-10-03T08:57:45+00:00"
+}

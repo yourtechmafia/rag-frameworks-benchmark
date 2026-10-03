@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/pip/compile/",
+ "file": "markdown/uv/uv-pip-compile.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.86,
+ "markdown_chars": 13359,
+ "raw_html_chars": 80716,
+ "sha256": "dfa5f025a644e2b193313a32d2c6afb7d813fb9045651a6bfbf9aa99ab49fa43",
+ "fetched_at": "2026-10-03T08:57:35+00:00"
+}

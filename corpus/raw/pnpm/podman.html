@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with Podman | pnpm</title>
+    <meta name="description" content="This method only works on copy-on-write filesystems supported by Podman, such as Btrfs. For other filesystems, like Ext4, pnpm will copy the files instead." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Working with Podman | pnpm" />
+    <meta property="og:description" content="This method only works on copy-on-write filesystems supported by Podman, such as Btrfs. For other filesystems, like Ext4, pnpm will copy the files instead." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Working with Podman | pnpm" />
+    <meta name="twitter:description" content="This method only works on copy-on-write filesystems supported by Podman, such as Btrfs. For other filesystems, like Ext4, pnpm will copy the files instead." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/podman" />
+    <meta property="og:url" content="https://pnpm.io/podman" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/podman" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/podman" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/podman" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/podman" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/podman" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/podman" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/podman" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/podman" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/podman" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/podman" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/podman" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/podman" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/podman" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/podman" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Working with Podman</h1><h2 id="sharing-files-between-a-container-and-the-host-btrfs-filesystem">Sharing Files Between a Container and the Host Btrfs Filesystem<a class="hash-link" href="#sharing-files-between-a-container-and-the-host-btrfs-filesystem" aria-label="Direct link to Sharing Files Between a Container and the Host Btrfs Filesystem">#</a></h2>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>This method only works on copy-on-write filesystems supported by Podman, such as Btrfs. For other filesystems, like Ext4, pnpm will copy the files instead.</p>
+</div>
+<p>Podman support copy-on-write filesystems like Btrfs. With Btrfs, container runtimes create actual Btrfs subvolumes for their mounted volumes. pnpm can leverage this behavior to reflink the files between different mounted volumes.</p>
+<p>To share files between the host and the container, mount the store directory and the <code>node_modules</code> directory from the host to the container. This allows pnpm inside the container to naturally reuse the files from the host as reflinks.</p>
+<div class="admonition admonition-important"><p class="admonition-title">Important</p>
+<p>Only mount a host pnpm store into containers you trust. A container with write access to the mounted store can affect later installs that reuse that store.</p>
+</div>
+<p>Below is an example container setup for demonstration:</p>
+<p>Declare Node.js in <a href="/package_json#devenginesruntime"><code>devEngines.runtime</code></a> in your <code>package.json</code>. The <code>pnpm install</code> command below will install the declared version automatically.</p>
+<div class="code-block"><div class="code-block-title">Dockerfile</div><pre><code class="hljs language-dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span>
+
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+
+<span class="hljs-keyword">VOLUME</span><span class="bash"> [ <span class="hljs-string">"/pnpm-store"</span>, <span class="hljs-string">"/app/node_modules"</span> ]</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm config --global <span class="hljs-built_in">set</span> store-dir /pnpm-store</span>
+
+<span class="hljs-comment"># You may need to copy more files than just package.json in your code</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> package.json /app/package.json</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm install</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm run build</span>
+</code></pre></div>
+<p>Run the following command to build the podman image:</p>
+<pre><code class="hljs language-sh">podman build . --tag my-podman-image:latest -v <span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.local/share/pnpm/store:/pnpm-store"</span> -v <span class="hljs-string">"<span class="hljs-subst">$(pwd)</span>/node_modules:/app/node_modules"</span>
+</code></pre></article></main></div>
+  </body>
+</html>

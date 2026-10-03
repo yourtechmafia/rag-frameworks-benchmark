@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workspace task orchestration | pnpm</title>
+    <meta name="description" content="pnpm -r run &lt;script&gt; schedules a graph of workspace tasks. A task is a script in one workspace project, identified as &lt;project&gt;#&lt;script&gt;. It becomes ready after every task it depends on completes successfully, and ready tasks run under the --workspace-concurrency limit." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Workspace task orchestration | pnpm" />
+    <meta property="og:description" content="pnpm -r run &lt;script&gt; schedules a graph of workspace tasks. A task is a script in one workspace project, identified as &lt;project&gt;#&lt;script&gt;. It becomes ready after every task it depends on completes successfully, and ready tasks run under the --workspace-concurrency limit." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Workspace task orchestration | pnpm" />
+    <meta name="twitter:description" content="pnpm -r run &lt;script&gt; schedules a graph of workspace tasks. A task is a script in one workspace project, identified as &lt;project&gt;#&lt;script&gt;. It becomes ready after every task it depends on completes successfully, and ready tasks run under the --workspace-concurrency limit." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/workspace-task-orchestration" />
+    <meta property="og:url" content="https://pnpm.io/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/workspace-task-orchestration" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/workspace-task-orchestration" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Workspace task orchestration</h1><p><code>pnpm -r run &#x3C;script></code> schedules a graph of workspace tasks. A task is a script
+in one workspace project, identified as <code>&#x3C;project>#&#x3C;script></code>. It becomes ready
+after every task it depends on completes successfully, and ready tasks run under
+the <a href="/cli/recursive#--workspace-concurrency"><code>--workspace-concurrency</code></a>
+limit.</p>
+<p>Independent tasks do not wait for an unrelated project to finish. Their start
+and completion order is therefore not guaranteed.</p>
+<h2 id="configure-task-dependencies">Configure task dependencies<a class="hash-link" href="#configure-task-dependencies" aria-label="Direct link to Configure task dependencies">#</a></h2>
+<p>Declare task relationships under <code>tasks</code> in <code>pnpm-workspace.yaml</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">packages/*</span>
+
+<span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">dependsOn:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">^build</span>
+  <span class="hljs-attr">test:</span>
+    <span class="hljs-attr">dependsOn:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">build</span>
+</code></pre></div>
+<p>Each <code>dependsOn</code> entry has one of these forms:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Entry</th><th>Meaning</th></tr></thead><tbody><tr><td><code>build</code></td><td>The <code>build</code> task in the same project</td></tr><tr><td><code>^build</code></td><td>The <code>build</code> task in each selected workspace dependency of the project</td></tr></tbody></table></div>
+<p>In this example, <code>pnpm -r run test</code> first runs <code>build</code> in each project. A
+project's <code>build</code> waits for <code>build</code> in its workspace dependencies.</p>
+<p>A task with no entry under <code>tasks</code> defaults to depending on the same task in
+its workspace dependencies. For example, an unconfigured <code>build</code> behaves as
+<code>dependsOn: ['^build']</code>, preserving the usual dependencies-before-dependents
+behavior.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>Once a task has an entry under <code>tasks</code>, an omitted <code>dependsOn</code> is the same as
+<code>dependsOn: []</code>. If you configure another field and still want the default
+topological relationship, declare it explicitly:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">concurrency:</span> <span class="hljs-number">2</span>
+    <span class="hljs-attr">dependsOn:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">^build</span>
+</code></pre></div>
+</div>
+<p>Task dependencies stay inside the projects selected by <code>--filter</code> and
+<code>includeWorkspaceRoot</code>. A <code>dependsOn</code> entry does not widen that selection.</p>
+<h3 id="projects-without-a-script">Projects without a script<a class="hash-link" href="#projects-without-a-script" aria-label="Direct link to Projects without a script">#</a></h3>
+<p>If a selected project does not have a script named by the graph, pnpm treats
+that task as a pass-through. The task is reported as skipped after its own
+dependencies complete, so a package without <code>build</code> does not sever the build
+chain between its workspace dependencies and dependents.</p>
+<h2 id="limit-concurrency-for-one-task">Limit concurrency for one task<a class="hash-link" href="#limit-concurrency-for-one-task" aria-label="Direct link to Limit concurrency for one task">#</a></h2>
+<p>Set <code>concurrency</code> to a positive integer to limit how many instances of a named
+task may run across workspace projects at once:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">build:</span>
+    <span class="hljs-attr">concurrency:</span> <span class="hljs-number">2</span>
+    <span class="hljs-attr">dependsOn:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">^build</span>
+</code></pre></div>
+<p>This limit is separate from the workspace-wide
+<a href="/cli/recursive#--workspace-concurrency"><code>--workspace-concurrency</code></a> limit.
+A <code>build</code> waiting for one of its two slots does not occupy a workspace slot, so
+an unrelated ready task can still run.</p>
+<h2 id="concurrencygroups">concurrencyGroups<a class="hash-link" href="#concurrencygroups" aria-label="Direct link to concurrencyGroups">#</a></h2>
+<p>Added in: v12.5.0</p>
+<p>Assign tasks to a <code>concurrencyGroup</code>, then give the group a machine-wide limit:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">test:rust:</span>
+    <span class="hljs-attr">concurrencyGroup:</span> <span class="hljs-string">cargo</span>
+    <span class="hljs-attr">dependsOn:</span> []
+<span class="hljs-attr">concurrencyGroups:</span>
+  <span class="hljs-attr">cargo:</span> <span class="hljs-number">2</span>
+</code></pre></div>
+<p>At most two tasks in <code>cargo</code> run at once across pnpm processes sharing the same <a href="/settings/other#statedir"><code>stateDir</code></a>, including <code>pnpm pipeline</code>. Tasks wait when every slot is held. A nested <code>pnpm run</code> in the same group uses its parent's slot, avoiding a wait on itself. Slots are released when the process ends, including crashes.</p>
+<p>Changing <code>stateDir</code> creates a separate slot pool, so processes using different directories do not share the limit.</p>
+<p>Group limits supplement task <code>concurrency</code> and <code>--workspace-concurrency</code>. A missing or zero group limit does not restrict execution. Use the same limit in workspaces sharing a group: each process honors its own configured limit.</p>
+<h3 id="task-priority">Task priority<a class="hash-link" href="#task-priority" aria-label="Direct link to Task priority">#</a></h3>
+<p>Added in: v12.6.0</p>
+<ul>
+<li>Default: <strong>0</strong></li>
+<li>Type: <strong>Integer</strong></li>
+</ul>
+<p>Waiting tasks take available slots in order of descending <code>priority</code>, with higher values running first. When <code>priority</code> is not specified, it defaults to <code>0</code>. A task with <code>priority: 10</code> therefore has higher priority than an unconfigured task and runs before it, while negative priorities run after. When two tasks have the same priority, arrival order breaks the tie.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">tasks:</span>
+  <span class="hljs-attr">build:critical:</span>
+    <span class="hljs-attr">concurrencyGroup:</span> <span class="hljs-string">build</span>
+    <span class="hljs-attr">priority:</span> <span class="hljs-number">10</span>
+  <span class="hljs-attr">build:docs:</span>
+    <span class="hljs-attr">concurrencyGroup:</span> <span class="hljs-string">build</span>
+    <span class="hljs-attr">priority:</span> <span class="hljs-number">1</span>
+  <span class="hljs-attr">build:cleanup:</span>
+    <span class="hljs-attr">concurrencyGroup:</span> <span class="hljs-string">build</span>
+    <span class="hljs-attr">priority:</span> <span class="hljs-number">-1</span>
+</code></pre></div>
+<h3 id="pnpm-tasks-status"><code>pnpm tasks status</code><a class="hash-link" href="#pnpm-tasks-status" aria-label="Direct link to pnpm tasks status">#</a></h3>
+<p>Added in: v12.6.0</p>
+<p><a href="/cli/tasks"><code>pnpm tasks status</code></a> lists running and waiting tasks in each concurrency group:</p>
+<pre><code class="hljs language-sh">pnpm tasks status
+</code></pre>
+<p>If your workspace has a package script named <code>tasks</code>, that script takes precedence. In that case, use <code>pnpm pm tasks status</code> instead.</p>
+<h2 id="inspect-the-task-graph">Inspect the task graph<a class="hash-link" href="#inspect-the-task-graph" aria-label="Direct link to Inspect the task graph">#</a></h2>
+<p>Use <code>--dry-run</code> to resolve the graph without running scripts:</p>
+<pre><code class="hljs language-sh">pnpm -r run --dry-run build
+</code></pre>
+<p>The output is one stable topological ordering, with ties broken by project
+directory. It is not a prediction of dispatch order: independent tasks may run
+in any order.</p>
+<p>Add <code>--json</code> to receive graph nodes and edges:</p>
+<pre><code class="hljs language-sh">pnpm -r run --dry-run --json <span class="hljs-built_in">test</span>
+</code></pre>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"tasks"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"project"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"packages/app"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"script"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"build"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"missingScript"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"dependsOn"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span> <span class="hljs-attr">"project"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"packages/lib"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"script"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"build"</span> <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"project"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"packages/app"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"script"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"test"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"missingScript"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"dependsOn"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span> <span class="hljs-attr">"project"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"packages/app"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"script"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"build"</span> <span class="hljs-punctuation">}</span>
+      <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p><code>project</code> is relative to the workspace root. The <code>tasks</code> array and each
+<code>dependsOn</code> array are sorted by project and script so the output is stable.</p>
+<h2 id="cycles">Cycles<a class="hash-link" href="#cycles" aria-label="Direct link to Cycles">#</a></h2>
+<p>pnpm checks the graph after project selection and task expansion. A cycle fails
+before any script starts with <code>ERR_PNPM_TASK_CYCLE</code>, and the error names the
+participating tasks.</p>
+<p>Set <a href="/workspaces#ignoreworkspacecycles"><code>ignoreWorkspaceCycles</code></a> to <code>true</code>
+only when the cycle is deliberate. pnpm then warns, removes the ordering among
+the cycle's members, and may run them in any order relative to each other.</p>
+<h2 id="recursive-run-options">Recursive run options<a class="hash-link" href="#recursive-run-options" aria-label="Direct link to Recursive run options">#</a></h2>
+<h3 id="--resume-from-package_name"><code>--resume-from &#x3C;package_name></code><a class="hash-link" href="#--resume-from-package_name" aria-label="Direct link to --resume-from <package_name>">#</a></h3>
+<p>The named package's requested task is the resume point.</p>
+<p>pnpm records which tasks pass as a recursive <code>run</code> or <code>exec</code> proceeds. When that
+record belongs to the same invocation — the same selected projects, command,
+arguments, and execution-affecting settings (including script bodies for
+<code>run</code>) — <code>--resume-from</code> skips exactly the tasks the record says passed,
+wherever they sit in the graph, and runs everything else. A record left by a
+different invocation is ignored rather than trusted.</p>
+<p>Without a usable record — a first run, a run interrupted before any task
+passed, or a <code>node_modules</code> directory pnpm cannot write to — pnpm falls back to
+graph position: it omits the resume point's transitive dependencies, treating
+them as already completed, but still runs the resume task, its dependents, and
+unrelated tasks in the selected graph. That assumption holds after a failed run
+and not after a cancelled one, where a dependency may never have started.</p>
+<h3 id="--reverse"><code>--reverse</code><a class="hash-link" href="#--reverse" aria-label="Direct link to --reverse">#</a></h3>
+<p>pnpm reverses every edge in the resolved task graph, including relationships
+declared with <code>dependsOn</code>. Tasks that normally depend on another task run before
+it.</p>
+<h3 id="--no-bail"><code>--no-bail</code><a class="hash-link" href="#--no-bail" aria-label="Direct link to --no-bail">#</a></h3>
+<p>After a task fails, tasks that depend on it are skipped. With <code>--no-bail</code>,
+independent ready tasks continue to run and the command exits with a non-zero
+code after they settle.</p>
+<p>With the default <code>--bail</code>, pnpm stops dispatching new tasks after the first
+failure and cancels the tasks already running, along with the processes they
+started. Otherwise a task that never exits on its own, such as a watcher or a
+dev server, would keep a failed run alive indefinitely. A cancelled task is not
+reported as a failure of its own; the failure that stopped the run is the one
+reported.</p>
+<h3 id="output">Output<a class="hash-link" href="#output" aria-label="Direct link to Output">#</a></h3>
+<p>pnpm inherits a script's output directly when at most one script can be running
+at any time, either because workspace concurrency is <code>1</code> or because the graph
+forms one serial chain. When scripts can overlap, pnpm pipes their output so it
+can prefix or aggregate it. Use <a href="/cli/run#--stream"><code>--stream</code></a> for immediate
+prefixed output or <a href="/cli/run#--aggregate-output"><code>--aggregate-output</code></a> to
+print each task's output together after it finishes.</p>
+<h2 id="caching-a-task">Caching a task<a class="hash-link" href="#caching-a-task" aria-label="Direct link to Caching a task">#</a></h2>
+<p>The <code>outputs</code>, <code>inputs</code>, <code>env</code>, <code>cache</code>, and <code>cargoTargetDir</code> keys of a task are
+read by <a href="/cli/pipeline#caching-a-task"><code>pnpm pipeline</code></a> only. A recursive
+<code>pnpm run</code> never restores a task from the cache.</p>
+<h2 id="commands-that-do-not-use-tasks">Commands that do not use <code>tasks</code><a class="hash-link" href="#commands-that-do-not-use-tasks" aria-label="Direct link to Commands that do not use tasks">#</a></h2>
+<p>The <code>tasks</code> declarations configure recursive <code>run</code>. Recursive <code>exec</code> follows
+workspace project dependencies but has no script task name, so it does not join
+declared <code>dependsOn</code> relationships. It still uses the dependency-aware
+scheduler and the persisted <code>--resume-from</code> state described above.</p>
+<p><code>--no-sort</code> removes graph ordering, and <code>--parallel</code> implies <code>--no-sort</code>.
+Consequently, both options ignore <code>tasks</code> declarations; <code>--reverse</code> and
+<code>--resume-from</code> also have no ordering edges to transform.</p>
+<h2 id="other-dependency-aware-workspace-commands">Other dependency-aware workspace commands<a class="hash-link" href="#other-dependency-aware-workspace-commands" aria-label="Direct link to Other dependency-aware workspace commands">#</a></h2>
+<p>Workspace install, rebuild, pack, publish, stage, and lifecycle work uses the
+same ready-queue scheduling principle: work for a project starts as soon as its
+workspace dependencies finish. These commands follow the workspace package
+graph, not the script relationships under <code>tasks</code>, and no longer wait for an
+unrelated topological group to finish first.</p></article></main></div>
+  </body>
+</html>

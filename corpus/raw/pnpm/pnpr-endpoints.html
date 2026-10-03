@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTP endpoints | pnpm</title>
+    <meta name="description" content="pnpr exposes a set of always-on endpoints (health, user accounts, and tokens) plus four surfaces:" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="HTTP endpoints | pnpm" />
+    <meta property="og:description" content="pnpr exposes a set of always-on endpoints (health, user accounts, and tokens) plus four surfaces:" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="HTTP endpoints | pnpm" />
+    <meta name="twitter:description" content="pnpr exposes a set of always-on endpoints (health, user accounts, and tokens) plus four surfaces:" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/endpoints" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/endpoints" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/endpoints" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/endpoints" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/endpoints" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/endpoints" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/endpoints" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/endpoints" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/endpoints" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/endpoints" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/endpoints" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/endpoints" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/endpoints" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/endpoints" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/endpoints" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/endpoints" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>HTTP endpoints</h1><p>pnpr exposes a set of always-on endpoints (health, user accounts, and tokens)
+plus four surfaces:</p>
+<ul>
+<li><strong>Registry surface</strong> - npm-compatible package, publish, staged-publish, and
+team endpoints, plus the <a href="/pnpr/ecosystems">Cargo, Python, and image</a> protocols.
+Served exactly when at least one registry is declared under
+<a href="/pnpr/configuration#registries-and-defaultregistry"><code>registries:</code></a>;
+<code>--disable-registry</code> turns it off for one process. On a resolver-only server
+these routes aren't mounted at all — they answer <code>404</code>, not <code>403</code>.</li>
+<li><strong>Resolver surface</strong> (<code>resolver.enabled</code>) - pnpr install-accelerator
+endpoints under <code>/-/pnpr</code>.</li>
+<li><strong>Shared-artifact surface</strong> (<code>artifacts.enabled</code>) - signed artifact publish,
+lookup, and blob endpoints under <code>/-/pnpr</code>, plus the
+<a href="/pnpr/compiler-cache">compiler cache</a>. It may run without the resolver.</li>
+<li><strong>Pipeline run surface</strong> (<code>pipeline.enabled</code>) - the
+<a href="/pnpr/pipeline-runs"><code>pnpm pipeline</code> run records</a> under <code>/-/pnpr</code>.</li>
+</ul>
+<p>See <a href="/pnpr/configuration#registry-resolver-and-artifact-surfaces">Configuration</a>
+for the config keys and <a href="/pnpr/cli">CLI reference</a> for the command-line overrides.</p>
+<p>The tables below show npm paths on the path-less base. Each is equally available
+under a <code>/~&#x3C;name>/</code> prefix and, on a server that declares more than one
+ecosystem, under <code>/npm/</code>. Cargo, Python, and image endpoints are documented on
+their own pages.</p>
+<h2 id="always-available">Always available<a class="hash-link" href="#always-available" aria-label="Direct link to Always available">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>GET</code></td><td><code>/-/ping</code></td><td>Health check. Returns <code>{}</code>.</td></tr></tbody></table></div>
+<p>The <a href="#user-and-token-endpoints">user and token endpoints</a> below are also
+always available, whichever surfaces are enabled.</p>
+<h2 id="registry-bases--and-name">Registry bases: <code>/</code> and <code>/~&#x3C;name>/</code><a class="hash-link" href="#registry-bases--and-name" aria-label="Direct link to Registry bases: / and /~<name>/">#</a></h2>
+<p>Every <a href="/pnpr/configuration#registries-and-defaultregistry">registry</a> is served as
+a full npm registry at <code>/~&#x3C;name>/</code> — packument and tarball reads, version
+manifests, dist-tags, search, publish, unpublish, and the login/whoami
+endpoints all work under a registry prefix. The <code>~</code> prefix keeps registry
+names out of the package-name namespace (a package name can never begin with
+<code>~</code>).</p>
+<p>The path-less base (<code>/</code>) aliases the registry named by <code>defaultRegistry</code>; with
+no <code>defaultRegistry</code> configured, the bare host serves no registry and only the
+<code>/~&#x3C;name>/</code> bases answer.</p>
+<p>Every request routes through the registry graph:</p>
+<ul>
+<li>A request to a <strong>router</strong> is answered by the first listed source whose
+declared <a href="/pnpr/configuration#the-packages-map"><code>packages:</code></a> claim the name. A
+name that no source claims is a definitive <code>404</code> — there is no fall-through
+to another origin. A matched source that is unavailable is an error, never a
+<code>404</code>.</li>
+<li>A registry's declared namespace is enforced <strong>on every path to it</strong>: a read
+of a name outside the namespace is a definitive <code>404</code> answered before
+storage or the upstream is consulted — through a router, on the path-less
+base, and at the registry's own <code>/~&#x3C;name>/</code> URL alike — and an off-namespace
+publish is rejected.</li>
+<li><strong>Writes</strong> (publish, dist-tags, unpublish) must resolve to a hosted
+registry; a write that routes to an upstream is rejected.</li>
+<li>The serving registry's matching <code>packages:</code> rule is enforced on every read
+and write.</li>
+<li>Served <code>dist.tarball</code> URLs are rewritten onto the configured <code>public_url</code>
+and stay canonical for the base the client addressed (path-less or
+<code>/~&#x3C;name>/</code>), so lockfiles don't bake in a registry name.</li>
+</ul>
+<h2 id="pnpr-protocol-endpoints">pnpr protocol endpoints<a class="hash-link" href="#pnpr-protocol-endpoints" aria-label="Direct link to pnpr protocol endpoints">#</a></h2>
+<p>The capability handshake is mounted when either <code>resolver.enabled</code> or
+<code>artifacts.enabled</code> is true. Each protocol advertises its versions
+independently, so resolver-only and artifact-only tiers are both valid. The
+<code>POST</code> endpoints require a valid pnpr <code>Authorization</code> header.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>GET</code></td><td><code>/-/pnpr</code></td><td>Capability handshake. Returns <code>versions</code> for resolver protocols, <code>fixLockfile</code> for resolver versions that support lockfile repair, and <code>artifacts</code> for shared-artifact protocols. Each is currently <code>[0]</code> when its surface is enabled and <code>[]</code> otherwise. A 404 means both protocol surfaces are off.</td></tr><tr><td><code>POST</code></td><td><code>/-/pnpr/v0/resolve</code></td><td>Resolves one project or workspace against the registries and policy sent by the client. Returns <code>application/x-ndjson</code> frames.</td></tr><tr><td><code>POST</code></td><td><code>/-/pnpr/v0/verify-lockfile</code></td><td>Verifies an existing lockfile under the client's registry and policy settings without resolving again. Returns <code>application/x-ndjson</code> frames.</td></tr></tbody></table></div>
+<p><code>POST /-/pnpr/v0/resolve</code> accepts fields such as <code>projects</code>, <code>dependencies</code>,
+<code>devDependencies</code>, <code>optionalDependencies</code>, <code>registry</code>, <code>namedRegistries</code>,
+<code>overrides</code>, <code>lockfile</code>, <code>frozenLockfile</code>, <code>preferFrozenLockfile</code>,
+<code>ignoreManifestCheck</code>, <code>trustLockfile</code>, <code>minimumReleaseAge</code>,
+<code>minimumReleaseAgeExclude</code>, <code>minimumReleaseAgeIgnoreMissingTime</code>,
+<code>trustPolicy</code>, <code>trustPolicyExclude</code>, <code>trustPolicyIgnoreAfter</code>, and
+<code>fixLockfile</code>. Since v0.1.0-alpha.9, a repair request regenerates broken
+lockfile metadata while retaining compatible locked versions, including for a
+filtered install.</p>
+<p>Every registry the request would make pnpr fetch from — the <code>registry</code> and
+<code>namedRegistries</code> origins, plus any direct <code>http(s)</code>/<code>git</code> URL in a dependency
+spec, an override, or an input-lockfile tarball — must be on the server's fetch
+allowlist (the configured registries, declared public routes, the built-in npm
+registry, and pnpr's own origin). An off-allowlist origin is rejected up front,
+before any server-side fetch. Upstream credentials are never taken from the
+client: pnpr selects its own server-owned credential per route (see
+<a href="/pnpr/install-acceleration#private-registries">Install acceleration</a>), and a URL
+carrying inline <code>user:pass@</code> credentials is rejected.</p>
+<p>The <code>resolve</code> response is an NDJSON stream:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Frame</th><th>Description</th></tr></thead><tbody><tr><td><code>package</code></td><td>One resolved tarball: <code>id</code>, <code>name</code>, <code>version</code>, <code>integrity</code>, <code>tarball</code>, and optional <code>unpackedSize</code> / <code>fileCount</code>.</td></tr><tr><td><code>done</code></td><td>Terminal success frame. For <code>resolve</code>, carries <code>lockfile</code> and <code>stats.totalPackages</code>; for <code>verify-lockfile</code>, only indicates success.</td></tr><tr><td><code>violations</code></td><td>Terminal policy failure frame. Carries rendered lockfile or OSV violations.</td></tr><tr><td><code>error</code></td><td>Terminal server-side resolution or verification error.</td></tr></tbody></table></div>
+<h3 id="shared-artifact-endpoints">Shared-artifact endpoints<a class="hash-link" href="#shared-artifact-endpoints" aria-label="Direct link to Shared-artifact endpoints">#</a></h3>
+<p>Added in: v0.1.0-alpha.8</p>
+<p>These three are mounted when top-level <code>artifacts.enabled</code> is true, independently
+of <code>resolver.enabled</code>. They serve
+the <a href="/pnpr/shared-side-effects-cache">shared side-effects cache</a> proof of concept
+and, like the other <code>POST</code> resolver endpoints, require a pnpr <code>Authorization</code>
+header. Artifacts are owner-scoped, and in this proof of concept an
+organization's name must equal the authenticated username.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>PUT</code></td><td><code>/-/pnpr/v0/artifacts</code></td><td>Stores one immutable opaque signed envelope and its inline content-addressed blobs in the authenticated organization's namespace. At most eight variants per input key; a different artifact whose compatible consumers overlap an existing variant gets <code>409 Conflict</code>.</td></tr><tr><td><code>POST</code></td><td><code>/-/pnpr/v0/artifacts/resolve</code></td><td>One batched lookup for candidate input keys. Returns at most eight signed variants per key; scanned envelope bytes plus the serialized response share one 16 MiB budget.</td></tr><tr><td><code>POST</code></td><td><code>/-/pnpr/v0/artifacts/blob</code></td><td>Reads one owner-scoped blob by its SHA-512 integrity.</td></tr><tr><td><code>GET</code> <code>HEAD</code> <code>PUT</code></td><td><code>/-/pnpr/v0/compiler-cache/{cache}/{key}</code></td><td>One <a href="/pnpr/compiler-cache">Cargo compilation cache</a> entry, over the subset of WebDAV sccache uses. <code>PROPFIND</code> answers for virtual parent directories. Added in v0.1.0-alpha.11.</td></tr></tbody></table></div>
+<h3 id="cross-ecosystem-endpoints">Cross-ecosystem endpoints<a class="hash-link" href="#cross-ecosystem-endpoints" aria-label="Direct link to Cross-ecosystem endpoints">#</a></h3>
+<p>Added in: v0.1.0-alpha.11</p>
+<p>These belong to no single ecosystem, so they stay at the root whatever prefixes
+the server mounts.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>PUT</code></td><td><code>/-/pnpr/v0/publish</code></td><td><a href="/pnpr/ecosystems#one-publish-for-a-workspace-that-spans-ecosystems">Publish packages of any ecosystem</a> in one journaled transaction. Advertised as <code>publish: [0]</code> in the handshake.</td></tr><tr><td><code>GET</code></td><td><code>/-/pnpr/v0/registries</code></td><td>The <a href="/pnpr/discovery#the-registry-directory">registry directory</a>: the named registries, ecosystem endpoints, and routing order the caller may see.</td></tr></tbody></table></div>
+<h3 id="pipeline-run-endpoints">Pipeline run endpoints<a class="hash-link" href="#pipeline-run-endpoints" aria-label="Direct link to Pipeline run endpoints">#</a></h3>
+<p>Added in: v0.1.0-alpha.11</p>
+<p>Mounted when <code>pipeline.enabled</code> is true. See
+<a href="/pnpr/pipeline-runs">Pipeline run records</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>PUT</code></td><td><code>/-/pnpr/v0/pipeline/runs</code></td><td>Record one run. Requires <code>publish</code> on its workspace.</td></tr><tr><td><code>GET</code></td><td><code>/-/pnpr/v0/pipeline/runs</code></td><td>Recent run summaries, newest first. Accepts <code>workspace</code> and <code>limit</code>.</td></tr><tr><td><code>GET</code></td><td><code>/-/pnpr/v0/pipeline/runs/{workspace}/{run_id}</code></td><td>One run's full record, event stream included.</td></tr><tr><td><code>GET</code></td><td><code>/-/pnpr/v0/pipeline</code></td><td>A static web viewer over the two read endpoints.</td></tr></tbody></table></div>
+<h2 id="registry-read-endpoints">Registry read endpoints<a class="hash-link" href="#registry-read-endpoints" aria-label="Direct link to Registry read endpoints">#</a></h2>
+<p>These endpoints are mounted when the registry surface is served. Package reads
+are checked against the serving registry's matching
+<a href="/pnpr/configuration#the-packages-map"><code>packages:</code></a> rule.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>GET</code></td><td><code>/{name}</code></td><td>Unscoped package packument.</td></tr><tr><td><code>GET</code></td><td><code>/@scope/{name}</code></td><td>Scoped package packument.</td></tr><tr><td><code>GET</code></td><td><code>/{name}/{version-or-tag}</code></td><td>Unscoped version manifest by exact version or dist-tag.</td></tr><tr><td><code>GET</code></td><td><code>/@scope/{name}/{version-or-tag}</code></td><td>Scoped version manifest by exact version or dist-tag.</td></tr><tr><td><code>GET</code></td><td><code>/{name}/-/{filename}</code></td><td>Unscoped tarball.</td></tr><tr><td><code>GET</code></td><td><code>/@scope/{name}/-/{filename}</code></td><td>Scoped tarball.</td></tr><tr><td><code>GET</code></td><td><code>/-/package/{package}/dist-tags</code></td><td>Package <code>dist-tags</code> object. Use a percent-encoded scoped package name, for example <code>@scope%2Fname</code>.</td></tr><tr><td><code>GET</code></td><td><code>/-/v1/search?text=&#x3C;query>&#x26;size=&#x3C;n></code></td><td>npm search v1 shape. Searches locally hosted packages by package-name substring, and, since v0.1.0-alpha.11, the upstreams that opt in with <a href="/pnpr/discovery"><code>search: true</code></a>. Results are filtered by access policy. Pass <code>browse=true</code> to page through hosted packages with no search term.</td></tr><tr><td><code>GET</code></td><td><code>/-/org/{scope}/package</code></td><td>Packages of one organization, on registries that enable discovery. Added in v0.1.0-alpha.11.</td></tr><tr><td><code>GET</code></td><td><code>/-/tarballs/sha512/{digest}</code></td><td>Immutable artifact by its base64url SHA-512 digest, added in v0.1.0-alpha.8. See <a href="/registry-revisions">Registry revisions</a>.</td></tr></tbody></table></div>
+<p>If the client sends <code>Accept: application/vnd.npm.install-v1+json</code>, pnpr
+returns npm's abbreviated install-v1 packument shape.</p>
+<p>When OSV checks are enabled, vulnerable versions are removed from packuments
+and dist-tags. Version manifests and tarballs for vulnerable versions are
+denied.</p>
+<p>Since v0.1.0-alpha.8, the digest route answers integrity-addressed
+<a href="/registry-revisions">registry revisions</a>. For a proxied upstream registry, pnpr
+forwards the request with its own credentials, verifies the integrity, and
+caches the object; for a hosted registry, every publish seals a durable
+package/version reference under the artifact's SHA-512 digest, so a digest is
+resolved with one bounded index read rather than a scan over packuments. Before
+the bytes are served, pnpr revalidates the current packument, the revision
+history, the caller's access, registry routing, and OSV policy — so a digest URL
+is not a way around any of them. Every 3xx fails a digest fetch on the client
+side, same-origin included.</p>
+<h2 id="registry-write-endpoints">Registry write endpoints<a class="hash-link" href="#registry-write-endpoints" aria-label="Direct link to Registry write endpoints">#</a></h2>
+<p>These endpoints are mounted when the registry surface is served. <code>PUT</code> and
+<code>DELETE</code> requests require credentials. A read-only bearer token cannot use
+write methods, and CIDR-restricted bearer tokens are checked against the peer
+socket address. Every write routes through the registry graph and must land on
+a hosted registry.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>PUT</code></td><td><code>/{name}</code></td><td>Publish an unscoped package. Body is the npm publish document with <code>_attachments</code>. Requires <code>publish</code>.</td></tr><tr><td><code>PUT</code></td><td><code>/@scope/{name}</code></td><td>Publish a scoped package. Body is the npm publish document with <code>_attachments</code>. Requires <code>publish</code>.</td></tr><tr><td><code>PUT</code></td><td><code>/-/pnpm/v1/publish</code></td><td>pnpm batch publish. Body is <code>{"packages":[&#x3C;publish document>, ...]}</code>. The batch is all-or-nothing and each package requires <code>publish</code>. For a release that spans ecosystems, use <a href="/pnpr/ecosystems#one-publish-for-a-workspace-that-spans-ecosystems"><code>PUT /-/pnpr/v0/publish</code></a> instead.</td></tr><tr><td><code>PUT</code></td><td><code>/{package}/-rev/{rev}</code></td><td>Replace a packument, used by partial unpublish. Requires both <code>publish</code> and <code>unpublish</code>. Use a percent-encoded scoped package name, for example <code>@scope%2Fname</code>.</td></tr><tr><td><code>DELETE</code></td><td><code>/{package}/-rev/{rev}</code></td><td>Remove an entire package, used by force unpublish. Requires <code>unpublish</code>. Use a percent-encoded scoped package name for scoped packages.</td></tr><tr><td><code>DELETE</code></td><td><code>/{name}/-/{filename}/-rev/{rev}</code></td><td>Remove an unscoped tarball. Requires <code>unpublish</code>.</td></tr><tr><td><code>DELETE</code></td><td><code>/@scope/{name}/-/{filename}/-rev/{rev}</code></td><td>Remove a scoped tarball. Requires <code>unpublish</code>.</td></tr><tr><td><code>PUT</code></td><td><code>/-/package/{package}/dist-tags/{tag}</code></td><td>Add or update a dist-tag. Body is a JSON string version, for example <code>"1.0.0"</code>. Requires <code>publish</code>.</td></tr><tr><td><code>DELETE</code></td><td><code>/-/package/{package}/dist-tags/{tag}</code></td><td>Remove a dist-tag. Requires <code>publish</code>.</td></tr></tbody></table></div>
+<p>Publishing a version that already exists is a <code>409</code>. On the S3 backend, where
+several stateless replicas can write to one bucket, concurrent writers are
+resolved by conditional writes rather than last-write-wins. A publish or
+partial unpublish computed from a packument that another replica has since
+changed is rejected with a <code>409</code>; a dist-tag write instead replays its mutation
+against the fresh packument, and reports <code>409</code> only if it keeps losing. Either
+way no writer's update is silently discarded. See
+<a href="/pnpr/storage#concurrent-writers">Storage backends</a>.</p>
+<h2 id="staged-publishing-endpoints">Staged publishing endpoints<a class="hash-link" href="#staged-publishing-endpoints" aria-label="Direct link to Staged publishing endpoints">#</a></h2>
+<p>These implement the server half of <a href="/cli/stage"><code>pnpm stage</code></a> — npm's
+<a href="https://docs.npmjs.com/staged-publishing">staged publishing</a> workflow, where a
+version is uploaded first and promoted later. A staged version is held back
+rather than made visible: it isn't installable, and nothing is written under
+the package's name until it is approved. That lets an unattended CI job upload
+a release for a human to promote, and it doubles as a review gate — the held
+tarball can be downloaded and audited before it goes live.</p>
+<p>The two phases check different things. <strong>Staging</strong> validates the publish
+document and requires the <code>publish</code> right on the package, exactly as a direct
+publish does, but does not check whether the version already exists.
+<strong>Approval</strong> re-checks the <code>publish</code> right against the rules as they stand
+then, and is where a version conflict is caught. pnpr raises no
+one-time-password challenge of its own at either point — the <code>--otp</code> flag on
+<code>pnpm stage approve</code> is for registries that do.</p>
+<p>A stage id is a v4 UUID drawn from the OS CSPRNG, so the id itself acts as an
+unguessable handle. Held records live under a reserved <code>.staged/</code> namespace in
+the hosted store (both the filesystem and S3 backends), and a record is only
+visible through the same base it was created with — one staged through
+<code>/~&#x3C;name>/</code> is not addressable on the path-less base, and vice versa.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>POST</code></td><td><code>/-/stage/package/{name}</code></td><td>Stage a publish. Body is the same npm publish document a <code>PUT /{name}</code> publish carries, <code>_attachments</code> included. Use a percent-encoded scoped name, for example <code>@scope%2Fname</code>. Returns <code>201</code> with <code>{"ok":true,"stageId":"&#x3C;uuid>"}</code>. Requires <code>publish</code>.</td></tr><tr><td><code>GET</code></td><td><code>/-/stage</code></td><td>List held records, oldest first. Accepts <code>page</code> (zero-based, defaults to <code>0</code>), <code>perPage</code> (defaults to <code>100</code>, clamped to <code>1</code>–<code>100</code>), and <code>package</code> (exact name filter). Returns <code>{"items":[...],"page":...,"perPage":...,"total":...}</code>.</td></tr><tr><td><code>GET</code></td><td><code>/-/stage/{id}</code></td><td>One held record. Requires <code>publish</code> on the record's package.</td></tr><tr><td><code>GET</code></td><td><code>/-/stage/{id}/tarball</code></td><td>The held tarball as <code>application/octet-stream</code>, for inspection before approval. Requires <code>publish</code>.</td></tr><tr><td><code>POST</code></td><td><code>/-/stage/{id}/approve</code></td><td>Publish the held document and drop the record. Empty body; returns <code>201</code> with <code>{"ok":true}</code>. Requires <code>publish</code>.</td></tr><tr><td><code>DELETE</code></td><td><code>/-/stage/{id}</code></td><td>Reject: delete the record and its tarball without publishing. Returns <code>204</code>. Requires <code>publish</code>.</td></tr></tbody></table></div>
+<p>Each record carries <code>id</code>, <code>packageName</code>, <code>version</code>, <code>tag</code>, <code>createdAt</code>,
+<code>actor</code>, <code>actorType</code>, and <code>shasum</code>.</p>
+<p>Approving a version that landed meanwhile returns <code>409</code> and <strong>leaves the record
+in place</strong>, so it can still be inspected or rejected.</p>
+<p><code>GET /-/stage</code> filters rather than refuses: it always answers <code>200</code>, listing
+only the records the caller could publish, so an anonymous caller sees an empty
+list instead of a <code>401</code>. Every other stage endpoint denies loudly — <code>401</code> for
+anonymous callers, <code>403</code> for authenticated ones — matching the publish
+endpoint rather than masking as a <code>404</code>.</p>
+<h2 id="team-endpoints">Team endpoints<a class="hash-link" href="#team-endpoints" aria-label="Direct link to Team endpoints">#</a></h2>
+<p>pnpr serves npm's team-management read endpoints over the teams declared in
+its config, in the shape <a href="/cli/team"><code>pnpm team</code></a> consumes. Teams are
+<a href="/pnpr/configuration#teams">registry-scoped configuration</a>, so these are
+<strong>read-only views</strong>: the listings are served, and every mutation is refused.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>GET</code></td><td><code>/-/org/{scope}/team</code></td><td>Teams declared by the registry that serves <code>@{scope}</code>. Returns a JSON array of <code>{"name": ...}</code>. The scope may be written with or without a leading <code>@</code>.</td></tr><tr><td><code>GET</code></td><td><code>/-/team/{scope}/{team}/user</code></td><td>Members of one team, as a JSON array of <code>{"name": ...}</code>.</td></tr><tr><td><code>PUT</code></td><td><code>/-/org/{scope}/team</code></td><td>Create a team — always <code>403</code>.</td></tr><tr><td><code>DELETE</code></td><td><code>/-/team/{scope}/{team}</code></td><td>Destroy a team — always <code>403</code>.</td></tr><tr><td><code>PUT</code></td><td><code>/-/team/{scope}/{team}/user</code></td><td>Add a member — always <code>403</code>.</td></tr><tr><td><code>DELETE</code></td><td><code>/-/team/{scope}/{team}/user</code></td><td>Remove a member — always <code>403</code>.</td></tr></tbody></table></div>
+<p>A refused mutation carries the error code <code>teams_config_managed</code>: teams are
+declared in the pnpr configuration, so changing one means updating the config,
+not calling the API.</p>
+<p>Reads resolve <code>@{scope}</code> to a hosted registry the same way a package read in
+that scope would, then check that registry's default <code>access:</code> list. Unlike
+the stage endpoints, a denial here is <strong>masked as <code>404</code></strong> — team and member
+names must not become an existence probe for a private registry. A registry
+that declares no teams returns an empty array.</p>
+<h2 id="user-and-token-endpoints">User and token endpoints<a class="hash-link" href="#user-and-token-endpoints" aria-label="Direct link to User and token endpoints">#</a></h2>
+<p>These endpoints are <strong>always mounted</strong>, whichever surfaces are enabled, and
+they are global — served identically on the path-less base and under any
+<code>/~&#x3C;name>/</code> prefix. <code>pnpm login</code> therefore works against any pnpr URL,
+including a resolver-only server that exposes no registry surface.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>PUT</code></td><td><code>/-/user/org.couchdb.user:{name}</code></td><td>npm adduser/login endpoint. Creates a user only when <code>auth.htpasswd.max_users</code> allows registration; existing users can log in with the correct password. Returns a bearer token.</td></tr><tr><td><code>GET</code></td><td><code>/-/whoami</code></td><td>Returns <code>{"username": ...}</code> for the authenticated caller.</td></tr><tr><td><code>GET</code></td><td><code>/-/npm/v1/user</code></td><td>npm profile endpoint. Returns the authenticated username and placeholder profile fields.</td></tr><tr><td><code>GET</code></td><td><code>/-/npm/v1/tokens</code></td><td>Lists bearer tokens for the authenticated caller in npm-compatible shape.</td></tr><tr><td><code>DELETE</code></td><td><code>/-/npm/v1/tokens/token/{key}</code></td><td>Revokes one of the caller's tokens by listing-side token key.</td></tr><tr><td><code>DELETE</code></td><td><code>/-/user/token/{token}</code></td><td>npm logout endpoint. Revokes the raw bearer token in the path when it belongs to the authenticated caller.</td></tr></tbody></table></div></article></main></div>
+  </body>
+</html>

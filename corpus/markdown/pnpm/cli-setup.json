@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/setup",
+ "file": "markdown/pnpm/cli-setup.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 6.73,
+ "markdown_chars": 815,
+ "raw_html_chars": 5858,
+ "sha256": "48f241e2fc84bada5d9cde3c86fdc2e706610625814c26683ea63c724ecf04c4",
+ "fetched_at": "2026-10-03T08:58:38+00:00"
+}

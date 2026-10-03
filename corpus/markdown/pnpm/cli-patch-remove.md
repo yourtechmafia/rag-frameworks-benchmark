@@ -1,0 +1,8 @@
+pnpm patch-remove <pkg...>
+==========================
+
+Remove existing patch files and settings in `patchedDependencies`.
+
+```
+pnpm patch-remove foo@1.0.0 bar@1.0.1
+```

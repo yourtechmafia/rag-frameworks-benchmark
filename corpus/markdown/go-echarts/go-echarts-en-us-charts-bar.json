@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/bar",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-bar.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 6.23,
+ "markdown_chars": 9772,
+ "raw_html_chars": 3769,
+ "sha256": "3ae0c739c93b5c6bfc0c1b4a6bfc87809c198e9e110ae0ece1592a5cc60ea9e7",
+ "fetched_at": "2026-10-03T08:59:35+00:00"
+}

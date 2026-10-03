@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm deploy | pnpm</title>
+    <meta name="description" content="Deploy a package from a workspace. During deployment, the files of the deployed package are copied to the target directory. All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated node_modules directory at the target directory. The..." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm deploy | pnpm" />
+    <meta property="og:description" content="Deploy a package from a workspace. During deployment, the files of the deployed package are copied to the target directory. All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated node_modules directory at the target directory. The..." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm deploy | pnpm" />
+    <meta name="twitter:description" content="Deploy a package from a workspace. During deployment, the files of the deployed package are copied to the target directory. All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated node_modules directory at the target directory. The..." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/deploy" />
+    <meta property="og:url" content="https://pnpm.io/cli/deploy" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/deploy" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/deploy" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/deploy" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/deploy" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/deploy" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/deploy" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/deploy" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/deploy" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/deploy" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/deploy" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/deploy" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/deploy" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/deploy" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/deploy" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm deploy</h1><p>Deploy a package from a workspace. During deployment, the files of the deployed package are copied to the target directory. All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated <code>node_modules</code> directory at the target directory. The target directory will contain a portable package that can be copied to a server and executed without additional steps.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Since v12.2.0, <code>pnpm deploy</code> no longer requires <a href="/workspaces#injectworkspacepackages"><code>injectWorkspacePackages</code></a>. A linked workspace dependency is rewritten to a <code>file:</code> dependency in the dedicated deploy lockfile, and the peer dependencies it declares are bound to the deployed graph's own resolution.</p>
+<p>Where a peer resolves to more than one version in that graph, the binding is ambiguous, and the deploy fails with <code>ERR_PNPM_DEPLOY_AMBIGUOUS_PEER</code> naming the package, the peer, and the competing versions. Pin the peer to one version with an <a href="/settings/dependency-resolution#overrides"><code>overrides</code></a> entry, or turn <code>injectWorkspacePackages</code> on, which is the setting that decides between the candidates.</p>
+<p>Before those releases the command refused every non-injected workspace up front. <code>--legacy</code>, or <code>forceLegacyDeploy: true</code>, still selects the older implementation.</p>
+</div>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>When the <a href="/settings/node-modules#enableglobalvirtualstore"><code>enableGlobalVirtualStore</code></a> option is set, <code>pnpm deploy</code> ignores it and always creates a localized virtual store within the deploy directory. This keeps the deploy directory self-contained and portable.</p>
+</div>
+<p>Usage:</p>
+<pre><code>pnpm --filter=&#x3C;deployed project name> deploy &#x3C;target directory>
+</code></pre>
+<p>In case you build your project before deployment, also use the <code>--prod</code> option to skip <code>devDependencies</code> installation.</p>
+<pre><code>pnpm --filter=&#x3C;deployed project name> --prod deploy &#x3C;target directory>
+</code></pre>
+<p>Usage in a docker image. After building everything in your monorepo, do this in a second image that uses your monorepo base image as a build context or in an additional build stage:</p>
+<pre><code class="hljs language-Dockerfile"><span class="hljs-comment"># syntax=docker/dockerfile:1.4</span>
+
+<span class="hljs-keyword">FROM</span> workspace as pruned
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm --filter &#x3C;your package name> --prod deploy pruned</span>
+
+<span class="hljs-keyword">FROM</span> node:<span class="hljs-number">22</span>-alpine
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+
+<span class="hljs-keyword">ENV</span> NODE_ENV=production
+
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=pruned /app/pruned .</span>
+
+<span class="hljs-keyword">ENTRYPOINT</span><span class="bash"> [<span class="hljs-string">"node"</span>, <span class="hljs-string">"index.js"</span>]</span>
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--force">--force<a class="hash-link" href="#--force" aria-label="Direct link to --force">#</a></h3>
+<p>Allow deployment to a non-empty target directory. Without this flag, pnpm fails
+with <code>ERR_PNPM_DEPLOY_DIR_NOT_EMPTY</code> if the target directory is not empty.</p>
+<h3 id="--ignore-scripts">--ignore-scripts<a class="hash-link" href="#--ignore-scripts" aria-label="Direct link to --ignore-scripts">#</a></h3>
+<p>Skip lifecycle scripts during deployment, including dependency build scripts.
+See <a href="/cli/install#--ignore-scripts"><code>pnpm install --ignore-scripts</code></a>.</p>
+<h3 id="--dev--d">--dev, -D<a class="hash-link" href="#--dev--d" aria-label="Direct link to --dev, -D">#</a></h3>
+<p>Only <code>devDependencies</code> are installed.</p>
+<h3 id="--no-optional">--no-optional<a class="hash-link" href="#--no-optional" aria-label="Direct link to --no-optional">#</a></h3>
+<p><code>optionalDependencies</code> are not installed.</p>
+<h3 id="--prod--p">--prod, -P<a class="hash-link" href="#--prod--p" aria-label="Direct link to --prod, -P">#</a></h3>
+<p>Packages in <code>devDependencies</code> won't be installed.</p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p>
+<h3 id="--legacy">--legacy<a class="hash-link" href="#--legacy" aria-label="Direct link to --legacy">#</a></h3>
+<p>Force legacy deploy implementation.</p>
+<p>By default, <code>pnpm deploy</code> will try creating a dedicated lockfile from a shared lockfile for deployment. The <code>--legacy</code> flag disables this behavior.</p>
+<p>Since v12.4.1, the legacy implementation prefers the versions the source workspace lockfile pins, wherever they still satisfy the deployed project's ranges.</p>
+<h2 id="what-the-deployed-project-gets">What the deployed project gets<a class="hash-link" href="#what-the-deployed-project-gets" aria-label="Direct link to What the deployed project gets">#</a></h2>
+<p>Since v12.7.0:</p>
+<ul>
+<li>The <code>packageManager</code> and <code>devEngines.packageManager</code> fields of the workspace
+root <code>package.json</code> are not copied into the deployed <code>package.json</code>. Versions
+v12.7.0 through v12.8.x copied them.</li>
+<li>The virtual store is placed at <a href="/settings/node-modules#virtualstoredir"><code>virtualStoreDir</code></a>,
+resolved against the deploy directory. With the global virtual store enabled
+or an absolute <code>virtualStoreDir</code>, it stays at <code>node_modules/.pnpm</code>.</li>
+<li>The <code>prepare</code> script of the deployed project is not run.</li>
+</ul>
+<h2 id="files-included-in-the-deployed-project">Files included in the deployed project<a class="hash-link" href="#files-included-in-the-deployed-project" aria-label="Direct link to Files included in the deployed project">#</a></h2>
+<p>By default, all the files of the project are copied during deployment but this can be modified in <em>one</em> of the following ways which are resolved in order:</p>
+<ol>
+<li>The project's <code>package.json</code> may contain a "files" field to list the files and directories that should be copied.</li>
+<li>If there is an <code>.npmignore</code> file in the application directory then any files listed here are ignored.</li>
+<li>If there is a <code>.gitignore</code> file in the application directory then any files listed here are ignored.</li>
+</ol>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<h3 id="forcelegacydeploy">forceLegacyDeploy<a class="hash-link" href="#forcelegacydeploy" aria-label="Direct link to forceLegacyDeploy">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>By default, <code>pnpm deploy</code> will try creating a dedicated lockfile from a shared lockfile for deployment. If this setting is set to <code>true</code>, the legacy <code>deploy</code> behavior will be used.</p></article></main></div>
+  </body>
+</html>

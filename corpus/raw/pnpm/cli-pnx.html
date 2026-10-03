@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnx | pnpm</title>
+    <meta name="description" content="Aliases: pnpm dlx, pnpx" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnx | pnpm" />
+    <meta property="og:description" content="Aliases: pnpm dlx, pnpx" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnx | pnpm" />
+    <meta name="twitter:description" content="Aliases: pnpm dlx, pnpx" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/pnx" />
+    <meta property="og:url" content="https://pnpm.io/cli/pnx" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/pnx" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/pnx" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/pnx" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/pnx" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/pnx" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/pnx" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/pnx" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/pnx" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/pnx" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/pnx" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/pnx" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/pnx" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/pnx" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/pnx" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnx</h1><p>Aliases: <code>pnpm dlx</code>, <code>pnpx</code></p>
+<p>Fetches a package from the registry without installing it as a dependency, hotloads it, and runs whatever default command binary it exposes.</p>
+<p>For example, to use <code>create-vue</code> anywhere to bootstrap a Vue project without
+needing to install it under another project, you can run:</p>
+<pre><code>pnx create-vue my-app
+</code></pre>
+<p>This will fetch <code>create-vue</code> from the registry and run it with the given arguments.</p>
+<p>You may also specify which exact version of the package you'd like to use:</p>
+<pre><code>pnx create-vue@next my-app
+</code></pre>
+<p>The <code>catalog:</code> protocol is also supported, allowing you to use versions defined in your workspace catalogs:</p>
+<pre><code>pnx shx@catalog:
+</code></pre>
+<h2 id="running-a-package-manager-or-a-runtime">Running a package manager or a runtime<a class="hash-link" href="#running-a-package-manager-or-a-runtime" aria-label="Direct link to Running a package manager or a runtime">#</a></h2>
+<p>Added in: v12.0.0-rc.6 (pnpm v12 only)</p>
+<p>Naming one of the <a href="/package-managers">package managers pnpm provisions</a> (<code>npm</code>, <code>yarn</code>, <code>bun</code>), or a runtime (<code>node</code>, <code>deno</code>, <code>bun</code>), provisions the real thing instead of installing the npm package that shares its name:</p>
+<pre><code>pnx yarn@4 install
+pnx npm@11 ci
+pnx bun@1.3.0 install
+pnx node@22 --version
+</code></pre>
+<p>Those npm packages are either a different line of the tool or a wrapper that downloads it, so this is what naming them was always meant to do: <code>pnx yarn@4</code> used to fail with a missing version, since Yarn 4 is published as <code>@yarnpkg/cli-dist</code>, and <code>pnx node@22</code> used to run a wrapper that downloads a Node.js build rather than that release itself.</p>
+<p>A specifier that locates a package rather than asking for a released version installs what it names, unchanged:</p>
+<pre><code>pnx yarn@npm:yarn@1.22.22
+pnx yarn@yarnpkg/berry
+</code></pre>
+<p><code>--package</code> naming a package manager picks which of its commands to run:</p>
+<pre><code>pnx --package npm@11 npx create-something
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--package-name">--package &#x3C;name><a class="hash-link" href="#--package-name" aria-label="Direct link to --package <name>">#</a></h3>
+<p>The package to install before running the command.</p>
+<p>Example:</p>
+<pre><code>pnx --package=@pnpm/meta-updater meta-updater --help
+pnx --package=@pnpm/meta-updater@0 meta-updater --help
+</code></pre>
+<p>Multiple packages can be provided for installation:</p>
+<pre><code>pnx --package=yo --package=generator-webapp yo webapp --skip-install
+</code></pre>
+<h3 id="--allow-build">--allow-build<a class="hash-link" href="#--allow-build" aria-label="Direct link to --allow-build">#</a></h3>
+<p>Added in: v10.2.0</p>
+<p>A list of package names that are allowed to run postinstall scripts during installation.</p>
+<p>Example:</p>
+<pre><code>pnx --allow-build=esbuild my-bundler bundle
+</code></pre>
+<p>The actual packages executed by <code>dlx</code> are allowed to run postinstall scripts by default. So if in the above example <code>my-bundler</code> has to be built before execution, it will be built.</p>
+<p>When a dependency's build scripts are skipped, <code>pnx</code> prompts you to approve them in an interactive terminal. This also applies when reusing a cached install that still has builds awaiting approval. Approved scripts run before the requested command.</p>
+<p>Approval decisions are saved in the isolated <code>pnx</code> cache. They do not change the calling project's build settings.</p>
+<p>Without an interactive terminal, unapproved build scripts remain skipped. Use <code>--allow-build</code> to allow the dependencies whose scripts the command needs.</p>
+<h3 id="--shell-mode--c">--shell-mode, -c<a class="hash-link" href="#--shell-mode--c" aria-label="Direct link to --shell-mode, -c">#</a></h3>
+<p>Runs the command inside of a shell. Uses <code>/bin/sh</code> on UNIX and <code>\cmd.exe</code> on Windows.</p>
+<p>Example:</p>
+<pre><code>pnx --package cowsay --package lolcatjs -c 'echo "hi pnpm" | cowsay | lolcatjs'
+</code></pre>
+<h3 id="--silent--s">--silent, -s<a class="hash-link" href="#--silent--s" aria-label="Direct link to --silent, -s">#</a></h3>
+<p>Only the output of the executed command is printed.</p>
+<h2 id="security-and-trust-policies">Security and trust policies<a class="hash-link" href="#security-and-trust-policies" aria-label="Direct link to Security and trust policies">#</a></h2>
+<p>Since v11.0.0, <code>pnx</code> (and its <code>pnpm dlx</code> / <code>pnpx</code> aliases) honors the project-level security and trust policy settings when resolving and fetching the requested package:</p>
+<ul>
+<li><a href="/settings/dependency-resolution#minimumreleaseage"><code>minimumReleaseAge</code></a>, <a href="/settings/dependency-resolution#minimumreleaseageexclude"><code>minimumReleaseAgeExclude</code></a>, <a href="/settings/dependency-resolution#minimumreleaseagestrict"><code>minimumReleaseAgeStrict</code></a></li>
+<li><a href="/settings/dependency-resolution#trustpolicy"><code>trustPolicy</code></a>, <a href="/settings/dependency-resolution#trustpolicyexclude"><code>trustPolicyExclude</code></a>, <a href="/settings/dependency-resolution#trustpolicyignoreafter"><code>trustPolicyIgnoreAfter</code></a></li>
+</ul>
+<p>This means <code>pnx</code> will refuse to execute freshly published or insufficiently trusted packages the same way a regular <code>pnpm install</code> would.</p></article></main></div>
+  </body>
+</html>

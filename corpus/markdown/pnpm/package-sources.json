@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/package-sources",
+ "file": "markdown/pnpm/package-sources.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.0,
+ "markdown_chars": 10497,
+ "raw_html_chars": 19600,
+ "sha256": "5c716d22099147d94e473a806dcd951c2c25d9a53847b87f482839ec9ace413f",
+ "fetched_at": "2026-10-03T08:58:51+00:00"
+}

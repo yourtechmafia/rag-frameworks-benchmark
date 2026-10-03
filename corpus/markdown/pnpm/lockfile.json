@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/lockfile",
+ "file": "markdown/pnpm/lockfile.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.8,
+ "markdown_chars": 7369,
+ "raw_html_chars": 16447,
+ "sha256": "7a34e16f9defbfa2fa846baa56ee42e25374b2ee2cee83aff596b3f27b37cf6e",
+ "fetched_at": "2026-10-03T08:58:49+00:00"
+}

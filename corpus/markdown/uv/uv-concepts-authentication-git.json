@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/authentication/git/",
+ "file": "markdown/uv/uv-concepts-authentication-git.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.32,
+ "markdown_chars": 8419,
+ "raw_html_chars": 69115,
+ "sha256": "cf8a5199662d28ee5a8bf8d7c16128f05f16dde8562ceba6d8c9d6da40dcc7db",
+ "fetched_at": "2026-10-03T08:57:20+00:00"
+}

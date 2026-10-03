@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/deploy",
+ "file": "markdown/pnpm/cli-deploy.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.28,
+ "markdown_chars": 5066,
+ "raw_html_chars": 12813,
+ "sha256": "08790777038f48435d31ae739121ce1fba6c713ba45ac25005d40b2dcd229e9f",
+ "fetched_at": "2026-10-03T08:57:58+00:00"
+}

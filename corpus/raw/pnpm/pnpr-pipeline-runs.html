@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pipeline run records | pnpm</title>
+    <meta name="description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Pipeline run records | pnpm" />
+    <meta property="og:description" content="Added in: v0.1.0-alpha.11" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Pipeline run records | pnpm" />
+    <meta name="twitter:description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/pipeline-runs" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/pipeline-runs" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/pipeline-runs" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Pipeline run records</h1><p>Added in: v0.1.0-alpha.11</p>
+<p>pnpr can store the reports <a href="/cli/pipeline"><code>pnpm pipeline</code></a> produces, so a
+team's CI runs are listed and served from one place instead of living in the
+scrollback of whichever machine ran them.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">pipeline:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">workspaces:</span>
+    <span class="hljs-attr">acme-app:</span>
+      <span class="hljs-attr">access:</span> [<span class="hljs-string">team:platform</span>]
+      <span class="hljs-attr">publish:</span> <span class="hljs-string">ci-builder</span>
+</code></pre>
+<p><code>access</code> decides who may list and read a workspace's runs, <code>publish</code> who may
+submit one. A workspace nobody may access is invisible rather than forbidden: a
+listing filters to what the caller can see, and a read of an unreadable
+workspace answers <code>404</code>.</p>
+<p>The workspace key is the identity <code>pnpm pipeline</code> derives from the workspace
+root directory. Run the command once with <code>--report</code> and read the name back from
+the listing.</p>
+<p>Records live with the hosted packages, so a run submitted through one replica is
+listed and served by every other.</p>
+<h2 id="submitting-a-run">Submitting a run<a class="hash-link" href="#submitting-a-run" aria-label="Direct link to Submitting a run">#</a></h2>
+<pre><code class="hljs language-sh">pnpm pipeline --report
+pnpm pipeline --report-to https://runs.example.com
+</code></pre>
+<p><code>--report</code> submits to the server named by
+<a href="/pnpr/install-acceleration#enabling-it"><code>pnprServer</code></a>, which also drives install
+offloading. <code>--report-to</code> names a different server, which is the better spelling
+when the server that stores runs is not the one that accelerates installs. A
+failed run is submitted before the command exits non-zero.</p>
+<p>Each submission carries a summary document and the run's event stream.</p>
+<h2 id="reading-runs-back">Reading runs back<a class="hash-link" href="#reading-runs-back" aria-label="Direct link to Reading runs back">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead><tbody><tr><td><code>PUT</code></td><td><code>/-/pnpr/v0/pipeline/runs</code></td><td>Record one run. Requires <code>publish</code> on the run's workspace.</td></tr><tr><td><code>GET</code></td><td><code>/-/pnpr/v0/pipeline/runs</code></td><td>The most recent run summaries, newest first. Accepts <code>workspace</code> and <code>limit</code>.</td></tr><tr><td><code>GET</code></td><td><code>/-/pnpr/v0/pipeline/runs/{workspace}/{run_id}</code></td><td>One run's full record, event stream included.</td></tr><tr><td><code>GET</code></td><td><code>/-/pnpr/v0/pipeline</code></td><td>A self-contained web viewer over the two read endpoints.</td></tr></tbody></table></div>
+<p>The viewer is static HTML with no data of its own. The reads it issues carry the
+token the visitor pastes, so the page itself needs no authentication.</p></article></main></div>
+  </body>
+</html>

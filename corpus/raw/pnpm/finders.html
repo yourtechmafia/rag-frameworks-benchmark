@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finders | pnpm</title>
+    <meta name="description" content="Added in: v10.16.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Finders | pnpm" />
+    <meta property="og:description" content="Added in: v10.16.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Finders | pnpm" />
+    <meta name="twitter:description" content="Added in: v10.16.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/finders" />
+    <meta property="og:url" content="https://pnpm.io/finders" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/finders" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/finders" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/finders" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/finders" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/finders" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/finders" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/finders" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/finders" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/finders" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/finders" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/finders" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/finders" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/finders" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/finders" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Finders</h1><p>Added in: v10.16.0</p>
+<p>Finder functions let you <strong>search your dependency graph</strong> by any property of a package, not just its name.
+They can be declared in <a href="/pnpmfile">.pnpmfile.mjs</a> and used with <a href="/cli/list">pnpm list</a> and <a href="/cli/why">pnpm why</a>.</p>
+<h2 id="defining-finder-functions">Defining finder functions<a class="hash-link" href="#defining-finder-functions" aria-label="Direct link to Defining finder functions">#</a></h2>
+<p>Finder functions are declared in your project’s <a href="/pnpmfile">.pnpmfile.mjs</a> file under the finders export.
+Each function receives a context object and must return either:</p>
+<ul>
+<li><code>true</code> → include this dependency in the results,</li>
+<li><code>false</code> → skip it,</li>
+<li>or a <code>string</code> → include this dependency and print the string as additional info.</li>
+</ul>
+<p>Example: a finder that matches any dependency with <strong>React 17</strong> in <code>peerDependencies</code>:</p>
+<div class="code-block"><div class="code-block-title">.pnpmfile.mjs</div><pre><code class="hljs language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> finders = {
+  <span class="hljs-attr">react17</span>: <span class="hljs-function">(<span class="hljs-params">ctx</span>) =></span> {
+    <span class="hljs-keyword">return</span> ctx.<span class="hljs-title function_">readManifest</span>().<span class="hljs-property">peerDependencies</span>?.<span class="hljs-property">react</span> === <span class="hljs-string">"^17.0.0"</span>
+  }
+}
+</code></pre></div>
+<h3 id="finder-context-ctx">Finder context (ctx)<a class="hash-link" href="#finder-context-ctx" aria-label="Direct link to Finder context (ctx)">#</a></h3>
+<p>Each finder function receives a context object that describes the dependency node being visited.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Field</th><th>Type/Example</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td><code>"minimist"</code></td><td>Package name.</td></tr><tr><td><code>version</code></td><td><code>"1.2.8"</code></td><td>Package version.</td></tr><tr><td><code>readManifest()</code></td><td>returns the <code>package.json</code> object</td><td>Load the package manifest (use this for fields like <code>peerDependencies</code>, <code>license</code>, <code>engines</code>, etc.).</td></tr></tbody></table></div>
+<h2 id="using-finders">Using finders<a class="hash-link" href="#using-finders" aria-label="Direct link to Using finders">#</a></h2>
+<p>You can invoke a finder with the <code>--find-by=&#x3C;functionName></code> flag:</p>
+<pre><code>pnpm why --find-by=react17
+</code></pre>
+<p>Output:</p>
+<pre><code>@apollo/client 4.0.4
+├── @graphql-typed-document-node/core 3.2.0
+└── graphql-tag 2.12.6
+</code></pre>
+<h2 id="returning-extra-metadata">Returning extra metadata<a class="hash-link" href="#returning-extra-metadata" aria-label="Direct link to Returning extra metadata">#</a></h2>
+<p>A finder can also return a string. That string will be shown alongside the matched package in the output.</p>
+<p>Example: print the package license:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> finders = {
+  <span class="hljs-attr">react17</span>: <span class="hljs-function">(<span class="hljs-params">ctx</span>) =></span> {
+    <span class="hljs-keyword">const</span> manifest = ctx.<span class="hljs-title function_">readManifest</span>()
+    <span class="hljs-keyword">if</span> (manifest.<span class="hljs-property">peerDependencies</span>?.<span class="hljs-property">react</span> === <span class="hljs-string">"^17.0.0"</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`license: <span class="hljs-subst">${manifest.license}</span>`</span>
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  }
+}
+</code></pre>
+<p>Output:</p>
+<pre><code>@apollo/client 4.0.4
+├── @graphql-typed-document-node/core 3.2.0
+│   license: MIT
+└── graphql-tag 2.12.6
+    license: MIT
+</code></pre>
+<p>Other example use cases:</p>
+<ul>
+<li>Find all packages with a specific license.</li>
+<li>Detect packages requiring a minimum Node.js version.</li>
+<li>List all dependencies that expose binaries.</li>
+<li>Print funding URLs for all packages.</li>
+</ul></article></main></div>
+  </body>
+</html>

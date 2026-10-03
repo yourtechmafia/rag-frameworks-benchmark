@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supported package sources | pnpm</title>
+    <meta name="description" content="pnpm supports installing packages from various sources. These sources are divided into two categories: trusted sources and exotic sources." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Supported package sources | pnpm" />
+    <meta property="og:description" content="pnpm supports installing packages from various sources. These sources are divided into two categories: trusted sources and exotic sources." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Supported package sources | pnpm" />
+    <meta name="twitter:description" content="pnpm supports installing packages from various sources. These sources are divided into two categories: trusted sources and exotic sources." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/package-sources" />
+    <meta property="og:url" content="https://pnpm.io/package-sources" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/package-sources" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/package-sources" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/package-sources" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/package-sources" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/package-sources" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/package-sources" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/package-sources" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/package-sources" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/package-sources" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/package-sources" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/package-sources" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/package-sources" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/package-sources" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/package-sources" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Supported package sources</h1><p>pnpm supports installing packages from various sources. These sources are divided into two categories: <strong>trusted sources</strong> and <strong>exotic sources</strong>.</p>
+<p>Exotic sources (like Git repositories or direct tarball URLs) can introduce supply chain risks when used by transitive dependencies. You can prevent transitive dependencies from using exotic sources by setting <a href="/settings/dependency-resolution#blockexoticsubdeps"><code>blockExoticSubdeps</code></a> to <code>true</code>.</p>
+<h2 id="trusted-sources">Trusted sources<a class="hash-link" href="#trusted-sources" aria-label="Direct link to Trusted sources">#</a></h2>
+<p>Trusted sources are considered safe for both direct and transitive dependencies.</p>
+<h3 id="npm-registry">npm registry<a class="hash-link" href="#npm-registry" aria-label="Direct link to npm registry">#</a></h3>
+<p><code>pnpm add package-name</code> will install the latest version of <code>package-name</code> from
+the <a href="https://www.npmjs.com/">npm registry</a> by default.</p>
+<p>If executed in a workspace, the command will first try to check whether other
+projects in the workspace use the specified package. If so, the already used version range
+will be installed.</p>
+<p>You may also install packages by:</p>
+<ul>
+<li>tag: <code>pnpm add express@nightly</code></li>
+<li>version: <code>pnpm add express@1.0.0</code></li>
+<li>version range: <code>pnpm add express@2 react@">=0.1.0 &#x3C;0.2.0"</code></li>
+</ul>
+<h3 id="jsr-registry">JSR registry<a class="hash-link" href="#jsr-registry" aria-label="Direct link to JSR registry">#</a></h3>
+<p>Added in: v10.9.0</p>
+<p>To install packages from the <a href="https://jsr.io/">JSR</a> registry, use the <code>jsr:</code> protocol prefix:</p>
+<pre><code>pnpm add jsr:@hono/hono
+pnpm add jsr:@hono/hono@4
+pnpm add jsr:@hono/hono@latest
+</code></pre>
+<p>This works just like installing from npm, but tells pnpm to resolve the package through JSR instead.</p>
+<h3 id="cratesio-and-pypi">crates.io and PyPI<a class="hash-link" href="#cratesio-and-pypi" aria-label="Direct link to crates.io and PyPI">#</a></h3>
+<p>Added in: v12.4.0 (pnpm v12 only)</p>
+<p>A <code>crate:</code> or <code>pypi:</code> prefix asks for a package of another ecosystem, once that ecosystem is enabled in <code>pnpm-workspace.yaml</code>:</p>
+<pre><code class="hljs language-sh">pnpm add crate:serde
+pnpm add pypi:httpx
+</code></pre>
+<p>Such a dependency is recorded in that ecosystem's own manifest and lockfile, not in <code>package.json</code> or <code>pnpm-lock.yaml</code>. See <a href="/cargo">Cargo dependencies</a> and <a href="/python">Python dependencies</a>.</p>
+<h3 id="named-registries">Named registries<a class="hash-link" href="#named-registries" aria-label="Direct link to Named registries">#</a></h3>
+<p>Added in: v11.1.0</p>
+<p>A <a href="/settings/dependency-resolution#namedregistries">named registry</a> alias resolves a package against a specific registry, regardless of the default one:</p>
+<pre><code class="hljs language-sh">pnpm add work:@corp/lib@^2.0.0
+pnpm add gh:@my-org/private-pkg
+pnpm add npmjs:left-pad
+</code></pre>
+<p><code>gh:</code> (GitHub Packages) and, since v11.20.0, <code>npmjs:</code> (the public npm registry) work without configuration. Any other alias must be mapped under <a href="/settings/dependency-resolution#namedregistries"><code>namedRegistries</code></a> in <code>pnpm-workspace.yaml</code> or, since v11.11.0, in the <a href="/cli/config">global configuration file</a> (<code>config.yaml</code>).</p>
+<h3 id="workspace">Workspace<a class="hash-link" href="#workspace" aria-label="Direct link to Workspace">#</a></h3>
+<p>Note that when adding dependencies and working within a <a href="/workspaces">workspace</a>, packages
+will be installed from the configured sources, depending on whether or not
+<a href="/workspaces#linkworkspacepackages"><code>linkWorkspacePackages</code></a> is set, and use of the
+<a href="/workspaces#workspace-protocol-workspace"><code>workspace: range protocol</code></a>.</p>
+<h3 id="local-file-system">Local file system<a class="hash-link" href="#local-file-system" aria-label="Direct link to Local file system">#</a></h3>
+<p>There are two ways to install from the local file system:</p>
+<ol>
+<li>from a tarball file (<code>.tar</code>, <code>.tar.gz</code>, or <code>.tgz</code>)</li>
+<li>from a directory</li>
+</ol>
+<p>Examples:</p>
+<pre><code class="hljs language-sh">pnpm add ./package.tar.gz
+pnpm add ./some-directory
+</code></pre>
+<p>When you install from a directory, a symlink will be created in the current
+project's <code>node_modules</code>, so it is the same as running <code>pnpm link</code>.</p>
+<h2 id="exotic-sources">Exotic sources<a class="hash-link" href="#exotic-sources" aria-label="Direct link to Exotic sources">#</a></h2>
+<p>Exotic sources are useful for development but may pose supply chain risks when used by transitive dependencies.</p>
+<h3 id="remote-tarball">Remote tarball<a class="hash-link" href="#remote-tarball" aria-label="Direct link to Remote tarball">#</a></h3>
+<p>The argument must be a fetchable URL starting with "http://" or "https://".</p>
+<p>Example:</p>
+<pre><code class="hljs language-sh">pnpm add https://github.com/indexzero/forever/tarball/v0.5.6
+</code></pre>
+<h3 id="git-repository">Git repository<a class="hash-link" href="#git-repository" aria-label="Direct link to Git repository">#</a></h3>
+<pre><code class="hljs language-sh">pnpm add &#x3C;git remote url>
+</code></pre>
+<p>Installs the package from the Git repository at the given URL. Depending on the repository, pnpm either downloads a source archive from the Git host or clones the repository with Git — see <a href="#how-git-dependencies-are-resolved">how Git dependencies are resolved</a>.</p>
+<p>You may install packages from Git by:</p>
+<ul>
+<li>Latest commit from default branch:</li>
+</ul>
+<pre><code>pnpm add kevva/is-positive
+</code></pre>
+<ul>
+<li>Git commit hash:</li>
+</ul>
+<pre><code>pnpm add kevva/is-positive#97edff6f525f192a3f83cea1944765f769ae2678
+</code></pre>
+<ul>
+<li>Git branch:</li>
+</ul>
+<pre><code>pnpm add kevva/is-positive#master
+</code></pre>
+<ul>
+<li>Git branch relative to refs:</li>
+</ul>
+<pre><code>pnpm add zkochan/is-negative#heads/canary
+</code></pre>
+<ul>
+<li>Git tag:</li>
+</ul>
+<pre><code>pnpm add zkochan/is-negative#2.0.1
+</code></pre>
+<ul>
+<li>V-prefixed Git tag:</li>
+</ul>
+<pre><code>pnpm add andreineculau/npm-publish-git#v0.0.7
+</code></pre>
+<h4 id="install-from-a-git-repository-using-semver">Install from a Git repository using semver<a class="hash-link" href="#install-from-a-git-repository-using-semver" aria-label="Direct link to Install from a Git repository using semver">#</a></h4>
+<p>You can specify version (range) to install using the <code>semver:</code> parameter. For example:</p>
+<ul>
+<li>Strict semver:</li>
+</ul>
+<pre><code>pnpm add zkochan/is-negative#semver:1.0.0
+</code></pre>
+<ul>
+<li>V-prefixed strict semver:</li>
+</ul>
+<pre><code>pnpm add andreineculau/npm-publish-git#semver:v0.0.7
+</code></pre>
+<ul>
+<li>Semver version range:</li>
+</ul>
+<pre><code>pnpm add kevva/is-positive#semver:^2.0.0
+</code></pre>
+<ul>
+<li>V-prefixed semver version range:</li>
+</ul>
+<pre><code>pnpm add andreineculau/npm-publish-git#semver:&#x3C;=v0.0.7
+</code></pre>
+<h4 id="install-from-a-subdirectory-of-a-git-repository">Install from a subdirectory of a Git repository<a class="hash-link" href="#install-from-a-subdirectory-of-a-git-repository" aria-label="Direct link to Install from a subdirectory of a Git repository">#</a></h4>
+<p>You may also install just a subdirectory from a Git-hosted monorepo using the <code>path:</code> parameter. For instance:</p>
+<pre><code>pnpm add RexSkz/test-git-subfolder-fetch#path:/packages/simple-react-app
+</code></pre>
+<h4 id="install-from-a-git-repository-via-a-full-url">Install from a Git repository via a full URL<a class="hash-link" href="#install-from-a-git-repository-via-a-full-url" aria-label="Direct link to Install from a Git repository via a full URL">#</a></h4>
+<p>If you want to be more explicit or are using alternative Git hosting, you might want to spell out full Git URL:</p>
+<pre><code># git+ssh
+pnpm add git+ssh://git@github.com:zkochan/is-negative.git#2.0.1
+
+# https
+pnpm add https://github.com/zkochan/is-negative.git#2.0.1
+</code></pre>
+<h4 id="install-from-a-git-repository-using-hosting-providers-shorthand">Install from a Git repository using hosting providers shorthand<a class="hash-link" href="#install-from-a-git-repository-using-hosting-providers-shorthand" aria-label="Direct link to Install from a Git repository using hosting providers shorthand">#</a></h4>
+<p>You can use a protocol shorthand <code>[provider]:</code> for certain Git providers:</p>
+<pre><code>pnpm add github:zkochan/is-negative
+pnpm add bitbucket:pnpmjs/git-resolver
+pnpm add gitlab:pnpm/git-resolver
+</code></pre>
+<p>If <code>[provider]:</code> is omitted, it defaults to <code>github:</code>.</p>
+<h4 id="install-from-a-git-repository-combining-different-parameters">Install from a Git repository combining different parameters<a class="hash-link" href="#install-from-a-git-repository-combining-different-parameters" aria-label="Direct link to Install from a Git repository combining different parameters">#</a></h4>
+<p>It is possible to combine multiple parameters by separating them with <code>&#x26;</code>. This can be useful for forks of monorepos:</p>
+<pre><code>pnpm add RexSkz/test-git-subdir-fetch.git#beta\&#x26;path:/packages/simple-react-app
+</code></pre>
+<p>Installs from the <code>beta</code> branch and only the subdirectory at <code>/packages/simple-react-app</code>.</p>
+<h4 id="how-git-dependencies-are-resolved">How Git dependencies are resolved<a class="hash-link" href="#how-git-dependencies-are-resolved" aria-label="Direct link to How Git dependencies are resolved">#</a></h4>
+<p>Added in: v12.0.0 (pnpm v12 only)</p>
+<p>For repositories on GitHub, GitLab, and Bitbucket, the specifier is an <strong>identity</strong>, not a choice of transport. All of the following name the same dependency and resolve identically:</p>
+<pre><code>kevva/is-positive
+github:kevva/is-positive
+git+https://github.com/kevva/is-positive.git
+https://github.com/kevva/is-positive.git
+git+ssh://git@github.com/kevva/is-positive.git
+</code></pre>
+<p>Each resolves through the host's canonical HTTPS URL, and the lockfile records one of two shapes:</p>
+<ul>
+<li>the <strong>host's source archive</strong>, a plain tarball download. This is recorded only when an anonymous request for that exact archive URL succeeds, so a recorded archive URL is fetchable by construction.</li>
+<li>otherwise a <strong><code>git</code> resolution over the canonical HTTPS URL</strong>, which every machine that has access to the repository can fetch.</li>
+</ul>
+<p>pnpm never records an SSH URL for these hosts. Which transport a given machine uses to reach the host is that machine's Git configuration, not a property of the project.</p>
+<p>pnpm 11 keeps the specifier's transport as part of the recorded URL, but since v11.21.0 it records an SSH URL only when the specifier itself asks for one (<code>git+ssh://</code> or <code>git@host:...</code>): a shorthand like <code>owner/repo</code> resolves and records over HTTPS, so a lockfile written on a machine with SSH keys still installs on a CI runner without them. An SSH URL recorded by an older pnpm can be re-recorded over HTTPS with <code>pnpm update &#x3C;package></code>.</p>
+<h5 id="using-ssh-for-private-repositories">Using SSH for private repositories<a class="hash-link" href="#using-ssh-for-private-repositories" aria-label="Direct link to Using SSH for private repositories">#</a></h5>
+<p>Configure the rewrite in Git itself, on the machine:</p>
+<pre><code class="hljs language-sh">git config --global url.<span class="hljs-string">"git@github.com:"</span>.insteadOf https://github.com/
+</code></pre>
+<p>pnpm shells out to <code>git</code>, so the rewrite applies to all of pnpm's Git operations automatically. The same holds on CI: give the runner an SSH key and this rewrite, or an HTTPS credential helper — the lockfile is identical either way.</p>
+<h5 id="repositories-on-other-hosts">Repositories on other hosts<a class="hash-link" href="#repositories-on-other-hosts" aria-label="Direct link to Repositories on other hosts">#</a></h5>
+<p>A URL that does not point at a known host (a self-hosted GitLab, Gitea, or any internal Git server) is kept exactly as written, transport included — for those, the URL <em>is</em> the identity. URLs with credentials embedded in them are also kept verbatim, and never resolve to a host archive.</p>
+<div class="admonition admonition-info"><p class="admonition-title">Info</p>
+<p>In pnpm v11 and earlier, resolution probed the network to decide between HTTPS and SSH. That could record whichever transport happened to work on the machine that ran the install — most often an <code>ssh://</code> URL that then failed on CI runners without SSH keys. pnpm v12 removes the probing. Existing lockfile entries are left untouched; the rules above apply when an entry is added or re-resolved.</p>
+</div>
+<h4 id="how-a-git-dependency-is-built">How a Git dependency is built<a class="hash-link" href="#how-a-git-dependency-is-built" aria-label="Direct link to How a Git dependency is built">#</a></h4>
+<p>Added in: v12.0.0-rc.6 (pnpm v12 only)</p>
+<p>A Git-hosted dependency that ships sources rather than a built package has to be prepared — its dependencies installed and its build script run — before it can be installed. pnpm prepares it with the package manager the dependency itself asks for, instead of assuming the host has the right one:</p>
+<ul>
+<li>the dependency's own <code>packageManager</code> / <a href="/package_json#devenginespackagemanager"><code>devEngines.packageManager</code></a> pin wins — that is what its authors test against;</li>
+<li>failing a pin, the lockfile it ships names the package manager. A <code>yarn.lock</code> also names <em>which</em> Yarn line: Yarn Berry stamps <code>__metadata:</code> into every lockfile it writes and neither line can read the other's, so a Classic lockfile is no longer installed by Berry.</li>
+</ul>
+<p>pnpm <a href="/package-managers">provides that package manager</a> when the dependency pinned a version, or when the host cannot satisfy what the dependency needs. A repository built with Yarn therefore installs on a machine that has only pnpm, while a host that already has a suitable package manager — under every name the build may invoke — keeps using its own.</p></article></main></div>
+  </body>
+</html>

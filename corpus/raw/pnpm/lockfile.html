@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading `pnpm-lock.yaml` | pnpm</title>
+    <meta name="description" content="pnpm-lock.yaml is a YAML file, but it is not always a single YAML document. Depending on what the project uses, pnpm writes either one document or two:" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Reading `pnpm-lock.yaml` | pnpm" />
+    <meta property="og:description" content="pnpm-lock.yaml is a YAML file, but it is not always a single YAML document. Depending on what the project uses, pnpm writes either one document or two:" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Reading `pnpm-lock.yaml` | pnpm" />
+    <meta name="twitter:description" content="pnpm-lock.yaml is a YAML file, but it is not always a single YAML document. Depending on what the project uses, pnpm writes either one document or two:" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/lockfile" />
+    <meta property="og:url" content="https://pnpm.io/lockfile" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/lockfile" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/lockfile" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/lockfile" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/lockfile" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/lockfile" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/lockfile" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/lockfile" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/lockfile" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/lockfile" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/lockfile" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/lockfile" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/lockfile" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/lockfile" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/lockfile" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Reading `pnpm-lock.yaml`</h1><p><code>pnpm-lock.yaml</code> is a YAML file, but it is not always a <strong>single</strong> YAML
+document. Depending on what the project uses, pnpm writes either one document
+or two:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Document</th><th>Contents</th></tr></thead><tbody><tr><td>The <strong>env lockfile</strong> (first, when present)</td><td><a href="/config-dependencies">Config dependencies</a> and the pnpm version resolved for the project, under <code>configDependencies</code> and <code>packageManagerDependencies</code>, with the <code>packages</code> and <code>snapshots</code> entries they need</td></tr><tr><td>The <strong>project lockfile</strong> (last, always present)</td><td>The project's own dependency graph: <code>importers</code> with their <code>dependencies</code>, and the matching <code>packages</code> and <code>snapshots</code></td></tr></tbody></table></div>
+<p>Both documents declare the same <code>lockfileVersion</code>. That field describes the
+schema of the entries inside a document, not how many documents the file
+contains, so it does not change when the env document appears.</p>
+<p>This page is for tools that read <code>pnpm-lock.yaml</code> — vulnerability scanners,
+SBOM generators, dependency graph builders, and dependency update bots. If you
+only use pnpm, you don't need to care about any of this.</p>
+<p>A two-document lockfile looks like this:</p>
+<div class="code-block"><div class="code-block-title">pnpm-lock.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">lockfileVersion:</span> <span class="hljs-string">'9.0'</span>
+
+<span class="hljs-attr">importers:</span>
+
+  <span class="hljs-string">.:</span>
+    <span class="hljs-attr">configDependencies:</span> {}
+    <span class="hljs-attr">packageManagerDependencies:</span>
+      <span class="hljs-attr">pnpm:</span>
+        <span class="hljs-attr">specifier:</span> <span class="hljs-number">12.3</span><span class="hljs-number">.4</span>
+        <span class="hljs-attr">version:</span> <span class="hljs-number">12.3</span><span class="hljs-number">.4</span>
+
+<span class="hljs-attr">packages:</span>
+  <span class="hljs-comment"># pnpm and its platform binaries</span>
+<span class="hljs-attr">snapshots:</span>
+  <span class="hljs-comment"># ...</span>
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">lockfileVersion:</span> <span class="hljs-string">'9.0'</span>
+
+<span class="hljs-attr">settings:</span>
+  <span class="hljs-attr">autoInstallPeers:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-attr">importers:</span>
+
+  <span class="hljs-string">.:</span>
+    <span class="hljs-attr">dependencies:</span>
+      <span class="hljs-attr">react:</span>
+        <span class="hljs-attr">specifier:</span> <span class="hljs-string">^19.0.0</span>
+        <span class="hljs-attr">version:</span> <span class="hljs-number">19.0</span><span class="hljs-number">.0</span>
+
+<span class="hljs-attr">packages:</span>
+  <span class="hljs-comment"># every package in the project's dependency graph</span>
+<span class="hljs-attr">snapshots:</span>
+  <span class="hljs-comment"># ...</span>
+</code></pre></div>
+<h2 id="which-document-you-need">Which document you need<a class="hash-link" href="#which-document-you-need" aria-label="Direct link to Which document you need">#</a></h2>
+<p>That depends on what your tool is for:</p>
+<ul>
+<li><strong>The project's dependency graph</strong> — dependency update bots, graph builders,
+anything that asks "what does this project depend on": the <strong>last</strong> document.</li>
+<li><strong>Everything the lockfile installs</strong> — vulnerability scanners and SBOM
+generators: <strong>every</strong> document. Config dependencies are real npm packages,
+installed into <code>node_modules/.pnpm-config</code>, and they appear only in the env
+document.</li>
+</ul>
+<p>Either way, load the file with a multi-document API. A single-document one
+(<code>load()</code> in js-yaml, <code>yaml.safe_load</code> in Python, <code>yaml.Unmarshal</code> into one
+value in Go) either raises an error or silently gives you the first document —
+which, in a two-document lockfile, is the env document.</p>
+<h3 id="the-projects-dependency-graph">The project's dependency graph<a class="hash-link" href="#the-projects-dependency-graph" aria-label="Direct link to The project&#x27;s dependency graph">#</a></h3>
+<p>Take the last document:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> { readFile } <span class="hljs-keyword">from</span> <span class="hljs-string">'node:fs/promises'</span>
+<span class="hljs-keyword">import</span> { loadAll } <span class="hljs-keyword">from</span> <span class="hljs-string">'js-yaml'</span>
+
+<span class="hljs-keyword">const</span> lockfile = <span class="hljs-title function_">loadAll</span>(<span class="hljs-keyword">await</span> <span class="hljs-title function_">readFile</span>(<span class="hljs-string">'pnpm-lock.yaml'</span>, <span class="hljs-string">'utf8'</span>)).<span class="hljs-title function_">at</span>(-<span class="hljs-number">1</span>)
+</code></pre>
+<p>This is correct for both shapes, and for every <code>pnpm-lock.yaml</code> pnpm has ever
+written.</p>
+<p>If you would rather detect the layout than always take the last document, a
+file whose first line is <code>---</code> has an env document. pnpm writes that leading
+marker only when it writes two documents.</p>
+<h3 id="everything-the-lockfile-installs">Everything the lockfile installs<a class="hash-link" href="#everything-the-lockfile-installs" aria-label="Direct link to Everything the lockfile installs">#</a></h3>
+<p>Read every document and union what you find in each:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> documents = <span class="hljs-title function_">loadAll</span>(<span class="hljs-keyword">await</span> <span class="hljs-title function_">readFile</span>(<span class="hljs-string">'pnpm-lock.yaml'</span>, <span class="hljs-string">'utf8'</span>))
+<span class="hljs-keyword">const</span> installed = documents.<span class="hljs-title function_">flatMap</span>(<span class="hljs-function">(<span class="hljs-params">doc</span>) =></span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(doc.<span class="hljs-property">packages</span> ?? {}))
+</code></pre>
+<p>Take each document as an inventory of its own rather than merging the documents
+into a single object first. Both use the <code>.</code> importer key, and each carries its
+own <code>packages</code> and <code>snapshots</code> maps, so merging them overwrites one side's
+importer and loses whichever graph it held.</p>
+<h2 id="resolutions-that-carry-a-revision">Resolutions that carry a revision<a class="hash-link" href="#resolutions-that-carry-a-revision" aria-label="Direct link to Resolutions that carry a revision">#</a></h2>
+<p>Since v12.0.0, a <code>packages:</code> entry may carry a <code>revision</code> field
+beside its integrity:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-attr">lodash@4.17.21:</span>
+    <span class="hljs-attr">resolution:</span>
+      <span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-&#x3C;replacement-digest></span>
+      <span class="hljs-attr">revision:</span> <span class="hljs-number">1</span>
+</code></pre>
+<p>It says that the bytes are a registry <strong>replacement artifact</strong>, fetched from the
+registry's integrity-addressed route rather than the canonical
+<code>name@version</code> URL. An entry with no <code>revision</code> field is revision 0 — the
+original — which is what every entry pnpm has ever written means, so a lockfile
+that has adopted no replacements is unchanged. See <a href="/registry-revisions">Registry
+revisions</a>.</p>
+<p>A tool that reads integrity values should treat <code>revision</code> as ordinary metadata:
+<code>integrity</code> is still a standard Subresource Integrity value pinning the exact
+bytes.</p>
+<h2 id="why-the-env-document-comes-first">Why the env document comes first<a class="hash-link" href="#why-the-env-document-comes-first" aria-label="Direct link to Why the env document comes first">#</a></h2>
+<p>pnpm has to know which pnpm version to switch to, and which plugins to load,
+before it can do anything else — including before it has any reason to parse a
+dependency graph that may be several megabytes. Keeping that information in a
+small leading document means every command reads a few kilobytes rather than
+the whole file.</p>
+<h2 id="when-a-lockfile-has-two-documents">When a lockfile has two documents<a class="hash-link" href="#when-a-lockfile-has-two-documents" aria-label="Direct link to When a lockfile has two documents">#</a></h2>
+<p>The env document is written when either of these applies:</p>
+<ul>
+<li>The project has <a href="/config-dependencies">config dependencies</a>. Their integrity checksums are project
+content and are always recorded.</li>
+<li>pnpm records the pnpm version it resolved for the project, under
+<code>packageManagerDependencies</code>. This happens when the project declares
+<a href="/package_json#devenginespackagemanager"><code>devEngines.packageManager</code></a>, or pins pnpm 12 or newer through the legacy
+<code>packageManager</code> field. Setting <a href="/settings/cli#pmonfail"><code>pmOnFail</code></a> to <code>ignore</code> turns it off — pnpm
+then doesn't enforce the pinned version, so it has nothing to record.</li>
+</ul>
+<p>Two-document lockfiles have existed since config dependencies were introduced.
+They became common in pnpm 12, which records the resolved package manager
+version by default.</p>
+<p>Since v11.23.0, a frozen install no longer rewrites this block. When the pinned
+pnpm version is missing from the lockfile or no longer matches it,
+<code>pnpm install --frozen-lockfile</code> fails with
+<code>ERR_PNPM_FROZEN_LOCKFILE_WITH_OUTDATED_LOCKFILE</code>, so a manifest whose pin was
+bumped without regenerating the lockfile no longer passes CI. Run
+<code>pnpm install</code> without <code>--frozen-lockfile</code> and commit the result.</p>
+<h2 id="scanning-for-vulnerabilities">Scanning for vulnerabilities<a class="hash-link" href="#scanning-for-vulnerabilities" aria-label="Direct link to Scanning for vulnerabilities">#</a></h2>
+<div class="admonition admonition-caution"><p class="admonition-title">Caution</p>
+<p>A tool that reads only the first document of a two-document lockfile does not
+fail loudly. The env document is a structurally valid lockfile — it just
+describes an importer with no <code>dependencies</code>. Such a tool reports that the
+project has no dependencies, and therefore no vulnerabilities, and a CI gate
+built on it passes.</p>
+</div>
+<p>If you scan pnpm projects:</p>
+<ul>
+<li><strong>Read every document</strong>, as described above. A tool that reads only the
+project document misses the config dependencies; a tool that reads only the
+env document misses everything else.</li>
+<li><strong>Verify your scanner against a two-document lockfile before you trust its
+output.</strong> "It reported something" is not a sufficient check here: the env
+document does contain packages, so a broken reader emits a plausible-looking
+result listing pnpm's own binaries.</li>
+<li><a href="/cli/audit"><code>pnpm audit</code></a> reads the lockfile correctly in both shapes and needs no
+configuration.</li>
+</ul></article></main></div>
+  </body>
+</html>

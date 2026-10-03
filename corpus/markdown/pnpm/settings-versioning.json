@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/settings/versioning",
+ "file": "markdown/pnpm/settings-versioning.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.31,
+ "markdown_chars": 3746,
+ "raw_html_chars": 11382,
+ "sha256": "08b48b5392712cefc2e53deb789e22cfa768fc045582ecf06f5505f59cdd3442",
+ "fetched_at": "2026-10-03T08:59:08+00:00"
+}

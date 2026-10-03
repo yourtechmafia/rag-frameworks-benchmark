@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/catalogs",
+ "file": "markdown/pnpm/catalogs.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.81,
+ "markdown_chars": 7719,
+ "raw_html_chars": 21536,
+ "sha256": "804978fe45e0582bdba353978cfb79e47a577446db9dd509002d969adfe23848",
+ "fetched_at": "2026-10-03T08:57:46+00:00"
+}

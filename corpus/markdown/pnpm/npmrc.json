@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/npmrc",
+ "file": "markdown/pnpm/npmrc.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.36,
+ "markdown_chars": 16050,
+ "raw_html_chars": 27247,
+ "sha256": "5100efe126d1a5a761d647482abf5c82facf11a7795db781f4d35eb7ec404e94",
+ "fetched_at": "2026-10-03T08:58:50+00:00"
+}

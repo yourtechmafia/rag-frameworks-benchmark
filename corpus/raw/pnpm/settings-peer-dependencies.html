@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peer Dependency Settings | pnpm</title>
+    <meta name="description" content="When true, any missing non-optional peer dependencies are automatically installed." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Peer Dependency Settings | pnpm" />
+    <meta property="og:description" content="When true, any missing non-optional peer dependencies are automatically installed." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Peer Dependency Settings | pnpm" />
+    <meta name="twitter:description" content="When true, any missing non-optional peer dependencies are automatically installed." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/peer-dependencies" />
+    <meta property="og:url" content="https://pnpm.io/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/peer-dependencies" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/peer-dependencies" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Peer Dependency Settings</h1><h3 id="autoinstallpeers">autoInstallPeers<a class="hash-link" href="#autoinstallpeers" aria-label="Direct link to autoInstallPeers">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, any missing non-optional peer dependencies are automatically installed.</p>
+<p>The version picked is the highest one satisfying the peer range. Since an automatically installed peer is not a dependency the project declares, <a href="/settings/other#resolutionmode"><code>resolutionMode</code></a> treats it as a subdependency rather than a direct one, so <code>lowest-direct</code> does not lower it.</p>
+<h4 id="version-conflicts">Version Conflicts<a class="hash-link" href="#version-conflicts" aria-label="Direct link to Version Conflicts">#</a></h4>
+<p>If there are conflicting version requirements for a peer dependency from different packages, pnpm will not install any version of the conflicting peer dependency automatically. Instead, a warning is printed. For example, if one dependency requires <code>react@^16.0.0</code> and another requires <code>react@^17.0.0</code>, these requirements conflict, and no automatic installation will occur.</p>
+<h4 id="conflict-resolution">Conflict Resolution<a class="hash-link" href="#conflict-resolution" aria-label="Direct link to Conflict Resolution">#</a></h4>
+<p>In case of a version conflict, you'll need to evaluate which version of the peer dependency to install yourself, or update the dependencies to align their peer dependency requirements.</p>
+<h3 id="dedupepeerdependents">dedupePeerDependents<a class="hash-link" href="#dedupepeerdependents" aria-label="Direct link to dedupePeerDependents">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When this setting is set to <code>true</code>, packages with peer dependencies will be deduplicated after peers resolution.</p>
+<p>For instance, let's say we have a workspace with two projects and both of them have <code>webpack</code> in their dependencies. <code>webpack</code> has <code>esbuild</code> in its optional peer dependencies, and one of the projects has <code>esbuild</code> in its dependencies. In this case, pnpm will link two instances of <code>webpack</code> to the <code>node_modules/.pnpm</code> directory: one with <code>esbuild</code> and another one without it:</p>
+<pre><code>node_modules
+  .pnpm
+    webpack@1.0.0_esbuild@1.0.0
+    webpack@1.0.0
+project1
+  node_modules
+    webpack -> ../../node_modules/.pnpm/webpack@1.0.0/node_modules/webpack
+project2
+  node_modules
+    webpack -> ../../node_modules/.pnpm/webpack@1.0.0_esbuild@1.0.0/node_modules/webpack
+    esbuild
+</code></pre>
+<p>This makes sense because <code>webpack</code> is used in two projects, and one of the projects doesn't have <code>esbuild</code>, so the two projects cannot share the same instance of <code>webpack</code>. However, this is not what most developers expect, especially since in a hoisted <code>node_modules</code>, there would only be one instance of <code>webpack</code>. Therefore, you may now use the <code>dedupePeerDependents</code> setting to deduplicate <code>webpack</code> when it has no conflicting peer dependencies (explanation at the end). In this case, if we set <code>dedupePeerDependents</code> to <code>true</code>, both projects will use the same <code>webpack</code> instance, which is the one that has <code>esbuild</code> resolved:</p>
+<pre><code>node_modules
+  .pnpm
+    webpack@1.0.0_esbuild@1.0.0
+project1
+  node_modules
+    webpack -> ../../node_modules/.pnpm/webpack@1.0.0_esbuild@1.0.0/node_modules/webpack
+project2
+  node_modules
+    webpack -> ../../node_modules/.pnpm/webpack@1.0.0_esbuild@1.0.0/node_modules/webpack
+    esbuild
+</code></pre>
+<p><strong>What are conflicting peer dependencies?</strong> By conflicting peer dependencies we mean a scenario like the following one:</p>
+<pre><code>node_modules
+  .pnpm
+    webpack@1.0.0_react@16.0.0_esbuild@1.0.0
+    webpack@1.0.0_react@17.0.0
+project1
+  node_modules
+    webpack -> ../../node_modules/.pnpm/webpack@1.0.0_react@17.0.0/node_modules/webpack
+    react (v17)
+project2
+  node_modules
+    webpack -> ../../node_modules/.pnpm/webpack@1.0.0_react@16.0.0_esbuild@1.0.0/node_modules/webpack
+    esbuild
+    react (v16)
+</code></pre>
+<p>In this case, we cannot dedupe <code>webpack</code> as <code>webpack</code> has <code>react</code> in its peer dependencies and <code>react</code> is resolved from two different versions in the context of the two projects.</p>
+<h3 id="dedupepeers">dedupePeers<a class="hash-link" href="#dedupepeers" aria-label="Direct link to dedupePeers">#</a></h3>
+<p>Added in: v10.33.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When enabled, peer dependency suffixes use version-only identifiers (<code>name@version</code>) instead of full dep paths, eliminating nested suffixes like <code>(foo@1.0.0(bar@2.0.0))</code>. This dramatically reduces the number of package instances in projects with many recursive peer dependencies.</p>
+<p>This is different from <a href="#dedupepeerdependents"><code>dedupePeerDependents</code></a>, which deduplicates packages that have the same peer dependencies across different workspace projects. <code>dedupePeers</code> simplifies the peer dependency suffix format itself.</p>
+<h3 id="strictpeerdependencies">strictPeerDependencies<a class="hash-link" href="#strictpeerdependencies" aria-label="Direct link to strictPeerDependencies">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If this is enabled, commands will fail if there is a missing or invalid peer
+dependency in the tree.</p>
+<h3 id="resolvepeersfromworkspaceroot">resolvePeersFromWorkspaceRoot<a class="hash-link" href="#resolvepeersfromworkspaceroot" aria-label="Direct link to resolvePeersFromWorkspaceRoot">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When enabled, dependencies of the root workspace project are used to resolve peer dependencies of any projects in the workspace.
+It is a useful feature as you can install your peer dependencies only in the root of the workspace, and you can be sure that all projects in the workspace use the same versions of the peer dependencies.</p>
+<h3 id="peerdependencyrules">peerDependencyRules<a class="hash-link" href="#peerdependencyrules" aria-label="Direct link to peerDependencyRules">#</a></h3>
+<h4 id="peerdependencyrulesignoremissing">peerDependencyRules.ignoreMissing<a class="hash-link" href="#peerdependencyrulesignoremissing" aria-label="Direct link to peerDependencyRules.ignoreMissing">#</a></h4>
+<p>pnpm will not print warnings about missing peer dependencies from this list.</p>
+<p>For instance, with the following configuration, pnpm will not print warnings if a dependency needs <code>react</code> but <code>react</code> is not installed:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">peerDependencyRules:</span>
+  <span class="hljs-attr">ignoreMissing:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">react</span>
+</code></pre>
+<p>Package name patterns may also be used:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">peerDependencyRules:</span>
+  <span class="hljs-attr">ignoreMissing:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"@babel/*"</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"@eslint/*"</span>
+</code></pre>
+<p><code>ignoreMissing</code> matches the peer package name or a glob. It does not support
+the <code>parent>peer</code> or <code>parent@range>peer</code> selectors accepted by
+<a href="#peerdependencyrulesallowedversions"><code>allowedVersions</code></a>.</p>
+<h4 id="peerdependencyrulesallowedversions">peerDependencyRules.allowedVersions<a class="hash-link" href="#peerdependencyrulesallowedversions" aria-label="Direct link to peerDependencyRules.allowedVersions">#</a></h4>
+<p>Unmet peer dependency warnings will not be printed for peer dependencies of the specified range.</p>
+<p>For instance, if you have some dependencies that need <code>react@16</code> but you know that they work fine with <code>react@17</code>, then you may use the following configuration:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">peerDependencyRules:</span>
+  <span class="hljs-attr">allowedVersions:</span>
+    <span class="hljs-attr">react:</span> <span class="hljs-string">"17"</span>
+</code></pre>
+<p>This will tell pnpm that any dependency that has react in its peer dependencies should allow <code>react</code> v17 to be installed.</p>
+<p>It is also possible to suppress the warnings only for peer dependencies of specific packages. For instance, with the following configuration <code>react</code> v17 will be only allowed when it is in the peer dependencies of the <code>button</code> v2 package or in the dependencies of any <code>card</code> package:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">peerDependencyRules:</span>
+  <span class="hljs-attr">allowedVersions:</span>
+    <span class="hljs-string">"button@2>react"</span><span class="hljs-string">:</span> <span class="hljs-string">"17"</span><span class="hljs-string">,</span>
+    <span class="hljs-string">"card>react"</span><span class="hljs-string">:</span> <span class="hljs-string">"17"</span>
+</code></pre>
+<h4 id="peerdependencyrulesallowany">peerDependencyRules.allowAny<a class="hash-link" href="#peerdependencyrulesallowany" aria-label="Direct link to peerDependencyRules.allowAny">#</a></h4>
+<p><code>allowAny</code> is an array of package name patterns, any peer dependency matching the pattern will be resolved from any version, regardless of the range specified in <code>peerDependencies</code>. For instance:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">peerDependencyRules:</span>
+  <span class="hljs-attr">allowAny:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"@babel/*"</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">"eslint"</span>
+</code></pre>
+<p>The above setting will mute any warnings about peer dependency version mismatches related to <code>@babel/</code> packages or <code>eslint</code>.</p>
+<p><code>allowAny</code> matches the peer package name or a glob. It does not support
+the <code>parent>peer</code> or <code>parent@range>peer</code> selectors accepted by
+<a href="#peerdependencyrulesallowedversions"><code>allowedVersions</code></a>.</p></article></main></div>
+  </body>
+</html>

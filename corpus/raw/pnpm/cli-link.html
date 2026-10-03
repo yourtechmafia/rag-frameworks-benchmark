@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm link | pnpm</title>
+    <meta name="description" content="Aliases: ln" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm link | pnpm" />
+    <meta property="og:description" content="Aliases: ln" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm link | pnpm" />
+    <meta name="twitter:description" content="Aliases: ln" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/link" />
+    <meta property="og:url" content="https://pnpm.io/cli/link" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/link" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/link" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/link" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/link" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/link" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/link" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/link" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/link" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/link" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/link" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/link" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/link" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/link" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/link" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm link</h1><p>Aliases: <code>ln</code></p>
+<p>Links a local package to the current project's <code>node_modules</code>.</p>
+<pre><code class="hljs language-text">pnpm link &#x3C;dir>
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="pnpm-link-dir"><code>pnpm link &#x3C;dir></code><a class="hash-link" href="#pnpm-link-dir" aria-label="Direct link to pnpm link <dir>">#</a></h3>
+<p>Links package from <code>&#x3C;dir></code> directory to <code>node_modules</code> of package from where you're executing this command. <code>&#x3C;dir></code> must be a relative or absolute path.</p>
+<blockquote>
+<p>For example, if you are inside <code>~/projects/foo</code> and you execute <code>pnpm link ../bar</code>, then a link to <code>bar</code> will be created in <code>foo/node_modules/bar</code>.</p>
+</blockquote>
+<div class="admonition admonition-note"><p class="admonition-title">Breaking changes in v11</p>
+<p><code>pnpm link</code> no longer resolves packages from the global store. Only relative or absolute paths are accepted (use <code>pnpm link ./foo</code> instead of <code>pnpm link foo</code>).</p>
+<p><code>pnpm link --global</code> has been removed. To register a local package's bins globally, use <code>pnpm add -g .</code> instead.</p>
+<p><code>pnpm link</code> with no arguments has been removed. Always pass an explicit path.</p>
+</div>
+<h2 id="use-cases">Use Cases<a class="hash-link" href="#use-cases" aria-label="Direct link to Use Cases">#</a></h2>
+<h3 id="replace-an-installed-package-with-a-local-version-of-it">Replace an installed package with a local version of it<a class="hash-link" href="#replace-an-installed-package-with-a-local-version-of-it" aria-label="Direct link to Replace an installed package with a local version of it">#</a></h3>
+<p>Let's say you have a project that uses <code>foo</code> package. You want to make changes to <code>foo</code> and test them in your project. In this scenario, you can use <code>pnpm link</code> to link the local version of <code>foo</code> to your project:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ~/projects/foo
+pnpm install <span class="hljs-comment"># install dependencies of foo</span>
+<span class="hljs-built_in">cd</span> ~/projects/my-project
+pnpm <span class="hljs-built_in">link</span> ~/projects/foo <span class="hljs-comment"># link foo to my-project</span>
+</code></pre>
+<h3 id="add-a-binary-globally">Add a binary globally<a class="hash-link" href="#add-a-binary-globally" aria-label="Direct link to Add a binary globally">#</a></h3>
+<p>To make a local package's binaries available system-wide, use <code>pnpm add -g .</code> instead:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ~/projects/foo
+pnpm install <span class="hljs-comment"># install dependencies of foo</span>
+pnpm add -g . <span class="hljs-comment"># register foo's bins globally</span>
+</code></pre>
+<p>Remember that the binary will be available only if the package has a <code>bin</code> field in its <code>package.json</code>.</p>
+<h2 id="whats-the-difference-between-pnpm-link-and-using-the-file-protocol">What's the difference between <code>pnpm link</code> and using the <code>file:</code> protocol?<a class="hash-link" href="#whats-the-difference-between-pnpm-link-and-using-the-file-protocol" aria-label="Direct link to What&#x27;s the difference between pnpm link and using the file: protocol?">#</a></h2>
+<p>When you use <code>pnpm link</code>, the linked package is symlinked from the source code. You can modify the source code of the linked package, and the changes will be reflected in your project. With this method pnpm will not install the dependencies of the linked package, you will have to install them manually in the source code. This may be useful when you have to use a specific package manager for the linked package, for example, if you want to use <code>npm</code> for the linked package, but pnpm for your project.</p>
+<p>When you use the <code>file:</code> protocol in <code>dependencies</code>, the linked package is hard-linked to your project <code>node_modules</code>, you can modify the source code of the linked package, and the changes will be reflected in your project. With this method pnpm will also install the dependencies of the linked package, overriding the <code>node_modules</code> of the linked package.</p>
+<div class="admonition admonition-info"><p class="admonition-title">Info</p>
+<p>When dealing with <strong>peer dependencies</strong> it is recommended to use the <code>file:</code> protocol. It better resolves the peer dependencies from the project dependencies, ensuring that the linked dependency correctly uses the versions of the dependencies specified in your main project, leading to more consistent and expected behaviors.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Feature</th><th><code>pnpm link</code></th><th><code>file:</code> Protocol</th></tr></thead><tbody><tr><td>Symlink/Hard-link</td><td>Symlink</td><td>Hard-link</td></tr><tr><td>Reflects source code modifications</td><td>Yes</td><td>Yes</td></tr><tr><td>Installs dependencies of the linked package</td><td>No (manual installation required)</td><td>Yes (overrides <code>node_modules</code> of the linked package)</td></tr><tr><td>Use different package manager for dependency</td><td>Possible (e.g., use <code>npm</code> for linked pkg)</td><td>No, it will use pnpm</td></tr></tbody></table></div></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+
+
+
+
+
+Feature Comparison | pnpm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Feature Comparison
+FeaturepnpmnpmNotesWorkspace support✅✅Isolated node_modules✅✅Default in pnpm.Hoisted node_modules✅✅Default in npm.Plug'n'Play✅❌Autoinstalling peers✅✅Patching dependencies✅❌Managing runtimes✅❌Managing versions of itself✅❌Has a lockfile✅✅pnpm-lock.yaml, package-lock.json.Overrides support✅✅Content-addressable storage✅❌Dynamic package execution✅✅pnx, npx.Side-effects cache✅❌Catalogs✅❌Config dependencies✅❌JSR registry support✅❌Auto-install before script run✅❌Hooks✅❌Build script security✅❌SBOM generation✅✅pnpm sbom, npm sbom.Listing licenses✅❌pnpm supports it via pnpm licenses list.
+Note: To keep the comparison concise, we include only features likely to be used frequently.
+
+

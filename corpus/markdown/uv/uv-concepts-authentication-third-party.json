@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/authentication/third-party/",
+ "file": "markdown/uv/uv-concepts-authentication-third-party.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.0,
+ "markdown_chars": 6387,
+ "raw_html_chars": 64978,
+ "sha256": "4013ac7db63d51c4efc50e9b658277ddbfdd23bfb18bd5ab377d13480ab61f4f",
+ "fetched_at": "2026-10-03T08:57:20+00:00"
+}

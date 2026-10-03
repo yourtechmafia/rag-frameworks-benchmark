@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/publish",
+ "file": "markdown/pnpm/cli-publish.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.12,
+ "markdown_chars": 8492,
+ "raw_html_chars": 17856,
+ "sha256": "aec2b07321a204c916cc0df85eb19b91efd137bed7d7cdcdb67dc5b85e082d9f",
+ "fetched_at": "2026-10-03T08:58:26+00:00"
+}

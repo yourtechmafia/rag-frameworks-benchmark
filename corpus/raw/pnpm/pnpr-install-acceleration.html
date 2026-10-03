@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Install acceleration | pnpm</title>
+    <meta name="description" content="Besides acting as a registry, pnpr can speed up pnpm install by resolving a project's dependency graph server-side and handing pnpm a ready-to-use lockfile. pnpm then runs a normal headless install, fetching every tarball directly from the registries in parallel." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Install acceleration | pnpm" />
+    <meta property="og:description" content="Besides acting as a registry, pnpr can speed up pnpm install by resolving a project's dependency graph server-side and handing pnpm a ready-to-use lockfile. pnpm then runs a normal headless install, fetching every tarball directly from the registries in parallel." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Install acceleration | pnpm" />
+    <meta name="twitter:description" content="Besides acting as a registry, pnpr can speed up pnpm install by resolving a project's dependency graph server-side and handing pnpm a ready-to-use lockfile. pnpm then runs a normal headless install, fetching every tarball directly from the registries in parallel." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/install-acceleration" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/install-acceleration" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/install-acceleration" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Install acceleration</h1><p>Besides acting as a registry, pnpr can speed up <code>pnpm install</code> by resolving a
+project's dependency graph <strong>server-side</strong> and handing pnpm a ready-to-use
+lockfile. pnpm then runs a normal headless install, fetching every tarball
+directly from the registries in parallel.</p>
+<h2 id="why-its-faster">Why it's faster<a class="hash-link" href="#why-its-faster" aria-label="Direct link to Why it&#x27;s faster">#</a></h2>
+<p>The slow part of installing a fresh project (one with no lockfile, or with new
+dependencies) is <strong>resolution</strong>, not downloading tarballs. To resolve a
+dependency graph, pnpm has to walk it: fetch a package's metadata (its
+"packument"), read its dependency ranges, fetch the packuments for those, and so
+on, level by level. Each level depends on the answers from the previous one, so
+the requests can't all be parallelized — the total time is roughly the
+<strong>depth of the graph × the round-trip latency</strong> to the registry. From a laptop
+or a CI runner that sits far from the registry, that round-trip depth dominates
+the install.</p>
+<p>pnpr collapses that depth:</p>
+<ul>
+<li><strong>It runs the resolution close to the registry</strong>, with low latency to the
+upstream, so each of those sequential round-trips is cheap.</li>
+<li><strong>It keeps a warm, shared cache</strong> of packuments and verified resolution
+results across every client that uses it. A team or CI fleet pointed at one
+pnpr server resolves against a cache that's already hot from everyone else's
+installs.</li>
+<li><strong>It returns the whole resolved lockfile in a single response</strong>, so the client
+pays one round-trip for resolution instead of one per graph level.</li>
+</ul>
+<p>Crucially, pnpr only does the resolution. The tarballs are still fetched by the
+client, <strong>directly from the registries in parallel</strong> — exactly like a normal
+install, which a single connection through the server could never match. The
+accelerated path removes the latency-bound resolution waterfall without turning
+tarball downloads into a single server-mediated stream.</p>
+<p>When the project already has an up-to-date lockfile, there's nothing to resolve,
+so this path doesn't apply — the speedup is for cold installs and dependency
+changes.</p>
+<h2 id="how-it-works">How it works<a class="hash-link" href="#how-it-works" aria-label="Direct link to How it works">#</a></h2>
+<ol>
+<li>pnpm checks <code>GET /-/pnpr</code> to verify that the server speaks a compatible pnpr
+resolver protocol version.</li>
+<li>pnpm sends <code>POST /-/pnpr/v0/resolve</code> with the project's dependencies,
+registry settings, policy settings, and the existing lockfile when one is
+available. Client upstream credentials are never sent — private registries
+are reached through the server's own credentials (see
+<a href="#private-registries">below</a>).</li>
+<li>The server resolves against the client's registries, verifies the input
+lockfile under the client's policy, and streams an <code>application/x-ndjson</code>
+response. <code>package</code> frames announce resolved tarballs as the tree walk
+progresses, and a terminal <code>done</code> frame carries the resolved lockfile and
+stats. A terminal <code>violations</code> or <code>error</code> frame aborts the install.</li>
+<li>pnpm writes the resolved lockfile and fetches tarballs directly from the
+registries, like a normal install.</li>
+</ol>
+<p>For frozen restores with an already-fresh lockfile, pnpm can use
+<code>POST /-/pnpr/v0/verify-lockfile</code> to get only the server-side trust verdict
+instead of resolving again.</p>
+<h2 id="cargo-and-python">Cargo and Python<a class="hash-link" href="#cargo-and-python" aria-label="Direct link to Cargo and Python">#</a></h2>
+<p>Added in: v0.1.0-alpha.11</p>
+<p><code>POST /-/pnpr/v0/resolve</code> takes an <code>ecosystem</code> field, so the same endpoint
+resolves <a href="/pnpr/ecosystems">Cargo and Python</a> dependency graphs as well. Both are
+latency-bound in the same way npm is, and each has its own extra cost the server
+removes:</p>
+<ul>
+<li>For <strong>Cargo</strong>, the client no longer fetches one sparse-index file per crate in
+the graph.</li>
+<li>For <strong>Python</strong>, the client no longer downloads a wheel to find out what it
+requires.</li>
+</ul>
+<p>A <code>cargo.enabled</code> or <code>python.enabled</code> workspace with <code>pnprServer</code> set offloads
+those resolutions automatically. When the server does not serve an ecosystem's
+resolution, pnpm resolves it locally instead of failing.</p>
+<p>Since pnpr v0.1.0-alpha.9, <code>pnpm install --fix-lockfile</code> is forwarded as a
+repair request, including during filtered installs. The server regenerates
+broken lockfile metadata while retaining locked versions that remain
+compatible. The <code>fixLockfile</code> list in <code>GET /-/pnpr</code> tells the client which
+resolver protocol versions support that request.</p>
+<h2 id="what-a-configured-server-does-not-cost">What a configured server does not cost<a class="hash-link" href="#what-a-configured-server-does-not-cost" aria-label="Direct link to What a configured server does not cost">#</a></h2>
+<p>Since pnpm v12.0.0-rc.6, an install skips the exchanges it doesn't need, so a
+configured <code>pnprServer</code> no longer makes an up-to-date project pay a round trip
+that a direct install would have answered locally:</p>
+<ul>
+<li>The repeat-install "Already up to date" fast path runs with a pnpr server
+configured. Changing the <code>trustPolicy*</code>, <code>minimumReleaseAgeStrict</code>, or
+<code>minimumReleaseAgeExclude</code> settings still invalidates it.</li>
+<li>An install whose <code>pnpm-lock.yaml</code> already satisfies every manifest skips the
+resolve exchange and materializes <code>node_modules</code> from the on-disk lockfile.</li>
+<li>The verification round trip is skipped when the local
+<code>lockfile-verified.jsonl</code> cache already covers the lockfile under the current
+policy. Server-verified and server-resolved lockfiles are recorded into that
+cache, so the next install can use it.</li>
+</ul>
+<p>See <a href="https://github.com/pnpm/pnpm/issues/12230">pnpm/pnpm#12230</a> and
+<a href="https://github.com/pnpm/pnpm/issues/12234">pnpm/pnpm#12234</a> for background.</p>
+<h2 id="allowlist">Which registries the server will touch<a class="hash-link" href="#allowlist" aria-label="Direct link to Which registries the server will touch">#</a></h2>
+<p>The resolver only fetches from origins the operator has configured — a
+<strong>default-deny allowlist</strong> made of the configured
+<a href="/pnpr/configuration#registries-and-defaultregistry">registries</a>, the declared
+<a href="/pnpr/configuration#routes">public routes</a>, the built-in official npm registry,
+and pnpr's own origin. A request whose <code>registry</code>/<code>namedRegistries</code> — or whose
+direct <code>http(s)</code>/<code>git</code> URL dependencies, overrides, or lockfile tarball URLs —
+point anywhere else is rejected before any server-side fetch, and every
+redirect hop is re-checked against the same allowlist. A caller can't use the
+resolver to make the server fetch from an arbitrary internal address.</p>
+<h2 id="private-registries">Private registries<a class="hash-link" href="#private-registries" aria-label="Direct link to Private registries">#</a></h2>
+<p>Clients never forward their upstream registry credentials to pnpr. Instead, a
+private registry is configured server-side as an
+<a href="/pnpr/configuration#upstream-registries">upstream registry</a> with a server-owned
+credential and an <code>access:</code> policy naming which pnpr users may resolve through
+it. The caller authenticates to pnpr with their own pnpr token; pnpr selects
+its own credential for each upstream fetch. One upstream token, held only by
+the server, serves a whole team.</p>
+<p>Tarball URLs in the resolved lockfile follow the same split:</p>
+<ul>
+<li>A <strong>public</strong> package keeps its upstream URL — the client fetches it directly
+from the registry or its CDN, never through pnpr.</li>
+<li>A <strong>private</strong> package resolved through an access-bearing upstream registry
+is emitted as that registry's <code>/~&#x3C;name>/</code> endpoint URL, so the client
+fetches it back through pnpr (which enforces the registry's access policy
+and serves it from a per-registry private cache).</li>
+</ul>
+<p>Because a registry endpoint URL is canonical for a client whose registry
+configuration points at it, lockfile entries stay integrity-only — the
+registry host lives in the client's <code>.npmrc</code>, not in the lockfile — and a
+project resolves to the same lockfile whether it installs through <code>/resolve</code>
+or directly against the registry endpoint.</p>
+<p>The resolution cache is <strong>authorization-aware</strong>: a resolution that touched
+only public routes is cached once and shared by every caller, while a
+resolution that touched private routes is keyed by the access it required and
+is only replayed for callers who still hold that access at the current
+upstream credential. Rotating an upstream credential automatically moves new
+resolutions to a fresh cache namespace.</p>
+<h2 id="enabling-it">Enabling it<a class="hash-link" href="#enabling-it" aria-label="Direct link to Enabling it">#</a></h2>
+<p>Set <code>pnprServer</code> in your <code>pnpm-workspace.yaml</code> to the URL of a pnpr server:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">pnprServer:</span> <span class="hljs-string">http://127.0.0.1:7677</span>
+</code></pre>
+<p>pnpm will offload resolution to that server during <code>pnpm install</code>. The resolver
+<code>POST</code> endpoints require a valid pnpr <code>Authorization</code> header. pnpm forwards the
+auth configured for the <code>pnprServer</code> URL, and a normal
+<code>pnpm login --registry &#x3C;server-url></code> writes the token pnpm uses for both
+registry and resolver requests. The login and token endpoints are always
+served, so this works even against a resolver-only pnpr server that exposes no
+registry surface.</p></article></main></div>
+  </body>
+</html>

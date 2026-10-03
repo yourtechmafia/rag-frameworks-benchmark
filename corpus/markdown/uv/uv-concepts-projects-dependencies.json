@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/projects/dependencies/",
+ "file": "markdown/uv/uv-concepts-projects-dependencies.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.48,
+ "markdown_chars": 36881,
+ "raw_html_chars": 169441,
+ "sha256": "9a8f344994e0cf01c63064f9fc6641f4070b4afa3b5f4fefd1f2e2db32ea541a",
+ "fetched_at": "2026-10-03T08:57:22+00:00"
+}

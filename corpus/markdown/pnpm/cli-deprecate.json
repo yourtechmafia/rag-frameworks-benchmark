@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/deprecate",
+ "file": "markdown/pnpm/cli-deprecate.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.97,
+ "markdown_chars": 1308,
+ "raw_html_chars": 6802,
+ "sha256": "48707622d6544640425a7ec15b810746299a050508f5166ab56d235952e3f2a7",
+ "fetched_at": "2026-10-03T08:57:58+00:00"
+}

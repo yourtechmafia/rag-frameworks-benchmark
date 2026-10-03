@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/git_branch_lockfiles",
+ "file": "markdown/pnpm/git-branch-lockfiles.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.69,
+ "markdown_chars": 1698,
+ "raw_html_chars": 7617,
+ "sha256": "c784528a43a63ca0c8b540df4173d5035d71e7629399e590515d6212f0a63f16",
+ "fetched_at": "2026-10-03T08:58:46+00:00"
+}

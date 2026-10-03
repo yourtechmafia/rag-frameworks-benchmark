@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/settings/dependency-resolution",
+ "file": "markdown/pnpm/settings-dependency-resolution.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.35,
+ "markdown_chars": 29477,
+ "raw_html_chars": 51738,
+ "sha256": "4d9f0a5dc83d031c4707aa281fab0b1125828f477d7b87482ff2bc15d2260da1",
+ "fetched_at": "2026-10-03T08:59:03+00:00"
+}

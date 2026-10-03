@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symlinked `node_modules` structure | pnpm</title>
+    <meta name="description" content="This article only describes how pnpm's node_modules are structured when there are no packages with peer dependencies. For the more complex scenario of dependencies with peers, see how peers are resolved." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Symlinked `node_modules` structure | pnpm" />
+    <meta property="og:description" content="This article only describes how pnpm's node_modules are structured when there are no packages with peer dependencies. For the more complex scenario of dependencies with peers, see how peers are resolved." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Symlinked `node_modules` structure | pnpm" />
+    <meta name="twitter:description" content="This article only describes how pnpm's node_modules are structured when there are no packages with peer dependencies. For the more complex scenario of dependencies with peers, see how peers are resolved." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/symlinked-node-modules-structure" />
+    <meta property="og:url" content="https://pnpm.io/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/symlinked-node-modules-structure" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/symlinked-node-modules-structure" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Symlinked `node_modules` structure</h1><div class="admonition admonition-info"><p class="admonition-title">Info</p>
+<p>This article only describes how pnpm's <code>node_modules</code> are structured when
+there are no packages with peer dependencies. For the more complex scenario of
+dependencies with peers, see <a href="/how-peers-are-resolved">how peers are resolved</a>.</p>
+</div>
+<p>pnpm's <code>node_modules</code> layout uses symbolic links to create a nested structure of
+dependencies.</p>
+<p>Every file of every package inside <code>node_modules</code> is a hard link to the
+content-addressable store. Let's say you install <code>foo@1.0.0</code> that depends on
+<code>bar@1.0.0</code>. pnpm will hard link both packages to <code>node_modules</code> like this:</p>
+<pre><code class="hljs language-text">node_modules
+└── .pnpm
+    ├── bar@1.0.0
+    │   └── node_modules
+    │       └── bar
+    │           ├── index.js     -> &#x3C;store>/001
+    │           └── package.json -> &#x3C;store>/002
+    └── foo@1.0.0
+        └── node_modules
+            └── foo
+                ├── index.js     -> &#x3C;store>/003
+                └── package.json -> &#x3C;store>/004
+</code></pre>
+<p>These are the only "real" files in <code>node_modules</code>. Once all the packages are
+hard linked to <code>node_modules</code>, symbolic links are created to build the nested
+dependency graph structure.</p>
+<p>As you might have noticed, both packages are hard linked into a subfolder inside
+a <code>node_modules</code> folder (<code>foo@1.0.0/node_modules/foo</code>). This is needed to:</p>
+<ol>
+<li><strong>allow packages to import themselves.</strong> <code>foo</code> should be able to
+<code>require('foo/package.json')</code> or <code>import * as package from "foo/package.json"</code>.</li>
+<li><strong>avoid circular symlinks.</strong> Dependencies of packages are placed in the same
+folder in which the dependent packages are. For Node.js it doesn't make a
+difference whether dependencies are inside the package's <code>node_modules</code> or in
+any other <code>node_modules</code> in the parent directories.</li>
+</ol>
+<p>The next stage of installation is symlinking dependencies. <code>bar</code> is going to be
+symlinked to the <code>foo@1.0.0/node_modules</code> folder:</p>
+<pre><code class="hljs language-text">node_modules
+└── .pnpm
+    ├── bar@1.0.0
+    │   └── node_modules
+    │       └── bar -> &#x3C;store>
+    └── foo@1.0.0
+        └── node_modules
+            ├── foo -> &#x3C;store>
+            └── bar -> ../../bar@1.0.0/node_modules/bar
+</code></pre>
+<p>Next, direct dependencies are handled. <code>foo</code> is going to be symlinked into the
+root <code>node_modules</code> folder because <code>foo</code> is a dependency of the project:</p>
+<pre><code class="hljs language-text">node_modules
+├── foo -> ./.pnpm/foo@1.0.0/node_modules/foo
+└── .pnpm
+    ├── bar@1.0.0
+    │   └── node_modules
+    │       └── bar -> &#x3C;store>
+    └── foo@1.0.0
+        └── node_modules
+            ├── foo -> &#x3C;store>
+            └── bar -> ../../bar@1.0.0/node_modules/bar
+</code></pre>
+<p>This is a very simple example. However, the layout will maintain this structure
+regardless of the number of dependencies and the depth of the dependency graph.</p>
+<p>Let's add <code>qar@2.0.0</code> as a dependency of <code>bar</code> and <code>foo</code>. This is how the new
+structure will look:</p>
+<pre><code class="hljs language-text">node_modules
+├── foo -> ./.pnpm/foo@1.0.0/node_modules/foo
+└── .pnpm
+    ├── bar@1.0.0
+    │   └── node_modules
+    │       ├── bar -> &#x3C;store>
+    │       └── qar -> ../../qar@2.0.0/node_modules/qar
+    ├── foo@1.0.0
+    │   └── node_modules
+    │       ├── foo -> &#x3C;store>
+    │       ├── bar -> ../../bar@1.0.0/node_modules/bar
+    │       └── qar -> ../../qar@2.0.0/node_modules/qar
+    └── qar@2.0.0
+        └── node_modules
+            └── qar -> &#x3C;store>
+</code></pre>
+<p>As you may see, even though the graph is deeper now (<code>foo > bar > qar</code>), the
+directory depth in the file system is still the same.</p>
+<p>This layout might look weird at first glance, but it is completely compatible
+with Node's module resolution algorithm! When resolving modules, Node ignores
+symlinks, so when <code>bar</code> is required from <code>foo@1.0.0/node_modules/foo/index.js</code>,
+Node does not use <code>bar</code> at <code>foo@1.0.0/node_modules/bar</code>, but instead, <code>bar</code> is
+resolved to its real location (<code>bar@1.0.0/node_modules/bar</code>). As a consequence,
+<code>bar</code> can also resolve its dependencies which are in <code>bar@1.0.0/node_modules</code>.</p>
+<p>A great bonus of this layout is that only packages that are really in the
+dependencies are accessible. With a flattened <code>node_modules</code> structure, all
+hoisted packages are accessible. To read more about why this is an advantage,
+see "<a href="https://www.kochan.io/nodejs/pnpms-strictness-helps-to-avoid-silly-bugs.html">pnpm's strictness helps to avoid silly bugs</a>"</p>
+<p>Unfortunately, many packages in the ecosystem are broken — they use dependencies that are not listed in their <code>package.json</code>. To minimize the number of issues new users encounter, pnpm hoists all dependencies by default into <code>node_modules/.pnpm/node_modules</code>. To disable this hoisting, set <a href="/settings/node-modules#hoist">hoist</a> to <code>false</code>.</p></article></main></div>
+  </body>
+</html>

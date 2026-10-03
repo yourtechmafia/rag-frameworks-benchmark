@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Virtual Store | pnpm</title>
+    <meta name="description" content="By default, pnpm creates a .pnpm directory inside each project's node_modules — this is the &quot;virtual store&quot;. It contains hardlinks to files in the content-addressable store. Every project gets its own projection of this virtual store — pnpm hardlinks files from the content-addressable store into..." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Global Virtual Store | pnpm" />
+    <meta property="og:description" content="By default, pnpm creates a .pnpm directory inside each project's node_modules — this is the &quot;virtual store&quot;. It contains hardlinks to files in the content-addressable store. Every project gets its own projection of this virtual store — pnpm hardlinks files from the content-addressable store into..." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Global Virtual Store | pnpm" />
+    <meta name="twitter:description" content="By default, pnpm creates a .pnpm directory inside each project's node_modules — this is the &quot;virtual store&quot;. It contains hardlinks to files in the content-addressable store. Every project gets its own projection of this virtual store — pnpm hardlinks files from the content-addressable store into..." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/global-virtual-store" />
+    <meta property="og:url" content="https://pnpm.io/global-virtual-store" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/global-virtual-store" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/global-virtual-store" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/global-virtual-store" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/global-virtual-store" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/global-virtual-store" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/global-virtual-store" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/global-virtual-store" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/global-virtual-store" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/global-virtual-store" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/global-virtual-store" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/global-virtual-store" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/global-virtual-store" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/global-virtual-store" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/global-virtual-store" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Global Virtual Store</h1><p>By default, pnpm creates a <code>.pnpm</code> directory inside each project's <code>node_modules</code> — this is the "virtual store". It contains hardlinks to files in the <a href="/settings/store#storedir">content-addressable store</a>. Every project gets its own projection of this virtual store — pnpm hardlinks files from the content-addressable store into the <code>.pnpm</code> directory structure. The actual file contents exist only once on disk, but the directory structure is recreated for each project so that Node.js's module resolution algorithm can find the right dependencies for each package.</p>
+<p>The <strong>global virtual store</strong> (<code>virtualStoreType: global</code>, spelled <code>enableGlobalVirtualStore: true</code> before v11.23.0) changes this. Instead of each project having its own virtual store in <code>node_modules/.pnpm</code>, pnpm maintains a single shared virtual store (located at <code>&#x3C;store-path>/links/</code>, run <code>pnpm store path</code> to find <code>&#x3C;store-path></code>, or at <a href="/settings/node-modules#virtualstoredir"><code>virtualStoreDir</code></a> when it is set). Each project's <code>node_modules</code> contains only symlinks pointing into this shared location.</p>
+<h2 id="default-behavior-vs-global-virtual-store">Default behavior vs global virtual store<a class="hash-link" href="#default-behavior-vs-global-virtual-store" aria-label="Direct link to Default behavior vs global virtual store">#</a></h2>
+<h3 id="default-per-project-virtual-store">Default (per-project virtual store)<a class="hash-link" href="#default-per-project-virtual-store" aria-label="Direct link to Default (per-project virtual store)">#</a></h3>
+<pre><code>project-a/
+└── node_modules/
+    ├── lodash → .pnpm/lodash@4.17.21/node_modules/lodash
+    └── .pnpm/
+        └── lodash@4.17.21/
+            └── node_modules/
+                └── lodash/            ← hardlinks to content-addressable store
+project-b/
+└── node_modules/
+    ├── lodash → .pnpm/lodash@4.17.21/node_modules/lodash
+    └── .pnpm/
+        └── lodash@4.17.21/
+            └── node_modules/
+                └── lodash/            ← same hardlinks, duplicated directory structure
+</code></pre>
+<p>Each project has its own <code>.pnpm</code> with hardlinks. The file contents aren't duplicated on disk (hardlinks share inodes), but the directory structure is. With large monorepos or many parallel checkouts, the time spent creating thousands of hardlinks during <code>pnpm install</code> adds up.</p>
+<h3 id="with-global-virtual-store">With global virtual store<a class="hash-link" href="#with-global-virtual-store" aria-label="Direct link to With global virtual store">#</a></h3>
+<pre><code>project-a/
+└── node_modules/
+    └── lodash → &#x3C;global-store>/links/@/lodash/4.17.21/&#x3C;hash>/node_modules/lodash
+project-b/
+└── node_modules/
+    └── lodash → &#x3C;global-store>/links/@/lodash/4.17.21/&#x3C;hash>/node_modules/lodash  ← same target
+</code></pre>
+<p>Both projects symlink directly to the same location in the global virtual store. No packages are linked into a per-project <code>.pnpm</code> directory: each project's <code>node_modules/.pnpm</code> holds only its current lockfile and hidden hoisted dependencies. The global virtual store itself contains the hardlinks to the content-addressable store — but that happens only once per dependency graph (more on that below), not per project.</p>
+<h2 id="how-package-identity-works">How package identity works<a class="hash-link" href="#how-package-identity-works" aria-label="Direct link to How package identity works">#</a></h2>
+<p>In the global virtual store, each package directory is named by the hash of its dependency graph. Two projects that use <code>lodash@4.17.21</code> with the same transitive dependency tree will point to the exact same directory. If the dependency trees differ (e.g., different peer dependencies), pnpm creates separate entries. This is conceptually similar to how <a href="https://nixos.org/guides/how-nix-works/">NixOS manages packages</a> using dependency graph hashes.</p>
+<h2 id="when-to-use-it">When to use it<a class="hash-link" href="#when-to-use-it" aria-label="Direct link to When to use it">#</a></h2>
+<p>The global virtual store is most useful when you have multiple checkouts of the same project on disk — for example, when using <a href="/git-worktrees">git worktrees for multi-agent development</a>. In that scenario, each worktree gets a nearly free <code>node_modules</code> because all the real package content already exists in the shared store.</p>
+<p>It also speeds up installations across unrelated projects on the same machine, since any package version that's already been installed by any project is available instantly.</p>
+<h2 id="limitations">Limitations<a class="hash-link" href="#limitations" aria-label="Direct link to Limitations">#</a></h2>
+<ul>
+<li><strong>CI environments</strong>: In CI, caches are typically absent, so there's no warm global store to benefit from. The global virtual store is generally not useful in CI.</li>
+<li><strong>Shared trust domain</strong>: The global virtual store and the content-addressable store are shared writable state. Use them only for projects, users, and jobs that trust each other, and protect the store path with filesystem permissions.</li>
+<li><strong>ESM hoisting</strong>: pnpm uses the <code>NODE_PATH</code> environment variable to support hoisted dependencies with the global virtual store, and Node.js does not respect <code>NODE_PATH</code> for ESM imports. Since v11.23.0, every process pnpm spawns for the project — <code>pnpm run</code>, <code>pnpm exec</code>, lifecycle scripts, and the tools <code>pnpm dlx</code> runs — also gets a <code>NODE_OPTIONS</code> <code>--import</code> flag registering a resolve hook that restores those lookups, so a dependency importing a package it does not declare resolves under ESM too (<a href="https://github.com/pnpm/pnpm/issues/9618">#9618</a>). A <code>node</code> process started outside pnpm does not get that environment, and setting <a href="/settings/other#extendnodepath"><code>extendNodePath</code></a> to <code>false</code> turns the whole <code>NODE_PATH</code> mechanism off, resolve hook included; declare the missing dependencies with <a href="/settings/dependency-resolution#packageextensions">packageExtensions</a> if you need them to resolve in either case.</li>
+</ul>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>The global virtual store is currently disabled by default for project installs and marked as experimental, as some tools may not work correctly with symlinked <code>node_modules</code>. You need to explicitly set <code>virtualStoreType: global</code> in <code>pnpm-workspace.yaml</code> to use it for project installs. It is enabled by default for packages installed via <code>pnpm dlx</code> (<code>pnpx</code>) and globally installed packages. The goal is to enable it by default for all installations in a future version.</p>
+</div>
+<h2 id="global-packages">Global packages<a class="hash-link" href="#global-packages" aria-label="Direct link to Global packages">#</a></h2>
+<p>Global installs (<code>pnpm add -g</code>) and <code>pnpm dlx</code> use the global virtual store by default. See <a href="/global-packages">Global Packages</a> for the full guide, including isolated installations and the binaries location.</p>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<p>See the <a href="/settings/node-modules#virtualstoretype"><code>virtualStoreType</code></a> setting reference for all configuration details. <code>virtualStoreType</code> was added in v11.23.0 as the canonical spelling of <a href="/settings/node-modules#enableglobalvirtualstore"><code>enableGlobalVirtualStore</code></a>, which keeps working.</p></article></main></div>
+  </body>
+</html>

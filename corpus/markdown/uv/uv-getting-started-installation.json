@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/getting-started/installation/",
+ "file": "markdown/uv/uv-getting-started-installation.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.02,
+ "markdown_chars": 12355,
+ "raw_html_chars": 88240,
+ "sha256": "685878a043641542808b6b34479968b6675f18780fda03a1d57a149dd9b177d7",
+ "fetched_at": "2026-10-03T08:57:25+00:00"
+}

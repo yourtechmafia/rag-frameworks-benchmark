@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/installer/",
+ "file": "markdown/uv/uv-reference-installer.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.93,
+ "markdown_chars": 7521,
+ "raw_html_chars": 68910,
+ "sha256": "541f261917607019a824e18abfbd83ce4009fa735a986860f7fdf7a854364b7d",
+ "fetched_at": "2026-10-03T08:57:40+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/treemap",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-treemap.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.67,
+ "markdown_chars": 3818,
+ "raw_html_chars": 3769,
+ "sha256": "fc70b1aae74fd46a1c63eb55faa27522f98a1fa4849c7281aeb8ab7ca8c8117d",
+ "fetched_at": "2026-10-03T08:59:42+00:00"
+}

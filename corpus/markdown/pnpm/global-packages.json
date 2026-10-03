@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/global-packages",
+ "file": "markdown/pnpm/global-packages.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.68,
+ "markdown_chars": 14235,
+ "raw_html_chars": 24879,
+ "sha256": "56c65776e57a9f902fcf0faa5d5f1fe4ced22828c0ab50d6cbd81d0cf5e6428e",
+ "fetched_at": "2026-10-03T08:58:47+00:00"
+}

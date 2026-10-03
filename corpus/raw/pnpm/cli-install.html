@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm install | pnpm</title>
+    <meta name="description" content="Aliases: i" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm install | pnpm" />
+    <meta property="og:description" content="Aliases: i" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm install | pnpm" />
+    <meta name="twitter:description" content="Aliases: i" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/install" />
+    <meta property="og:url" content="https://pnpm.io/cli/install" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/install" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/install" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/install" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/install" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/install" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/install" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/install" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/install" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/install" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/install" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/install" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/install" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/install" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/install" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm install</h1><p>Aliases: <code>i</code></p>
+<p><code>pnpm install</code> is used to install all dependencies for a project.</p>
+<p>In a CI environment, installation fails if a lockfile is present but needs an
+update. To allow lockfile updates in CI, run <code>pnpm install --no-frozen-lockfile</code>.</p>
+<p>Inside a <a href="/workspaces">workspace</a>, <code>pnpm install</code> installs all dependencies in all the
+projects. If you want to disable this behavior, set the <code>recursive-install</code>
+setting to <code>false</code>.</p>
+<p>When a workspace project changes, unchanged direct dependencies in other projects
+keep their locked versions if those versions still satisfy their declared ranges.
+Use <a href="/cli/update"><code>pnpm update</code></a> to request dependency updates.</p>
+<p><img src="/docs-assets/12.x/img/demos/pnpm-install.svg" alt=""></p>
+<h2 id="tldr">TL;DR<a class="hash-link" href="#tldr" aria-label="Direct link to TL;DR">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Meaning</th></tr></thead><tbody><tr><td><code>pnpm i --offline</code></td><td>Install offline from the store only</td></tr><tr><td><code>pnpm i --frozen-lockfile</code></td><td><code>pnpm-lock.yaml</code> is not updated</td></tr><tr><td><code>pnpm i --lockfile-only</code></td><td>Only <code>pnpm-lock.yaml</code> is updated</td></tr><tr><td><code>pnpm i --dry-run</code></td><td>Preview changes without writing</td></tr></tbody></table></div>
+<h2 id="options-for-filtering-dependencies">Options for filtering dependencies<a class="hash-link" href="#options-for-filtering-dependencies" aria-label="Direct link to Options for filtering dependencies">#</a></h2>
+<p>Without a lockfile, pnpm has to create one, and it must be consistent regardless of dependencies
+filtering, so running <code>pnpm install --prod</code> on a directory without a lockfile would still resolve the
+dev dependencies, and it would error if the resolution is unsuccessful. The only exception for this rule
+are <code>link:</code> dependencies.</p>
+<p>Without <code>--frozen-lockfile</code>, pnpm will check for outdated information from <code>file:</code> dependencies, so
+running <code>pnpm install --prod</code> without <code>--frozen-lockfile</code> on an environment where the target of <code>file:</code>
+has been removed would error.</p>
+<h3 id="--prod--p">--prod, -P<a class="hash-link" href="#--prod--p" aria-label="Direct link to --prod, -P">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If <code>true</code>, pnpm will not install any package listed in <code>devDependencies</code> and will remove
+those insofar they were already installed.
+If <code>false</code>, pnpm will install all packages listed in <code>devDependencies</code> and <code>dependencies</code>.</p>
+<h3 id="--dev--d">--dev, -D<a class="hash-link" href="#--dev--d" aria-label="Direct link to --dev, -D">#</a></h3>
+<p>Only <code>devDependencies</code> are installed and <code>dependencies</code> are removed insofar they
+were already installed.</p>
+<h3 id="--no-optional">--no-optional<a class="hash-link" href="#--no-optional" aria-label="Direct link to --no-optional">#</a></h3>
+<p><code>optionalDependencies</code> are not installed.</p>
+<h3 id="--no-runtime">--no-runtime<a class="hash-link" href="#--no-runtime" aria-label="Direct link to --no-runtime">#</a></h3>
+<p>Added in: v11.1.0</p>
+<p>Skip installing runtime entries (e.g. Node.js downloaded via <a href="/package_json#devenginesruntime"><code>devEngines.runtime</code></a>). The lockfile is left untouched, so frozen installs still validate; only the runtime fetch and bin-linking are skipped.</p>
+<p>This is useful in CI matrices where the runtime is provisioned externally (e.g. via <code>pnpm runtime -g set node &#x3C;version></code>) before <code>pnpm install</code> runs.</p>
+<p>This can also be set via the <code>runtime=false</code> config in <code>pnpm-workspace.yaml</code>.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--ignore-workspace">--ignore-workspace<a class="hash-link" href="#--ignore-workspace" aria-label="Direct link to --ignore-workspace">#</a></h3>
+<p>Added in: v6.25.0</p>
+<p>Install the current project as a standalone project, without discovering a
+<code>pnpm-workspace.yaml</code> in a parent directory. The workspace's settings and other
+projects do not apply. See the <a href="/pnpm-cli#--ignore-workspace"><code>--ignore-workspace</code> global option</a>.</p>
+<h3 id="--force">--force<a class="hash-link" href="#--force" aria-label="Direct link to --force">#</a></h3>
+<p>Force reinstall dependencies: refetch packages modified in store, recreate a lockfile and/or modules directory created by a non-compatible version of pnpm. <code>--force</code> also lifts <a href="/settings/cli#enginestrict"><code>engineStrict</code></a>.</p>
+<p>Since v12.7.0, <code>--force</code> no longer installs optional dependencies whose <code>os</code>, <code>cpu</code>, or <code>libc</code> do not match the host. Set <a href="/settings/dependency-resolution#forceignoresplatform"><code>forceIgnoresPlatform</code></a> to <code>true</code> to install them anyway.</p>
+<h3 id="--offline">--offline<a class="hash-link" href="#--offline" aria-label="Direct link to --offline">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If <code>true</code>, pnpm will use only packages already available in the store.
+If a package won't be found locally, the installation will fail.</p>
+<h3 id="--prefer-offline">--prefer-offline<a class="hash-link" href="#--prefer-offline" aria-label="Direct link to --prefer-offline">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If <code>true</code>, staleness checks for cached data will be bypassed, but missing data
+will be requested from the server. To force full offline mode, use <code>--offline</code>.</p>
+<h3 id="--no-lockfile">--no-lockfile<a class="hash-link" href="#--no-lockfile" aria-label="Direct link to --no-lockfile">#</a></h3>
+<p>Don't read or generate a <code>pnpm-lock.yaml</code> file.</p>
+<h3 id="--lockfile-only">--lockfile-only<a class="hash-link" href="#--lockfile-only" aria-label="Direct link to --lockfile-only">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When used, only updates <code>pnpm-lock.yaml</code> and <code>package.json</code>. Nothing gets written to the <code>node_modules</code> directory.</p>
+<h3 id="--dry-run">--dry-run<a class="hash-link" href="#--dry-run" aria-label="Direct link to --dry-run">#</a></h3>
+<p>Added in: v11.8.0</p>
+<p>Run a full dependency resolution and report what a real install would change, without writing anything to disk. No lockfile, manifest, or <code>node_modules</code> changes are saved.</p>
+<p>A completed dry run exits with code 0, even when it reports that a real install would update the lockfile.</p>
+<p><code>--dry-run</code> cannot be used with a configured pnpr server, because that install path resolves and links through the server.</p>
+<h3 id="--fix-lockfile">--fix-lockfile<a class="hash-link" href="#--fix-lockfile" aria-label="Direct link to --fix-lockfile">#</a></h3>
+<p>Fix broken lockfile entries automatically.</p>
+<h3 id="--update-checksums">--update-checksums<a class="hash-link" href="#--update-checksums" aria-label="Direct link to --update-checksums">#</a></h3>
+<p>Added in: v11.4.0</p>
+<p>Refresh the locked tarball integrity values from what the registry currently serves, when a downloaded tarball's hash doesn't match the integrity recorded in <code>pnpm-lock.yaml</code>.</p>
+<p>By default, since v11.4.0, an integrity mismatch is a hard failure: <code>pnpm install</code> exits with <code>ERR_PNPM_TARBALL_INTEGRITY</code> rather than silently re-resolving from the registry and overwriting the locked integrity. This protects projects that ship a committed lockfile from a compromised registry, proxy, or republished version substituting attacker-controlled content on a clean machine.</p>
+<p><code>--update-checksums</code> is the narrowly-scoped opt-in for the legitimate case (e.g. a registry rewrote its tarballs and you've verified the new bytes are correct). A warning still prints when the bypass takes effect so the operation is auditable.</p>
+<p><code>--force</code> and <code>pnpm update</code> deliberately do <strong>not</strong> bypass the integrity check. <code>--frozen-lockfile</code> is unchanged, and <code>--fix-lockfile</code> keeps its documented purpose (filling in missing lockfile entries) and is also not a bypass.</p>
+<h3 id="--frozen-lockfile">--frozen-lockfile<a class="hash-link" href="#--frozen-lockfile" aria-label="Direct link to --frozen-lockfile">#</a></h3>
+<ul>
+<li>Default:
+<ul>
+<li>For non-CI: <strong>false</strong></li>
+<li>For CI: <strong>true</strong>, if a lockfile is present</li>
+</ul>
+</li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If <code>true</code>, pnpm doesn't generate a lockfile and fails to install if the lockfile
+is out of sync with the manifest / an update is needed or no lockfile is
+present.</p>
+<p>This setting is <code>true</code> by default in <a href="https://github.com/watson/ci-info#supported-ci-tools">CI environments</a>. The following code is used to detect CI environments:</p>
+<div class="code-block"><div class="code-block-title">https://github.com/watson/ci-info/blob/44e98cebcdf4403f162195fbcf90b1f69fc6e047/index.js#L54-L61</div><pre><code class="hljs language-js"><span class="hljs-built_in">exports</span>.<span class="hljs-property">isCI</span> = !!(
+  env.<span class="hljs-property">CI</span> || <span class="hljs-comment">// Travis CI, CircleCI, Cirrus CI, GitLab CI, Appveyor, CodeShip, dsari</span>
+  env.<span class="hljs-property">CONTINUOUS_INTEGRATION</span> || <span class="hljs-comment">// Travis CI, Cirrus CI</span>
+  env.<span class="hljs-property">BUILD_NUMBER</span> || <span class="hljs-comment">// Jenkins, TeamCity</span>
+  env.<span class="hljs-property">RUN_ID</span> || <span class="hljs-comment">// TaskCluster, dsari</span>
+  <span class="hljs-built_in">exports</span>.<span class="hljs-property">name</span> ||
+  <span class="hljs-literal">false</span>
+)
+</code></pre></div>
+<h3 id="--no-frozen-lockfile">--no-frozen-lockfile<a class="hash-link" href="#--no-frozen-lockfile" aria-label="Direct link to --no-frozen-lockfile">#</a></h3>
+<p>Allows lockfile updates during installation. This is the inverse of <code>--frozen-lockfile</code>.</p>
+<h3 id="--merge-git-branch-lockfiles">--merge-git-branch-lockfiles<a class="hash-link" href="#--merge-git-branch-lockfiles" aria-label="Direct link to --merge-git-branch-lockfiles">#</a></h3>
+<p>Merge all git branch lockfiles.
+<a href="../git_branch_lockfiles">Read more about git branch lockfiles.</a></p>
+<h3 id="--reportername">--reporter=&#x3C;name><a class="hash-link" href="#--reportername" aria-label="Direct link to --reporter=<name>">#</a></h3>
+<ul>
+<li>Default:
+<ul>
+<li>For TTY stdout: <strong>default</strong></li>
+<li>For non-TTY stdout: <strong>append-only</strong></li>
+</ul>
+</li>
+<li>Type: <strong>default</strong>, <strong>append-only</strong>, <strong>ndjson</strong>, <strong>silent</strong></li>
+</ul>
+<p>Allows you to choose the reporter that will log debug info to the terminal about
+the installation progress.</p>
+<ul>
+<li><strong>silent</strong> - no output is logged to the console, not even fatal errors</li>
+<li><strong>default</strong> - the default reporter when the stdout is TTY</li>
+<li><strong>append-only</strong> - the output is always appended to the end. No cursor manipulations are performed</li>
+<li><strong>ndjson</strong> - the most verbose reporter. Prints all logs in <a href="https://github.com/ndjson/ndjson-spec">ndjson</a> format</li>
+</ul>
+<p>If you want to change what type of information is printed, use the <a href="/settings/cli#loglevel">loglevel</a> setting.</p>
+<h3 id="--shamefully-hoist">--shamefully-hoist<a class="hash-link" href="#--shamefully-hoist" aria-label="Direct link to --shamefully-hoist">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Creates a flat <code>node_modules</code> structure, similar to that of <code>npm</code> or <code>yarn</code>.
+<strong>WARNING</strong>: This is highly discouraged.</p>
+<h3 id="--ignore-scripts">--ignore-scripts<a class="hash-link" href="#--ignore-scripts" aria-label="Direct link to --ignore-scripts">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Do not execute any scripts defined in the project <code>package.json</code> and its
+dependencies.</p>
+<h3 id="--allow-build">--allow-build<a class="hash-link" href="#--allow-build" aria-label="Direct link to --allow-build">#</a></h3>
+<p>Added in: v12.7.0</p>
+<p>Allow the named package to run its lifecycle scripts during this install, and
+record it in the <a href="/settings/build#allowbuilds"><code>allowBuilds</code></a> field of
+<code>pnpm-workspace.yaml</code> so it stays allowed. Prefix a name with <code>!</code> to deny its
+scripts instead. The option can be repeated:</p>
+<pre><code class="hljs language-sh">pnpm install --allow-build=esbuild --allow-build=<span class="hljs-string">'!core-js'</span>
+</code></pre>
+<p>The quotes keep a POSIX shell from treating <code>!</code> as history expansion. In
+Windows <code>cmd.exe</code>, leave them out.</p>
+<p>writes:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">allowBuilds:</span>
+  <span class="hljs-attr">esbuild:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">core-js:</span> <span class="hljs-literal">false</span>
+</code></pre></div>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p>
+<h3 id="--cpuname">--cpu=&#x3C;name><a class="hash-link" href="#--cpuname" aria-label="Direct link to --cpu=<name>">#</a></h3>
+<p>Added in: v10.14.0</p>
+<p>Override CPU architecture of native modules to install. Acceptable values are same as <code>cpu</code> field of <code>package.json</code>, which comes from <code>process.arch</code>.</p>
+<h3 id="--osname">--os=&#x3C;name><a class="hash-link" href="#--osname" aria-label="Direct link to --os=<name>">#</a></h3>
+<p>Added in: v10.14.0</p>
+<p>Override OS of native modules to install. Acceptable values are same as <code>os</code> field of <code>package.json</code>, which comes from <code>process.platform</code>.</p>
+<h3 id="--libcname">--libc=&#x3C;name><a class="hash-link" href="#--libcname" aria-label="Direct link to --libc=<name>">#</a></h3>
+<p>Added in: v10.14.0</p>
+<p>Override libc of native modules to install. Acceptable values are same as <code>libc</code> field of <code>package.json</code>.</p></article></main></div>
+  </body>
+</html>

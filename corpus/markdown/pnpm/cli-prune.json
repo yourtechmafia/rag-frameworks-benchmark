@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/prune",
+ "file": "markdown/pnpm/cli-prune.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.8,
+ "markdown_chars": 500,
+ "raw_html_chars": 5393,
+ "sha256": "3a8af8473fd73b8afe38b3a7f415588af2e373e7941c30138a9c0c5a181ff87a",
+ "fetched_at": "2026-10-03T08:58:25+00:00"
+}

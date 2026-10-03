@@ -1,0 +1,50 @@
+
+
+
+
+
+pnpm cache delete | pnpm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pnpm cache deleteWarning
+This command is experimental
+
+Deletes metadata cache for the specified package(s). Supports patterns.
+
+

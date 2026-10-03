@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/authentication/cli/",
+ "file": "markdown/uv/uv-concepts-authentication-cli.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.01,
+ "markdown_chars": 8918,
+ "raw_html_chars": 70901,
+ "sha256": "b6401212dc58e790f2b83f082c87d988e94a8ddc1c29a66483db396103c6fb2c",
+ "fetched_at": "2026-10-03T08:57:19+00:00"
+}

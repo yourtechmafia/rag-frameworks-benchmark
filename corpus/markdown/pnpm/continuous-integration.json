@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/continuous-integration",
+ "file": "markdown/pnpm/continuous-integration.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.22,
+ "markdown_chars": 10923,
+ "raw_html_chars": 29584,
+ "sha256": "9b3e2a584903edac8fd02c8d8840aaa9649906795e261f672f7d2087c1040b36",
+ "fetched_at": "2026-10-03T08:58:43+00:00"
+}

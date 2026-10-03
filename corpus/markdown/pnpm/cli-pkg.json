@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/pkg",
+ "file": "markdown/pnpm/cli-pkg.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.88,
+ "markdown_chars": 2408,
+ "raw_html_chars": 8480,
+ "sha256": "f4566cd618df5ba448a7b8850cbca26807b77f378ced94ecfa6c33bde8f9ece7",
+ "fetched_at": "2026-10-03T08:58:21+00:00"
+}

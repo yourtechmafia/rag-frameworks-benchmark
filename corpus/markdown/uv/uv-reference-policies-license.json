@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/policies/license/",
+ "file": "markdown/uv/uv-reference-policies-license.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.32,
+ "markdown_chars": 5355,
+ "raw_html_chars": 61639,
+ "sha256": "239efb8d2d6b7fbd55a3568b8091bb925b507c59adab7f139c1bfa9d64025ca5",
+ "fetched_at": "2026-10-03T08:57:43+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/aws/",
+ "file": "markdown/uv/uv-guides-integration-aws.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.44,
+ "markdown_chars": 9488,
+ "raw_html_chars": 74135,
+ "sha256": "1536167c1fb007415c9eeedefd69ba7876e32d5fc7b87b19b22450f7e016c869",
+ "fetched_at": "2026-10-03T08:57:28+00:00"
+}

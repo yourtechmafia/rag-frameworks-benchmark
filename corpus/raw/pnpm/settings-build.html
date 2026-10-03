@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Settings | pnpm</title>
+    <meta name="description" content="Do not execute any scripts defined in the project package.json and its dependencies." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Build Settings | pnpm" />
+    <meta property="og:description" content="Do not execute any scripts defined in the project package.json and its dependencies." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Build Settings | pnpm" />
+    <meta name="twitter:description" content="Do not execute any scripts defined in the project package.json and its dependencies." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/build" />
+    <meta property="og:url" content="https://pnpm.io/settings/build" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/build" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/build" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/build" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/build" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/build" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/build" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/build" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/build" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/build" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/build" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/build" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/build" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/build" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/build" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Build Settings</h1><h3 id="ignorescripts">ignoreScripts<a class="hash-link" href="#ignorescripts" aria-label="Direct link to ignoreScripts">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Do not execute any scripts defined in the project <code>package.json</code> and its
+dependencies.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>This flag does not prevent the execution of <a href="/pnpmfile">.pnpmfile.mjs</a></p>
+</div>
+<h3 id="childconcurrency">childConcurrency<a class="hash-link" href="#childconcurrency" aria-label="Direct link to childConcurrency">#</a></h3>
+<ul>
+<li>Default: <strong>5</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>The maximum number of child processes to allocate simultaneously to build
+node_modules.</p>
+<h3 id="sideeffectscache">sideEffectsCache<a class="hash-link" href="#sideeffectscache" aria-label="Direct link to sideEffectsCache">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean or Object</strong></li>
+</ul>
+<p>Use and cache the results of (pre/post)install hooks.</p>
+<p>When a pre/post install script modify the contents of a package (e.g. build output), pnpm saves the modified package in the global store. On future installs on the same machine, pnpm reuses this cached, prebuilt version—making installs significantly faster.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>You may want to disable this setting if:</p>
+<ol>
+<li>The install scripts modify files <em>outside</em> the package directory (pnpm cannot track or cache these changes).</li>
+<li>The scripts perform side effects that are unrelated to building the package.</li>
+</ol>
+</div>
+<p>An object says the same thing in more detail, and is the canonical way to
+declare the remote tier:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">sideEffectsCache:</span>
+  <span class="hljs-attr">read:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">write:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">remote:</span>
+    <span class="hljs-attr">org:</span> <span class="hljs-string">acme</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">native-addon</span>
+</code></pre></div>
+<ul>
+<li><code>read</code> — restore a build from the cache when one is present. Default <strong>true</strong>.</li>
+<li><code>write</code> — save a package's build output to the cache. Default <strong>true</strong>.</li>
+<li><code>remote</code> — reuse builds across machines; see below.</li>
+</ul>
+<p><code>sideEffectsCache: true</code> is the shorthand for reading and writing, and is what
+the setting meant before it grew a remote tier. Writing without reading
+(<code>read: false, write: true</code>) populates a cache the run never consumes, which is
+what a job that warms one for others wants.</p>
+<p>Since v12.2.0, the <code>--side-effects-cache</code> and <code>--no-side-effects-cache</code> flags, and
+<code>PNPM_CONFIG_SIDE_EFFECTS_CACHE</code>, toggle the <strong>local</strong> cache only. A remote tier
+declared under <code>sideEffectsCache.remote</code> is left in place, so a run can turn the
+local cache off without losing the shared one.</p>
+<h3 id="sideeffectscachereadonly">sideEffectsCacheReadonly<a class="hash-link" href="#sideeffectscachereadonly" aria-label="Direct link to sideEffectsCacheReadonly">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Only use the side effects cache if present, do not create it for new packages.
+The older spelling of <code>sideEffectsCache: { read: true, write: false }</code>.</p>
+<h3 id="sideeffectscacheremote">sideEffectsCache.remote<a class="hash-link" href="#sideeffectscacheremote" aria-label="Direct link to sideEffectsCache.remote">#</a></h3>
+<p>Added in: v12.0.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>Object</strong></li>
+</ul>
+<p>Opt in to reusing a dependency's build output across machines, by restoring
+signed, organization-scoped artifacts through a <a href="/pnpr">pnpr</a> server instead of
+running the package's lifecycle scripts locally. This is a proof of concept: it
+is off unless configured, it needs a pnpr server started with
+<code>artifacts.enabled: true</code>, and it restores artifacts on Linux/glibc, macOS, and
+Windows, on x64 and arm64. Other operating systems and libc families build
+locally.</p>
+<p>A repository declares eligibility and nothing else:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">pnprServer:</span> <span class="hljs-string">http://127.0.0.1:7677</span>
+<span class="hljs-attr">allowBuilds:</span>
+  <span class="hljs-attr">native-addon:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">sideEffectsCache:</span>
+  <span class="hljs-attr">remote:</span>
+    <span class="hljs-attr">org:</span> <span class="hljs-string">acme</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">native-addon</span>
+</code></pre></div>
+<p>Declaring only <code>remote</code> leaves <code>read</code> and <code>write</code> at their defaults, so the
+local cache keeps working as it did.</p>
+<p><code>packages</code> is an eligibility list, not a permission: a package is only a
+candidate when it also passes <a href="#allowbuilds"><code>allowBuilds</code></a>, has
+<code>requiresBuild: true</code>, and has a verified source integrity. Listing a package
+here does not review its build scripts for you — under the default
+<a href="#strictdepbuilds"><code>strictDepBuilds</code></a> an install still fails with
+<code>ERR_PNPM_IGNORED_BUILDS</code> when it reaches a build nobody has ruled on, and a
+package denied with <code>allowBuilds: false</code> is never built, from the cache or
+otherwise.</p>
+<p>Everything describing the <em>act of signing</em> — <code>publish</code>, <code>keyId</code>, <code>builderId</code>,
+<code>imageDigest</code>, <code>architectureBaseline</code>, <code>buildEnv</code>, <code>trustedKeys</code> and
+<code>privateKey</code> — is refused in <code>pnpm-workspace.yaml</code> with
+<code>ERR_PNPM_WORKSPACE_REMOTE_SIDE_EFFECTS_TRUST</code>, and is read from the <a href="/cli/config">global
+configuration file</a> or the environment instead. A cloned
+repository is not a trust root, and must not be able to turn the machine's
+signing key into a signing oracle.</p>
+<p>Any cache failure — an unreachable server, an unverifiable signature, an
+incompatible platform, a bad blob — falls back to the ordinary local build. See
+<a href="/pnpr/shared-side-effects-cache">Shared side-effects cache</a> for the full setup,
+including the server flag, the trust material, and how an artifact is published.</p>
+<p>Since v12.1.0, a restored artifact is saved in the shared store
+together with its signed origin. Before a later install reuses it, pnpm checks
+the signature again against the machine's current keys and revalidates its
+owner, package and source identity, platform, policy, and stored files. A bad
+remote variant is quarantined for that pnpr server and is not selected again.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p><code>remoteSideEffectsCache</code> is the older spelling of this setting, and
+<code>organization</code> of its <code>org</code> field; both still work.</p>
+<p>The two spellings are merged, not chosen between: a field set under both takes
+its value from <code>sideEffectsCache.remote</code>, and a field set under only one is kept
+either way. That is what lets a repository declare the org in
+<code>pnpm-workspace.yaml</code> while the machine supplies the signing key from the global
+config under whichever spelling it already used.</p>
+</div>
+<h3 id="unsafeperm">unsafePerm<a class="hash-link" href="#unsafeperm" aria-label="Direct link to unsafePerm">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong> IF running as root, ELSE <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Set to true to enable UID/GID switching when running package scripts.
+If set explicitly to false, then installing as a non-root user will fail.</p>
+<h3 id="nodeoptions">nodeOptions<a class="hash-link" href="#nodeoptions" aria-label="Direct link to nodeOptions">#</a></h3>
+<ul>
+<li>Default: <strong>NULL</strong></li>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>Options to pass through to Node.js via the <code>NODE_OPTIONS</code> environment variable. This does not impact how pnpm itself is executed but it does impact how lifecycle scripts are called.</p>
+<p>To preserve existing <code>NODE_OPTIONS</code> you can reference the existing environment variable using <code>${NODE_OPTIONS}</code> in your configuration:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">nodeOptions:</span> <span class="hljs-string">"${NODE_OPTIONS:- } --experimental-vm-modules"</span>
+</code></pre>
+<h3 id="verifydepsbeforerun">verifyDepsBeforeRun<a class="hash-link" href="#verifydepsbeforerun" aria-label="Direct link to verifyDepsBeforeRun">#</a></h3>
+<ul>
+<li>Default: <strong>install</strong></li>
+<li>Type: <strong>install</strong>, <strong>warn</strong>, <strong>error</strong>, <strong>prompt</strong>, <strong>false</strong></li>
+</ul>
+<p>This setting allows the checking of the state of dependencies before running scripts. The check runs on <code>pnpm run</code> and <code>pnpm exec</code> commands. The following values are supported:</p>
+<ul>
+<li><code>install</code> - Automatically runs install if <code>node_modules</code> is not up to date. If that install fails, for example because the store is read-only or there is no network, pnpm prints a warning and runs the command anyway.</li>
+<li><code>warn</code> - Prints a warning if <code>node_modules</code> is not up to date.</li>
+<li><code>prompt</code> - Prompts the user for permission to run install if <code>node_modules</code> is not up to date.</li>
+<li><code>error</code> - Throws an error if <code>node_modules</code> is not up to date.</li>
+<li><code>false</code> - Disables dependency checks.</li>
+</ul>
+<h3 id="strictdepbuilds">strictDepBuilds<a class="hash-link" href="#strictdepbuilds" aria-label="Direct link to strictDepBuilds">#</a></h3>
+<p>Added in: v10.3.0</p>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>strictDepBuilds</code> is enabled, the installation will exit with a non-zero exit code if any dependencies have unreviewed build scripts (aka postinstall scripts).</p>
+<h3 id="allowbuilds">allowBuilds<a class="hash-link" href="#allowbuilds" aria-label="Direct link to allowBuilds">#</a></h3>
+<p>Added in: v10.26.0</p>
+<p>A map of package matchers to explicitly allow (<code>true</code>) or disallow (<code>false</code>) script execution.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">allowBuilds:</span>
+  <span class="hljs-attr">esbuild:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">core-js:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-comment"># nx versions with build scripts not listed below will</span>
+  <span class="hljs-comment"># fail by default with ERR_PNPM_IGNORED_BUILDS</span>
+  <span class="hljs-string">nx@21.6.4</span> <span class="hljs-string">||</span> <span class="hljs-attr">21.6.5:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">nx@21.6.0:</span> <span class="hljs-literal">false</span>
+</code></pre>
+<p><strong>Git-hosted packages:</strong> a package name on its own never approves builds for a git or tarball dependency — the name alone does not identify the artifact. Approve one either by its exact resolved path (including the commit) or, since v11.11.0, by its repository URL:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">allowBuilds:</span>
+  <span class="hljs-comment"># Approves any commit from this repository</span>
+  <span class="hljs-string">'foo@git+ssh://git@example.com/org/foo.git'</span><span class="hljs-string">:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-comment"># Approves only this exact commit</span>
+  <span class="hljs-string">'bar@git+https://github.com/org/bar.git#abc123'</span><span class="hljs-string">:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>The repository form lets a trusted git dependency keep running its build scripts across branch updates without re-approving each new commit. The key is the package name, followed by <code>@</code> and the git URL, with no <code>#&#x3C;ref></code> suffix. Matching is exact, so <code>git+ssh://</code> and <code>git+https://</code> URLs for the same repository are separate keys.</p>
+<p>Since v11.19.0, the repository form also approves git-hosted packages that pnpm downloads as a tarball rather than clones — such as <code>github:</code> dependencies, which are fetched from <code>codeload.github.com</code>. A <code>foo@git+https://github.com/org/foo.git</code> entry approves <code>foo</code> whether pnpm clones the repository or downloads a tarball. GitLab and Bitbucket tarball downloads are matched the same way. Approving or denying a specific resolved commit by its full tarball dep path continues to work.</p>
+<p>Denials by package name are not restricted this way: <code>foo: false</code> blocks <code>foo</code> whether it comes from the registry or from git.</p>
+<p><strong>Default behavior:</strong> Packages not listed in <code>allowBuilds</code> are disallowed by default and are treated as unreviewed. By default, an error is printed (<a href="#strictdepbuilds"><code>strictDepBuilds</code></a> defaults to <code>true</code>). If <code>strictDepBuilds</code> is set to <code>false</code>, a warning is printed instead.</p>
+<p>During install, dependencies with ignored builds that are not yet listed in <code>allowBuilds</code> are automatically added to <code>pnpm-workspace.yaml</code> with a placeholder value, so you can manually set them to <code>true</code> or <code>false</code>. The <a href="/cli/add#--allow-build"><code>--allow-build</code></a> flag on <code>pnpm add</code> and <code>pnpm approve-builds</code> writes its entries here as well.</p>
+<p><strong>Patched packages:</strong> since v12.4.0, a <a href="/cli/patch">patch</a> that adds an install script or a <code>binding.gyp</code> makes the package buildable, and the build goes through the same approval. Until the package is allowed, it is listed under "Ignored build scripts".</p>
+<div class="admonition admonition-info"><p class="admonition-title">Migrating from older settings</p>
+<p>To migrate these settings automatically, run <code>pnpx codemod run pnpm-v10-to-v11</code> from the <a href="/migration">Migrating from v10 to v11</a> guide.</p>
+<p>The following settings have been removed in v11 and replaced by <code>allowBuilds</code>: <code>onlyBuiltDependencies</code>, <code>onlyBuiltDependenciesFile</code>, <code>neverBuiltDependencies</code>, <code>ignoredBuiltDependencies</code>, and <code>ignoreDepScripts</code>.</p>
+<p>Before:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">onlyBuiltDependencies:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">electron</span>
+<span class="hljs-attr">neverBuiltDependencies:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">core-js</span>
+<span class="hljs-attr">ignoredBuiltDependencies:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">esbuild</span>
+</code></pre>
+<p>After:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">allowBuilds:</span>
+  <span class="hljs-attr">electron:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">core-js:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">esbuild:</span> <span class="hljs-literal">false</span>
+</code></pre>
+</div>
+<h3 id="dangerouslyallowallbuilds">dangerouslyAllowAllBuilds<a class="hash-link" href="#dangerouslyallowallbuilds" aria-label="Direct link to dangerouslyAllowAllBuilds">#</a></h3>
+<p>Added in: v10.9.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>If set to <code>true</code>, all build scripts (e.g. <code>preinstall</code>, <code>install</code>, <code>postinstall</code>) from dependencies will run automatically, without requiring approval.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>This setting allows all dependencies—including transitive ones—to run install scripts, both now and in the future.
+Even if your current dependency graph appears safe:</p>
+<ul>
+<li>Future updates may introduce new, untrusted dependencies.</li>
+<li>Existing packages may add scripts in later versions.</li>
+<li>Packages can be hijacked or compromised and begin executing malicious code.</li>
+</ul>
+<p>For maximum safety, only enable this if you’re fully aware of the risks and trust the entire ecosystem you’re pulling from. It’s recommended to review and allow builds explicitly.</p>
+</div></article></main></div>
+  </body>
+</html>

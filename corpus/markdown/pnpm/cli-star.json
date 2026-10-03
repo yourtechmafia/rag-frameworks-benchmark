@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/star",
+ "file": "markdown/pnpm/cli-star.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.9,
+ "markdown_chars": 529,
+ "raw_html_chars": 5300,
+ "sha256": "132beae1789b4443e629292837b993e40bfa10a1626e2a7e4deac4d391d1f8ef",
+ "fetched_at": "2026-10-03T08:58:35+00:00"
+}

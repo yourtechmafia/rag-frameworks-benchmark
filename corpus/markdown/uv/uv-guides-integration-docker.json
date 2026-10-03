@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/docker/",
+ "file": "markdown/uv/uv-guides-integration-docker.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.39,
+ "markdown_chars": 28052,
+ "raw_html_chars": 130343,
+ "sha256": "b33d109de2265c57617131fb54977575965a50e9e69b3f3b462304c24f7271fd",
+ "fetched_at": "2026-10-03T08:57:30+00:00"
+}

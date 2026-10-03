@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/pip/environments/",
+ "file": "markdown/uv/uv-pip-environments.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.82,
+ "markdown_chars": 12206,
+ "raw_html_chars": 75330,
+ "sha256": "1f89d94bce4bd4f86649ce54da9cbef5fb96a4cf010e3e1d3784d558fe66b68a",
+ "fetched_at": "2026-10-03T08:57:37+00:00"
+}

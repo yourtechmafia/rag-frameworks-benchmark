@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/getting-started/first-steps/",
+ "file": "markdown/uv/uv-getting-started-first-steps.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.08,
+ "markdown_chars": 5465,
+ "raw_html_chars": 63760,
+ "sha256": "009b1e24bf99145e3d0d848b25290f96a04f1ca5391bbea2efe2fc10a8d44f1d",
+ "fetched_at": "2026-10-03T08:57:25+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/sankey",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-sankey.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 9.32,
+ "markdown_chars": 2242,
+ "raw_html_chars": 3769,
+ "sha256": "7f8cc8b9619095a017278b3b7b8ee6fa1682ac19a9a8436b8ed76f65edba876d",
+ "fetched_at": "2026-10-03T08:59:50+00:00"
+}

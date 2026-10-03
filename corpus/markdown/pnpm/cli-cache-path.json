@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/cache-path",
+ "file": "markdown/pnpm/cli-cache-path.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.82,
+ "markdown_chars": 1233,
+ "raw_html_chars": 6547,
+ "sha256": "e1a599483ac4ddcd88ccb48dbb810ad59d4c7dcdf3c66a75ee5cc45cdd4faaa1",
+ "fetched_at": "2026-10-03T08:57:50+00:00"
+}

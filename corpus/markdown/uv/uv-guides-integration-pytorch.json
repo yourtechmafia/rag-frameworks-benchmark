@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/pytorch/",
+ "file": "markdown/uv/uv-guides-integration-pytorch.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.17,
+ "markdown_chars": 21476,
+ "raw_html_chars": 138953,
+ "sha256": "3e9f2a0e85187d6220094ff9dd419be6f9df76f93925bc07df51556790e4e081",
+ "fetched_at": "2026-10-03T08:57:32+00:00"
+}

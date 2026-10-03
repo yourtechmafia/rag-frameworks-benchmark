@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/policies/rust/",
+ "file": "markdown/uv/uv-reference-policies-rust.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.88,
+ "markdown_chars": 5396,
+ "raw_html_chars": 62216,
+ "sha256": "4df163db0f543080078737a6c901b3fccf469e15ee266c8ba77e44bc9519b94a",
+ "fetched_at": "2026-10-03T08:57:43+00:00"
+}

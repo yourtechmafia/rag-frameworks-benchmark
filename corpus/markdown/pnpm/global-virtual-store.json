@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/global-virtual-store",
+ "file": "markdown/pnpm/global-virtual-store.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.89,
+ "markdown_chars": 6514,
+ "raw_html_chars": 13510,
+ "sha256": "d06a78cbd10338b752761a2001d0af5b5a5784e88198837021efe11ea2365f46",
+ "fetched_at": "2026-10-03T08:58:47+00:00"
+}

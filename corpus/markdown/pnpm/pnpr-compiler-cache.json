@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/compiler-cache",
+ "file": "markdown/pnpm/pnpr-compiler-cache.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.01,
+ "markdown_chars": 5489,
+ "raw_html_chars": 11586,
+ "sha256": "25f9823a227537210563290b512883246cd6624f212240a61e001a4c96bfda87",
+ "fetched_at": "2026-10-03T08:58:53+00:00"
+}

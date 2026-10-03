@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/charts/kline",
+ "file": "markdown/go-echarts/go-echarts-en-us-charts-kline.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.89,
+ "markdown_chars": 11526,
+ "raw_html_chars": 3769,
+ "sha256": "5f5fb00535df9a42839736e7b7322ec850e71ddba69f5c8baf02f729c6762762",
+ "fetched_at": "2026-10-03T08:59:34+00:00"
+}

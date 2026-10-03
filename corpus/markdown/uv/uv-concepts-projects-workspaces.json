@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/projects/workspaces/",
+ "file": "markdown/uv/uv-concepts-projects-workspaces.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.12,
+ "markdown_chars": 13548,
+ "raw_html_chars": 85773,
+ "sha256": "79aba366d655961a844c26e40ce8e189e2e6ad0c8bdc77847c0650eeb86e98d5",
+ "fetched_at": "2026-10-03T08:57:24+00:00"
+}

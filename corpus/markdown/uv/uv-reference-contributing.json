@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/contributing/",
+ "file": "markdown/uv/uv-reference-contributing.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.8,
+ "markdown_chars": 19697,
+ "raw_html_chars": 101833,
+ "sha256": "e9f77482341429aea0eb58644c40117e6282ab705072c94368182a678548ba01",
+ "fetched_at": "2026-10-03T08:57:39+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "docsify",
+ "url": "https://docsify.js.org/#/quickstart",
+ "file": "markdown/docsify/quickstart.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 2.4,
+ "markdown_chars": 4633,
+ "raw_html_chars": 7894,
+ "sha256": "c27056b3c5a508d17e32f11aa2ea8584bbb20090b7aa3f32ce05d534c613f7cd",
+ "fetched_at": "2026-10-03T08:59:53+00:00"
+}

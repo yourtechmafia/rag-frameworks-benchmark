@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network &amp; Request Settings | pnpm</title>
+    <meta name="description" content="A proxy to use for outgoing HTTPS requests. If the HTTPS_PROXY, https_proxy, HTTP_PROXY or http_proxy environment variables are set, their values will be used instead." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Network &amp; Request Settings | pnpm" />
+    <meta property="og:description" content="A proxy to use for outgoing HTTPS requests. If the HTTPS_PROXY, https_proxy, HTTP_PROXY or http_proxy environment variables are set, their values will be used instead." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Network &amp; Request Settings | pnpm" />
+    <meta name="twitter:description" content="A proxy to use for outgoing HTTPS requests. If the HTTPS_PROXY, https_proxy, HTTP_PROXY or http_proxy environment variables are set, their values will be used instead." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/network" />
+    <meta property="og:url" content="https://pnpm.io/settings/network" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/network" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/network" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/network" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/network" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/network" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/network" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/network" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/network" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/network" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/network" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/network" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/network" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/network" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/network" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Network &amp; Request Settings</h1><h2 id="network-settings">Network Settings<a class="hash-link" href="#network-settings" aria-label="Direct link to Network Settings">#</a></h2>
+<h3 id="httpsproxy">httpsProxy<a class="hash-link" href="#httpsproxy" aria-label="Direct link to httpsProxy">#</a></h3>
+<ul>
+<li>Default: <strong>null</strong></li>
+<li>Type: <strong>url</strong></li>
+</ul>
+<p>A proxy to use for outgoing HTTPS requests. If the <code>HTTPS_PROXY</code>, <code>https_proxy</code>,
+<code>HTTP_PROXY</code> or <code>http_proxy</code> environment variables are set, their values will be
+used instead.</p>
+<p>If your proxy URL contains a username and password, make sure to URL-encode them.
+For instance:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">httpsProxy:</span> <span class="hljs-string">"https://use%21r:pas%2As@my.proxy:1234/foo"</span>
+</code></pre>
+<p>Do not encode the colon (<code>:</code>) between the username and password.</p>
+<p>Since v11.20.0, an empty value reads as unset instead of failing the install with <code>ERR_PNPM_INVALID_PROXY</code>, so a shell that exports <code>HTTPS_PROXY=</code> simply disables the proxy. Setting the value to <code>false</code> or <code>null</code> in <code>pnpm-workspace.yaml</code> or the <code>.npmrc</code> also turns proxying off. On the command line, <code>false</code> and <code>null</code> are ordinary host names, since a flag carries its value verbatim.</p>
+<h3 id="httpproxy">httpProxy<a class="hash-link" href="#httpproxy" aria-label="Direct link to httpProxy">#</a></h3>
+<ul>
+<li>Default: <strong>null</strong></li>
+<li>Type: <strong>url</strong></li>
+</ul>
+<p>A proxy to use for outgoing HTTP requests. If the <code>HTTP_PROXY</code> or <code>http_proxy</code>
+environment variables are set, proxy settings will be honored by the underlying
+request library.</p>
+<p>Empty, <code>false</code>, and <code>null</code> values behave as described for <a href="#httpsproxy"><code>httpsProxy</code></a>.</p>
+<p>The <code>.npmrc</code> also supports npm's legacy <code>proxy</code> setting, which is used as the fallback for both <code>https-proxy</code> and <code>http-proxy</code>. Since v11.20.0, an empty <code>proxy=</code> reads as unset and therefore no longer suppresses the <code>HTTPS_PROXY</code> environment variable, and <code>proxy=false</code> (or <code>proxy: false</code> in <code>pnpm-workspace.yaml</code>) turns proxying off instead of being read as a proxy host named <code>false</code> (<a href="https://github.com/pnpm/pnpm/issues/13533">#13533</a>).</p>
+<h3 id="noproxy">noProxy<a class="hash-link" href="#noproxy" aria-label="Direct link to noProxy">#</a></h3>
+<ul>
+<li>Default: <strong>null</strong></li>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>A comma-separated string of domain extensions that a proxy should not be used for.</p>
+<p>An entry may be written with or without a leading dot: both <code>npmjs.org</code> and <code>.npmjs.org</code> bypass the proxy for the domain itself and for its subdomains.</p>
+<p>Empty, <code>false</code>, and <code>null</code> values behave as described for <a href="#httpsproxy"><code>httpsProxy</code></a>.</p>
+<h3 id="localaddress">localAddress<a class="hash-link" href="#localaddress" aria-label="Direct link to localAddress">#</a></h3>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>IP Address</strong></li>
+</ul>
+<p>The IP address of the local interface to use when making connections to the npm
+registry.</p>
+<h3 id="maxsockets">maxsockets<a class="hash-link" href="#maxsockets" aria-label="Direct link to maxsockets">#</a></h3>
+<ul>
+<li>Default: <strong>networkConcurrency x 3</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>The maximum number of connections to use per origin (protocol/host/port combination).</p>
+<p><code>maxSockets</code> is accepted as an alias. Both spellings are read from
+<code>pnpm-workspace.yaml</code>, the global configuration file, the environment, and the
+command line, in that increasing order of precedence — so a value passed on the
+command line wins even when the two sides spelled the setting differently.</p>
+<h3 id="strictssl">strictSsl<a class="hash-link" href="#strictssl" aria-label="Direct link to strictSsl">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Whether or not to do SSL key validation when making requests to the registry via
+HTTPS.</p>
+<h2 id="request-settings">Request Settings<a class="hash-link" href="#request-settings" aria-label="Direct link to Request Settings">#</a></h2>
+<h3 id="gitshallowhosts">gitShallowHosts<a class="hash-link" href="#gitshallowhosts" aria-label="Direct link to gitShallowHosts">#</a></h3>
+<ul>
+<li>Default: <strong>['github.com', 'gist.github.com', 'gitlab.com', 'bitbucket.com', 'bitbucket.org']</strong></li>
+<li>Type: <strong>string[]</strong></li>
+</ul>
+<p>When fetching dependencies that are Git repositories, if the host is listed in this setting, pnpm will use shallow cloning to fetch only the needed commit, not all the history.</p>
+<h3 id="networkconcurrency">networkConcurrency<a class="hash-link" href="#networkconcurrency" aria-label="Direct link to networkConcurrency">#</a></h3>
+<ul>
+<li>Default: <strong>auto (workers × 3 clamped to 16-64)</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>Controls the maximum number of HTTP(S) requests to process simultaneously.</p>
+<p>As of v10.24.0, pnpm automatically selects a value between 16 and 64 based on the number of workers (networkConcurrency = clamp(workers × 3, 16, 64)). Set this value explicitly to override the automatic scaling.</p>
+<p>If a request times out while other requests to the same host are still in flight, pnpm lowers the limit for that host to one request for the rest of the command. Requests that are already running finish first. Requests to other hosts keep the full limit. Requests sent through the same proxy count as one host.</p>
+<p>To limit requests to one registry, set <a href="/registries#networkconcurrency"><code>networkConcurrency</code></a> on its entry in the <code>registries</code> setting.</p>
+<h3 id="fetchretries">fetchRetries<a class="hash-link" href="#fetchretries" aria-label="Direct link to fetchRetries">#</a></h3>
+<ul>
+<li>Default: <strong>2</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>How many times to retry if pnpm fails to fetch from the registry.</p>
+<h3 id="fetchretryfactor">fetchRetryFactor<a class="hash-link" href="#fetchretryfactor" aria-label="Direct link to fetchRetryFactor">#</a></h3>
+<ul>
+<li>Default: <strong>10</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>The exponential factor for retry backoff.</p>
+<h3 id="fetchretrymintimeout">fetchRetryMintimeout<a class="hash-link" href="#fetchretrymintimeout" aria-label="Direct link to fetchRetryMintimeout">#</a></h3>
+<ul>
+<li>Default: <strong>10000 (10 seconds)</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>The lower bound (in milliseconds) of the retry exponential backoff.</p>
+<h3 id="fetchretrymaxtimeout">fetchRetryMaxtimeout<a class="hash-link" href="#fetchretrymaxtimeout" aria-label="Direct link to fetchRetryMaxtimeout">#</a></h3>
+<ul>
+<li>Default: <strong>60000 (1 minute)</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>The upper bound (in milliseconds) of the retry exponential backoff.</p>
+<h3 id="fetchtimeout">fetchTimeout<a class="hash-link" href="#fetchtimeout" aria-label="Direct link to fetchTimeout">#</a></h3>
+<ul>
+<li>Default: <strong>60000 (1 minute)</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>How long an HTTP request may go without making progress. The clock is reset on every chunk pnpm receives, so a large tarball on a slow connection is not cut off while data is still arriving; a stalled request is.</p>
+<p>Before v12.4.0, this bounded the whole request, which meant the value had to be large enough to download the largest package over the slowest connection you cared about.</p>
+<h3 id="fetchwarntimeoutms">fetchWarnTimeoutMs<a class="hash-link" href="#fetchwarntimeoutms" aria-label="Direct link to fetchWarnTimeoutMs">#</a></h3>
+<p>Added in: v10.18.0</p>
+<ul>
+<li>Default: <strong>10000 ms (10 seconds)</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>A warning message is displayed if a metadata request to the registry takes longer than the specified threshold (in milliseconds).</p>
+<h3 id="fetchminspeedkibps">fetchMinSpeedKiBps<a class="hash-link" href="#fetchminspeedkibps" aria-label="Direct link to fetchMinSpeedKiBps">#</a></h3>
+<p>Added in: v10.18.0</p>
+<ul>
+<li>Default: <strong>50 KiB/s</strong></li>
+<li>Type: <strong>Number</strong></li>
+</ul>
+<p>A warning message is displayed if the download speed of a tarball from the registry falls below the specified threshold (in KiB/s).</p></article></main></div>
+  </body>
+</html>

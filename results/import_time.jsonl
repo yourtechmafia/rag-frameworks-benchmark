@@ -1,0 +1,5 @@
+{"framework": "baseline", "import_s_median": 1.174, "runs": [1.382, 1.215, 1.112, 1.174, 1.183, 1.119, 1.11]}
+{"framework": "langchain", "import_s_median": 1.591, "runs": [1.886, 1.585, 1.608, 1.592, 1.591, 1.575, 1.533]}
+{"framework": "llamaindex", "import_s_median": 2.187, "runs": [2.187, 2.357, 2.131, 2.204, 1.958, 2.311, 2.084]}
+{"framework": "haystack", "import_s_median": 1.373, "runs": [1.596, 1.4, 1.421, 1.358, 1.373, 1.363, 1.36]}
+{"framework": "dspy", "import_s_median": 0.964, "runs": [1.07, 0.957, 0.96, 0.964, 0.956, 0.966, 0.97]}

@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/jfrog/",
+ "file": "markdown/uv/uv-guides-integration-jfrog.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.66,
+ "markdown_chars": 7140,
+ "raw_html_chars": 69634,
+ "sha256": "1b8657615e72756a59c229ab6bc8db933c884a460b5c5bd55baaa3d76f6646e4",
+ "fetched_at": "2026-10-03T08:57:31+00:00"
+}

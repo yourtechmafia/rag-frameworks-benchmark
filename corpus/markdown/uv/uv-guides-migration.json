@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/migration/",
+ "file": "markdown/uv/uv-guides-migration.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.38,
+ "markdown_chars": 5028,
+ "raw_html_chars": 61831,
+ "sha256": "667627f1fc64b13dc8080c2fdf44f02d8496d9657d5efd060ddbd1ed6c0c0540",
+ "fetched_at": "2026-10-03T08:57:34+00:00"
+}

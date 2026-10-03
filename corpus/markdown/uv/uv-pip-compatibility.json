@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/pip/compatibility/",
+ "file": "markdown/uv/uv-pip-compatibility.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 2.69,
+ "markdown_chars": 35036,
+ "raw_html_chars": 113316,
+ "sha256": "db14e7e9f99ab58335dbcd09d56b6b604111565e5550eeac7fc98a1366abff0a",
+ "fetched_at": "2026-10-03T08:57:37+00:00"
+}

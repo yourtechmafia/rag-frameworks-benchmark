@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using Changesets with pnpm | pnpm</title>
+    <meta name="description" content="Since v11.13.0, pnpm can manage workspace releases natively, without the Changesets CLI. It reads and writes the same .changeset/*.md files. See Release management." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Using Changesets with pnpm | pnpm" />
+    <meta property="og:description" content="Since v11.13.0, pnpm can manage workspace releases natively, without the Changesets CLI. It reads and writes the same .changeset/*.md files. See Release management." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Using Changesets with pnpm | pnpm" />
+    <meta name="twitter:description" content="Since v11.13.0, pnpm can manage workspace releases natively, without the Changesets CLI. It reads and writes the same .changeset/*.md files. See Release management." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/using-changesets" />
+    <meta property="og:url" content="https://pnpm.io/using-changesets" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/using-changesets" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/using-changesets" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/using-changesets" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/using-changesets" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/using-changesets" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/using-changesets" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/using-changesets" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/using-changesets" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/using-changesets" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/using-changesets" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/using-changesets" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/using-changesets" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/using-changesets" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/using-changesets" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Using Changesets with pnpm</h1><div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>Since v11.13.0, pnpm can manage workspace releases natively, without the Changesets CLI. It reads and writes the same <code>.changeset/*.md</code> files. See <a href="/versioning">Release management</a>.</p>
+<p>Since v11.16.0, <a href="/cli/update#--changeset"><code>pnpm update --changeset</code></a> can also write a changeset for the dependency bumps an update makes.</p>
+</div>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>At the time of writing this documentation, the latest pnpm version was
+v10.4.1. The latest <a href="https://github.com/changesets/changesets">Changesets</a> version was v2.28.0.</p>
+</div>
+<h2 id="setup">Setup<a class="hash-link" href="#setup" aria-label="Direct link to Setup">#</a></h2>
+<p>To setup changesets on a pnpm workspace, install changesets as a dev dependency
+in the root of the workspace:</p>
+<pre><code class="hljs language-sh">pnpm add -Dw @changesets/cli
+</code></pre>
+<p>Then run changesets' init command to generate a changesets config:</p>
+<pre><code class="hljs language-sh">pnpm changeset init
+</code></pre>
+<h2 id="adding-new-changesets">Adding new changesets<a class="hash-link" href="#adding-new-changesets" aria-label="Direct link to Adding new changesets">#</a></h2>
+<p>To generate a new changeset, run <code>pnpm changeset</code> in the root of the repository.
+The generated markdown files in the <code>.changeset</code> directory should be committed
+to the repository.</p>
+<h2 id="releasing-changes">Releasing changes<a class="hash-link" href="#releasing-changes" aria-label="Direct link to Releasing changes">#</a></h2>
+<ol>
+<li>Run <code>pnpm changeset version</code>. This will bump the versions of the packages
+previously specified with <code>pnpm changeset</code> (and any dependents of those) and
+update the changelog files.</li>
+<li>Run <code>pnpm install --no-frozen-lockfile</code>. This will update the lockfile and rebuild packages.</li>
+<li>Commit the changes.</li>
+<li>Run <code>pnpm publish -r</code>. This command will publish all packages that have
+bumped versions not yet present in the registry.</li>
+</ol>
+<h2 id="integration-with-github-actions">Integration with GitHub Actions<a class="hash-link" href="#integration-with-github-actions" aria-label="Direct link to Integration with GitHub Actions">#</a></h2>
+<p>To automate the process, you can use <code>changeset version</code> with GitHub actions. The action will detect when changeset files arrive in the <code>main</code> branch, and then open a new PR listing all the packages with bumped versions. The PR will automatically update itself every time a new changeset file arrives in <code>main</code>. Once merged the packages will be updated, and if the <code>publish</code> input has been specified on the action they will  be published using the given command.</p>
+<h3 id="add-a-publish-script">Add a publish script<a class="hash-link" href="#add-a-publish-script" aria-label="Direct link to Add a publish script">#</a></h3>
+<p>Add a new script called <code>ci:publish</code> which executes <code>pnpm publish -r</code>. This will publish to the registry once the PR created by <code>changeset version</code> has been merged. If the package is public and scoped, adding <code>--access=public</code> may be necessary to prevent npm rejecting the publish.</p>
+<p><strong>package.json</strong></p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">"scripts"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"ci:publish"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"pnpm publish -r"</span>
+   <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+   ...
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="add-the-workflow">Add the workflow<a class="hash-link" href="#add-the-workflow" aria-label="Direct link to Add the workflow">#</a></h3>
+<p>Add a new workflow at <code>.github/workflows/changesets.yml</code>. This workflow will create a new branch and PR, so Actions should be given <strong>read and write</strong> permissions in the repo settings (<code>github.com/&#x3C;repo-owner>/&#x3C;repo-name>/settings/actions</code>). If including the <code>publish</code> input on the <code>changesets/action</code> step, the repo should also include an auth token for npm as a repository secret named <code>NPM_TOKEN</code>.</p>
+<p><strong>.github/workflows/changesets.yml</strong></p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">Changesets</span>
+
+<span class="hljs-attr">on:</span>
+  <span class="hljs-attr">push:</span>
+    <span class="hljs-attr">branches:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">main</span>
+
+<span class="hljs-attr">env:</span>
+  <span class="hljs-attr">CI:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">version:</span>
+    <span class="hljs-attr">timeout-minutes:</span> <span class="hljs-number">15</span>
+    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">code</span> <span class="hljs-string">repository</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v4</span>
+
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">and</span> <span class="hljs-string">Node.js</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">pnpm/setup@v2</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">runtime:</span> <span class="hljs-string">node@20</span>
+          <span class="hljs-attr">cache:</span> <span class="hljs-literal">true</span>
+
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Create</span> <span class="hljs-string">and</span> <span class="hljs-string">publish</span> <span class="hljs-string">versions</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">changesets/action@v1</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">commit:</span> <span class="hljs-string">"chore: update versions"</span>
+          <span class="hljs-attr">title:</span> <span class="hljs-string">"chore: update versions"</span>
+          <span class="hljs-attr">publish:</span> <span class="hljs-string">pnpm</span> <span class="hljs-string">ci:publish</span>
+        <span class="hljs-attr">env:</span>
+          <span class="hljs-attr">GITHUB_TOKEN:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">}}</span>
+          <span class="hljs-attr">NPM_TOKEN:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.NPM_TOKEN</span> <span class="hljs-string">}}</span>
+</code></pre>
+<p>More info and documentation regarding the changesets action can be found
+<a href="https://github.com/changesets/action">here</a>.</p></article></main></div>
+  </body>
+</html>

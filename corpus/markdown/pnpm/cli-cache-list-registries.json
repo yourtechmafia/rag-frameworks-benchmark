@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/cache-list-registries",
+ "file": "markdown/pnpm/cli-cache-list-registries.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.99,
+ "markdown_chars": 889,
+ "raw_html_chars": 5838,
+ "sha256": "b40a85a202df974e4e17dbdec2c1f06cbb61e685a7cc2ebb45c60de813ab32de",
+ "fetched_at": "2026-10-03T08:57:50+00:00"
+}

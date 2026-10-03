@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/self-update",
+ "file": "markdown/pnpm/cli-self-update.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.34,
+ "markdown_chars": 3102,
+ "raw_html_chars": 8752,
+ "sha256": "2074a0a1254b02df66114bd47b02031f18886f9a620765424a9b76325fd62103",
+ "fetched_at": "2026-10-03T08:58:32+00:00"
+}

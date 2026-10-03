@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/pip/inspection/",
+ "file": "markdown/uv/uv-pip-inspection.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.12,
+ "markdown_chars": 6250,
+ "raw_html_chars": 65868,
+ "sha256": "85a70cb052b7fe0a9966320b6ab61a12dd98a5f20ba295bf6b9b9dc61e07c0d6",
+ "fetched_at": "2026-10-03T08:57:37+00:00"
+}

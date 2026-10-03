@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/git-worktrees",
+ "file": "markdown/pnpm/git-worktrees.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.11,
+ "markdown_chars": 8222,
+ "raw_html_chars": 16313,
+ "sha256": "23dc918155fc6a2032ae1578c31d3516763848bce59e9a5ba9b1ae066c44356f",
+ "fetched_at": "2026-10-03T08:58:46+00:00"
+}

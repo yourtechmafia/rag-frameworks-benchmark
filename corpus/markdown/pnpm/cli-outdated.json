@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/outdated",
+ "file": "markdown/pnpm/cli-outdated.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.97,
+ "markdown_chars": 1696,
+ "raw_html_chars": 8079,
+ "sha256": "09128e80a1deb3dda078fa04991a04dc176b1f4f21d42d55e93b8684d8026016",
+ "fetched_at": "2026-10-03T08:58:15+00:00"
+}

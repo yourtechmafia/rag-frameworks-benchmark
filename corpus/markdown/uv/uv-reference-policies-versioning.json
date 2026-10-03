@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/reference/policies/versioning/",
+ "file": "markdown/uv/uv-reference-policies-versioning.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.83,
+ "markdown_chars": 7010,
+ "raw_html_chars": 65694,
+ "sha256": "b8630c2d9f30ca413415aa435cdf4ea1b2988708555489539e88b22eef8d219d",
+ "fetched_at": "2026-10-03T08:57:43+00:00"
+}

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storage backends (S3 / R2) | pnpm</title>
+    <meta name="description" content="pnpr keeps two kinds of data:" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Storage backends (S3 / R2) | pnpm" />
+    <meta property="og:description" content="pnpr keeps two kinds of data:" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Storage backends (S3 / R2) | pnpm" />
+    <meta name="twitter:description" content="pnpr keeps two kinds of data:" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/storage" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/storage" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/storage" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/storage" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/storage" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/storage" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/storage" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/storage" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/storage" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/storage" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/storage" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/storage" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/storage" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/storage" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/storage" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/storage" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Storage backends (S3 / R2)</h1><p>pnpr keeps two kinds of data:</p>
+<ul>
+<li><strong>Hosted</strong> — the source of truth: packages published to this server plus
+anything served in static mode. Lives under <code>storage</code>. Packages awaiting
+approval through <a href="/pnpr/endpoints#staged-publishing-endpoints">staged publishing</a>
+are held here too, under a reserved <code>.staged/</code> namespace.</li>
+<li><strong>Cache</strong> — the disposable mirror of upstream registries plus the resolver
+cache, lockfile-verdict cache, local shared-artifact store, and S3 upload
+staging scratch. Lives under <code>cache</code> (defaults to
+<code>&#x3C;storage>/.pnpr-cache</code>).</li>
+</ul>
+<p>By default both are local directories. Adding an <code>s3:</code> block moves the
+<strong>hosted</strong> store and the enabled <strong>shared-artifact</strong> store into an S3-compatible
+object store, so they can be shared by several stateless pnpr replicas. The
+ordinary upstream and resolver cache stays on local disk.</p>
+<p>Shared artifacts use a reserved <code>.pnpr-artifacts/v0/</code> namespace under the
+configured prefix; hosted package objects keep their normal namespace. Without
+S3, artifacts live under <code>&#x3C;cache>/shared-artifacts/v0</code>. They are rebuildable
+cache data rather than authoritative packages, but publication slots are
+immutable while they exist.</p>
+<p>Because any S3-compatible endpoint works, this also covers <strong>Cloudflare R2</strong>,
+<strong>MinIO</strong>, <strong>Backblaze B2</strong>, <strong>Wasabi</strong>, etc. — point <code>endpoint</code> at the right
+host.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">storage:</span> <span class="hljs-string">./storage</span>
+<span class="hljs-comment"># cache: ./cache     # local proxy cache + resolver cache + S3 upload staging</span>
+
+<span class="hljs-attr">s3:</span>
+  <span class="hljs-attr">bucket:</span> <span class="hljs-string">my-pnpr-packages</span>
+  <span class="hljs-attr">region:</span> <span class="hljs-string">auto</span>
+  <span class="hljs-comment"># Omit `endpoint` for AWS S3. For R2 use the account endpoint:</span>
+  <span class="hljs-attr">endpoint:</span> <span class="hljs-string">https://&#x3C;account-id>.r2.cloudflarestorage.com</span>
+  <span class="hljs-comment"># Optional key prefix, so one bucket can hold more than the hosted store:</span>
+  <span class="hljs-attr">prefix:</span> <span class="hljs-string">packages</span>
+  <span class="hljs-comment"># Credentials. Omit these to fall back to the standard</span>
+  <span class="hljs-comment"># AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY environment variables.</span>
+  <span class="hljs-attr">accessKeyId:</span> <span class="hljs-string">${PNPR_S3_ACCESS_KEY_ID}</span>
+  <span class="hljs-attr">secretAccessKey:</span> <span class="hljs-string">${PNPR_S3_SECRET_ACCESS_KEY}</span>
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>bucket</code></td><td>yes</td><td>Bucket the hosted packages and enabled shared artifacts are stored in.</td></tr><tr><td><code>region</code></td><td>no</td><td>AWS S3 needs a real region (e.g. <code>us-east-1</code>); Cloudflare R2 uses <code>auto</code>.</td></tr><tr><td><code>endpoint</code></td><td>no</td><td>Custom endpoint for S3-compatible providers. Omit for AWS S3; for R2 it's <code>https://&#x3C;account-id>.r2.cloudflarestorage.com</code>; for MinIO it's e.g. <code>http://127.0.0.1:9000</code>.</td></tr><tr><td><code>prefix</code></td><td>no</td><td>Key prefix every object is stored under.</td></tr><tr><td><code>accessKeyId</code></td><td>no</td><td>Access key. Falls back to <code>AWS_ACCESS_KEY_ID</code> when unset.</td></tr><tr><td><code>secretAccessKey</code></td><td>no</td><td>Secret key. Falls back to <code>AWS_SECRET_ACCESS_KEY</code> when unset.</td></tr><tr><td><code>forcePathStyle</code></td><td>no</td><td>Use path-style addressing (<code>endpoint/bucket/key</code>) instead of virtual-hosted (<code>bucket.endpoint/key</code>). MinIO typically needs <code>true</code>; AWS and R2 work with the default.</td></tr><tr><td><code>allowHttp</code></td><td>no</td><td>Allow plain-HTTP endpoints — needed for a local MinIO over <code>http://</code>. Defaults to HTTPS-only.</td></tr></tbody></table></div>
+<h2 id="concurrent-writers">Concurrent writers<a class="hash-link" href="#concurrent-writers" aria-label="Direct link to Concurrent writers">#</a></h2>
+<p>Several stateless pnpr replicas can share one bucket. Because a replica's
+in-process package lock only serializes that replica, writes to the hosted
+store are made safe across replicas at the object-store level rather than by
+locking:</p>
+<ul>
+<li><strong>Packument updates</strong> — publish, partial unpublish, and dist-tag writes read
+the packument together with its object-store version and write back
+conditionally, so an update computed from a stale copy is rejected instead of
+overwriting a newer one. Dist-tag writes retry on conflict, since their
+mutation can simply be replayed against the fresh packument. A write that
+keeps losing surfaces as an HTTP <code>409</code> rather than silently discarding
+another writer's update.</li>
+<li><strong>Tarballs</strong> — finalizing a tarball is compare-and-swap. A byte-identical
+object is tolerated, but an object with different bytes left by a concurrent
+publisher of the same <code>name@version</code> is never overwritten; the losing publish
+gets a <code>409</code> before it writes any packument.</li>
+<li><strong>Shared artifacts</strong> — immutable artifact objects use create-only writes, and
+the quota counter uses conditional updates across replicas. A publication
+whose compatibility set overlaps an existing artifact for the same input key
+gets a <code>409</code>; a byte-identical retry succeeds. After an ambiguous object-store
+write failure, pnpr reclaims blobs referenced by no stored envelope and
+rebuilds quota once active publications drain.</li>
+</ul>
+<p>This applies to the S3 backend. The local filesystem backend keeps its
+single-process behavior, since the shared-store race is specific to replicas
+sharing one object store.</p>
+<h2 id="a-complete-cloudflare-r2-example">A complete Cloudflare R2 example<a class="hash-link" href="#a-complete-cloudflare-r2-example" aria-label="Direct link to A complete Cloudflare R2 example">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-comment"># pnpr.yaml</span>
+<span class="hljs-attr">storage:</span> <span class="hljs-string">./storage</span>
+
+<span class="hljs-attr">s3:</span>
+  <span class="hljs-attr">bucket:</span> <span class="hljs-string">my-pnpr-packages</span>
+  <span class="hljs-attr">region:</span> <span class="hljs-string">auto</span>
+  <span class="hljs-attr">endpoint:</span> <span class="hljs-string">https://abc123def456.r2.cloudflarestorage.com</span>
+
+<span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">local:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'@mycompany/*':</span>
+        <span class="hljs-attr">publish:</span> <span class="hljs-string">$authenticated</span>
+
+  <span class="hljs-attr">npmjs:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://registry.npmjs.org/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">router</span>
+    <span class="hljs-attr">sources:</span> [<span class="hljs-string">local</span>, <span class="hljs-string">npmjs</span>]
+
+<span class="hljs-attr">defaultRegistry:</span> <span class="hljs-string">main</span>
+
+<span class="hljs-attr">artifacts:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">export</span> AWS_ACCESS_KEY_ID=<span class="hljs-string">"&#x3C;r2-access-key-id>"</span>
+<span class="hljs-built_in">export</span> AWS_SECRET_ACCESS_KEY=<span class="hljs-string">"&#x3C;r2-secret-access-key>"</span>
+pnpr -c ./pnpr.yaml --listen 0.0.0.0:7677 --public-url https://registry.example.com
+</code></pre>
+<p><code>--public-url</code> rewrites the <code>dist.tarball</code> URLs in served packuments, so clients
+fetch tarballs back through this server rather than the upstream.</p>
+<h2 id="a-local-minio-over-plain-http">A local MinIO over plain HTTP<a class="hash-link" href="#a-local-minio-over-plain-http" aria-label="Direct link to A local MinIO over plain HTTP">#</a></h2>
+<p>MinIO over <code>http://</code> needs <code>forcePathStyle</code> and <code>allowHttp</code>:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">s3:</span>
+  <span class="hljs-attr">bucket:</span> <span class="hljs-string">pnpr</span>
+  <span class="hljs-attr">region:</span> <span class="hljs-string">us-east-1</span>
+  <span class="hljs-attr">endpoint:</span> <span class="hljs-string">http://127.0.0.1:9000</span>
+  <span class="hljs-attr">forcePathStyle:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">allowHttp:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">accessKeyId:</span> <span class="hljs-string">minioadmin</span>
+  <span class="hljs-attr">secretAccessKey:</span> <span class="hljs-string">minioadmin</span>
+</code></pre></article></main></div>
+  </body>
+</html>

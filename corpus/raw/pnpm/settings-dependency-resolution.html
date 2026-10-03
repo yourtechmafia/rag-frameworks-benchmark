@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dependency Resolution Settings | pnpm</title>
+    <meta name="description" content="This field allows you to instruct pnpm to override any dependency in the dependency graph, including peer dependencies. This is useful for enforcing all your packages to use a single version of a dependency, backporting a fix, replacing a dependency with a fork, or removing an unused dependency." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Dependency Resolution Settings | pnpm" />
+    <meta property="og:description" content="This field allows you to instruct pnpm to override any dependency in the dependency graph, including peer dependencies. This is useful for enforcing all your packages to use a single version of a dependency, backporting a fix, replacing a dependency with a fork, or removing an unused dependency." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Dependency Resolution Settings | pnpm" />
+    <meta name="twitter:description" content="This field allows you to instruct pnpm to override any dependency in the dependency graph, including peer dependencies. This is useful for enforcing all your packages to use a single version of a dependency, backporting a fix, replacing a dependency with a fork, or removing an unused dependency." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/dependency-resolution" />
+    <meta property="og:url" content="https://pnpm.io/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/dependency-resolution" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/dependency-resolution" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Dependency Resolution Settings</h1><h3 id="overrides">overrides<a class="hash-link" href="#overrides" aria-label="Direct link to overrides">#</a></h3>
+<p>This field allows you to instruct pnpm to override any dependency in the
+dependency graph, including peer dependencies. This is useful for enforcing all your packages to use a single
+version of a dependency, backporting a fix, replacing a dependency with a fork, or
+removing an unused dependency.</p>
+<p>Note that the overrides field can only be set at the root of the project.</p>
+<p>An example of the <code>overrides</code> field:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">overrides:</span>
+  <span class="hljs-attr">"foo":</span> <span class="hljs-string">"^1.0.0"</span>
+  <span class="hljs-attr">"quux":</span> <span class="hljs-string">"npm:@myorg/quux@^1.0.0"</span>
+  <span class="hljs-string">"bar@^2.1.0"</span><span class="hljs-string">:</span> <span class="hljs-string">"3.0.0"</span>
+  <span class="hljs-string">"qar@1>zoo"</span><span class="hljs-string">:</span> <span class="hljs-string">"2"</span>
+</code></pre>
+<p>You may specify the package the overridden dependency belongs to by
+separating the package selector from the dependency selector with a ">", for
+example <code>qar@1>zoo</code> will only override the <code>zoo</code> dependency of <code>qar@1</code>, not for
+any other dependencies.</p>
+<p>To keep an overridden version in sync with the version used elsewhere in your workspace, define the version in a <a href="/catalogs">catalog</a> and reference it with the <code>catalog:</code> protocol. This way the version is maintained in a single place and referenced from both your dependencies and your overrides:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">foo:</span> <span class="hljs-string">"^1.0.0"</span>
+
+<span class="hljs-attr">overrides:</span>
+  <span class="hljs-attr">foo:</span> <span class="hljs-string">"catalog:"</span>
+</code></pre></div>
+<p>You may also reference a named catalog with <code>catalog:&#x3C;name></code>. See <a href="/catalogs">Catalogs</a> for more details.</p>
+<p>If you find that your use of a certain package doesn't require one of its dependencies, you may use <code>-</code> to remove it. For example, if package <code>foo@1.0.0</code> requires a large package named <code>bar</code> for a function that you don't use, removing it could reduce install time:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">overrides:</span>
+  <span class="hljs-string">"foo@1.0.0>bar"</span><span class="hljs-string">:</span> <span class="hljs-string">"-"</span>
+</code></pre>
+<p>This feature is especially useful with <code>optionalDependencies</code>, where most optional packages can be safely skipped.</p>
+<h4 id="convergence-overrides">Convergence overrides<a class="hash-link" href="#convergence-overrides" aria-label="Direct link to Convergence overrides">#</a></h4>
+<p>Added in: v11.13.0</p>
+<p>A selector with an <strong>empty range</strong> — <code>"pkg@"</code> — is a convergence override. Unlike a regular override, which rewrites every matching edge unconditionally, a convergence override rewrites a dependency edge only when its version satisfies the range that edge declares:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">overrides:</span>
+  <span class="hljs-attr">"form-data@":</span> <span class="hljs-number">4.0</span><span class="hljs-number">.6</span>
+</code></pre></div>
+<p>With the above, a dependency that declares <code>form-data: "^4.0.5"</code> is pinned to <code>4.0.6</code>, while one that declares <code>^3.0.0</code> keeps its own resolution. This lets compatible consumers converge on a single version — now and for any dependent added in the future — without forcing an incompatible version on the rest of the graph.</p>
+<p>Rules:</p>
+<ul>
+<li>The value must be an <strong>exact version</strong>. A range, a dist-tag, or a <code>-</code> removal fails with <code>ERR_PNPM_INVALID_CONVERGENCE_OVERRIDE</code>. A <code>catalog:</code> reference is allowed as long as the catalog entry resolves to an exact version.</li>
+<li>Only plain semver edges participate. Edges declared with <code>workspace:</code>, <code>catalog:</code>, <code>npm:</code>, a dist-tag, or a git/URL specifier have no meaningful "satisfies" relation and are left untouched.</li>
+<li>Convergence overrides cannot be combined with a parent selector: <code>"parent>pkg@"</code> is rejected.</li>
+<li>A regular override always wins over a convergence override for the same edge.</li>
+</ul>
+<p>When a full resolution finds that every declared range also admits a newer version, pnpm warns that the override is stale and names the version to converge on instead.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Before v11.13.0, an empty range in an override selector was undocumented and behaved like a bare (unscoped) override.</p>
+</div>
+<h4 id="overriding-peer-dependencies">Overriding peer dependencies<a class="hash-link" href="#overriding-peer-dependencies" aria-label="Direct link to Overriding peer dependencies">#</a></h4>
+<p>Overrides also apply to <code>peerDependencies</code>. The behavior depends on the type of version specifier used in the override:</p>
+<ul>
+<li><strong>Semver ranges</strong> (e.g., <code>^1.0.0</code>), <strong>workspace</strong>, and <strong>catalog</strong> protocols: the peer dependency is overridden and remains a peer dependency.</li>
+<li><strong>Non-range specifiers</strong> such as <code>link:</code> or <code>file:</code> protocols: the peer dependency is overridden and moved to <code>dependencies</code>, since these are not valid peer dependency ranges.</li>
+<li><strong>Removal</strong> (<code>-</code>): the peer dependency is removed entirely.</li>
+</ul>
+<p>For example, to override the <code>react</code> peer dependency of <code>react-dom</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">overrides:</span>
+  <span class="hljs-string">"react-dom>react"</span><span class="hljs-string">:</span> <span class="hljs-string">"18.1.0"</span>
+</code></pre></div>
+<h3 id="packageextensions">packageExtensions<a class="hash-link" href="#packageextensions" aria-label="Direct link to packageExtensions">#</a></h3>
+<p>The <code>packageExtensions</code> fields offer a way to extend the existing package definitions with additional information. For example, if <code>react-redux</code> should have <code>react-dom</code> in its <code>peerDependencies</code> but it has not, it is possible to patch <code>react-redux</code> using <code>packageExtensions</code>:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">packageExtensions:</span>
+  <span class="hljs-attr">react-redux:</span>
+    <span class="hljs-attr">peerDependencies:</span>
+      <span class="hljs-attr">react-dom:</span> <span class="hljs-string">"*"</span>
+</code></pre>
+<p>The keys in <code>packageExtensions</code> are package names or package names and semver ranges, so it is possible to patch only some versions of a package:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">packageExtensions:</span>
+  <span class="hljs-attr">react-redux@1:</span>
+    <span class="hljs-attr">peerDependencies:</span>
+      <span class="hljs-attr">react-dom:</span> <span class="hljs-string">"*"</span>
+</code></pre>
+<p>The following fields may be extended using <code>packageExtensions</code>: <code>dependencies</code>, <code>optionalDependencies</code>, <code>peerDependencies</code>, and <code>peerDependenciesMeta</code>.</p>
+<p>A bigger example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">packageExtensions:</span>
+  <span class="hljs-attr">express@1:</span>
+    <span class="hljs-attr">optionalDependencies:</span>
+      <span class="hljs-attr">typescript:</span> <span class="hljs-string">"2"</span>
+  <span class="hljs-attr">fork-ts-checker-webpack-plugin:</span>
+    <span class="hljs-attr">dependencies:</span>
+      <span class="hljs-attr">"@babel/core":</span> <span class="hljs-string">"1"</span>
+    <span class="hljs-attr">peerDependencies:</span>
+      <span class="hljs-attr">eslint:</span> <span class="hljs-string">">= 6"</span>
+    <span class="hljs-attr">peerDependenciesMeta:</span>
+      <span class="hljs-attr">eslint:</span>
+        <span class="hljs-attr">optional:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>Together with Yarn, we maintain a database of <code>packageExtensions</code> to patch broken packages in the ecosystem.
+If you use <code>packageExtensions</code>, consider sending a PR upstream and contributing your extension to the <a href="https://github.com/yarnpkg/berry/blob/master/packages/yarnpkg-extensions/sources/index.ts"><code>@yarnpkg/extensions</code></a> database.</p>
+</div>
+<h3 id="alloweddeprecatedversions">allowedDeprecatedVersions<a class="hash-link" href="#alloweddeprecatedversions" aria-label="Direct link to allowedDeprecatedVersions">#</a></h3>
+<p>This setting allows muting deprecation warnings of specific packages.</p>
+<p>Example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">allowedDeprecatedVersions:</span>
+  <span class="hljs-attr">express:</span> <span class="hljs-string">"1"</span>
+  <span class="hljs-attr">request:</span> <span class="hljs-string">"*"</span>
+</code></pre>
+<p>With the above configuration pnpm will not print deprecation warnings about any version of <code>request</code> and about v1 of <code>express</code>.</p>
+<h3 id="update">update<a class="hash-link" href="#update" aria-label="Direct link to update">#</a></h3>
+<p>Added in: v11.16.0</p>
+<p>Settings in this section tune the <a href="/cli/update"><code>pnpm update</code></a> and <a href="/cli/outdated"><code>pnpm outdated</code></a> commands.</p>
+<h4 id="updateignoredeps">update.ignoreDeps<a class="hash-link" href="#updateignoredeps" aria-label="Direct link to update.ignoreDeps">#</a></h4>
+<p>Sometimes you can't update a dependency. For instance, the latest version of the dependency started to use ESM but your project is not yet in ESM. Annoyingly, such a package will always be printed out by the <code>pnpm outdated</code> command and updated, when running <code>pnpm update --latest</code>. However, you may list packages that you don't want to upgrade in the <code>ignoreDeps</code> field:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">update:</span>
+  <span class="hljs-attr">ignoreDeps:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">load-json-file</span>
+</code></pre>
+<p>Patterns are also supported, so you may ignore any packages from a scope: <code>@babel/*</code>.</p>
+<h4 id="updatechangeset">update.changeset<a class="hash-link" href="#updatechangeset" aria-label="Direct link to update.changeset">#</a></h4>
+<p>Added in: v11.16.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, <code>pnpm update</code> writes a <a href="/versioning">change intent</a> after updating workspace manifests, declaring a <code>patch</code> bump for every workspace package whose <code>dependencies</code> or <code>optionalDependencies</code> were changed by the update and a <code>major</code> bump when its <code>peerDependencies</code> changed. Same as passing <a href="/cli/update#--changeset"><code>--changeset</code></a>; pass <code>--no-changeset</code> to override the setting for a single run.</p>
+<h4 id="updategithubactions">update.githubActions<a class="hash-link" href="#updategithubactions" aria-label="Direct link to update.githubActions">#</a></h4>
+<p>Added in: v11.16.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, <code>pnpm update</code> and <code>pnpm outdated</code> also check the GitHub Actions referenced by the repository's workflow files. Same as passing <a href="/cli/update#--include-github-actions"><code>--include-github-actions</code></a>. See <a href="/cli/update#updating-github-actions">Updating GitHub Actions</a>.</p>
+<h4 id="updategithubactionsserver">update.githubActionsServer<a class="hash-link" href="#updategithubactionsserver" aria-label="Direct link to update.githubActionsServer">#</a></h4>
+<p>Added in: v11.17.0</p>
+<ul>
+<li>Default: the <code>GITHUB_SERVER_URL</code> environment variable, falling back to <strong><a href="https://github.com">https://github.com</a></strong></li>
+<li>Type: <strong>URL</strong></li>
+</ul>
+<p>The base URL of the GitHub server that hosts the repositories of the GitHub Actions referenced by the workflow files (for example, a GitHub Enterprise Server). The URL must use the <code>https://</code> or <code>http://</code> protocol. Only use <code>http://</code> for a trusted server on a trusted network: the refs used to pin actions to commit hashes are fetched over this URL, and unencrypted traffic can be tampered with.</p>
+<div class="admonition admonition-info"><p class="admonition-title">Info</p>
+<p>Before v11.16.0, <code>update.ignoreDeps</code> was named <code>updateConfig.ignoreDependencies</code>. The deprecated <code>updateConfig</code> setting keeps working until the next major version; when both are set, the <code>update</code> section takes precedence and a warning is printed.</p>
+</div>
+<h3 id="supportedarchitectures">supportedArchitectures<a class="hash-link" href="#supportedarchitectures" aria-label="Direct link to supportedArchitectures">#</a></h3>
+<p>You can specify architectures for which you'd like to install optional dependencies, even if they don't match the architecture of the system running the install.</p>
+<p>For example, the following configuration tells to install optional dependencies for Windows x64:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">supportedArchitectures:</span>
+  <span class="hljs-attr">os:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">win32</span>
+  <span class="hljs-attr">cpu:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">x64</span>
+</code></pre>
+<p>Whereas this configuration will install optional dependencies for Windows, macOS, and the architecture of the system currently running the install. It includes artifacts for both x64 and arm64 CPUs:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">supportedArchitectures:</span>
+  <span class="hljs-attr">os:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">win32</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">darwin</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">current</span>
+  <span class="hljs-attr">cpu:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">x64</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">arm64</span>
+</code></pre>
+<p>Additionally, <code>supportedArchitectures</code> also supports specifying the <code>libc</code> of the system.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Copying <code>node_modules</code> between platforms can cause native-module load errors,
+such as <code>invalid ELF header</code> or <code>not a valid Win32 application</code>. For packages
+that publish platform-specific optional dependencies, list the target operating
+systems, CPUs, and C libraries in <code>supportedArchitectures</code> before installing.
+The lockfile can contain separate entries for each platform variant.</p>
+<p>This setting does not cross-compile native addons. If a package builds its addon
+in an install script, install or rebuild it on the target platform.</p>
+</div>
+<h4 id="platform-lists">Platform lists<a class="hash-link" href="#platform-lists" aria-label="Direct link to Platform lists">#</a></h4>
+<p>Added in: v12.5.0</p>
+<p>Instead of the <code>os</code>, <code>cpu</code>, and <code>libc</code> mapping, list the exact platforms to prepare:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">supportedArchitectures:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">linux-x64</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">linux-x64-musl</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">darwin-arm64</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">win32-x64</span>
+</code></pre></div>
+<p>Each entry is <code>&#x3C;os>-&#x3C;cpu></code>, optionally followed by a Linux C library, such as <code>linux-x64-manylinux_2_28</code>. Linux entries without a C library mean glibc. Rust target triples are accepted too: <code>x86_64-unknown-linux-gnu</code> is equivalent to <code>linux-x64</code>. <code>current</code> includes the platform running the install.</p>
+<p>The list prepares only the named platforms. The mapping form continues to work with its existing meaning. Python uses these targets together with <a href="/python#pythonversions"><code>python.versions</code></a> when locking for multiple environments.</p>
+<h3 id="optional">optional<a class="hash-link" href="#optional" aria-label="Direct link to optional">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Set to <code>false</code> to skip optional dependencies during installation, including
+transitive optional dependencies. Equivalent to
+<a href="/cli/install#--no-optional"><code>pnpm install --no-optional</code></a>.</p>
+<h3 id="ignoredoptionaldependencies">ignoredOptionalDependencies<a class="hash-link" href="#ignoredoptionaldependencies" aria-label="Direct link to ignoredOptionalDependencies">#</a></h3>
+<p>If an optional dependency has its name included in this array, it will be skipped. For example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">ignoredOptionalDependencies:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">fsevents</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">"@esbuild/*"</span>
+</code></pre>
+<h3 id="forceignoresplatform">forceIgnoresPlatform<a class="hash-link" href="#forceignoresplatform" aria-label="Direct link to forceIgnoresPlatform">#</a></h3>
+<p>Added in: v12.7.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, <a href="/cli/install#--force"><code>pnpm install --force</code></a> also installs
+optional dependencies whose <code>os</code>, <code>cpu</code>, or <code>libc</code> do not match the host. When
+<code>false</code>, <code>--force</code> refetches every package but still skips optional dependencies
+built for other platforms.</p>
+<p>pnpm v11 behaved as if this setting were <code>true</code>. To install optional
+dependencies for other platforms on purpose, prefer
+<a href="#supportedarchitectures"><code>supportedArchitectures</code></a>.</p>
+<h3 id="minimumreleaseage">minimumReleaseAge<a class="hash-link" href="#minimumreleaseage" aria-label="Direct link to minimumReleaseAge">#</a></h3>
+<p>Added in: v10.16.0</p>
+<ul>
+<li>Default: <strong>1440</strong> (since v11), <strong>0</strong> (before v11)</li>
+<li>Type: <strong>number (minutes)</strong></li>
+</ul>
+<p>To reduce the risk of installing compromised or defective packages, you can delay the installation of newly published versions. In most cases, malicious releases are discovered and removed from the registry within an hour.</p>
+<p><code>minimumReleaseAge</code> defines the minimum number of minutes that must pass after a version is published before pnpm will install it. This applies to <strong>all dependencies</strong>, including transitive ones.</p>
+<p>For example, the following setting ensures that only packages released at least one day ago can be installed:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">minimumReleaseAge:</span> <span class="hljs-number">1440</span>
+</code></pre>
+<h3 id="minimumreleaseageexclude">minimumReleaseAgeExclude<a class="hash-link" href="#minimumreleaseageexclude" aria-label="Direct link to minimumReleaseAgeExclude">#</a></h3>
+<p>Added in: v10.16.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>string[]</strong></li>
+</ul>
+<p>If you set <code>minimumReleaseAge</code> but need certain dependencies to always install the newest version immediately, you can list them under <code>minimumReleaseAgeExclude</code>. The exclusion works by <strong>package name</strong> and applies to all versions of that package.</p>
+<p>Example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">minimumReleaseAge:</span> <span class="hljs-number">1440</span>
+<span class="hljs-attr">minimumReleaseAgeExclude:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">webpack</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">react</span>
+</code></pre>
+<p>In this case, all dependencies must be at least a day old, except <code>webpack</code> and <code>react</code>, which are installed immediately upon release.</p>
+<p>Added in: v10.17.0</p>
+<p>You may also use patterns. For instance, allow all packages from your org:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">minimumReleaseAge:</span> <span class="hljs-number">1440</span>
+<span class="hljs-attr">minimumReleaseAgeExclude:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">'@myorg/*'</span>
+</code></pre>
+<p>Added in: v10.19.0</p>
+<p>You may also exempt specific versions (or a list of specific versions using a disjunction with <code>||</code>). This allows pinning exceptions to mature-time rules:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">minimumReleaseAge:</span> <span class="hljs-number">1440</span>
+<span class="hljs-attr">minimumReleaseAgeExclude:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">nx@21.6.5</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">webpack@4.47.0</span> <span class="hljs-string">||</span> <span class="hljs-number">5.102</span><span class="hljs-number">.1</span>
+</code></pre>
+<h3 id="minimumreleaseageexcludeprune">minimumReleaseAgeExcludePrune<a class="hash-link" href="#minimumreleaseageexcludeprune" aria-label="Direct link to minimumReleaseAgeExcludePrune">#</a></h3>
+<p>Added in: v11.22.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, <code>pnpm install</code>, <code>pnpm add</code>, <code>pnpm update</code>, <code>pnpm remove</code>, and <code>pnpm dedupe</code> prune the entries of <a href="#minimumreleaseageexclude"><code>minimumReleaseAgeExclude</code></a> in <code>pnpm-workspace.yaml</code> that the freshly written lockfile no longer resolves: a version that is gone is dropped (an entry is removed once none of its versions remain), and an entry for a package that is no longer in the lockfile is removed too. Name patterns (<code>@myorg/*</code>) are always kept.</p>
+<p>The cleanup is skipped when the install's lockfile does not cover the whole workspace (<a href="/workspaces#sharedworkspacelockfile"><code>sharedWorkspaceLockfile: false</code></a>), since entries another project still needs would look stale. Comments on the entries that are kept survive the rewrite.</p>
+<h3 id="minimumreleaseageignoremissingtime">minimumReleaseAgeIgnoreMissingTime<a class="hash-link" href="#minimumreleaseageignoremissingtime" aria-label="Direct link to minimumReleaseAgeIgnoreMissingTime">#</a></h3>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, pnpm skips the <a href="#minimumreleaseage"><code>minimumReleaseAge</code></a> check for a package whose registry metadata does not include the <code>time</code> field (some private registries and mirrors omit it). Set to <code>false</code> to fail resolution in that case instead of installing the package.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">minimumReleaseAgeIgnoreMissingTime:</span> <span class="hljs-literal">false</span>
+</code></pre>
+<p>Since v11.23.0, the setting also governs <a href="#trustpolicy"><code>trustPolicy</code></a>, which reads the same publish dates: <code>trustPolicy: no-downgrade</code> skips a package the registry cannot date, with a warning, rather than failing the install with <code>ERR_PNPM_MISSING_TIME</code>.</p>
+<p>The opt-in covers a registry that cannot date its releases, not a package a registry says it never published: during <a href="/supply-chain-security">lockfile verification</a>, a lockfile entry missing from a packument that does date every version it lists remains a hard failure.</p>
+<h3 id="minimumreleaseagestrict">minimumReleaseAgeStrict<a class="hash-link" href="#minimumreleaseagestrict" aria-label="Direct link to minimumReleaseAgeStrict">#</a></h3>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>true</strong> if <a href="#minimumreleaseage"><code>minimumReleaseAge</code></a> is explicitly configured, <strong>false</strong> otherwise</li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Controls how pnpm behaves when no version of a dependency satisfies the <a href="#minimumreleaseage"><code>minimumReleaseAge</code></a> constraint within the requested range. When <code>false</code>, pnpm falls back to a version that doesn't meet the <code>minimumReleaseAge</code> constraint so installation can still succeed. When <code>true</code>, pnpm fails resolution instead.</p>
+<p>The default depends on whether you configured <code>minimumReleaseAge</code> yourself: if you set it explicitly (in <code>pnpm-workspace.yaml</code>, in the global <code>config.yaml</code>, through a <code>PNPM_CONFIG_*</code> variable, or on the command line), strict mode is on by default so the setting is enforced. The built-in default of <code>minimumReleaseAge</code> (1440 minutes) is non-strict for backward compatibility.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">minimumReleaseAgeStrict:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<h3 id="trustpolicy">trustPolicy<a class="hash-link" href="#trustpolicy" aria-label="Direct link to trustPolicy">#</a></h3>
+<p>Added in: v10.21.0</p>
+<ul>
+<li>Default: <strong>off</strong></li>
+<li>Type: <strong>no-downgrade</strong> | <strong>off</strong></li>
+</ul>
+<p>When set to <code>no-downgrade</code>, pnpm will fail if a package's trust level has decreased compared to previous releases. For example, if a package was previously published by a trusted publisher but now only has provenance or no trust evidence, installation will fail. This helps prevent installing potentially compromised versions. Trust checks are based solely on publish date, not semver. A package cannot be installed if any earlier-published version had stronger trust evidence. Starting in v10.24.0, prerelease versions are ignored when evaluating trust evidence for a non-prerelease install, so a trusted prerelease cannot block a stable release that lacks trust evidence.</p>
+<h3 id="trustpolicyexclude">trustPolicyExclude<a class="hash-link" href="#trustpolicyexclude" aria-label="Direct link to trustPolicyExclude">#</a></h3>
+<p>Added in: v10.22.0</p>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>string[]</strong></li>
+</ul>
+<p>A list of package selectors that should be excluded from the trust policy check. This allows you to install specific packages or versions even if they don't satisfy the <code>trustPolicy</code> requirement.</p>
+<p>For example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">trustPolicy:</span> <span class="hljs-literal">no</span><span class="hljs-string">-downgrade</span>
+<span class="hljs-attr">trustPolicyExclude:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'chokidar@4.0.3'</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'webpack@4.47.0 || 5.102.1'</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'@babel/core@7.28.5'</span>
+</code></pre>
+<h3 id="trustpolicyignoreafter">trustPolicyIgnoreAfter<a class="hash-link" href="#trustpolicyignoreafter" aria-label="Direct link to trustPolicyIgnoreAfter">#</a></h3>
+<p>Added in: v10.27.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>number (minutes)</strong></li>
+</ul>
+<p>Allows ignoring the trust policy check for packages published more than the specified number of minutes ago. This is useful when enabling strict trust policies, as it allows older versions of packages (which may lack a process for publishing with signatures or provenance) to be installed without manual exclusion, assuming they are safe due to their age.</p>
+<h3 id="trustpolicyexcludeprune">trustPolicyExcludePrune<a class="hash-link" href="#trustpolicyexcludeprune" aria-label="Direct link to trustPolicyExcludePrune">#</a></h3>
+<p>Added in: v12.4.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, <code>pnpm install</code>, <code>pnpm add</code>, <code>pnpm update</code>, <code>pnpm remove</code>, and <code>pnpm dedupe</code> prune the entries of <a href="#trustpolicyexclude"><code>trustPolicyExclude</code></a> in <code>pnpm-workspace.yaml</code> that the freshly written lockfile no longer resolves: a version that is gone is dropped (an entry is removed once none of its versions remain), and an entry for a package that is no longer in the lockfile is removed too. Name patterns (<code>@myorg/*</code>) are always kept.</p>
+<p>The cleanup is skipped when the install's lockfile does not cover the whole workspace (<a href="/workspaces#sharedworkspacelockfile"><code>sharedWorkspaceLockfile: false</code></a>), since entries another project still needs would look stale. Comments on the entries that are kept survive the rewrite.</p>
+<h3 id="trustlockfile">trustLockfile<a class="hash-link" href="#trustlockfile" aria-label="Direct link to trustLockfile">#</a></h3>
+<p>Added in: v11.3.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, <code>pnpm install</code> skips the supply-chain verification pass that re-applies <a href="#minimumreleaseage"><code>minimumReleaseAge</code></a> and <a href="#trustpolicy"><code>trustPolicy</code></a> to every entry in the loaded lockfile. The install treats the lockfile as already trusted.</p>
+<p>Useful in environments where the lockfile is effectively part of the trusted base — closed-source projects where every commit comes from a trusted author. A poisoned lockfile (one a contributor authored under a weaker policy than CI enforces) can slip through, so leave this <code>false</code> whenever outside collaborators can edit the lockfile.</p>
+<p>On large workspaces the verification pass holds per-package registry metadata in memory for the duration of the install; disabling it cuts memory usage at the cost of the supply-chain check. Most projects with the default <code>frozenLockfile</code> CI workflow do not need to set this.</p>
+<h3 id="blockexoticsubdeps">blockExoticSubdeps<a class="hash-link" href="#blockexoticsubdeps" aria-label="Direct link to blockExoticSubdeps">#</a></h3>
+<p>Added in: v10.26.0</p>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, only direct dependencies (those listed in your root <code>package.json</code>) may use exotic sources (like git repositories or direct tarball URLs). All transitive dependencies must be resolved from a trusted source, such as the configured registry, local file paths, workspace links, or trusted GitHub repositories (node, bun, deno).</p>
+<p>This setting helps secure the dependency supply chain by preventing transitive dependencies from pulling in code from untrusted locations.</p>
+<p>Exotic sources include:</p>
+<ul>
+<li>Git repositories (<code>git+ssh://...</code>)</li>
+<li>Direct URL links to tarballs (<code>https://.../package.tgz</code>)</li>
+</ul>
+<h3 id="registries">registries<a class="hash-link" href="#registries" aria-label="Direct link to registries">#</a></h3>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>Record&#x3C;string, RegistryDeclaration></strong> or <strong>Record&#x3C;string, string></strong></li>
+</ul>
+<p>Declares the registries the project installs from. Since v11.23.0, each registry is declared once, keyed by its URL, with everything pnpm knows about it in the entry: the <code>scopes</code> routed to it, the bare-specifier <code>prefix</code> it answers to, how the server lays out tarball URLs (<code>serverType</code>, <code>supportsTimeField</code>), and how many requests pnpm keeps in flight to it (<code>networkConcurrency</code>). The full description of each field is on the dedicated <a href="/registries">Registries</a> page.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">https://npm.corp.example.com/:</span>
+    <span class="hljs-attr">serverType:</span> <span class="hljs-string">artifactory</span>
+    <span class="hljs-attr">scopes:</span> [<span class="hljs-string">"@my-org"</span>, <span class="hljs-string">"@internal"</span>]
+    <span class="hljs-attr">prefix:</span> <span class="hljs-string">work</span>
+</code></pre>
+<p>The older shape, mapping scopes to URLs, is still accepted. The <code>default</code> key sets the main registry (equivalent to the <code>registry</code> <code>.npmrc</code> setting), and scoped keys configure registries for specific package scopes:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">default:</span> <span class="hljs-string">https://registry.npmjs.org/</span>
+  <span class="hljs-attr">"@my-org":</span> <span class="hljs-string">https://private.example.com/</span>
+  <span class="hljs-attr">"@internal":</span> <span class="hljs-string">https://nexus.corp.com/</span>
+</code></pre>
+<p>The two shapes cannot be mixed in one map.</p>
+<p>Since v11.11.0, this setting may also be defined in the <a href="/cli/config">global configuration file</a> (<code>config.yaml</code>), which is useful for registries that should apply to every project on the machine rather than to a single repository. Ecosystem indexes, routes (<code>scopes</code> and <code>prefix</code>), and <code>networkConcurrency</code> are read from there; <code>serverType</code> and <code>supportsTimeField</code> shape the lockfile, so they are read only from <code>pnpm-workspace.yaml</code> — see <a href="/registries#where-the-setting-may-live">where the setting may live</a>.</p>
+<h3 id="namedregistries">namedRegistries<a class="hash-link" href="#namedregistries" aria-label="Direct link to namedRegistries">#</a></h3>
+<p>Added in: v11.1.0</p>
+<ul>
+<li>Default: <strong>undefined</strong></li>
+<li>Type: <strong>Record&#x3C;string, string></strong></li>
+</ul>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Deprecated since v11.23.0: declare a <code>prefix</code> in <a href="#registries"><code>registries</code></a> instead — see the <a href="/registries">Registries</a> page. <code>namedRegistries</code> is still read, but only for prefixes that <code>registries</code> does not declare; when both settings declare prefixes, pnpm warns. Everything below about aliases — the built-in ones, reserved names, and the lockfile keys — applies to <code>prefix</code>-declared aliases the same way.</p>
+</div>
+<p>Defines named registry aliases that can be used as a prefix when installing packages, in the style of <a href="https://docs.vlt.sh/cli/registries">vlt's named-registry aliases</a>. For example, with the following configuration:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">namedRegistries:</span>
+  <span class="hljs-attr">gh:</span> <span class="hljs-string">https://npm.pkg.github.example.com/</span>
+  <span class="hljs-attr">work:</span> <span class="hljs-string">https://npm.work.example.com/</span>
+</code></pre></div>
+<p><code>pnpm add work:@corp/lib@^2.0.0</code> resolves <code>@corp/lib@^2.0.0</code> against <code>https://npm.work.example.com/</code>.</p>
+<p>Authentication is picked up from the existing per-URL <code>.npmrc</code> entries (e.g. <code>//npm.pkg.github.com/:_authToken=...</code>), so no separate auth mechanism is required.</p>
+<p>Since v11.11.0, this setting may also be defined in the <a href="/cli/config">global configuration file</a> (<code>config.yaml</code>), so an alias like <code>work:</code> can be shared across every project on the machine.</p>
+<h4 id="built-in-aliases">Built-in aliases<a class="hash-link" href="#built-in-aliases" aria-label="Direct link to Built-in aliases">#</a></h4>
+<p>Two aliases work without any configuration:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Alias</th><th>Registry</th><th>Notes</th></tr></thead><tbody><tr><td><code>gh:</code></td><td><code>https://npm.pkg.github.com/</code></td><td>The <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry">GitHub Packages npm registry</a>.</td></tr><tr><td><code>npmjs:</code></td><td><code>https://registry.npmjs.org/</code></td><td>The public npm registry. Added in v11.20.0.</td></tr></tbody></table></div>
+<p>Entries you define under <code>namedRegistries</code> are merged on top of these, so either one can be overridden — GitHub Enterprise Server users point <code>gh</code> at their own host, and an organization that mirrors or proxies npmjs should point <code>npmjs</code> at the mirror:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">namedRegistries:</span>
+  <span class="hljs-attr">gh:</span> <span class="hljs-string">https://npm.pkg.github.example.com/</span>
+  <span class="hljs-attr">npmjs:</span> <span class="hljs-string">https://npm.internal.example.com/</span>
+</code></pre></div>
+<p><code>npmjs:</code> pins a dependency to the public registry even when the default <a href="#registries"><code>registry</code></a> points somewhere else, such as an internal proxy:</p>
+<div class="code-block"><div class="code-block-title">package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"left-pad"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"npmjs:^1.3.0"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>The <code>npm:</code> prefix cannot do this — it is the <a href="/aliases">alias protocol</a> (<code>npm:&#x3C;name>@&#x3C;range></code>) and resolves through whatever <code>registry</code> points at.</p>
+<p>The built-in URLs are also the prefixes that a tarball URL recorded in the lockfile is matched against when pnpm verifies a package. If you proxy npmjs and do not override the alias, an entry whose tarball URL is on <code>registry.npmjs.org</code> is verified against the public registry rather than against your mirror. This only affects lockfiles that record such a URL — a canonical URL for your configured registry is omitted from the lockfile — and only when a tarball-URL, <a href="#minimumreleaseage"><code>minimumReleaseAge</code></a>, or <a href="#trustpolicy"><code>trustPolicy</code></a> check runs.</p>
+<h4 id="reserved-alias-names">Reserved alias names<a class="hash-link" href="#reserved-alias-names" aria-label="Direct link to Reserved alias names">#</a></h4>
+<p>Since v11.20.0, an alias that shadows a reserved dependency specifier prefix (<code>file</code>, <code>link</code>, <code>workspace</code>, <code>runtime</code>, <code>npm</code>, <code>jsr</code>, <code>git</code>, <code>github</code>, <code>gitlab</code>, <code>bitbucket</code>, <code>catalog</code>, <code>custom</code>, <code>http</code>, <code>https</code>, <code>ssh</code>) is rejected with <code>ERR_PNPM_RESERVED_NAMED_REGISTRY_NAME</code>. Since v12.5.0, <code>pkg</code> is also reserved, regardless of case, for Package URLs. Previously such an alias was silently shadowed by the corresponding resolver. An alias must also start with a letter and contain only letters, digits, <code>.</code>, <code>_</code>, and <code>-</code>.</p>
+<h4 id="named-registries-in-the-lockfile">Named registries in the lockfile<a class="hash-link" href="#named-registries-in-the-lockfile" aria-label="Direct link to Named registries in the lockfile">#</a></h4>
+<p>Since v11.20.0, a package resolved from a named registry is recorded in <code>pnpm-lock.yaml</code> under a registry-qualified key, <code>&#x3C;name>@&#x3C;registryName>:&#x3C;version></code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-lock.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-attr">foo@work:1.0.0:</span>
+    <span class="hljs-attr">resolution:</span> {<span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-...</span>}
+</code></pre></div>
+<p>Before v11.20.0, packages were keyed by <code>name@version</code> alone, so the same name and version served by two registries collapsed onto a single entry and whichever resolved first decided the tarball that every consumer got. That is a package-substitution risk: a package you expect from your private registry could be installed from another registry that publishes the same name and version, with nothing in the lockfile to reveal it. Registry-qualified keys give each registry its own entry and pin which one a dependency came from.</p>
+<p>The lockfile format version is unchanged, and qualified keys appear only for packages resolved from a named registry — including the built-in <code>gh:</code> and <code>npmjs:</code> aliases, which need no <code>namedRegistries</code> entry. A project that installs nothing through an alias sees no difference, and older pnpm versions keep reading the file.</p>
+<div class="admonition admonition-caution"><p class="admonition-title">Caution</p>
+<p>If any dependency is installed through an alias, your first non-frozen install on v11.20.0 or newer re-keys those entries, which shows up as a lockfile diff. Commit it — that diff is the fix being applied. Review it too: an entry that moves to a registry you did not expect is worth investigating.</p>
+<p>Have everyone working on the project move to v11.20.0 or newer first. An older pnpm reads the re-keyed lockfile fine, and frozen installs are unaffected, but it does not produce registry-qualified keys itself: any install that updates the lockfile writes those entries back to the old shape, and the next install on a current pnpm re-qualifies them. The lockfile then flips back and forth, and while it is in the old shape the project is exposed again. Because the lockfile format version is deliberately unchanged, pnpm cannot detect this and warn you.</p>
+<p>There is no setting to keep the old behavior — the old shape is the vulnerability.</p>
+</div>
+<p>Every non-built-in alias that the lockfile references must stay declared — through <code>prefix</code> in <a href="#registries"><code>registries</code></a> or through <code>namedRegistries</code>. Reading an entry whose alias is gone fails with <code>ERR_PNPM_MISSING_NAMED_REGISTRY</code> rather than falling back to the default registry, since that would fetch a different package. Renaming an alias re-resolves the packages that used it.</p>
+<p>Tarball URLs that follow the standard registry layout are no longer written to the lockfile for named-registry packages; they are recomputed from the alias's declared URL on demand.</p>
+<h3 id="autodedupe">autoDedupe<a class="hash-link" href="#autodedupe" aria-label="Direct link to autoDedupe">#</a></h3>
+<p>Added in: v12.6.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, <code>pnpm install</code> and <code>pnpm add</code> deduplicate compatible dependency versions during installation. If a dependency appears at multiple versions and one version satisfies every range in the workspace, pnpm picks that version for all of them.</p>
+<p>Deduplication covers the whole workspace. A filtered command such as <code>pnpm --filter &#x3C;project> add</code> can also change the lockfile entries of projects outside the filter. Those projects get the deduplicated versions linked on the next <code>pnpm install</code>.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">autoDedupe:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>Frozen installs (<code>--frozen-lockfile</code>) leave the lockfile unchanged — deduplication only runs when the lockfile is being written.</p>
+<p><code>pnpm install --lockfile-only</code> skips resolution when nothing changed since a deduplicating <code>pnpm install --lockfile-only</code> wrote the lockfile. Such an install keeps the lockfile even if versions were published since then, or if only a setting such as <code>resolutionMode</code> changed. Run <a href="/cli/dedupe"><code>pnpm dedupe</code></a> to apply such a change.</p></article></main></div>
+  </body>
+</html>

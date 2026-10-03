@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm update | pnpm</title>
+    <meta name="description" content="Aliases: up, upgrade" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm update | pnpm" />
+    <meta property="og:description" content="Aliases: up, upgrade" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm update | pnpm" />
+    <meta name="twitter:description" content="Aliases: up, upgrade" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/update" />
+    <meta property="og:url" content="https://pnpm.io/cli/update" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/update" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/update" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/update" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/update" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/update" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/update" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/update" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/update" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/update" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/update" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/update" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/update" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/update" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/update" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm update</h1><p>Aliases: <code>up</code>, <code>upgrade</code></p>
+<p><code>pnpm update</code> updates packages to their latest version based on the specified
+range.</p>
+<p>When used without arguments, updates all dependencies.</p>
+<h2 id="tldr">TL;DR<a class="hash-link" href="#tldr" aria-label="Direct link to TL;DR">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Meaning</th></tr></thead><tbody><tr><td><code>pnpm up</code></td><td>Updates all dependencies, adhering to ranges specified in <code>package.json</code></td></tr><tr><td><code>pnpm up --latest</code></td><td>Updates all dependencies to their latest versions</td></tr><tr><td><code>pnpm up foo@2</code></td><td>Updates <code>foo</code> to the latest version on v2</td></tr><tr><td><code>pnpm up "@babel/*"</code></td><td>Updates all dependencies under the <code>@babel</code> scope</td></tr></tbody></table></div>
+<h2 id="what-an-update-writes">What an update writes<a class="hash-link" href="#what-an-update-writes" aria-label="Direct link to What an update writes">#</a></h2>
+<p>Besides moving <code>pnpm-lock.yaml</code> to the newly resolved versions, <code>pnpm update</code> writes the new range back to the place the dependency is declared:</p>
+<ul>
+<li>In <code>package.json</code>, the range is moved onto the resolved version while the operator the dependency already declared is kept, so <code>^1.1.0</code> stays a caret range.</li>
+<li>A dependency declared through the <a href="/catalogs"><code>catalog:</code> protocol</a> is not rewritten in <code>package.json</code>. The catalog entry it points at is updated instead, in <code>pnpm-workspace.yaml</code>.</li>
+<li>A dependency declared through the <a href="/package-sources"><code>jsr:</code> protocol</a> keeps its <code>jsr:</code> prefix, and its range moves like an npm range.</li>
+<li>A dependency declared through a dist-tag, such as <code>"foo": "latest"</code>, keeps tracking the tag. The tag stays in <code>package.json</code> and only the lockfile moves to the version behind it — with <code>--latest</code> as well.</li>
+<li>Since v11.27.1 and v12.6.0, a dependency whose specifier comes from a <a href="/settings/dependency-resolution#packageextensions"><code>packageExtensions</code></a> entry, a <a href="/pnpmfile#hooks"><code>readPackage</code></a> hook, or an <a href="/settings/dependency-resolution#overrides"><code>override</code></a> is not written to <code>package.json</code>. The lockfile keeps that specifier. <code>pnpm update</code> and <code>pnpm audit --fix=update</code> still move it inside the range.</li>
+</ul>
+<p>An exact pin from one of those sources is left as it is. When that pin is a vulnerable version, <code>pnpm audit --fix=update</code> warns and points at <code>pnpm audit --fix</code>, which writes an override. An override is applied after <code>packageExtensions</code> and <code>readPackage</code>, so it replaces a specifier those supply.</p>
+<p>Pass <a href="#--no-save"><code>--no-save</code></a> to update the lockfile only and leave the declared ranges alone.</p>
+<p>Since v12.0.0, <a href="#--patches"><code>--patches</code></a> does something different
+from all of this: it changes no version and no declared range, refreshing only
+which registry artifact each locked version resolves to. That still rewrites
+lockfile metadata — the <code>integrity</code>, the <code>revision</code>, and the package snapshot
+around them — because artifact revisions may declare different dependencies. See
+<a href="/registry-revisions">Registry revisions</a>.</p>
+<h2 id="updating-to-a-specific-version">Updating to a specific version<a class="hash-link" href="#updating-to-a-specific-version" aria-label="Direct link to Updating to a specific version">#</a></h2>
+<p>Since v11.23.0, <code>pnpm update &#x3C;name>@&#x3C;version></code> fails with <code>ERR_PNPM_UPDATE_VERSION_ON_INDIRECT_DEP</code> when the package is not a direct dependency of any selected project. There is nowhere to record the version in that case; pin a transitive dependency through <a href="/settings/dependency-resolution#overrides"><code>overrides</code></a> instead. Ranges and tags are unaffected.</p>
+<h2 id="selecting-dependencies-with-patterns">Selecting dependencies with patterns<a class="hash-link" href="#selecting-dependencies-with-patterns" aria-label="Direct link to Selecting dependencies with patterns">#</a></h2>
+<p>You can use patterns to update specific dependencies.</p>
+<p>Update all <code>babel</code> packages:</p>
+<pre><code class="hljs language-sh">pnpm update <span class="hljs-string">"@babel/*"</span>
+</code></pre>
+<p>Update all dependencies, except <code>webpack</code>:</p>
+<pre><code class="hljs language-sh">pnpm update <span class="hljs-string">"\!webpack"</span>
+</code></pre>
+<p>Patterns may also be combined, so the next command will update all <code>babel</code> packages, except <code>core</code>:</p>
+<pre><code class="hljs language-sh">pnpm update <span class="hljs-string">"@babel/*"</span> <span class="hljs-string">"\!@babel/core"</span>
+</code></pre>
+<h2 id="updating-github-actions">Updating GitHub Actions<a class="hash-link" href="#updating-github-actions" aria-label="Direct link to Updating GitHub Actions">#</a></h2>
+<p>Added in: v11.16.0</p>
+<p><a href="/cli/outdated"><code>pnpm outdated</code></a> can check the GitHub Actions referenced by the repository's workflow files for updates, and <code>pnpm update</code> can update them. This is opt-in for every command: pass <a href="#--include-github-actions"><code>--include-github-actions</code></a>, or set <a href="/settings/dependency-resolution#updategithubactions"><code>update.githubActions</code></a> to <code>true</code> in <code>pnpm-workspace.yaml</code> to enable it by default.</p>
+<p>Updated actions are pinned to exact commit hashes, with their release tags preserved in comments:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8</span> <span class="hljs-comment"># v5.0.0</span>
+</code></pre>
+<p>Local actions are followed rather than looked up: a <code>./</code>-relative reference, and
+since v12.3.0 GitHub's self-repository spelling
+(<code>uses: $/.github/actions/setup</code>), resolve inside the repository.</p>
+<p>Checking for updates runs <code>git ls-remote</code> against every referenced repository. Actions whose refs cannot be read — for example, an action in a private repository — are skipped with a warning. If the actions are hosted on a different GitHub server (such as a GitHub Enterprise Server), set <a href="/settings/dependency-resolution#updategithubactionsserver"><code>update.githubActionsServer</code></a> (added in v11.17.0).</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Concurrently runs update in all subdirectories with a <code>package.json</code> (excluding
+node_modules).</p>
+<p>Usage examples:</p>
+<pre><code class="hljs language-sh">pnpm --recursive update
+<span class="hljs-comment"># updates all packages up to 100 subdirectories in depth</span>
+pnpm --recursive update --depth 100
+<span class="hljs-comment"># update typescript to the latest version in every package</span>
+pnpm --recursive update typescript@latest
+</code></pre>
+<h3 id="--latest--l">--latest, -L<a class="hash-link" href="#--latest--l" aria-label="Direct link to --latest, -L">#</a></h3>
+<p>Update the dependencies to their latest stable version as determined by their <code>latest</code> tags (potentially upgrading the packages across major versions) as long as the version range specified in <code>package.json</code> is lower than the <code>latest</code> tag (i.e. it will not downgrade prereleases).</p>
+<p>Since v11.27.1 and v12.6.0, <code>--latest</code> does not move a dependency past a specifier supplied by <code>packageExtensions</code>, a <code>readPackage</code> hook, or an override. The lockfile stays inside that specifier.</p>
+<h3 id="--patches">--patches<a class="hash-link" href="#--patches" aria-label="Direct link to --patches">#</a></h3>
+<p>Added in: v12.0.0</p>
+<p>Refresh <a href="/registry-revisions">registry revisions</a> without changing any
+package version: for every locked registry package, pnpm resolves current
+metadata for the same <code>name@version</code>, and adopts the artifact the registry
+selects now if that changed. Versions and declared ranges are left alone, but the
+lockfile entry is rewritten as a whole — <code>integrity</code>, <code>revision</code>, and the package
+snapshot around them — since revisions may declare different dependencies.</p>
+<p>Cannot be combined with package selectors, <code>--latest</code>, <code>--interactive</code>, or
+<code>--global</code> (<code>ERR_PNPM_PATCHES_WITH_SELECTOR</code>). Each of those narrows or redirects
+what an update targets — a subset of packages, the newest versions, an
+interactive choice, the global installation — and <code>--patches</code> is defined as
+covering every locked package of the current project at its current version.</p>
+<h3 id="--pnpr-server-url">--pnpr-server &#x3C;url><a class="hash-link" href="#--pnpr-server-url" aria-label="Direct link to --pnpr-server <url>">#</a></h3>
+<p>Added in: v12.0.0</p>
+<p>Offload the resolution of a <code>--patches</code> refresh to a <a href="/pnpr">pnpr</a> server, the
+way <a href="/pnpr/install-acceleration"><code>pnprServer</code></a> does for an install.</p>
+<h3 id="--global--g">--global, -g<a class="hash-link" href="#--global--g" aria-label="Direct link to --global, -g">#</a></h3>
+<p>Update global packages. Packages from the pnpm 10 global layout are migrated to the current layout. After a successful migration, pnpm removes the old installation and its symlinks, shims, and hard-linked executables from <code>PNPM_HOME</code>.</p>
+<h3 id="--workspace">--workspace<a class="hash-link" href="#--workspace" aria-label="Direct link to --workspace">#</a></h3>
+<p>Tries to link all packages from the workspace. Versions are updated to match the
+versions of packages inside the workspace.</p>
+<p>If specific packages are updated, the command will fail if any of the updated
+dependencies are not found inside the workspace. For instance, the following
+command fails if <code>express</code> is not a workspace package:</p>
+<pre><code class="hljs language-sh">pnpm up -r --workspace express
+</code></pre>
+<h3 id="--prod--p">--prod, -P<a class="hash-link" href="#--prod--p" aria-label="Direct link to --prod, -P">#</a></h3>
+<p>Only update packages in <code>dependencies</code> and <code>optionalDependencies</code>.</p>
+<h3 id="--dev--d">--dev, -D<a class="hash-link" href="#--dev--d" aria-label="Direct link to --dev, -D">#</a></h3>
+<p>Only update packages in <code>devDependencies</code>.</p>
+<h3 id="--no-optional">--no-optional<a class="hash-link" href="#--no-optional" aria-label="Direct link to --no-optional">#</a></h3>
+<p>Don't update packages in <code>optionalDependencies</code>.</p>
+<h3 id="--interactive--i">--interactive, -i<a class="hash-link" href="#--interactive--i" aria-label="Direct link to --interactive, -i">#</a></h3>
+<p>Show outdated dependencies and select which ones to update.</p>
+<p>Since v11.21.0, combined with <code>--global</code>, each <a href="/global-packages#isolated-installations">isolated install group</a> is presented as one selectable item: packages that share a global installation update together as a unit.</p>
+<h3 id="--no-save">--no-save<a class="hash-link" href="#--no-save" aria-label="Direct link to --no-save">#</a></h3>
+<p>Don't update the ranges in <code>package.json</code>.</p>
+<h3 id="--changeset">--changeset<a class="hash-link" href="#--changeset" aria-label="Direct link to --changeset">#</a></h3>
+<p>Added in: v11.16.0</p>
+<p>After the update completes, write a <a href="/versioning">change intent</a> — a changesets-compatible <code>.changeset/*.md</code> file — declaring a <code>patch</code> bump for every workspace package whose <code>dependencies</code> or <code>optionalDependencies</code> were changed by the update, and a <code>major</code> bump when its <code>peerDependencies</code> changed. Packages that consume an updated catalog entry via the <code>catalog:</code> protocol are included. Private packages, packages without a name, and packages listed in the <code>ignore</code> array of <code>.changeset/config.json</code> are skipped. If <code>.changeset/config.json</code> does not exist, a warning is printed and no changeset is generated.</p>
+<p>Set <a href="/settings/dependency-resolution#updatechangeset"><code>update.changeset</code></a> to <code>true</code> in <code>pnpm-workspace.yaml</code> to enable this behavior by default, and use <code>--no-changeset</code> to override the setting for one update.</p>
+<h3 id="--include-github-actions">--include-github-actions<a class="hash-link" href="#--include-github-actions" aria-label="Direct link to --include-github-actions">#</a></h3>
+<p>Added in: v11.16.0</p>
+<p>Also update the GitHub Actions referenced by the repository's workflow files. See <a href="#updating-github-actions">Updating GitHub Actions</a>.</p>
+<h3 id="supply-chain-policy-flags">Supply-chain policy flags<a class="hash-link" href="#supply-chain-policy-flags" aria-label="Direct link to Supply-chain policy flags">#</a></h3>
+<p>Added in: v12.3.0</p>
+<p><code>pnpm update</code> accepts the same policy overrides as <code>pnpm install</code> and <code>pnpm add</code>: <code>--trust-lockfile</code>, <code>--no-trust-lockfile</code>, <a href="/settings/dependency-resolution#trustpolicy"><code>--trust-policy</code></a>, <a href="/settings/dependency-resolution#trustpolicyexclude"><code>--trust-policy-exclude</code></a>, and <a href="/settings/dependency-resolution#trustpolicyignoreafter"><code>--trust-policy-ignore-after</code></a>, so a policy can be relaxed or tightened for a single run without editing <code>pnpm-workspace.yaml</code>.</p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p></article></main></div>
+  </body>
+</html>

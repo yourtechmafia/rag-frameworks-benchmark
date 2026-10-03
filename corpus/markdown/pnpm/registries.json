@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/registries",
+ "file": "markdown/pnpm/registries.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.77,
+ "markdown_chars": 14687,
+ "raw_html_chars": 25649,
+ "sha256": "080a2c12e9eba7fdd945490efc7f9b3bb6c4cd0f6a79cfd408d3de85ce2dcfdb",
+ "fetched_at": "2026-10-03T08:58:59+00:00"
+}

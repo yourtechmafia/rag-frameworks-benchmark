@@ -1,0 +1,632 @@
+{
+  "https://docs.astral.sh/uv/concepts/cache/": {
+    "file": "1.md",
+    "fetched_at": "2026-10-03T12:09:12.558979+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 998
+  },
+  "https://docs.astral.sh/uv/concepts/": {
+    "file": "2.md",
+    "fetched_at": "2026-10-03T12:09:12.601580+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1065
+  },
+  "https://docs.astral.sh/uv/concepts/configuration-files/": {
+    "file": "3.md",
+    "fetched_at": "2026-10-03T12:09:12.605034+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1033
+  },
+  "https://docs.astral.sh/uv/concepts/build-backend/": {
+    "file": "4.md",
+    "fetched_at": "2026-10-03T12:09:12.929653+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1363
+  },
+  "https://docs.astral.sh/uv/concepts/python-versions/": {
+    "file": "5.md",
+    "fetched_at": "2026-10-03T12:09:13.099116+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 428
+  },
+  "https://docs.astral.sh/uv/": {
+    "file": "6.md",
+    "fetched_at": "2026-10-03T12:09:13.416295+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1853
+  },
+  "https://docs.astral.sh/uv/concepts/indexes/": {
+    "file": "7.md",
+    "fetched_at": "2026-10-03T12:09:13.445610+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 863
+  },
+  "https://docs.astral.sh/uv/assets/logo-letter.svg": {
+    "file": "8.md",
+    "fetched_at": "2026-10-03T12:09:13.582767+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 651
+  },
+  "https://docs.astral.sh/uv/concepts/preview/": {
+    "file": "9.md",
+    "fetched_at": "2026-10-03T12:09:13.678167+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1043
+  },
+  "https://docs.astral.sh/uv/concepts/resolution/": {
+    "file": "10.md",
+    "fetched_at": "2026-10-03T12:09:13.944328+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 741
+  },
+  "https://docs.astral.sh/uv/concepts/tools/": {
+    "file": "11.md",
+    "fetched_at": "2026-10-03T12:09:14.270791+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 806
+  },
+  "https://docs.astral.sh/uv/concepts/authentication/cli/": {
+    "file": "12.md",
+    "fetched_at": "2026-10-03T12:09:14.275657+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 593
+  },
+  "https://docs.astral.sh/uv/concepts/authentication/": {
+    "file": "13.md",
+    "fetched_at": "2026-10-03T12:09:14.288621+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 842
+  },
+  "https://docs.astral.sh/uv/concepts/authentication/git/": {
+    "file": "14.md",
+    "fetched_at": "2026-10-03T12:09:14.424369+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 479
+  },
+  "https://docs.astral.sh/uv/concepts/authentication/third-party/": {
+    "file": "15.md",
+    "fetched_at": "2026-10-03T12:09:14.805897+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 531
+  },
+  "https://docs.astral.sh/uv/concepts/projects/": {
+    "file": "16.md",
+    "fetched_at": "2026-10-03T12:09:15.261874+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 971
+  },
+  "https://docs.astral.sh/uv/concepts/authentication/http/": {
+    "file": "17.md",
+    "fetched_at": "2026-10-03T12:09:15.278208+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 985
+  },
+  "https://docs.astral.sh/uv/concepts/projects/build/": {
+    "file": "18.md",
+    "fetched_at": "2026-10-03T12:09:15.549426+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1115
+  },
+  "https://docs.astral.sh/uv/concepts/projects/config/": {
+    "file": "19.md",
+    "fetched_at": "2026-10-03T12:09:15.721866+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 815
+  },
+  "https://docs.astral.sh/uv/concepts/projects/export/": {
+    "file": "20.md",
+    "fetched_at": "2026-10-03T12:09:16.389304+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1073
+  },
+  "https://docs.astral.sh/uv/concepts/projects/layout/": {
+    "file": "21.md",
+    "fetched_at": "2026-10-03T12:09:16.427982+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 687
+  },
+  "https://docs.astral.sh/uv/concepts/projects/dependencies/": {
+    "file": "22.md",
+    "fetched_at": "2026-10-03T12:09:16.577250+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1215
+  },
+  "https://docs.astral.sh/uv/concepts/projects/init/": {
+    "file": "23.md",
+    "fetched_at": "2026-10-03T12:09:16.755807+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1178
+  },
+  "https://docs.astral.sh/uv/concepts/projects/run/": {
+    "file": "24.md",
+    "fetched_at": "2026-10-03T12:09:16.933012+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 533
+  },
+  "https://docs.astral.sh/uv/concepts/projects/workspaces/": {
+    "file": "25.md",
+    "fetched_at": "2026-10-03T12:09:17.173342+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 570
+  },
+  "https://docs.astral.sh/uv/concepts/authentication/certificates/": {
+    "file": "26.md",
+    "fetched_at": "2026-10-03T12:09:17.368041+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 3785
+  },
+  "https://docs.astral.sh/uv/concepts/projects/sync/": {
+    "file": "27.md",
+    "fetched_at": "2026-10-03T12:09:17.457135+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1021
+  },
+  "https://docs.astral.sh/uv/getting-started/first-steps/": {
+    "file": "28.md",
+    "fetched_at": "2026-10-03T12:09:17.551000+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 374
+  },
+  "https://docs.astral.sh/uv/getting-started/": {
+    "file": "29.md",
+    "fetched_at": "2026-10-03T12:09:17.581841+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 820
+  },
+  "https://docs.astral.sh/uv/getting-started/features/": {
+    "file": "30.md",
+    "fetched_at": "2026-10-03T12:09:17.591445+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 632
+  },
+  "https://docs.astral.sh/uv/getting-started/installation/": {
+    "file": "31.md",
+    "fetched_at": "2026-10-03T12:09:18.007645+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 546
+  },
+  "https://docs.astral.sh/uv/guides/": {
+    "file": "32.md",
+    "fetched_at": "2026-10-03T12:09:18.019741+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 468
+  },
+  "https://docs.astral.sh/uv/guides/package/": {
+    "file": "33.md",
+    "fetched_at": "2026-10-03T12:09:18.154274+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 523
+  },
+  "https://docs.astral.sh/uv/getting-started/help/": {
+    "file": "34.md",
+    "fetched_at": "2026-10-03T12:09:18.198402+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 810
+  },
+  "https://docs.astral.sh/uv/guides/install-python/": {
+    "file": "35.md",
+    "fetched_at": "2026-10-03T12:09:18.451281+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 858
+  },
+  "https://docs.astral.sh/uv/guides/scripts/": {
+    "file": "36.md",
+    "fetched_at": "2026-10-03T12:09:18.844296+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 790
+  },
+  "https://docs.astral.sh/uv/guides/projects/": {
+    "file": "37.md",
+    "fetched_at": "2026-10-03T12:09:19.172678+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1130
+  },
+  "https://docs.astral.sh/uv/guides/integration/": {
+    "file": "38.md",
+    "fetched_at": "2026-10-03T12:09:19.267661+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1062
+  },
+  "https://docs.astral.sh/uv/guides/tools/": {
+    "file": "39.md",
+    "fetched_at": "2026-10-03T12:09:19.299605+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1146
+  },
+  "https://docs.astral.sh/uv/assets/uv_gui_script_hello_world_pyqt.png": {
+    "file": "40.md",
+    "fetched_at": "2026-10-03T12:09:19.645546+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 377
+  },
+  "https://docs.astral.sh/uv/guides/integration/aws/": {
+    "file": "41.md",
+    "fetched_at": "2026-10-03T12:09:19.654302+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 795
+  },
+  "https://docs.astral.sh/uv/assets/uv_gui_script_hello_world.png": {
+    "file": "42.md",
+    "fetched_at": "2026-10-03T12:09:19.696646+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 522
+  },
+  "https://docs.astral.sh/uv/guides/integration/aws-lambda/": {
+    "file": "43.md",
+    "fetched_at": "2026-10-03T12:09:19.766678+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1277
+  },
+  "https://docs.astral.sh/uv/guides/integration/azure/": {
+    "file": "44.md",
+    "fetched_at": "2026-10-03T12:09:20.263739+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 935
+  },
+  "https://docs.astral.sh/uv/guides/integration/bazel/": {
+    "file": "45.md",
+    "fetched_at": "2026-10-03T12:09:20.435754+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 772
+  },
+  "https://docs.astral.sh/uv/guides/integration/dependabot/": {
+    "file": "46.md",
+    "fetched_at": "2026-10-03T12:09:20.465573+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 767
+  },
+  "https://docs.astral.sh/uv/guides/integration/docker/": {
+    "file": "47.md",
+    "fetched_at": "2026-10-03T12:09:20.554658+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 742
+  },
+  "https://docs.astral.sh/uv/guides/integration/coiled/": {
+    "file": "48.md",
+    "fetched_at": "2026-10-03T12:09:20.625525+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 948
+  },
+  "https://docs.astral.sh/uv/guides/integration/gitlab/": {
+    "file": "49.md",
+    "fetched_at": "2026-10-03T12:09:21.036750+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 548
+  },
+  "https://docs.astral.sh/uv/guides/integration/fastapi/": {
+    "file": "50.md",
+    "fetched_at": "2026-10-03T12:09:21.071985+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 788
+  },
+  "https://docs.astral.sh/uv/guides/integration/github/": {
+    "file": "51.md",
+    "fetched_at": "2026-10-03T12:09:21.431609+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 935
+  },
+  "https://docs.astral.sh/uv/guides/integration/jupyter/": {
+    "file": "52.md",
+    "fetched_at": "2026-10-03T12:09:21.781996+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 733
+  },
+  "https://docs.astral.sh/uv/guides/integration/marimo/": {
+    "file": "53.md",
+    "fetched_at": "2026-10-03T12:09:21.888688+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 786
+  },
+  "https://docs.astral.sh/uv/assets/pypi-add-trusted-publisher.png": {
+    "file": "54.md",
+    "fetched_at": "2026-10-03T12:09:22.392165+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 500
+  },
+  "https://docs.astral.sh/uv/assets/github-add-environment.png": {
+    "file": "55.md",
+    "fetched_at": "2026-10-03T12:09:22.502417+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 717
+  },
+  "https://docs.astral.sh/uv/guides/integration/google/": {
+    "file": "56.md",
+    "fetched_at": "2026-10-03T12:09:22.557259+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1987
+  },
+  "https://docs.astral.sh/uv/guides/integration/jfrog/": {
+    "file": "57.md",
+    "fetched_at": "2026-10-03T12:09:22.568643+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1930
+  },
+  "https://docs.astral.sh/uv/guides/integration/pre-commit/": {
+    "file": "58.md",
+    "fetched_at": "2026-10-03T12:09:22.581094+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1128
+  },
+  "https://docs.astral.sh/uv/assets/pypi-with-trusted-publisher.png": {
+    "file": "59.md",
+    "fetched_at": "2026-10-03T12:09:22.897808+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 503
+  },
+  "https://docs.astral.sh/uv/guides/integration/renovate/": {
+    "file": "60.md",
+    "fetched_at": "2026-10-03T12:09:23.065669+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 496
+  },
+  "https://docs.astral.sh/uv/guides/integration/pytorch/": {
+    "file": "61.md",
+    "fetched_at": "2026-10-03T12:09:23.239245+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 678
+  },
+  "https://docs.astral.sh/uv/guides/migration/": {
+    "file": "62.md",
+    "fetched_at": "2026-10-03T12:09:23.347122+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 776
+  },
+  "https://docs.astral.sh/uv/guides/migration/pip-to-project/": {
+    "file": "63.md",
+    "fetched_at": "2026-10-03T12:09:23.418600+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 771
+  },
+  "https://docs.astral.sh/uv/pip/compatibility/": {
+    "file": "64.md",
+    "fetched_at": "2026-10-03T12:09:23.891918+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 772
+  },
+  "https://docs.astral.sh/uv/pip/dependencies/": {
+    "file": "65.md",
+    "fetched_at": "2026-10-03T12:09:23.896975+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 541
+  },
+  "https://docs.astral.sh/uv/pip/compile/": {
+    "file": "66.md",
+    "fetched_at": "2026-10-03T12:09:24.067216+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 826
+  },
+  "https://docs.astral.sh/uv/pip/environments/": {
+    "file": "67.md",
+    "fetched_at": "2026-10-03T12:09:24.324316+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 878
+  },
+  "https://docs.astral.sh/uv/pip/inspection/": {
+    "file": "68.md",
+    "fetched_at": "2026-10-03T12:09:24.613890+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 706
+  },
+  "https://docs.astral.sh/uv/pip/": {
+    "file": "69.md",
+    "fetched_at": "2026-10-03T12:09:24.634687+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1708
+  },
+  "https://docs.astral.sh/uv/pip/packages/": {
+    "file": "70.md",
+    "fetched_at": "2026-10-03T12:09:24.637868+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 742
+  },
+  "https://docs.astral.sh/uv/reference/benchmarks/": {
+    "file": "71.md",
+    "fetched_at": "2026-10-03T12:09:24.795279+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 467
+  },
+  "https://docs.astral.sh/uv/reference/": {
+    "file": "72.md",
+    "fetched_at": "2026-10-03T12:09:25.122980+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1050
+  },
+  "https://docs.astral.sh/uv/reference/contributing/": {
+    "file": "73.md",
+    "fetched_at": "2026-10-03T12:09:25.403841+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 715
+  },
+  "https://docs.astral.sh/uv/reference/environment/": {
+    "file": "74.md",
+    "fetched_at": "2026-10-03T12:09:25.412573+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 655
+  },
+  "https://docs.astral.sh/uv/reference/storage/": {
+    "file": "75.md",
+    "fetched_at": "2026-10-03T12:09:25.849891+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 426
+  },
+  "https://docs.astral.sh/uv/reference/internals/": {
+    "file": "76.md",
+    "fetched_at": "2026-10-03T12:09:26.190674+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 773
+  },
+  "https://docs.astral.sh/uv/reference/installer/": {
+    "file": "77.md",
+    "fetched_at": "2026-10-03T12:09:26.356195+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1542
+  },
+  "https://docs.astral.sh/uv/reference/internals/resolver/": {
+    "file": "78.md",
+    "fetched_at": "2026-10-03T12:09:26.741774+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 519
+  },
+  "https://docs.astral.sh/uv/reference/internals/metadata/": {
+    "file": "79.md",
+    "fetched_at": "2026-10-03T12:09:27.083426+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1183
+  },
+  "https://docs.astral.sh/uv/reference/policies/": {
+    "file": "80.md",
+    "fetched_at": "2026-10-03T12:09:27.408770+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1042
+  },
+  "https://docs.astral.sh/uv/reference/policies/platforms/": {
+    "file": "81.md",
+    "fetched_at": "2026-10-03T12:09:27.568997+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 464
+  },
+  "https://docs.astral.sh/uv/reference/cli/": {
+    "file": "82.md",
+    "fetched_at": "2026-10-03T12:09:27.580266+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 2222
+  },
+  "https://docs.astral.sh/uv/reference/policies/license/": {
+    "file": "83.md",
+    "fetched_at": "2026-10-03T12:09:27.819655+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1070
+  },
+  "https://docs.astral.sh/uv/reference/settings/": {
+    "file": "84.md",
+    "fetched_at": "2026-10-03T12:09:28.035250+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 2662
+  },
+  "https://docs.astral.sh/uv/reference/policies/python/": {
+    "file": "85.md",
+    "fetched_at": "2026-10-03T12:09:28.159140+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 748
+  },
+  "https://docs.astral.sh/uv/reference/policies/versioning/": {
+    "file": "86.md",
+    "fetched_at": "2026-10-03T12:09:28.305714+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 721
+  },
+  "https://docs.astral.sh/uv/reference/troubleshooting/": {
+    "file": "87.md",
+    "fetched_at": "2026-10-03T12:09:28.654092+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 832
+  },
+  "https://docs.astral.sh/uv/reference/policies/rust/": {
+    "file": "88.md",
+    "fetched_at": "2026-10-03T12:09:28.928855+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1359
+  },
+  "https://docs.astral.sh/uv/reference/troubleshooting/build-failures/": {
+    "file": "89.md",
+    "fetched_at": "2026-10-03T12:09:29.053034+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 1002
+  },
+  "https://docs.astral.sh/uv/reference/troubleshooting/reproducible-examples/": {
+    "file": "90.md",
+    "fetched_at": "2026-10-03T12:09:29.171262+00:00",
+    "http_status": 200,
+    "credits_used": 1,
+    "latency_ms": 815
+  }
+}

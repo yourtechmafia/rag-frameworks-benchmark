@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/how-peers-are-resolved",
+ "file": "markdown/pnpm/how-peers-are-resolved.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.98,
+ "markdown_chars": 5920,
+ "raw_html_chars": 11993,
+ "sha256": "cad69b0a5a7eb8fd286a5e950ece6ff6b87db2b1c886906ace29c4759ed91c17",
+ "fetched_at": "2026-10-03T08:58:48+00:00"
+}

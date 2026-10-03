@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/peers",
+ "file": "markdown/pnpm/cli-peers.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.25,
+ "markdown_chars": 325,
+ "raw_html_chars": 4996,
+ "sha256": "c504d123bcc24d96d482da3122e0b745392a2e342e0c2e54434aea08fd62ddaa",
+ "fetched_at": "2026-10-03T08:58:19+00:00"
+}

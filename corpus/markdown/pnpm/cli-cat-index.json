@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/cat-index",
+ "file": "markdown/pnpm/cli-cat-index.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 10.06,
+ "markdown_chars": 189,
+ "raw_html_chars": 5038,
+ "sha256": "82248703912d455ecd084485d1d1d5c51208946707c4690b52c5165197d0fb6e",
+ "fetched_at": "2026-10-03T08:58:12+00:00"
+}

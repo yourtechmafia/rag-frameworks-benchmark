@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Versioning Settings | pnpm</title>
+    <meta name="description" content="Added in: v11.13.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Versioning Settings | pnpm" />
+    <meta property="og:description" content="Added in: v11.13.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Versioning Settings | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.13.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/versioning" />
+    <meta property="og:url" content="https://pnpm.io/settings/versioning" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/versioning" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/versioning" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/versioning" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/versioning" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/versioning" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/versioning" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/versioning" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/versioning" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/versioning" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/versioning" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/versioning" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/versioning" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/versioning" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/versioning" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Versioning Settings</h1><p>Added in: v11.13.0</p>
+<p>These settings configure pnpm's native workspace release management, driven by <a href="/cli/change"><code>pnpm change</code></a> and the bare <a href="/cli/version#recursive-releases"><code>pnpm version -r</code></a>. See <a href="/versioning">Release management</a> for the workflow they belong to.</p>
+<p>Where two workspace projects publish the same name, a project may be referenced by its <code>./</code>-prefixed workspace-relative directory instead of its name in <code>versioning.fixed</code>, <code>versioning.ignore</code>, and the keys of <code>versioning.lanes</code>.</p>
+<h3 id="versioningfixed">versioning.fixed<a class="hash-link" href="#versioningfixed" aria-label="Direct link to versioning.fixed">#</a></h3>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>string[][]</strong></li>
+</ul>
+<p>Groups of packages that always release together at one shared version. The shared version is the highest current version in the group, bumped by the largest bump any member needs.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">fixed:</span>
+    <span class="hljs-bullet">-</span> [<span class="hljs-string">'@example/cli'</span>, <span class="hljs-string">'@example/napi'</span>]
+</code></pre></div>
+<p>A fixed group must move between lanes together, and must sit entirely inside or entirely outside an epic.</p>
+<h3 id="versioningignore">versioning.ignore<a class="hash-link" href="#versioningignore" aria-label="Direct link to versioning.ignore">#</a></h3>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>string[]</strong></li>
+</ul>
+<p>Packages permanently excluded from versioning and dependent propagation. A change intent that requests a real bump for an ignored package fails.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">ignore:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">'@example/internal'</span>
+</code></pre></div>
+<h3 id="versioningmaxbump">versioning.maxBump<a class="hash-link" href="#versioningmaxbump" aria-label="Direct link to versioning.maxBump">#</a></h3>
+<ul>
+<li>Default: <strong>undefined</strong> (no cap)</li>
+<li>Type: <strong>'patch'</strong>, <strong>'minor'</strong>, <strong>'major'</strong></li>
+</ul>
+<p>Caps the bump a release from the current checkout may apply. It is enforced on the final assembled release plan, after dependent propagation and fixed-group resolution, so a patch-only maintenance branch cannot accidentally ship a minor.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">maxBump:</span> <span class="hljs-string">patch</span>
+</code></pre></div>
+<h3 id="versioninglanes">versioning.lanes<a class="hash-link" href="#versioninglanes" aria-label="Direct link to versioning.lanes">#</a></h3>
+<ul>
+<li>Default: <strong>{}</strong></li>
+<li>Type: <strong>Record&#x3C;string, string></strong></li>
+</ul>
+<p>Maps a package to the release lane it is on. A lane is a parallel release track that emits <code>X.Y.Z-&#x3C;lane>.N</code> prereleases; every unlisted package is on the reserved default lane, <code>main</code>, and releases stable versions.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">lanes:</span>
+    <span class="hljs-attr">'@example/cli':</span> <span class="hljs-string">alpha</span>
+</code></pre></div>
+<p>Lane names may contain only alphanumerics and hyphens, and cannot be purely numeric. <code>main</code> is reserved and cannot be assigned — remove the entry instead, or use <a href="/cli/lane"><code>pnpm lane main --filter &#x3C;pkg></code></a>.</p>
+<h3 id="versioningepics">versioning.epics<a class="hash-link" href="#versioningepics" aria-label="Direct link to versioning.epics">#</a></h3>
+<ul>
+<li>Default: <strong>[]</strong></li>
+<li>Type: <strong>Array&#x3C;{ lead: string, packages: string[] }></strong></li>
+</ul>
+<p>Ties a group of member packages to a lead package, constraining every member's major version to a band derived from the lead's major: while the lead is on major <code>M</code>, members live in <code>M*100</code> … <code>M*100+99</code>.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">epics:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">lead:</span> <span class="hljs-string">'@example/app'</span>
+      <span class="hljs-attr">packages:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">'./packages/**'</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">'!./packages/private-*'</span>
+</code></pre></div>
+<p><code>lead</code> is a package name or a <code>./</code>-prefixed workspace directory. <code>packages</code> is matched with pnpm's package selectors — name globs, <code>./</code>-prefixed directory globs, and <code>!</code>-prefixed negations — evaluated in order, last match wins. A package can belong to at most one epic.</p>
+<p>See <a href="/versioning#epics">Epics</a> for how the band is enforced and re-based.</p>
+<h3 id="versioningchangelogstorage">versioning.changelog.storage<a class="hash-link" href="#versioningchangelogstorage" aria-label="Direct link to versioning.changelog.storage">#</a></h3>
+<ul>
+<li>Default: <strong>'registry'</strong></li>
+<li>Type: <strong>'registry'</strong>, <strong>'repository'</strong></li>
+</ul>
+<p>Where release changelogs live.</p>
+<p>With <code>registry</code>, no <code>CHANGELOG.md</code> is committed: each release's section is composed at publish time and packed into the published tarball on top of the previously published version's changelog.</p>
+<p>With <code>repository</code>, a <code>CHANGELOG.md</code> is committed in every package.</p>
+<p>Private packages always use <code>repository</code> storage, as they are never published.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">versioning:</span>
+  <span class="hljs-attr">changelog:</span>
+    <span class="hljs-attr">storage:</span> <span class="hljs-string">repository</span>
+</code></pre></div></article></main></div>
+  </body>
+</html>

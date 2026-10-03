@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/render-to-image",
+ "file": "markdown/go-echarts/go-echarts-en-us-render-to-image.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 2.24,
+ "markdown_chars": 1836,
+ "raw_html_chars": 3769,
+ "sha256": "ec0ceaee8f97e367820176c3bb2ccc30eec0e6cb3a81478f63fa066ccfc5699c",
+ "fetched_at": "2026-10-03T08:59:24+00:00"
+}

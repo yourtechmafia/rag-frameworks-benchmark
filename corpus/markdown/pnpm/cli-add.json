@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/add",
+ "file": "markdown/pnpm/cli-add.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.61,
+ "markdown_chars": 8120,
+ "raw_html_chars": 17363,
+ "sha256": "5142c7da667de4697750c33b0a1245655c593dd3a554561af1b74cb72b63f70d",
+ "fetched_at": "2026-10-03T08:57:47+00:00"
+}

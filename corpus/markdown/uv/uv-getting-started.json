@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/getting-started/",
+ "file": "markdown/uv/uv-getting-started.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.77,
+ "markdown_chars": 5036,
+ "raw_html_chars": 61534,
+ "sha256": "e4cc6077aa76ca9a7edc66faaef4b56effed87ddee289d5bda84efc13c2b49f3",
+ "fetched_at": "2026-10-03T08:57:24+00:00"
+}

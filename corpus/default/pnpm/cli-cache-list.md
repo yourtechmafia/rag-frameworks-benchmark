@@ -1,0 +1,50 @@
+
+
+
+
+
+pnpm cache list | pnpm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pnpm cache listWarning
+This command is experimental
+
+Lists the available packages metadata cache. Supports filtering by glob.
+
+

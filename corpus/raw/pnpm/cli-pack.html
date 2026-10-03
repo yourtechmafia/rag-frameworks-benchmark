@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm pack | pnpm</title>
+    <meta name="description" content="Create a tarball from a package." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm pack | pnpm" />
+    <meta property="og:description" content="Create a tarball from a package." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm pack | pnpm" />
+    <meta name="twitter:description" content="Create a tarball from a package." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/pack" />
+    <meta property="og:url" content="https://pnpm.io/cli/pack" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/pack" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/pack" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/pack" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/pack" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/pack" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/pack" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/pack" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/pack" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/pack" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/pack" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/pack" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/pack" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/pack" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/pack" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm pack</h1><p>Create a tarball from a package.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Added in: v10.11.0</p>
+<p>Pack all packages from the workspace.</p>
+<h3 id="--out-path">--out &#x3C;path><a class="hash-link" href="#--out-path" aria-label="Direct link to --out <path>">#</a></h3>
+<p>Customizes the output path for the tarball. Use <code>%s</code> and <code>%v</code> to include the package name and version, e.g., <code>%s.tgz</code> or <code>some-dir/%s-%v.tgz</code>. By default, the tarball is saved in the current working directory with the name <code>&#x3C;package-name>-&#x3C;version>.tgz</code>.</p>
+<h3 id="--pack-destination-dir">--pack-destination &#x3C;dir><a class="hash-link" href="#--pack-destination-dir" aria-label="Direct link to --pack-destination <dir>">#</a></h3>
+<p>Directory in which <code>pnpm pack</code> will save tarballs. The default is the current working directory.</p>
+<h3 id="--pack-gzip-level-level">--pack-gzip-level &#x3C;level><a class="hash-link" href="#--pack-gzip-level-level" aria-label="Direct link to --pack-gzip-level <level>">#</a></h3>
+<p>Specifying custom compression level.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>Log output in JSON format.</p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p>Added in: v10.11.0</p>
+<p><a href="/filtering">Read more about filtering.</a></p>
+<h3 id="--dry-run">--dry-run<a class="hash-link" href="#--dry-run" aria-label="Direct link to --dry-run">#</a></h3>
+<p>Added in: v10.26.0</p>
+<p>Does everything a normal run does, except actually packing the tarball. Useful for verifying the contents of the tarball.</p>
+<h3 id="--skip-manifest-obfuscation">--skip-manifest-obfuscation<a class="hash-link" href="#--skip-manifest-obfuscation" aria-label="Direct link to --skip-manifest-obfuscation">#</a></h3>
+<p>Added in: v11.3.0</p>
+<p>Keep the original <code>packageManager</code> field and publish lifecycle scripts in the packed manifest instead of stripping them. The pnpm-specific <code>pnpm</code> field is still omitted.</p>
+<h2 id="life-cycle-scripts">Life Cycle Scripts<a class="hash-link" href="#life-cycle-scripts" aria-label="Direct link to Life Cycle Scripts">#</a></h2>
+<ul>
+<li><code>prepack</code></li>
+<li><code>prepare</code></li>
+<li><code>postpack</code></li>
+</ul>
+<div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>You can also use the <a href="/pnpmfile#hooksbeforepackingpkg-pkg--promisepkg"><code>beforePacking</code> hook</a> to programmatically modify the <code>package.json</code> contents before the tarball is created. This is useful for removing development-only fields or adding publication metadata without modifying your local <code>package.json</code>.</p>
+</div></article></main></div>
+  </body>
+</html>

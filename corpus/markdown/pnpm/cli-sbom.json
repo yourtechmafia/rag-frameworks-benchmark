@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/sbom",
+ "file": "markdown/pnpm/cli-sbom.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.7,
+ "markdown_chars": 3732,
+ "raw_html_chars": 10416,
+ "sha256": "f391993ea638e182c96bbb3ca3c43dc380bfa97aeceede292ff2ac849d163ae8",
+ "fetched_at": "2026-10-03T08:58:30+00:00"
+}

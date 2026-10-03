@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/cache-prune",
+ "file": "markdown/pnpm/cli-cache-prune.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.84,
+ "markdown_chars": 2810,
+ "raw_html_chars": 8167,
+ "sha256": "9c3ea416b87e9bc66a6831e5f75a8f016c9155e84268f1b60f427761547f90ea",
+ "fetched_at": "2026-10-03T08:57:50+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/migration",
+ "file": "markdown/pnpm/migration.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.64,
+ "markdown_chars": 3647,
+ "raw_html_chars": 10260,
+ "sha256": "7d6898fb7c1e0c8e9782b90defd5de4d21b16bd1929639a0c4cf538bb58a4d1a",
+ "fetched_at": "2026-10-03T08:58:50+00:00"
+}

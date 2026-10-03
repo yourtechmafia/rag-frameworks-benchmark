@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>package.json | pnpm</title>
+    <meta name="description" content="The manifest file of a package. It contains all the package's metadata, including dependencies, title, author, et cetera. This is a standard preserved across all major Node.js package managers, including pnpm." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="package.json | pnpm" />
+    <meta property="og:description" content="The manifest file of a package. It contains all the package's metadata, including dependencies, title, author, et cetera. This is a standard preserved across all major Node.js package managers, including pnpm." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="package.json | pnpm" />
+    <meta name="twitter:description" content="The manifest file of a package. It contains all the package's metadata, including dependencies, title, author, et cetera. This is a standard preserved across all major Node.js package managers, including pnpm." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/package_json" />
+    <meta property="og:url" content="https://pnpm.io/package_json" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/package_json" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/package_json" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/package_json" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/package_json" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/package_json" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/package_json" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/package_json" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/package_json" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/package_json" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/package_json" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/package_json" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/package_json" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/package_json" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/package_json" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>package.json</h1><p>The manifest file of a package. It contains all the package's metadata,
+including dependencies, title, author, et cetera. This is a standard preserved
+across all major Node.js package managers, including pnpm.</p>
+<p>In addition to the traditional <code>package.json</code> format, pnpm also supports <code>package.json5</code> (via <a href="https://www.npmjs.com/package/json5">json5</a>) and <code>package.yaml</code> (via <a href="https://www.npmjs.com/package/@zkochan/js-yaml">js-yaml</a>).</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Since v11, pnpm no longer reads settings from the <code>pnpm</code> field of <code>package.json</code>. Settings must be defined in <code>pnpm-workspace.yaml</code> instead. See <a href="/configuring">Configuring</a>.</p>
+</div>
+<h2 id="engines">engines<a class="hash-link" href="#engines" aria-label="Direct link to engines">#</a></h2>
+<p>You can specify the version of Node and pnpm that your software works on:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"engines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"node"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">">=10"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"pnpm"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">">=3"</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>During local development, pnpm will always fail with an error message
+if its version does not match the one specified in the <code>engines</code> field.</p>
+<p>Unless the user has set the <code>engineStrict</code> config flag (see <a href="/settings/cli#enginestrict">settings</a>), this
+field is advisory only and will only produce warnings when your package is
+installed as a dependency.</p>
+<h2 id="enginesruntime">engines.runtime<a class="hash-link" href="#enginesruntime" aria-label="Direct link to engines.runtime">#</a></h2>
+<p>Added in: v10.21.0</p>
+<p>Specifies the Node.js runtime required by a dependency. When declared, pnpm will automatically install the specified Node.js version.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"engines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"node"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^24.11.0"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"onFail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"download"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>When a package declares a runtime:</p>
+<ol>
+<li><strong>For CLI apps</strong>: pnpm binds the CLI to the required Node.js version, ensuring it uses the correct runtime regardless of the globally installed Node.js instance.</li>
+<li><strong>For packages with <code>postinstall</code> scripts</strong>: The script executes using the specified Node.js version.</li>
+</ol>
+<p>This is particularly useful for dependencies that require specific Node.js versions to function correctly.</p>
+<h2 id="devenginesruntime">devEngines.runtime<a class="hash-link" href="#devenginesruntime" aria-label="Direct link to devEngines.runtime">#</a></h2>
+<p>Added in: v10.14</p>
+<p>Allows to specify one or more JavaScript runtime engines used by the project. Supported runtimes are Node.js, Deno, and Bun.</p>
+<p>For instance, here is how to add <code>node@^24.4.0</code> to your dependencies:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"devEngines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"node"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^24.4.0"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"onFail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"download"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>You can also add multiple runtimes to the same <code>package.json</code>:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"devEngines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"node"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^24.4.0"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"onFail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"download"</span>
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"deno"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^2.4.3"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"onFail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"download"</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>How it works:</p>
+<ol>
+<li><code>pnpm install</code> resolves your specified range to the latest matching runtime version.</li>
+<li>The exact version (and checksum) is saved in the lockfile.</li>
+<li>Scripts use the local runtime, ensuring consistency across environments.</li>
+</ol>
+<p>To override the declared <code>onFail</code> behavior without editing the manifest, use the <a href="/settings/cli#runtimeonfail"><code>runtimeOnFail</code></a> setting.</p>
+<p>Since v12.0.0-rc.2, a bare <code>node</code> (or <code>deno</code>/<code>bun</code>) run from inside the project also follows this pin, not just scripts. This can be turned off with the <a href="/settings/other#globalshims"><code>globalShims</code></a> setting, or skipped for a single command with <code>PNPM_SHIM_BYPASS=1</code>. See <a href="/global-packages#project-aware-global-bins">project-aware global bins</a>.</p>
+<h2 id="devenginespackagemanager">devEngines.packageManager<a class="hash-link" href="#devenginespackagemanager" aria-label="Direct link to devEngines.packageManager">#</a></h2>
+<p>Added in: v11.0.0</p>
+<p>Allows specifying the pnpm version via <code>devEngines.packageManager</code> in <code>package.json</code>. Unlike the <code>packageManager</code> field, this supports version ranges. The resolved version is stored in <code>pnpm-lock.yaml</code> under <code>packageManagerDependencies</code> and reused if it still satisfies the range.</p>
+<p>When the lockfile records no version yet, pnpm records the running pnpm if it satisfies the range and was published at least <a href="/settings/dependency-resolution#minimumreleaseage"><code>minimumReleaseAge</code></a> ago. Otherwise pnpm records the newest version in the range that is old enough. If no version in the range is old enough, pnpm records the running pnpm.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"devEngines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"packageManager"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"pnpm"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">">=12.0.0 &#x3C;13.0.0"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"onFail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"download"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>When pnpm 12 is declared via the legacy <code>packageManager</code> field and <a href="/settings/cli#pmonfail"><code>pmOnFail</code></a> is not set to <code>ignore</code>, its resolution info is written to <code>pnpm-lock.yaml</code>. The lockfile then gains a leading <a href="/lockfile">env lockfile document</a>.</p>
+</div>
+<p>Since v12.0.0-rc.6, the field can also name <a href="/package-managers">another package manager</a> — <code>npm</code>, <code>yarn</code> or <code>bun</code> — which is what <code>pnpm add npm@11</code> writes. For those, nothing is recorded in <code>pnpm-lock.yaml</code>: <code>packageManagerDependencies</code> holds pnpm's own pin, and another package manager is pinned in an environment lockfile of its own under the pnpm home.</p>
+<p>To override the <code>onFail</code> behavior without editing the manifest, see the <a href="/settings/cli#pmonfail"><code>pmOnFail</code></a> setting.</p>
+<h2 id="dependenciesmeta">dependenciesMeta<a class="hash-link" href="#dependenciesmeta" aria-label="Direct link to dependenciesMeta">#</a></h2>
+<p>Additional meta information used for dependencies declared inside <code>dependencies</code>, <code>optionalDependencies</code>, and <code>devDependencies</code>.</p>
+<h3 id="dependenciesmetainjected">dependenciesMeta.*.injected<a class="hash-link" href="#dependenciesmetainjected" aria-label="Direct link to dependenciesMeta.*.injected">#</a></h3>
+<p>If this is set to <code>true</code> for a dependency that is a local workspace package, that package will be installed by creating a hard linked copy in the virtual store (<code>node_modules/.pnpm</code>).</p>
+<p>If this is set to <code>false</code> or not set, then the dependency will instead be installed by creating a <code>node_modules</code> symlink that points to the package's source directory in the workspace.  This is the default, as it is faster and ensures that any modifications to the dependency will be immediately visible to its consumers.</p>
+<p>For example, suppose the following <code>package.json</code> is a local workspace package:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"card"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"button"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"workspace:1.0.0"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>The <code>button</code> dependency will normally be installed by creating a symlink in the <code>node_modules</code> directory of <code>card</code>, pointing to the development directory for <code>button</code>.</p>
+<p>But what if <code>button</code> specifies <code>react</code> in its <code>peerDependencies</code>? If all projects in the monorepo use the same version of <code>react</code>, then there is no problem. But what if <code>button</code> is required by <code>card</code> that uses <code>react@16</code> and <code>form</code> that uses <code>react@17</code>? Normally you'd have to choose a single version of <code>react</code> and specify it using <code>devDependencies</code> of <code>button</code>. Symlinking does not provide a way for the <code>react</code> peer dependency to be satisfied differently by different consumers such as <code>card</code> and <code>form</code>.</p>
+<p>The <code>injected</code> field solves this problem by installing a hard linked copies of <code>button</code> in the virtual store. To accomplish this, the <code>package.json</code> of <code>card</code> could be configured as follows:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"card"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"button"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"workspace:1.0.0"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"react"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"16"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependenciesMeta"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"button"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"injected"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Whereas the <code>package.json</code> of <code>form</code> could be configured as follows:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"form"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"button"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"workspace:1.0.0"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"react"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"17"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependenciesMeta"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"button"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"injected"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>With these changes, we say that <code>button</code> is an "injected dependency" of <code>card</code> and <code>form</code>.  When <code>button</code> imports <code>react</code>, it will resolve to <code>react@16</code> in the context of <code>card</code>, but resolve to <code>react@17</code> in the context of <code>form</code>.</p>
+<p>Because injected dependencies produce copies of their workspace source directory, these copies must be updated somehow whenever the code is modified; otherwise, the new state will not be reflected for consumers. When building multiple projects with a command such as <code>pnpm --recursive run build</code>, this update must occur after each injected package is rebuilt but before its consumers are rebuilt. For simple use cases, it can be accomplished by invoking <code>pnpm install</code> again, perhaps using a <code>package.json</code> lifecycle script such as <code>"prepare": "pnpm run build"</code> to rebuild that one project.  Third party tools such as <a href="https://www.npmjs.com/package/pnpm-sync-lib">pnpm-sync</a> and <a href="https://www.npmjs.com/package/pnpm-sync-dependencies-meta-injected">pnpm-sync-dependencies-meta-injected</a> provide a more robust and efficient solution for updating injected dependencies, as well as watch mode support.</p>
+<h2 id="peerdependencies">peerDependencies<a class="hash-link" href="#peerdependencies" aria-label="Direct link to peerDependencies">#</a></h2>
+<p>Peer dependency values are normally semver ranges (<code>^1.0.0</code>), or a <a href="/workspaces#workspace-protocol-workspace"><code>workspace:</code></a> or <a href="/catalogs"><code>catalog:</code></a> specifier.</p>
+<p>Since v11.14.0, a peer dependency may also be declared with a specifier that carries a scheme:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"peerDependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"lib-a"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"work:5.x.x"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"lib-b"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"npm:other-lib@^5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"lib-c"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"file:../lib-c"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"lib-d"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"git+https://example.com/lib-d.git"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Accepted forms are a <a href="/settings/dependency-resolution#namedregistries">named-registry</a> spec (<code>&#x3C;registry>:&#x3C;version></code>), an <code>npm:</code> alias, and a <code>file:</code>, git, or URL spec.</p>
+<p>Such a specifier is matched against the semver range it carries — <code>work:5.x.x</code> is checked as <code>5.x.x</code> and <code>npm:other-lib@^5</code> as <code>^5</code>. A specifier that carries no version, such as <code>file:../lib-c</code>, is matched against <code>*</code>, so any version satisfies it. Meanwhile the original specifier is what selects the package when <a href="/settings/peer-dependencies#autoinstallpeers"><code>autoInstallPeers</code></a> installs a missing peer, so the peer is fetched from the aliased name, registry, or source you named.</p>
+<p>Bare <code>name@version</code> values are still rejected with <code>ERR_PNPM_INVALID_PEER_DEPENDENCY_SPECIFICATION</code>, as they are almost always a mistake:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"peerDependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"lib-a"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"lib-a@1.2.3"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h2 id="peerdependenciesmeta">peerDependenciesMeta<a class="hash-link" href="#peerdependenciesmeta" aria-label="Direct link to peerDependenciesMeta">#</a></h2>
+<p>This field lists some extra information related to the dependencies listed in
+the <code>peerDependencies</code> field.</p>
+<h3 id="peerdependenciesmetaoptional">peerDependenciesMeta.*.optional<a class="hash-link" href="#peerdependenciesmetaoptional" aria-label="Direct link to peerDependenciesMeta.*.optional">#</a></h3>
+<p>If this is set to true, the selected peer dependency will be marked as optional
+by the package manager. Therefore, the consumer omitting it will no longer be
+reported as an error.</p>
+<p>For example:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"peerDependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"foo"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"peerDependenciesMeta"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"foo"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"optional"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"bar"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"optional"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Note that even though <code>bar</code> was not specified in <code>peerDependencies</code>, it is
+marked as optional. pnpm will therefore assume that any version of bar is fine.
+However, <code>foo</code> is optional, but only to the required version specification.</p>
+<h2 id="publishconfig">publishConfig<a class="hash-link" href="#publishconfig" aria-label="Direct link to publishConfig">#</a></h2>
+<p>This field carries settings that change how a package is published:
+<a href="#publishconfigregistry"><code>registry</code></a>, <a href="#publishconfigaccess"><code>access</code></a>,
+<a href="#publishconfigdirectory"><code>directory</code></a>,
+<a href="#publishconfiglinkdirectory"><code>linkDirectory</code></a>, and
+<a href="#publishconfigexecutablefiles"><code>executableFiles</code></a>. These are preserved in the
+published <code>package.json</code>.</p>
+<p>Additionally, <code>publishConfig</code> can be used to override several other fields in the
+manifest before the package is packed. The following fields may be overridden:</p>
+<ul>
+<li><a href="https://github.com/stereobooster/package.json#bin"><code>bin</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#main"><code>main</code></a></li>
+<li><a href="https://nodejs.org/api/esm.html#esm_package_exports"><code>exports</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#types"><code>types</code> or <code>typings</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#module"><code>module</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#browser"><code>browser</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#esnext"><code>esnext</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#es2015"><code>es2015</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#unpkg-1"><code>unpkg</code></a></li>
+<li><a href="https://github.com/stereobooster/package.json#microbundle"><code>umd:main</code></a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html#version-selection-with-typesversions"><code>typesVersions</code></a></li>
+<li>cpu</li>
+<li>os</li>
+<li><code>engines</code> (Added in v10.22.0)</li>
+<li><a href="#publishconfigname"><code>name</code></a> (Added in v11.18.0)</li>
+</ul>
+<p>To override a field, add the publish version of the field to <code>publishConfig</code>.</p>
+<p>For instance, the following <code>package.json</code>:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"main"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"src/index.ts"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">"main"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"lib/index.js"</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">"typings"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"lib/index.d.ts"</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Will be published as:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"main"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"lib/index.js"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"typings"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"lib/index.d.ts"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="publishconfigregistry">publishConfig.registry<a class="hash-link" href="#publishconfigregistry" aria-label="Direct link to publishConfig.registry">#</a></h3>
+<p>Added in: v8.6.8</p>
+<p>The registry this package publishes to. It overrides the <code>registry</code> setting, any
+scope route in <a href="/settings/dependency-resolution#registries"><code>registries</code></a>,
+and <code>pnpm publish --registry</code>.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"registry"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://registry.npmjs.org/"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Only the URL belongs here. pnpm matches it against the auth settings in
+<a href="/npmrc"><code>.npmrc</code></a>, so the example above publishes with
+<code>//registry.npmjs.org/:_authToken=...</code>.</p>
+<p>Each package in a <code>pnpm publish -r</code> run goes to its own target registry, so one
+command can release a workspace to several registries.
+<a href="/cli/publish#--batch"><code>--batch</code></a> then sends one request per registry.</p>
+<p>Since v12.7.0, a scoped package can also set its registry under the
+<code>@&#x3C;scope>:registry</code> key. For a package in that scope, it takes precedence over
+<code>publishConfig.registry</code> and over the registry set for the scope in <code>.npmrc</code>:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@acme/foo"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"@acme:registry"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://npm.acme.example/"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="publishconfigaccess">publishConfig.access<a class="hash-link" href="#publishconfigaccess" aria-label="Direct link to publishConfig.access">#</a></h3>
+<p>Added in: v11.2.0</p>
+<p>Tells the registry whether the published package should be <code>public</code> or
+<code>restricted</code>. Same as
+<a href="/cli/publish#--access-publicrestricted"><code>pnpm publish --access</code></a>.</p>
+<p>Left unset, pnpm sends no access level, so the registry applies its own default
+and the level of an already published package is left alone. Unscoped packages
+cannot be <code>restricted</code>.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"@acme/foo"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"access"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"public"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="publishconfigname">publishConfig.name<a class="hash-link" href="#publishconfigname" aria-label="Direct link to publishConfig.name">#</a></h3>
+<p>Added in: v11.18.0</p>
+<p>Publishes the package under a different name than the one its manifest carries in the workspace. This is for a project whose published name is already taken by a sibling project, which otherwise has to be renamed by a build step just before publishing.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo-v2"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2.0.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Only the published artifact is renamed — dependents, <code>pnpm-lock.yaml</code>, and release tooling keep addressing the project by its manifest name. The new name reaches the packed manifest, the tarball filename, and everything that addresses the package at the registry: the already-published check of <code>pnpm publish -r</code>, its registry selection, and the release-planning probes of <code>pnpm change status</code> and <code>pnpm version -r</code>.</p>
+<h3 id="publishconfigexecutablefiles">publishConfig.executableFiles<a class="hash-link" href="#publishconfigexecutablefiles" aria-label="Direct link to publishConfig.executableFiles">#</a></h3>
+<p>By default, for portability reasons, no files except those listed in the bin field will be marked as executable in the resulting package archive. The <code>executableFiles</code> field lets you declare additional files that must have the executable flag (+x) set even if they aren't directly accessible through the bin field.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"executableFiles"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-string">"./dist/shim.js"</span>
+    <span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="publishconfigdirectory">publishConfig.directory<a class="hash-link" href="#publishconfigdirectory" aria-label="Direct link to publishConfig.directory">#</a></h3>
+<p>You also can use the field <code>publishConfig.directory</code> to customize the published subdirectory relative to the current <code>package.json</code>.</p>
+<p>It is expected to have a modified version of the current package in the specified directory (usually using third party build tools).</p>
+<blockquote>
+<p>In this example the <code>"dist"</code> folder must contain a <code>package.json</code></p>
+</blockquote>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"directory"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dist"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="publishconfiglinkdirectory">publishConfig.linkDirectory<a class="hash-link" href="#publishconfiglinkdirectory" aria-label="Direct link to publishConfig.linkDirectory">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, the project will be symlinked from the <code>publishConfig.directory</code> location during local development.</p>
+<p>For example:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"publishConfig"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"directory"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"dist"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"linkDirectory"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></article></main></div>
+  </body>
+</html>

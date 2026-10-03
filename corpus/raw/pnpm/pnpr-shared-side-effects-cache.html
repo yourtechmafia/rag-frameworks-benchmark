@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared side-effects cache | pnpm</title>
+    <meta name="description" content="Added in: pnpr v0.1.0-alpha.8, pnpm v11.25.0 and v12.0.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Shared side-effects cache | pnpm" />
+    <meta property="og:description" content="Added in: pnpr v0.1.0-alpha.8, pnpm v11.25.0 and v12.0.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Shared side-effects cache | pnpm" />
+    <meta name="twitter:description" content="Added in: pnpr v0.1.0-alpha.8, pnpm v11.25.0 and v12.0.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/shared-side-effects-cache" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/shared-side-effects-cache" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/shared-side-effects-cache" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Shared side-effects cache</h1><p>Added in: pnpr v0.1.0-alpha.8, pnpm v11.25.0 and v12.0.0</p>
+<div class="admonition admonition-caution"><p class="admonition-title">Proof of concept</p>
+<p>This is a proof of concept for
+<a href="https://github.com/pnpm/rfcs/pull/20">pnpm/rfcs#20</a>. It is off on both sides
+unless you turn it on, and its protocol may change without notice. It supports
+Linux/glibc, macOS, and Windows on x64 and arm64. Lockfile pinning,
+publisher-owned artifacts, and key lifecycle policy are deliberately left out.</p>
+</div>
+<p>When a dependency has a build script, every machine that installs it pays for
+that build. pnpm's local <a href="/settings/build#sideeffectscache"><code>sideEffectsCache</code></a>
+makes the second install on the <em>same</em> machine cheap; this feature extends the
+same idea across machines, by having one trusted builder publish the build
+output and everyone else restore it.</p>
+<p>The output is not trusted because it came from the server. It is trusted because
+it is <strong>signed</strong>, with a P-256 key the consumer configured independently of the
+server, and because the signed payload names exactly which package, which source
+tarball, and which platform it belongs to.</p>
+<h2 id="how-an-install-uses-it">How an install uses it<a class="hash-link" href="#how-an-install-uses-it" aria-label="Direct link to How an install uses it">#</a></h2>
+<ol>
+<li>pnpm plans which packages are eligible to build, before contacting pnpr.</li>
+<li>It sends one batched <code>POST /-/pnpr/v0/artifacts/resolve</code> for the candidate
+input keys. The server returns at most eight signed variants per key.</li>
+<li>For each candidate, pnpm verifies the ECDSA P-256 signature against a
+<em>locally configured</em> public key, then checks the signed package name and
+version, source tarball integrity, owner, input key, manifest, and platform
+compatibility, and picks the most preferred compatible variant.</li>
+<li>It downloads that variant's blobs with <code>POST /-/pnpr/v0/artifacts/blob</code>, one
+request per unique SHA-512, recomputing the digest before accepting the
+bytes, and hydrates them into the store.</li>
+<li>The restored side-effects map and its signed origin are persisted in the
+shared store, then selected before lifecycle scripts run, so the package's
+scripts are not executed.</li>
+</ol>
+<p>On a later install, pnpm does not trust the persisted mapping merely because it
+is local. It verifies the envelope again against the current public key and
+checks its channel, owner, package and source identity, builder profile,
+platform, manifest, policy, and stored files. An invalid remote envelope is
+removed from consideration and quarantined for that pnpr server. The quarantine
+is persisted in the store, so the same bad variant is not retried on every
+install; another server remains an independent channel.</p>
+<p>Any failure along that path — an unreachable server, an unverifiable signature,
+an incompatible platform, a digest mismatch — falls back to the ordinary local
+build. The feature can make an install faster; it can never make it fail.</p>
+<h2 id="enabling-it-on-the-server">Enabling it on the server<a class="hash-link" href="#enabling-it-on-the-server" aria-label="Direct link to Enabling it on the server">#</a></h2>
+<p>The artifact surface is off by default and is independent of the resolver:</p>
+<div class="code-block"><div class="code-block-title">config.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">artifacts:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>With <code>artifacts.enabled: false</code> (the default) the three routes are not mounted
+at all, and the handshake at <code>GET /-/pnpr</code> does not advertise them. Since pnpr
+v0.1.0-alpha.9, an artifact-only tier may set <code>resolver.enabled: false</code>, declare
+no registries, and enable only <code>artifacts</code>; pnpm 12.1 can connect to that tier.</p>
+<p>By default artifacts live at <code>&#x3C;cache>/shared-artifacts/v0</code>. When the pnpr config
+has an <a href="/pnpr/storage"><code>s3:</code> block</a>, they live under the reserved
+<code>.pnpr-artifacts/v0/</code> namespace in that bucket instead. The S3 layout and
+conditional quota updates let several stateless pnpr replicas share one
+artifact tier.</p>
+<p>Artifacts are stored per owner. In this proof of concept an <code>organization</code>
+owner's name must equal the authenticated pnpr username, so the login name a
+client uses is the organization it may read and write. Publisher-owned artifacts
+are rejected until publisher discovery is defined.</p>
+<p>pnpr enforces its own storage bounds: at most eight variants per input key,
+1 GiB per owner, and 10 GiB across the server's artifact cache. Local storage
+serializes updates with an advisory lock; S3 replicas coordinate the quota
+counter with conditional object writes. A lookup's scanned envelope bytes plus
+its serialized response share one 16 MiB budget.</p>
+<h2 id="configuring-a-consumer">Configuring a consumer<a class="hash-link" href="#configuring-a-consumer" aria-label="Direct link to Configuring a consumer">#</a></h2>
+<p>The repository declares eligibility, and nothing else:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">pnprServer:</span> <span class="hljs-string">http://127.0.0.1:7677</span>
+<span class="hljs-attr">allowBuilds:</span>
+  <span class="hljs-attr">native-addon:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">sideEffectsCache:</span>
+  <span class="hljs-attr">remote:</span>
+    <span class="hljs-attr">org:</span> <span class="hljs-string">acme</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">native-addon</span>
+</code></pre></div>
+<p><code>packages</code> is an independent allowlist: a package is only a candidate when it is
+listed there <em>and</em> has <code>requiresBuild: true</code>, <em>and</em> passes
+<a href="/settings/build#allowbuilds"><code>allowBuilds</code></a>, <em>and</em> has a verified source
+integrity. <code>--ignore-scripts</code> returns without making a request at all.</p>
+<p>The trust material — <code>trustedKeys</code>, <code>privateKey</code>, and everything else that
+describes the act of signing — is refused in <code>pnpm-workspace.yaml</code> with
+<code>ERR_PNPM_WORKSPACE_REMOTE_SIDE_EFFECTS_TRUST</code>. The repository being installed is
+not a trust root: if it could name the signing key, a cloned repository could
+turn the machine's key into a signing oracle. Those fields come from the <a href="/cli/config">global
+configuration file</a> instead, which travels with the machine:</p>
+<div class="code-block"><div class="code-block-title">~/.config/pnpm/config.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">sideEffectsCache:</span>
+  <span class="hljs-attr">remote:</span>
+    <span class="hljs-attr">trustedKeys:</span>
+      <span class="hljs-attr">acme-2026:</span> <span class="hljs-string">'&#x3C;base64 P-256 SubjectPublicKeyInfo DER public key>'</span>
+</code></pre></div>
+<p>The repository and the machine each declare one half of the same section, and
+they compose: neither file drops what the other set. <code>remoteSideEffectsCache</code> is
+the older spelling of <code>sideEffectsCache.remote</code>, and <code>organization</code> of <code>org</code>;
+both still work, so a machine configured before the rename keeps its trust
+material.</p>
+<p>Every field of the section is also settable from the environment, which wins
+over both files — the shape a CI runner wants for material it must not commit:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Environment variable</th><th>Setting</th></tr></thead><tbody><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_TRUSTED_KEYS</code></td><td><code>trustedKeys</code> (JSON object)</td></tr><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_PRIVATE_KEY</code></td><td><code>privateKey</code></td></tr><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_PUBLISH</code></td><td><code>publish</code></td></tr><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_KEY_ID</code></td><td><code>keyId</code></td></tr><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_BUILDER_ID</code></td><td><code>builderId</code></td></tr><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_IMAGE_DIGEST</code></td><td><code>imageDigest</code></td></tr><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_ARCHITECTURE_BASELINE</code></td><td><code>architectureBaseline</code></td></tr><tr><td><code>PNPM_SIDE_EFFECTS_CACHE_REMOTE_BUILD_ENV</code></td><td><code>buildEnv</code> (JSON object)</td></tr></tbody></table></div>
+<p>The <code>PNPM_REMOTE_SIDE_EFFECTS_CACHE_*</code> names still work, and the ones above win
+when both are set.</p>
+<p>The repository and the machine each contribute the half they own: a workspace
+naming <code>org</code> and <code>packages</code> keeps whatever trust material the global
+file or the environment supplied.</p>
+<h2 id="publishing-from-a-builder">Publishing from a builder<a class="hash-link" href="#publishing-from-a-builder" aria-label="Direct link to Publishing from a builder">#</a></h2>
+<p>Publication is off unless a build explicitly turns it on, so only a trusted
+builder uploads the diff its own build produced:</p>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">export</span> PNPM_SIDE_EFFECTS_CACHE_REMOTE_PUBLISH=<span class="hljs-literal">true</span>
+<span class="hljs-built_in">export</span> PNPM_SIDE_EFFECTS_CACHE_REMOTE_KEY_ID=acme-2026
+<span class="hljs-built_in">export</span> PNPM_SIDE_EFFECTS_CACHE_REMOTE_PRIVATE_KEY=<span class="hljs-string">'&#x3C;base64 P-256 PKCS#8 DER private key>'</span>
+<span class="hljs-built_in">export</span> PNPM_SIDE_EFFECTS_CACHE_REMOTE_BUILDER_ID=<span class="hljs-string">'ci/main/42'</span>
+</code></pre>
+<p><code>pnpm install</code> then runs the lifecycle scripts as usual, captures the actual
+post-build diff, signs it, and stores it with
+<code>PUT /-/pnpr/v0/artifacts</code>. <code>imageDigest</code>, <code>architectureBaseline</code> and <code>buildEnv</code>
+are optional provenance recorded in the signed payload. Never commit the private
+key.</p>
+<p>A published artifact is immutable, the way a published <code>name@version</code> is. One
+input key and one set of compatibility constraints admit one artifact, so
+publishing a different build over an existing one answers <code>409 Conflict</code> while
+republishing the identical one succeeds unchanged. A consumer that resolved an
+artifact once is therefore never handed different bytes for it later, and no
+publishing credential can replace one — releasing a claimed slot is an operator
+action against the server's storage.</p>
+<p>Immutability covers every consumer a variant can reach, not only an exactly
+equal compatibility tag. pnpr rejects a new variant when its compatibility set
+overlaps an existing variant for the same input key. A later <code>universal</code> build,
+a broader build, or a higher-floor build therefore cannot take precedence for a
+machine already served by an earlier artifact. Disjoint platform builds still
+coexist: different operating systems, architectures, or Node.js majors have no
+consumer in common.</p>
+<p>Publication does not switch restoring off: a builder still looks the artifact up
+first, and a hit skips the build the same way it does anywhere else — which
+leaves nothing new to sign, since only an actual local build produces a diff to
+publish. So a builder republishes exactly when it had to build, and to force one,
+give it something the cache cannot answer (a package or platform with no stored
+variant), rather than expecting <code>publish</code> to bypass the lookup.</p>
+<p>Generate a key pair with Node.js:</p>
+<!-- cspell:disable -->
+<pre><code class="hljs language-sh">node -e <span class="hljs-string">"const {generateKeyPairSync}=require('node:crypto');const {privateKey,publicKey}=generateKeyPairSync('ec',{namedCurve:'prime256v1'});console.log('private='+privateKey.export({format:'der',type:'pkcs8'}).toString('base64'));console.log('public='+publicKey.export({format:'der',type:'spki'}).toString('base64'))"</span>
+</code></pre>
+<!-- cspell:enable -->
+<p>Keep the private key in the builder's environment, and hand the public key to
+every machine that installs, under the same key id.</p>
+<h2 id="platform-compatibility">Platform compatibility<a class="hash-link" href="#platform-compatibility" aria-label="Direct link to Platform compatibility">#</a></h2>
+<p>An artifact says which platforms it is valid for, and the proof of concept
+defines one narrow vocabulary rather than interpreting claims it does not
+understand. <code>universal</code> is the positive claim for platform-independent output.
+The tagged forms are:</p>
+<pre><code class="hljs language-text">pnpm:v1:linux-&#x3C;architecture>-node&#x3C;major>-glibc&#x3C;major>.&#x3C;minor>
+pnpm:v1:darwin-&#x3C;architecture>-node&#x3C;major>-macos&#x3C;major>.&#x3C;minor>
+pnpm:v1:win32-&#x3C;architecture>-node&#x3C;major>-windows&#x3C;major>.&#x3C;minor>.&#x3C;build>
+</code></pre>
+<p><code>architecture</code> is <code>x64</code> or <code>arm64</code>, and every numeric component is a canonical
+unsigned decimal. A consumer generates the tags for its own glibc version down
+to minor zero, most recent floor first — glibc 2.3 advertises <code>glibc2.3</code>,
+<code>glibc2.2</code>, <code>glibc2.1</code>, <code>glibc2.0</code> — and matching is exact against that ordered
+set, so an artifact built against a 2.1 floor serves a 2.3 consumer.</p>
+<p>A macOS consumer advertises its product-version major and minor, and a Windows
+consumer advertises its NT kernel major, minor, and build. For both, the
+operating system, architecture, and Node.js major must match exactly, while the
+consumer's OS version must be at least the artifact's declared floor. The
+greatest compatible floor wins. A tagged match beats <code>universal</code>, and equal-rank
+variants are ordered by ascending signed-envelope digest.</p>
+<p>An unknown schema, platform, or dimension, and any malformed tag, is a miss. No
+other platform or libc family is treated as compatible by guessing.</p>
+<h2 id="signed-envelopes">Signed envelopes<a class="hash-link" href="#signed-envelopes" aria-label="Direct link to Signed envelopes">#</a></h2>
+<p>The base64 <code>payload</code> of a signed envelope is the exact UTF-8 JSON covered by the
+<code>ecdsa-p256-sha256</code> signature, and verification always uses those unchanged
+bytes. Signing opaque bytes avoids having to agree on JSON canonicalization
+between the Rust and TypeScript implementations. Signatures are canonical ASN.1
+DER; verification keys are P-256 <code>SubjectPublicKeyInfo</code> DER; <code>keyId</code> is an
+opaque case-sensitive UTF-8 string of 1–256 bytes with no control characters.</p>
+<p>The envelope's own digest is SHA-256 over these fields, in this order, regardless
+of how the outer JSON object was ordered:</p>
+<pre><code class="hljs language-text">pnpm-shared-artifact-envelope-v1\0
+algorithm\0
+keyId\0
+decoded payload\0
+decoded DER signature
+</code></pre>
+<p>Since pnpr v0.1.0-alpha.9, every candidate and signed payload carries a
+discriminated subject. Dependency side effects use
+<code>{ kind: 'dependency-side-effects', package, sourceIntegrity }</code> and an input key
+beginning with <code>dependency-side-effects:v1:</code>. The protocol also defines
+<code>{ kind: 'workspace-task', project, task }</code> with a <code>workspace-task:v1:</code> input
+key, so workspace-task artifacts cannot be confused with dependency builds.
+The current pnpm integration publishes and restores dependency side effects;
+the workspace-task subject reserves the protocol identity for task artifacts.</p>
+<p>Input keys carry no host platform identity; compatibility tags live in the
+signed payload instead. The artifact kind and input-key prefix must match the
+subject, and its input key, subject, and owner must match the candidate. For a
+dependency, that binds the signed package name and version and source tarball
+integrity to the package being installed. Organization eligibility is supplied
+independently by the caller and checked before lookup.</p></article></main></div>
+  </body>
+</html>

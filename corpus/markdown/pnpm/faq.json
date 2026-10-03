@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/faq",
+ "file": "markdown/pnpm/faq.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.64,
+ "markdown_chars": 8562,
+ "raw_html_chars": 16805,
+ "sha256": "e6b0e7462d42ac5fc974aa1303a85ca4d005653e296b20b196f584d03daa6b8f",
+ "fetched_at": "2026-10-03T08:58:45+00:00"
+}

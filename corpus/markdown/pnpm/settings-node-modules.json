@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/settings/node-modules",
+ "file": "markdown/pnpm/settings-node-modules.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.84,
+ "markdown_chars": 20873,
+ "raw_html_chars": 34170,
+ "sha256": "4d7835dcc6e899824e4b595dcb15ed20e1920dd94a5d012e5a1f88056368473d",
+ "fetched_at": "2026-10-03T08:59:04+00:00"
+}

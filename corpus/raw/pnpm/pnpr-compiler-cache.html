@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cargo compilation cache | pnpm</title>
+    <meta name="description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Cargo compilation cache | pnpm" />
+    <meta property="og:description" content="Added in: v0.1.0-alpha.11" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Cargo compilation cache | pnpm" />
+    <meta name="twitter:description" content="Added in: v0.1.0-alpha.11" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/compiler-cache" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/compiler-cache" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/compiler-cache" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Cargo compilation cache</h1><p>Added in: v0.1.0-alpha.11</p>
+<p>pnpr's artifact service speaks <a href="https://github.com/mozilla/sccache">sccache</a>'s
+WebDAV backend, so a Cargo compilation cache can be shared between CI and
+developer machines. No pnpm workspace or <code>package.json</code> is involved.</p>
+<h2 id="declaring-a-cache">Declaring a cache<a class="hash-link" href="#declaring-a-cache" aria-label="Direct link to Declaring a cache">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">artifacts:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">compilerCaches:</span>
+    <span class="hljs-attr">acme:</span>
+      <span class="hljs-attr">access:</span> [<span class="hljs-string">ci-builder</span>, <span class="hljs-string">alice</span>, <span class="hljs-string">bob</span>]
+      <span class="hljs-attr">publish:</span> <span class="hljs-string">ci-builder</span>
+</code></pre>
+<p>These are pnpr account names, and each caller supplies its own pnpr token.
+<code>access</code> is required for reads and writes alike; <code>publish</code> additionally gates
+writes. An empty list denies access, and the <code>$authenticated</code> token works here
+too. An undeclared cache is unavailable.</p>
+<p>This is what lets CI publish while developers only read, even where their tokens
+otherwise permit registry writes. Read-only token restrictions are enforced as
+well.</p>
+<h2 id="configuring-sccache">Configuring sccache<a class="hash-link" href="#configuring-sccache" aria-label="Direct link to Configuring sccache">#</a></h2>
+<p>Install <a href="https://github.com/mozilla/sccache">sccache 0.17.0 or newer</a> with
+WebDAV support (<code>sccache --help</code> lists the enabled backends), then set the
+environment before starting sccache or invoking Cargo:</p>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">export</span> RUSTC_WRAPPER=sccache
+<span class="hljs-built_in">export</span> CARGO_INCREMENTAL=0
+<span class="hljs-built_in">export</span> SCCACHE_MULTILEVEL_CHAIN=disk,webdav
+<span class="hljs-built_in">export</span> SCCACHE_WEBDAV_ENDPOINT=https://cache.example.com/-/pnpr/v0/compiler-cache/acme
+<span class="hljs-built_in">export</span> SCCACHE_WEBDAV_TOKEN=<span class="hljs-string">"<span class="hljs-variable">$PNPR_TOKEN</span>"</span>
+<span class="hljs-built_in">export</span> SCCACHE_WEBDAV_RW_MODE=READ_ONLY
+
+cargo build
+sccache --show-stats
+</code></pre>
+<p><code>PNPR_TOKEN</code> holds that caller's token; keep it in developer credentials or CI
+secrets. CI uses its builder account's token and sets
+<code>SCCACHE_WEBDAV_RW_MODE=READ_WRITE</code>. The pnpr policy enforces publication
+permission independently of that client setting.</p>
+<p><code>SCCACHE_MULTILEVEL_CHAIN=disk,webdav</code> checks disk first, then pnpr, and
+backfills disk on a remote hit. <code>SCCACHE_DIR</code> and <code>SCCACHE_CACHE_SIZE</code> configure
+the local cache. With sccache's default multilevel write-error policy, a remote
+write failure does not fail a successful disk write. A running sccache daemon
+keeps its startup configuration, so restart it with <code>sccache --stop-server</code>
+after changing these settings, and use separate daemons for projects that need
+different cache settings concurrently.</p>
+<h2 id="what-determines-a-hit">What determines a hit<a class="hash-link" href="#what-determines-a-hit" aria-label="Direct link to What determines a hit">#</a></h2>
+<p>Reuse depends on sccache's compilation keys: the compiler, target, features,
+flags, source inputs, and dependencies. Rust keys in sccache 0.17.0 also include
+the absolute compilation directory, so CI and developer builds need matching
+source paths, for example a common <code>/workspace</code> mount inside their build
+containers, with consistent Cargo registry source paths. <code>SCCACHE_BASEDIRS</code> does
+not lift that Rust restriction.</p>
+<p>Align toolchains and build profiles for useful hit rates. Rust incremental
+compilation must be off. System linking is not cached, and procedural macros
+with undeclared filesystem inputs have correctness limitations. See
+<a href="https://github.com/mozilla/sccache/blob/v0.17.0/docs/Rust.md">sccache's Rust support</a>.</p>
+<p>sccache 0.17.0 also treats a multilevel cache as read-only when any tier is
+read-only. Developers can read shared entries, and those hits backfill disk, but
+newly compiled misses are not added to disk in that mode. Builds still succeed.
+To cache new local compilations, use a disk-only daemon or a cache the developer
+may publish to. This is an upstream
+<a href="https://github.com/mozilla/sccache/blob/v0.17.0/src/cache/multilevel.rs">multilevel-cache limitation</a>.</p>
+<h2 id="storage-limits-and-trust">Storage, limits, and trust<a class="hash-link" href="#storage-limits-and-trust" aria-label="Direct link to Storage, limits, and trust">#</a></h2>
+<p>Entries use the configured filesystem or S3 artifact store and the same quota
+accounting as <a href="/pnpr/shared-side-effects-cache">side effects</a>, in a separate
+compiler-cache namespace. A cache key is immutable: the first successful <code>PUT</code>
+wins. <code>SCCACHE_WEBDAV_KEY_PREFIX</code> can select a fresh namespace, though that does
+not reclaim old entries.</p>
+<p>The experimental limits are 256 MiB per compiler entry, 1 GiB per owner or cache
+name, and 10 GiB globally across artifacts. A compiler cache sharing a name with
+a side-effects owner shares its quota. Live compiler entries are not evicted
+automatically yet.</p>
+<p>Each server accepts at most two concurrent compiler uploads, acquiring capacity
+before reading request bodies. Further uploads get <code>503</code> with <code>Retry-After: 1</code>.
+<code>HEAD</code> inspects object metadata without downloading the entry; <code>GET</code> always
+verifies the full content digest.</p>
+<p>The WebDAV endpoint trusts pnpr and the accounts allowed to publish. Use HTTPS
+outside localhost, and grant publication only to trusted builds, keeping
+untrusted pull-request jobs out of the shared writer credentials. Stock sccache
+does not verify pnpm's signed side-effects envelopes. pnpr verifies stored
+compiler entries against a digest of their cache scope, key, and bytes before
+serving them, which detects storage corruption, not a malicious server or an
+authorized publisher.</p>
+<p>The endpoint implements <code>GET</code>, <code>HEAD</code>, and <code>PUT</code> at
+<code>/-/pnpr/v0/compiler-cache/&#x3C;cache>/&#x3C;key></code>, plus <code>PROPFIND</code> for virtual parent
+directories. It is the subset sccache uses, not a general WebDAV filesystem.
+Local builds keep using ordinary Cargo commands. The pnpm
+<a href="/settings/build#sideeffectscache"><code>sideEffectsCache</code></a> setting governs npm
+dependency side effects and does not configure this integration.</p></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLI reference | pnpm</title>
+    <meta name="description" content="Since v0.1.0-alpha.11, pnpr reads any option from an environment variable when the flag is omitted. The variable is the flag's name with a PNPR_ prefix, so --public-url becomes PNPR_PUBLIC_URL and --disable-resolver becomes PNPR_DISABLE_RESOLVER. A flag given on the command line wins over its..." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="CLI reference | pnpm" />
+    <meta property="og:description" content="Since v0.1.0-alpha.11, pnpr reads any option from an environment variable when the flag is omitted. The variable is the flag's name with a PNPR_ prefix, so --public-url becomes PNPR_PUBLIC_URL and --disable-resolver becomes PNPR_DISABLE_RESOLVER. A flag given on the command line wins over its..." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="CLI reference | pnpm" />
+    <meta name="twitter:description" content="Since v0.1.0-alpha.11, pnpr reads any option from an environment variable when the flag is omitted. The variable is the flag's name with a PNPR_ prefix, so --public-url becomes PNPR_PUBLIC_URL and --disable-resolver becomes PNPR_DISABLE_RESOLVER. A flag given on the command line wins over its..." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/cli" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/cli" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/cli" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/cli" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/cli" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/cli" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/cli" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/cli" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/cli" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/cli" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/cli" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/cli" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/cli" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/cli" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/cli" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/cli" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>CLI reference</h1><pre><code class="hljs language-sh">pnpr [OPTIONS]
+pnpr [OPTIONS] oci-gc --registry &#x3C;name>
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Flag</th><th>Description</th></tr></thead><tbody><tr><td><code>-c, --config &#x3C;path></code></td><td>Path to a <a href="/pnpr/configuration">YAML config</a>. When omitted, the global <code>config.yaml</code> in pnpr's config dir is used if it exists, otherwise the bundled default config.</td></tr><tr><td><code>--listen &#x3C;addr></code></td><td>Address to bind to. Defaults to <code>127.0.0.1:7677</code>.</td></tr><tr><td><code>--storage &#x3C;path></code></td><td>Override the <a href="/pnpr/configuration">storage</a> directory from the loaded config — the source of truth for hosted packages.</td></tr><tr><td><code>--cache &#x3C;path></code></td><td>Override the disposable cache directory (the mirror of upstream registries, resolver cache, and local shared-artifact store). Defaults to a <code>.pnpr-cache</code> subdirectory of the storage path.</td></tr><tr><td><code>--public-url &#x3C;url></code></td><td>URL clients should use to reach the server, used when rewriting <code>dist.tarball</code> URLs in served packuments. Defaults to <code>http://&#x3C;listen></code>.</td></tr><tr><td><code>--packument-ttl-secs &#x3C;n></code></td><td>Seconds before a cached packument is considered stale and refetched. When omitted, the loaded config's value wins.</td></tr><tr><td><code>--osv</code></td><td>Enable local <a href="https://osv.dev/">OSV</a> npm vulnerability checks. Requires a local OSV npm database zip at <code>--osv-db</code> or <code>&#x3C;cache>/osv/npm/all.zip</code>.</td></tr><tr><td><code>--osv-db &#x3C;path></code></td><td>Path to the local OSV npm database zip or extracted JSON directory.</td></tr><tr><td><code>--disable-registry</code></td><td>Disable the npm registry surface (packument and tarball reads, publish, unpublish, dist-tags, and search) that is otherwise served whenever the config declares at least one registry. The health and login/token endpoints stay available.</td></tr><tr><td><code>--disable-resolver</code></td><td>Disable the install-accelerator surface: <code>GET /-/pnpr</code>, <code>POST /-/pnpr/v0/resolve</code>, and <code>POST /-/pnpr/v0/verify-lockfile</code>. Overrides <code>resolver.enabled</code>.</td></tr><tr><td><code>--disable-artifacts</code></td><td>Disable the signed shared-artifact surface. Overrides <code>artifacts.enabled</code> independently of the resolver.</td></tr><tr><td><code>-h, --help</code></td><td>Print help.</td></tr><tr><td><code>-V, --version</code></td><td>Print version.</td></tr></tbody></table></div>
+<h2 id="every-flag-has-an-environment-variable">Every flag has an environment variable<a class="hash-link" href="#every-flag-has-an-environment-variable" aria-label="Direct link to Every flag has an environment variable">#</a></h2>
+<p>Since v0.1.0-alpha.11, pnpr reads any option from an environment variable when
+the flag is omitted. The variable is the flag's name with a <code>PNPR_</code> prefix, so
+<code>--public-url</code> becomes <code>PNPR_PUBLIC_URL</code> and <code>--disable-resolver</code> becomes
+<code>PNPR_DISABLE_RESOLVER</code>. A flag given on the command line wins over its
+variable. Boolean flags accept <code>true</code>, <code>1</code>, <code>yes</code>, <code>on</code>, <code>false</code>, <code>0</code>, <code>no</code>,
+and <code>off</code>.</p>
+<pre><code class="hljs language-sh">PNPR_LISTEN=0.0.0.0:7677 PNPR_PUBLIC_URL=https://registry.example.com pnpr
+</code></pre>
+<h2 id="subcommands">Subcommands<a class="hash-link" href="#subcommands" aria-label="Direct link to Subcommands">#</a></h2>
+<h3 id="oci-gc">oci-gc<a class="hash-link" href="#oci-gc" aria-label="Direct link to oci-gc">#</a></h3>
+<p>Added in: v0.1.0-alpha.11</p>
+<p>Reclaims <a href="/pnpr/container-images#reclaiming-space">container image</a> blobs that no
+retained manifest references. Every writer sharing the store must be stopped for
+the whole run.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Flag</th><th>Description</th></tr></thead><tbody><tr><td><code>--registry &#x3C;name></code></td><td>The concrete hosted OCI registry to collect, by its config name. Required.</td></tr><tr><td><code>--dry-run</code></td><td>Report the candidates without deleting anything.</td></tr><tr><td><code>--min-age-secs &#x3C;n></code></td><td>Keep blobs younger than this. Defaults to <code>86400</code>, so an interrupted push can still resume. <code>0</code> collects every unreferenced blob.</td></tr></tbody></table></div>
+<h2 id="logging">Logging<a class="hash-link" href="#logging" aria-label="Direct link to Logging">#</a></h2>
+<p>The log level is controlled with the standard <code>RUST_LOG</code> environment variable,
+which always wins over the level set in the config file:</p>
+<pre><code class="hljs language-sh">RUST_LOG=debug pnpr
+</code></pre>
+<p>The config <code>log.level</code> accepts <code>trace</code>, <code>debug</code>, <code>http</code>, <code>info</code>, <code>warn</code>, and
+<code>error</code>. <code>http</code> enables one access-log record per request while keeping the
+rest of the crate quieter.</p>
+<h2 id="examples">Examples<a class="hash-link" href="#examples" aria-label="Direct link to Examples">#</a></h2>
+<p>Bind to all interfaces and tell clients to reach the server through a public
+hostname:</p>
+<pre><code class="hljs language-sh">pnpr --listen 0.0.0.0:7677 --public-url https://registry.example.com
+</code></pre>
+<p>Run with a custom config and a separate, ephemeral cache volume:</p>
+<pre><code class="hljs language-sh">pnpr -c ./pnpr.yaml --cache /mnt/ephemeral/pnpr-cache
+</code></pre>
+<p>Run only the pnpr resolver endpoints, without exposing an npm registry surface:</p>
+<pre><code class="hljs language-sh">pnpr --disable-registry
+</code></pre></article></main></div>
+  </body>
+</html>

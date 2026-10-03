@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm + Git Worktrees for Multi-Agent Development | pnpm</title>
+    <meta name="description" content="When multiple AI agents need to work on the same monorepo simultaneously, they each need an isolated working copy with fully functional node_modules. Git worktrees combined with pnpm's global virtual store make this practical: each worktree gets its own checkout and its own node_modules, but..." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm + Git Worktrees for Multi-Agent Development | pnpm" />
+    <meta property="og:description" content="When multiple AI agents need to work on the same monorepo simultaneously, they each need an isolated working copy with fully functional node_modules. Git worktrees combined with pnpm's global virtual store make this practical: each worktree gets its own checkout and its own node_modules, but..." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm + Git Worktrees for Multi-Agent Development | pnpm" />
+    <meta name="twitter:description" content="When multiple AI agents need to work on the same monorepo simultaneously, they each need an isolated working copy with fully functional node_modules. Git worktrees combined with pnpm's global virtual store make this practical: each worktree gets its own checkout and its own node_modules, but..." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/git-worktrees" />
+    <meta property="og:url" content="https://pnpm.io/git-worktrees" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/git-worktrees" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/git-worktrees" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/git-worktrees" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/git-worktrees" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/git-worktrees" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/git-worktrees" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/git-worktrees" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/git-worktrees" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/git-worktrees" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/git-worktrees" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/git-worktrees" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/git-worktrees" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/git-worktrees" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/git-worktrees" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm + Git Worktrees for Multi-Agent Development</h1><p>When multiple AI agents need to work on the same monorepo simultaneously, they each need an isolated working copy with fully functional <code>node_modules</code>. Git worktrees combined with pnpm's <a href="/global-virtual-store">global virtual store</a> make this practical: each worktree gets its own checkout and its own <code>node_modules</code>, but dependencies are shared across all of them through a single content-addressable store on disk.</p>
+<h2 id="what-is-a-git-worktree">What is a git worktree?<a class="hash-link" href="#what-is-a-git-worktree" aria-label="Direct link to What is a git worktree?">#</a></h2>
+<p>Normally, a git repository has a single working directory tied to one branch at a time. If you want to look at another branch, you have to stash or commit your changes and switch. A <a href="https://git-scm.com/docs/git-worktree">git worktree</a> lets you check out multiple branches simultaneously, each in its own directory. All worktrees share the same repository history and objects — they're just different views into the same repo.</p>
+<pre><code>git worktree add ../feature-branch feat/my-feature
+</code></pre>
+<p>This creates a new directory <code>../feature-branch</code> with <code>feat/my-feature</code> checked out, while your original working directory stays on its current branch. You can work in both directories independently.</p>
+<p>A common pattern is to use a <strong>bare repository</strong> (one with no working directory of its own) as the hub, and create all working directories as worktrees:</p>
+<pre><code>git clone --bare https://github.com/your-org/your-repo.git your-repo
+cd your-repo
+git worktree add ./main main
+git worktree add ./feature feat/something
+</code></pre>
+<h2 id="why-worktrees">Why worktrees?<a class="hash-link" href="#why-worktrees" aria-label="Direct link to Why worktrees?">#</a></h2>
+<p>Even before AI agents, worktrees are useful for maintaining multiple major versions of a project. On my dev machine, I use a pnpm repository with at least two worktrees: one on <code>main</code> for pnpm v12, and another on the <code>v11</code> branch for backports and maintenance releases. This way, I can fix a bug on v11 without stashing my in-progress v12 work — both versions are always checked out and ready to go. In the past, 2 or 3 worktrees were usually enough for me in the pnpm repository. However, since I started using AI agents extensively, I need a lot more worktrees to let my agents work on many tasks in parallel.</p>
+<h2 id="why-this-matters-even-more-with-ai-agents">Why this matters even more with AI agents<a class="hash-link" href="#why-this-matters-even-more-with-ai-agents" aria-label="Direct link to Why this matters even more with AI agents">#</a></h2>
+<p>With AI coding agents, worktrees go from convenient to essential. Each agent needs its own working directory to edit files, run builds, and execute tests without interfering with other agents. Without worktrees, this means cloning the repository multiple times, duplicating git history for each copy.</p>
+<p>Worktrees solve the git side — every agent gets its own isolated checkout while sharing the underlying git objects. But each worktree still needs its own <code>node_modules</code>, which can be hundreds of megabytes. That's where pnpm's <a href="/global-virtual-store">global virtual store</a> comes in: with it enabled, each worktree's <code>node_modules</code> contains only symlinks into a single content-addressable store on disk. This means adding a new agent is fast and costs almost no extra disk space.</p>
+<div class="admonition admonition-important"><p class="admonition-title">Important</p>
+<p>This setup assumes the worktrees and agents share the same trust boundary. Do not use one writable pnpm store for mutually untrusted agents or users.</p>
+</div>
+<h2 id="setting-it-up">Setting it up<a class="hash-link" href="#setting-it-up" aria-label="Direct link to Setting it up">#</a></h2>
+<h3 id="1-create-a-bare-repository">1. Create a bare repository<a class="hash-link" href="#1-create-a-bare-repository" aria-label="Direct link to 1. Create a bare repository">#</a></h3>
+<pre><code class="hljs language-sh">git <span class="hljs-built_in">clone</span> --bare https://github.com/your-org/your-monorepo.git your-monorepo
+<span class="hljs-built_in">cd</span> your-monorepo
+</code></pre>
+<h3 id="2-create-worktrees-for-each-branch">2. Create worktrees for each branch<a class="hash-link" href="#2-create-worktrees-for-each-branch" aria-label="Direct link to 2. Create worktrees for each branch">#</a></h3>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Main development worktree</span>
+git worktree add ./main main
+
+<span class="hljs-comment"># A feature branch for agent A</span>
+git worktree add ./feature-auth feat/auth
+
+<span class="hljs-comment"># A bugfix branch for agent B</span>
+git worktree add ./fix-api fix/api-error
+</code></pre>
+<p>Each worktree is a full checkout with its own files, but they all share the same <code>.git</code> object store.</p>
+<h3 id="3-enable-the-global-virtual-store">3. Enable the global virtual store<a class="hash-link" href="#3-enable-the-global-virtual-store" aria-label="Direct link to 3. Enable the global virtual store">#</a></h3>
+<p>Add <code>virtualStoreType: global</code> to the <code>pnpm-workspace.yaml</code> in your repository (before v11.23.0 this setting was spelled <code>enableGlobalVirtualStore: true</code>):</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'packages/*'</span>
+
+<span class="hljs-attr">virtualStoreType:</span> <span class="hljs-string">global</span>
+</code></pre>
+<h3 id="4-install-dependencies-in-each-worktree">4. Install dependencies in each worktree<a class="hash-link" href="#4-install-dependencies-in-each-worktree" aria-label="Direct link to 4. Install dependencies in each worktree">#</a></h3>
+<pre><code class="hljs language-sh"><span class="hljs-built_in">cd</span> main &#x26;&#x26; pnpm install
+<span class="hljs-built_in">cd</span> ../feature-auth &#x26;&#x26; pnpm install
+<span class="hljs-built_in">cd</span> ../fix-api &#x26;&#x26; pnpm install
+</code></pre>
+<p>The first <code>pnpm install</code> downloads packages into the global store. Subsequent installs in other worktrees are nearly instant because they only create symlinks to the same store.</p>
+<h2 id="how-it-works">How it works<a class="hash-link" href="#how-it-works" aria-label="Direct link to How it works">#</a></h2>
+<p>Without the global virtual store, each worktree would have its own <code>.pnpm</code> virtual store inside <code>node_modules</code>, with hardlinks or copies of every package. With <code>virtualStoreType: global</code>, pnpm keeps all package contents in a single shared directory (the global store, which you can find by running <code>pnpm store path</code>), and each worktree's <code>node_modules</code> contains symlinks pointing there:</p>
+<pre><code>your-monorepo/                      (bare git repo)
+├── main/                           (worktree: main branch)
+│   ├── packages/
+│   └── node_modules/
+│       ├── lodash → &#x3C;global-store>/links/@/lodash/...
+│       └── express → &#x3C;global-store>/links/@/express/...
+├── feature-auth/                   (worktree: feat/auth branch)
+│   └── node_modules/
+│       ├── lodash → &#x3C;global-store>/links/@/lodash/...  ← same target
+│       └── express → &#x3C;global-store>/links/@/express/...
+└── fix-api/                        (worktree: fix/api-error branch)
+    └── node_modules/
+        ├── lodash → &#x3C;global-store>/links/@/lodash/...  ← same target
+        └── express → &#x3C;global-store>/links/@/express/...
+</code></pre>
+<p>This means:</p>
+<ul>
+<li><strong>Near-zero per-worktree overhead</strong> — the local <code>node_modules</code> contains only symlinks to the shared global virtual store. Unlike pnpm's default behavior, which hardlinks files from the content-addressable store into a local <code>node_modules/.pnpm</code> directory, the global virtual store means no files are copied or hardlinked into the worktree at all.</li>
+<li><strong>Instant installs for new worktrees</strong> — packages are already in the global store.</li>
+<li><strong>No conflicts</strong> — each worktree has its own <code>node_modules</code> tree, so agents can install different dependency versions on different branches without interference.</li>
+</ul>
+<h2 id="example-the-pnpm-monorepo-itself">Example: the pnpm monorepo itself<a class="hash-link" href="#example-the-pnpm-monorepo-itself" aria-label="Direct link to Example: the pnpm monorepo itself">#</a></h2>
+<p>The <a href="https://github.com/pnpm/pnpm">pnpm repository</a> uses this exact setup with a bare git repo and a global virtual store. It includes helper scripts to make worktree management easier:</p>
+<p><strong><code>pnpm worktree:new &#x3C;branch-name|pr-number></code></strong> — creates a new worktree and sets it up:</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Create a worktree for a branch (creates it from main if it doesn't exist)</span>
+pnpm worktree:new feat/my-feature
+
+<span class="hljs-comment"># Create a worktree for a GitHub PR (fetches the PR ref automatically)</span>
+pnpm worktree:new 10834
+</code></pre>
+<p>The script handles a few things beyond plain <code>git worktree add</code>:</p>
+<ul>
+<li>PR numbers are fetched via <code>git fetch origin pull/&#x3C;number>/head</code> so they work for forks too.</li>
+<li>Branch names with slashes (e.g. <code>feat/my-feature</code>) are converted to dashes for the directory name (e.g. <code>feat-my-feature</code>).</li>
+<li>The <code>.claude</code> directory is symlinked from the bare repo's git common directory into the new worktree, so all worktrees share the same Claude Code settings and approved commands.</li>
+</ul>
+<p>There's also a shell helper <a href="https://github.com/pnpm/pnpm/blob/main/shell/wt.sh"><code>shell/wt.sh</code></a> that wraps the script and <code>cd</code>s into the new worktree:</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Source it in your shell config, then:</span>
+wt feat/my-feature
+wt 10834
+</code></pre>
+<h2 id="tips">Tips<a class="hash-link" href="#tips" aria-label="Direct link to Tips">#</a></h2>
+<ul>
+<li><strong>Creating worktrees for agents</strong>: When launching an AI agent, create a dedicated worktree for it. The agent gets full isolation to edit files, run tests, and install packages without affecting other agents.</li>
+<li><strong>Cleanup</strong>: Remove a worktree when it's no longer needed with <code>git worktree remove ./feature-auth</code>. Leftover worktrees are cheap but can accumulate.</li>
+</ul></article></main></div>
+  </body>
+</html>

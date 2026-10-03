@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm access | pnpm</title>
+    <meta name="description" content="Added in: v11.11.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm access | pnpm" />
+    <meta property="og:description" content="Added in: v11.11.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm access | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.11.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/access" />
+    <meta property="og:url" content="https://pnpm.io/cli/access" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/access" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/access" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/access" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/access" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/access" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/access" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/access" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/access" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/access" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/access" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/access" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/access" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/access" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/access" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm access</h1><p>Added in: v11.11.0</p>
+<p>Manages package access and visibility on the registry.</p>
+<pre><code class="hljs language-sh">pnpm access list packages [&#x3C;user>|&#x3C;scope>|&#x3C;scope:team>]
+pnpm access list collaborators &#x3C;package> [&#x3C;user>]
+pnpm access get status &#x3C;package>
+pnpm access <span class="hljs-built_in">set</span> status=public|private &#x3C;package>
+pnpm access <span class="hljs-built_in">set</span> mfa=none|publish|automation &#x3C;package>
+pnpm access grant &#x3C;read-only|read-write> &#x3C;scope:team> &#x3C;package>
+pnpm access revoke &#x3C;scope:team> &#x3C;package>
+</code></pre>
+<h2 id="subcommands">Subcommands<a class="hash-link" href="#subcommands" aria-label="Direct link to Subcommands">#</a></h2>
+<h3 id="list-packages">list packages<a class="hash-link" href="#list-packages" aria-label="Direct link to list packages">#</a></h3>
+<p>List the packages a user, scope, or team can access. With no argument, your own packages are listed.</p>
+<pre><code class="hljs language-sh">pnpm access list packages
+pnpm access list packages alice
+pnpm access list packages @myorg
+pnpm access list packages @myorg:developers
+</code></pre>
+<p>The argument type is inferred from its shape: a value containing <code>:</code> is a team, a value starting with <code>@</code> is an organization, and anything else is a user.</p>
+<p><code>ls</code> is accepted as an alias, so <code>pnpm access ls</code> is equivalent to <code>pnpm access list packages</code>.</p>
+<h3 id="list-collaborators">list collaborators<a class="hash-link" href="#list-collaborators" aria-label="Direct link to list collaborators">#</a></h3>
+<p>List the collaborators on a package, optionally filtered to a single user.</p>
+<pre><code class="hljs language-sh">pnpm access list collaborators @myorg/pkg
+pnpm access list collaborators @myorg/pkg alice
+</code></pre>
+<h3 id="get-status">get status<a class="hash-link" href="#get-status" aria-label="Direct link to get status">#</a></h3>
+<p>Show whether a package is public or restricted.</p>
+<pre><code class="hljs language-sh">pnpm access get status @myorg/pkg
+</code></pre>
+<h3 id="set-status">set status<a class="hash-link" href="#set-status" aria-label="Direct link to set status">#</a></h3>
+<p>Set the package visibility.</p>
+<pre><code class="hljs language-sh">pnpm access <span class="hljs-built_in">set</span> status=public @myorg/pkg
+pnpm access <span class="hljs-built_in">set</span> status=private @myorg/pkg
+</code></pre>
+<p>Only scoped packages can change visibility. Unscoped packages are always public, and attempting to change one fails with <code>ERR_PNPM_ACCESS_SET_STATUS_UNSCOPED</code>.</p>
+<h3 id="set-mfa">set mfa<a class="hash-link" href="#set-mfa" aria-label="Direct link to set mfa">#</a></h3>
+<p>Set the two-factor authentication requirement for publishing a package.</p>
+<pre><code class="hljs language-sh">pnpm access <span class="hljs-built_in">set</span> mfa=none @myorg/pkg
+pnpm access <span class="hljs-built_in">set</span> mfa=publish @myorg/pkg
+pnpm access <span class="hljs-built_in">set</span> mfa=automation @myorg/pkg
+</code></pre>
+<p><code>none</code> disables the requirement, while <code>publish</code> and <code>automation</code> both require two-factor authentication for publishing.</p>
+<h3 id="grant">grant<a class="hash-link" href="#grant" aria-label="Direct link to grant">#</a></h3>
+<p>Grant a team read-only or read-write access to a package.</p>
+<pre><code class="hljs language-sh">pnpm access grant read-only @myorg:developers @myorg/pkg
+pnpm access grant read-write @myorg:developers @myorg/pkg
+</code></pre>
+<h3 id="revoke">revoke<a class="hash-link" href="#revoke" aria-label="Direct link to revoke">#</a></h3>
+<p>Revoke a team's access to a package.</p>
+<pre><code class="hljs language-sh">pnpm access revoke @myorg:developers @myorg/pkg
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--registry-urlgt">--registry &#x3C;url&#x26;gt;<a class="hash-link" href="#--registry-urlgt" aria-label="Direct link to --registry <url&#x26;gt;">#</a></h3>
+<p>The base URL of the npm registry to use for the operation. Per-scope and named registries (configured via <a href="/settings/dependency-resolution#registries"><code>registries</code></a> and <a href="/settings/dependency-resolution#namedregistries"><code>namedRegistries</code></a>) are respected for the package being modified.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>Output results in JSON format. Applies to <code>list packages</code>, <code>list collaborators</code>, and <code>get status</code>.</p>
+<h3 id="--otp-codegt">--otp &#x3C;code&#x26;gt;<a class="hash-link" href="#--otp-codegt" aria-label="Direct link to --otp <code&#x26;gt;">#</a></h3>
+<p>When the registry requires two-factor authentication, this option supplies a one-time password. It applies to the subcommands that modify state: <code>set status</code>, <code>set mfa</code>, <code>grant</code>, and <code>revoke</code>.</p></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/projects/sync/",
+ "file": "markdown/uv/uv-concepts-projects-sync.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.06,
+ "markdown_chars": 15231,
+ "raw_html_chars": 81837,
+ "sha256": "1ed4dd213a47560fbc8f861e5e593be8324f847436c75f0479f1e6c928ce3cd3",
+ "fetched_at": "2026-10-03T08:57:23+00:00"
+}

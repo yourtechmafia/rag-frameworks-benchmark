@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/endpoints",
+ "file": "markdown/pnpm/pnpr-endpoints.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.29,
+ "markdown_chars": 20109,
+ "raw_html_chars": 32322,
+ "sha256": "789fa950773a89a54cdf142d6640fcf46e7f1ea06a84d6f49833bf8e9f353901",
+ "fetched_at": "2026-10-03T08:58:55+00:00"
+}

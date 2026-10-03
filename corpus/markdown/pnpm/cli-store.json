@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/store",
+ "file": "markdown/pnpm/cli-store.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.9,
+ "markdown_chars": 3045,
+ "raw_html_chars": 8267,
+ "sha256": "073ed62f73679eb0d312490d395273816a5702c3818e2b516a6cd92b5bb5e321",
+ "fetched_at": "2026-10-03T08:58:36+00:00"
+}

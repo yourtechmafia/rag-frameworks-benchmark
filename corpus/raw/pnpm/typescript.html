@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with TypeScript | pnpm</title>
+    <meta name="description" content="pnpm should work well with TypeScript out of the box most of the time." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Working with TypeScript | pnpm" />
+    <meta property="og:description" content="pnpm should work well with TypeScript out of the box most of the time." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Working with TypeScript | pnpm" />
+    <meta name="twitter:description" content="pnpm should work well with TypeScript out of the box most of the time." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/typescript" />
+    <meta property="og:url" content="https://pnpm.io/typescript" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/typescript" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/typescript" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/typescript" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/typescript" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/typescript" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/typescript" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/typescript" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/typescript" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/typescript" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/typescript" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/typescript" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/typescript" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/typescript" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/typescript" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Working with TypeScript</h1><p>pnpm should work well with TypeScript out of the box most of the time.</p>
+<h2 id="do-not-preserve-symlinks">Do not preserve symlinks<a class="hash-link" href="#do-not-preserve-symlinks" aria-label="Direct link to Do not preserve symlinks">#</a></h2>
+<p>You should not use TypeScript with <a href="https://www.typescriptlang.org/tsconfig/#preserveSymlinks"><code>preserveSymlinks</code></a> set to <code>true</code>. TypeScript will not be able to resolve the type dependencies correctly in the linked <code>node_modules</code>. If you do need to preserve symlinks for some reason, then you should set pnpm's <code>nodeLinker</code> setting to <code>hoisted</code>.</p>
+<h2 id="workspace-usage">Workspace usage<a class="hash-link" href="#workspace-usage" aria-label="Direct link to Workspace usage">#</a></h2>
+<p>You might sometimes have issues if you have different versions of a <code>@types/</code> dependency in a workspace. These issues happen when a package requires these types without having the type dependency in dependencies. For instance, if you have <code>antd</code> in your dependencies, which relies on <code>@types/react</code>, you might get a compilation error if there are multiple versions of <code>@types/react</code> in your workspace. This is actually an issue on <code>antd</code>'s end because it should've added <code>@types/react</code> to <code>peerDependencies</code>. Luckily, you can fix this by extending <code>antd</code> with the missing peer dependency. You can do this either by adding this to your <code>pnpm-workspace.yaml</code>:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">packageExtensions:</span>
+  <span class="hljs-attr">antd:</span>
+    <span class="hljs-attr">peerDependencies:</span>
+      <span class="hljs-attr">'@types/react':</span> <span class="hljs-string">'*'</span>
+</code></pre>
+<p>Alternatively, you can install a config dependency that we created to deal with these issues <a href="https://github.com/pnpm/plugin-types-fixer"><code>@pnpm/plugin-types-fixer</code></a>. Run:</p>
+<pre><code class="hljs language-sh">pnpm add @pnpm/plugin-types-fixer --config
+</code></pre></article></main></div>
+  </body>
+</html>

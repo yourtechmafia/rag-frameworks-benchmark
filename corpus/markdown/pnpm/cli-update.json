@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/update",
+ "file": "markdown/pnpm/cli-update.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.36,
+ "markdown_chars": 10142,
+ "raw_html_chars": 18943,
+ "sha256": "f06b5bcb03ced775494c4217d680a5fab9cf4990af03f50940967dac335cc78d",
+ "fetched_at": "2026-10-03T08:58:40+00:00"
+}

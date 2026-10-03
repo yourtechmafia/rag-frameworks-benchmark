@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm sbom | pnpm</title>
+    <meta name="description" content="Added in: v11.0.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm sbom | pnpm" />
+    <meta property="og:description" content="Added in: v11.0.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm sbom | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.0.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/sbom" />
+    <meta property="og:url" content="https://pnpm.io/cli/sbom" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/sbom" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/sbom" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/sbom" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/sbom" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/sbom" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/sbom" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/sbom" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/sbom" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/sbom" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/sbom" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/sbom" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/sbom" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/sbom" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/sbom" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm sbom</h1><p>Added in: v11.0.0</p>
+<p>Generate a Software Bill of Materials (SBOM) for the project.</p>
+<p>Supported formats:</p>
+<ul>
+<li><strong>CycloneDX 1.7</strong> (JSON)</li>
+<li><strong>SPDX 2.3</strong> (JSON)</li>
+</ul>
+<h2 id="usage">Usage<a class="hash-link" href="#usage" aria-label="Direct link to Usage">#</a></h2>
+<pre><code class="hljs language-sh">pnpm sbom --sbom-format cyclonedx
+pnpm sbom --sbom-format spdx
+pnpm sbom --sbom-format cyclonedx --lockfile-only
+pnpm sbom --sbom-format spdx --prod
+pnpm sbom --sbom-format cyclonedx --out sbom.cdx.json
+pnpm sbom --sbom-format cyclonedx --<span class="hljs-built_in">split</span>
+pnpm sbom --sbom-format cyclonedx --exclude-peers
+</code></pre>
+<p>Inside a workspace, <code>pnpm sbom</code> supports filtering. When a single workspace package is selected, the root component in the SBOM uses that package's metadata.</p>
+<p>Since v11.20.0, a component resolved from a <a href="/settings/dependency-resolution#namedregistries">named registry</a> carries the purl <code>repository_url</code> qualifier (for example <code>pkg:npm/foo@1.0.0?repository_url=https%3A%2F%2Fnpm.work.example.com%2F</code>), so the same name and version served by two registries does not collapse onto one component. Credentials that a <code>namedRegistries</code> URL may embed — userinfo or a query string — are stripped from the qualifier, while the origin and path are kept, since two registries can differ only by path.</p>
+<p>CycloneDX output marks components reachable only through <code>devDependencies</code> with <code>scope: "excluded"</code> and the <code>cdx:npm:package:development</code> property. Runtime components, including installed optional dependencies, use the default required scope.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--sbom-format-cyclonedxspdx">--sbom-format &#x3C;cyclonedx|spdx><a class="hash-link" href="#--sbom-format-cyclonedxspdx" aria-label="Direct link to --sbom-format <cyclonedx|spdx>">#</a></h3>
+<p>The SBOM output format. This option is required. Supported values: <code>cyclonedx</code>, <code>spdx</code>.</p>
+<h3 id="--sbom-type-libraryapplication">--sbom-type &#x3C;library|application><a class="hash-link" href="#--sbom-type-libraryapplication" aria-label="Direct link to --sbom-type <library|application>">#</a></h3>
+<ul>
+<li>Default: <strong>library</strong></li>
+</ul>
+<p>The component type for the root package.</p>
+<h3 id="--sbom-spec-version-version">--sbom-spec-version &#x3C;version><a class="hash-link" href="#--sbom-spec-version-version" aria-label="Direct link to --sbom-spec-version <version>">#</a></h3>
+<p>Added in: v11.1.0</p>
+<ul>
+<li>Default: <strong>1.7</strong></li>
+<li>Type: <strong>1.5</strong>, <strong>1.6</strong>, <strong>1.7</strong></li>
+</ul>
+<p>The CycloneDX specification version to emit. Only valid with <code>--sbom-format cyclonedx</code>.</p>
+<h3 id="--lockfile-only">--lockfile-only<a class="hash-link" href="#--lockfile-only" aria-label="Direct link to --lockfile-only">#</a></h3>
+<p>Only use lockfile data (skip reading from the store).</p>
+<h3 id="--sbom-authors-names">--sbom-authors &#x3C;names><a class="hash-link" href="#--sbom-authors-names" aria-label="Direct link to --sbom-authors <names>">#</a></h3>
+<p>Comma-separated list of SBOM authors. Written to <code>metadata.authors</code> in the CycloneDX output.</p>
+<h3 id="--sbom-supplier-name">--sbom-supplier &#x3C;name><a class="hash-link" href="#--sbom-supplier-name" aria-label="Direct link to --sbom-supplier <name>">#</a></h3>
+<p>SBOM supplier name. Written to <code>metadata.supplier</code> in the CycloneDX output.</p>
+<h3 id="--out-path">--out &#x3C;path><a class="hash-link" href="#--out-path" aria-label="Direct link to --out <path>">#</a></h3>
+<p>Added in: v11.8.0</p>
+<p>Write the SBOM to a file instead of stdout.</p>
+<p>Use <code>%s</code> in the path as a placeholder for the package name and <code>%v</code> as a placeholder for the package version. In a workspace, a path containing <code>%s</code> writes one SBOM per selected package:</p>
+<pre><code class="hljs language-sh">pnpm sbom --sbom-format cyclonedx --out out/%s.cdx.json
+pnpm sbom --sbom-format cyclonedx --out out/%s-%v.cdx.json
+</code></pre>
+<h3 id="--split">--split<a class="hash-link" href="#--split" aria-label="Direct link to --split">#</a></h3>
+<p>Added in: v11.8.0</p>
+<p>Generate a separate SBOM for each selected workspace package. Without <code>--out</code>, the SBOMs are printed to stdout as NDJSON, one JSON document per line.</p>
+<p>When <code>--split</code> is combined with <code>--out</code>, the output path must contain <code>%s</code>.</p>
+<h3 id="--exclude-peers">--exclude-peers<a class="hash-link" href="#--exclude-peers" aria-label="Direct link to --exclude-peers">#</a></h3>
+<p>Added in: v11.9.0</p>
+<p>Exclude peer dependencies from the SBOM. Dependencies reachable only through those peers are also excluded.</p>
+<p>This is useful with <code>auto-install-peers</code> because peer dependencies are resolved into the lockfile and otherwise look the same as regular dependencies.</p>
+<h3 id="--prod--p">--prod, -P<a class="hash-link" href="#--prod--p" aria-label="Direct link to --prod, -P">#</a></h3>
+<p>Only include <code>dependencies</code> and <code>optionalDependencies</code>.</p>
+<h3 id="--dev--d">--dev, -D<a class="hash-link" href="#--dev--d" aria-label="Direct link to --dev, -D">#</a></h3>
+<p>Only include <code>devDependencies</code>.</p>
+<h3 id="--no-optional">--no-optional<a class="hash-link" href="#--no-optional" aria-label="Direct link to --no-optional">#</a></h3>
+<p>Don't include <code>optionalDependencies</code>.</p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p></article></main></div>
+  </body>
+</html>

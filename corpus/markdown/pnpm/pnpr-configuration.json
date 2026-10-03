@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/configuration",
+ "file": "markdown/pnpm/pnpr-configuration.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.03,
+ "markdown_chars": 21200,
+ "raw_html_chars": 39150,
+ "sha256": "5610c0be06d63c3c29b67a26790415a5b936882f79133e0de5ec4fbfaec0d190",
+ "fetched_at": "2026-10-03T08:58:53+00:00"
+}

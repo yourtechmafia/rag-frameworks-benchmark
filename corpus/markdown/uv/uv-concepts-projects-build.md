@@ -1,0 +1,241 @@
+[Skip to content](#building-distributions)
+
+[![logo](../../../assets/logo-letter.svg)](../../.. "uv")
+uv
+
+[uv](https://github.com/astral-sh/uv "Go to repository")
+
+* [Introduction](../../..)
+* [Getting started](../../../getting-started/)
+
+  Getting started
+  + [Installation](../../../getting-started/installation/)
+  + [First steps](../../../getting-started/first-steps/)
+  + [Features](../../../getting-started/features/)
+  + [Getting help](../../../getting-started/help/)
+* [Guides](../../../guides/)
+
+  Guides
+  + [Installing Python](../../../guides/install-python/)
+  + [Running scripts](../../../guides/scripts/)
+  + [Using tools](../../../guides/tools/)
+  + [Working on projects](../../../guides/projects/)
+  + [Publishing packages](../../../guides/package/)
+  + [Migration](../../../guides/migration/)
+
+    Migration
+    - [From pip to a uv project](../../../guides/migration/pip-to-project/)
+  + [Integrations](../../../guides/integration/)
+
+    Integrations
+    - [Docker](../../../guides/integration/docker/)
+    - [Jupyter](../../../guides/integration/jupyter/)
+    - [marimo](../../../guides/integration/marimo/)
+    - [GitHub Actions](../../../guides/integration/github/)
+    - [GitLab CI/CD](../../../guides/integration/gitlab/)
+    - [Pre-commit](../../../guides/integration/pre-commit/)
+    - [PyTorch](../../../guides/integration/pytorch/)
+    - [FastAPI](../../../guides/integration/fastapi/)
+    - [Bazel](../../../guides/integration/bazel/)
+    - [Azure Artifacts](../../../guides/integration/azure/)
+    - [Google Artifact Registry](../../../guides/integration/google/)
+    - [AWS CodeArtifact](../../../guides/integration/aws/)
+    - [JFrog Artifactory](../../../guides/integration/jfrog/)
+    - [Renovate](../../../guides/integration/renovate/)
+    - [Dependabot](../../../guides/integration/dependabot/)
+    - [AWS Lambda](../../../guides/integration/aws-lambda/)
+    - [Coiled](../../../guides/integration/coiled/)
+* [Concepts](../../)
+
+  Concepts
+  + [Projects](../)
+
+    Projects
+    - [Structure and files](../layout/)
+    - [Creating projects](../init/)
+    - [Managing dependencies](../dependencies/)
+    - [Running commands](../run/)
+    - [Locking and syncing](../sync/)
+    - [Configuring projects](../config/)
+    - Building distributions
+
+      [Building distributions](./)
+
+
+
+      Table of contents
+      * [Using uv build](#using-uv-build)
+      * [Build constraints](#build-constraints)
+
+        + [Project build dependency hashes](#project-build-dependency-hashes)
+      * [Preventing publish to PyPI](#preventing-publish-to-pypi)
+    - [Exporting lockfiles](../export/)
+    - [Using workspaces](../workspaces/)
+  + [Tools](../../tools/)
+  + [Python versions](../../python-versions/)
+  + [Configuration files](../../configuration-files/)
+  + [Package indexes](../../indexes/)
+  + [Resolution](../../resolution/)
+  + [Build backend](../../build-backend/)
+  + [Authentication](../../authentication/)
+
+    Authentication
+    - [The auth CLI](../../authentication/cli/)
+    - [HTTP credentials](../../authentication/http/)
+    - [Git credentials](../../authentication/git/)
+    - [TLS certificates](../../authentication/certificates/)
+    - [Third-party services](../../authentication/third-party/)
+  + [Caching](../../cache/)
+  + [Preview features](../../preview/)
+  + [The pip interface](../../../pip/)
+
+    The pip interface
+    - [Using environments](../../../pip/environments/)
+    - [Managing packages](../../../pip/packages/)
+    - [Inspecting environments](../../../pip/inspection/)
+    - [Declaring dependencies](../../../pip/dependencies/)
+    - [Locking environments](../../../pip/compile/)
+    - [Compatibility with pip](../../../pip/compatibility/)
+* [Reference](../../../reference/)
+
+  Reference
+  + [Commands](../../../reference/cli/)
+  + [Settings](../../../reference/settings/)
+  + [Environment variables](../../../reference/environment/)
+  + [Storage](../../../reference/storage/)
+  + [Installer options](../../../reference/installer/)
+  + [Troubleshooting](../../../reference/troubleshooting/)
+
+    Troubleshooting
+    - [Build failures](../../../reference/troubleshooting/build-failures/)
+    - [Reproducible examples](../../../reference/troubleshooting/reproducible-examples/)
+  + [Contributing](../../../reference/contributing/)
+  + [Internals](../../../reference/internals/)
+
+    Internals
+    - [Resolver](../../../reference/internals/resolver/)
+    - [Workspace Metadata](../../../reference/internals/metadata/)
+  + [Benchmarks](../../../reference/benchmarks/)
+  + [Policies](../../../reference/policies/)
+
+    Policies
+    - [Versioning](../../../reference/policies/versioning/)
+    - [Platform support](../../../reference/policies/platforms/)
+    - [Python support](../../../reference/policies/python/)
+    - [Rust support](../../../reference/policies/rust/)
+    - [License](../../../reference/policies/license/)
+
+Table of contents
+
+* [Using uv build](#using-uv-build)
+* [Build constraints](#build-constraints)
+
+  + [Project build dependency hashes](#project-build-dependency-hashes)
+* [Preventing publish to PyPI](#preventing-publish-to-pypi)
+
+1. [Introduction](../../..)
+2. [Concepts](../../)
+3. [Projects](../)
+
+[Building distributions](#building-distributions)
+=================================================
+
+To distribute your project to others (e.g., to upload it to an index like PyPI), you'll need to
+build it into a distributable format.
+
+Python projects are typically distributed as both source distributions (sdists) and binary
+distributions (wheels). The former is typically a `.tar.gz` or `.zip` file containing the project's
+source code along with some additional metadata, while the latter is a `.whl` file containing
+pre-built artifacts that can be installed directly.
+
+Important
+
+When using `uv build`, uv acts as a [build frontend](https://peps.python.org/pep-0517/#terminology-and-goals)
+and only determines the Python version to use and invokes the build backend. The details of
+the builds, such as the included files and the distribution filenames, are determined by the build
+backend, as defined in [`[build-system]`](../config/#build-systems). Information about build
+configuration can be found in the respective tool's documentation.
+
+[Using `uv build`](#using-uv-build)
+-----------------------------------
+
+`uv build` can be used to build both source distributions and binary distributions for your project.
+By default, `uv build` will build the project in the current directory, and place the built
+artifacts in a `dist/` subdirectory:
+
+```
+$ uv build
+$ ls dist/
+example-0.1.0-py3-none-any.whl
+example-0.1.0.tar.gz
+```
+
+You can build the project in a different directory by providing a path to `uv build`, e.g.,
+`uv build path/to/project`.
+
+`uv build` will first build a source distribution, and then build a binary distribution (wheel) from
+that source distribution.
+
+You can limit `uv build` to building a source distribution with `uv build --sdist`, a binary
+distribution with `uv build --wheel`, or build both distributions from source with
+`uv build --sdist --wheel`.
+
+[Build constraints](#build-constraints)
+---------------------------------------
+
+`uv build` accepts `--build-constraint`, which can be used to constrain the versions of any build
+requirements during the build process. When coupled with `--require-hashes`, uv will enforce that
+the requirement used to build the project match specific, known hashes, for reproducibility.
+
+For example, given the following `constraints.txt`:
+
+```
+setuptools==68.2.2 --hash=sha256:b454a35605876da60632df1a60f736524eb73cc47bbc9f3f1ef1b644de74fd2a
+```
+
+Running the following would build the project with the specified version of `setuptools`, and verify
+that the downloaded `setuptools` distribution matches the specified hash:
+
+```
+$ uv build --build-constraint constraints.txt --require-hashes
+```
+
+### [Project build dependency hashes](#project-build-dependency-hashes)
+
+Projects can also specify build constraints in
+[`build-constraint-dependencies`](../../../reference/settings/#build-constraint-dependencies). To
+verify a downloaded build dependency, provide its `requirement` and `hashes` in a table:
+
+```
+[tool.uv]
+build-constraint-dependencies = [
+    { requirement = "setuptools==68.2.2", hashes = ["sha256:b454a35605876da60632df1a60f736524eb73cc47bbc9f3f1ef1b644de74fd2a"] },
+    "wheel<1",
+]
+```
+
+An entry without hashes can be written as a string, as shown with `wheel<1` above. uv checks the
+supplied hashes when it downloads pinned build dependencies during project resolution or
+installation, including builds in `uv run --with` environments. These hashes apply to build
+dependencies. Packages installed in the project environment are verified against their own lockfile
+hashes.
+
+[Preventing publish to PyPI](#preventing-publish-to-pypi)
+---------------------------------------------------------
+
+If you have internal packages that you do not want to be published, you can mark them as private:
+
+```
+[project]
+classifiers = ["Private :: Do Not Upload"]
+```
+
+This setting makes PyPI reject your uploaded package from publishing. It does not affect security or
+privacy settings on alternative registries.
+
+We also recommend only generating [per-project PyPI API tokens](https://pypi.org/help/#apitoken):
+Without a PyPI token matching the project, it can't be accidentally published.
+
+September 15, 2026
+
+Back to top

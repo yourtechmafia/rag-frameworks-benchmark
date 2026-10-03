@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Other package managers | pnpm</title>
+    <meta name="description" content="Added in: v12.0.0-rc.6 (pnpm v12 only)" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Other package managers | pnpm" />
+    <meta property="og:description" content="Added in: v12.0.0-rc.6 (pnpm v12 only)" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Other package managers | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.0.0-rc.6 (pnpm v12 only)" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/package-managers" />
+    <meta property="og:url" content="https://pnpm.io/package-managers" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/package-managers" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/package-managers" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/package-managers" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/package-managers" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/package-managers" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/package-managers" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/package-managers" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/package-managers" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/package-managers" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/package-managers" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/package-managers" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/package-managers" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/package-managers" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/package-managers" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Other package managers</h1><p>Added in: v12.0.0-rc.6 (pnpm v12 only)</p>
+<p>pnpm installs the other package managers, not just itself: <strong>npm</strong>, <strong>Yarn Classic</strong>, <strong>Yarn Berry</strong>, <strong>Yarn 6</strong> (<code>yarnpkg/zpm</code>) and <strong>Bun</strong>. The npm-published ones are resolved and fetched through the trusted package-manager registries, and verified against npm's signature for the exact version before that version is executed — the same standard that lets pnpm switch its own version without asking. Yarn 6 and Bun ship as platform archives from their own projects instead, pinned by a publisher checksum.</p>
+<p>A JavaScript package manager on a machine without Node.js gets a managed LTS runtime to run on, so none of this requires a Node.js installation of your own.</p>
+<p>Three things use it:</p>
+<ul>
+<li>a <strong>git-hosted dependency</strong> is prepared with the package manager it asks for — see <a href="#preparing-a-git-hosted-dependency">Preparing a git-hosted dependency</a>;</li>
+<li><a href="/cli/pnx#running-a-package-manager-or-a-runtime"><code>pnpm dlx</code></a> (<code>pnx</code>) runs one for a single command;</li>
+<li><a href="/cli/shim"><code>pnpm shim add</code></a> links a command that runs whatever version the current project pins.</li>
+</ul>
+<h2 id="where-each-one-comes-from">Where each one comes from<a class="hash-link" href="#where-each-one-comes-from" aria-label="Direct link to Where each one comes from">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Package manager</th><th>Provided by</th></tr></thead><tbody><tr><td>npm</td><td>the <code>npm</code> package on the registry</td></tr><tr><td>Yarn Classic (<code>&#x3C;2</code>)</td><td>the <code>yarn</code> package on the registry</td></tr><tr><td>Yarn Berry (<code>2</code> – <code>5</code>)</td><td>the <code>@yarnpkg/cli-dist</code> package on the registry</td></tr><tr><td>Yarn 6</td><td><code>yarnpkg/zpm</code> release archives</td></tr><tr><td>Bun</td><td><code>oven-sh/bun</code> release archives</td></tr></tbody></table></div>
+<p>The registry-published ones go through the same resolve, verify and install pipeline as pnpm's own engine. The ones that ship as platform archives are pinned by a publisher checksum, like the <a href="/cli/runtime">managed runtimes</a>.</p>
+<p>Each package manager resolves into its own environment lockfile under the pnpm home, so one package manager's pins never rewrite another's.</p>
+<h2 id="declaring-the-package-manager-of-a-project">Declaring the package manager of a project<a class="hash-link" href="#declaring-the-package-manager-of-a-project" aria-label="Direct link to Declaring the package manager of a project">#</a></h2>
+<p>Naming a package manager in <code>pnpm add</code> records which one the project uses instead of installing the npm package that shares the name:</p>
+<pre><code class="hljs language-sh">pnpm add yarn@4
+</code></pre>
+<p>The declaration goes where the package manager reads it:</p>
+<ul>
+<li><strong>Yarn</strong> is started from a project pin through the <code>packageManager</code> field, which accepts only an exact version. So the requested line is resolved before it is written: <code>pnpm add yarn@4</code> records <code>"packageManager": "yarn@4.18.0"</code>. On the Yarn Classic line (<code>&#x3C;2</code>), where the pinned artifact is the npm tarball, the value also carries that tarball's <code>+sha512.…</code> integrity — <code>"packageManager": "yarn@1.22.22+sha512.…"</code>.</li>
+<li><strong>Every other package manager</strong> is recorded in <a href="/package_json#devenginespackagemanager"><code>devEngines.packageManager</code></a>, which holds a range.</li>
+</ul>
+<p>Only one of the two fields is ever left behind: they declare the same thing, and a project whose two declarations disagree is one the version switchers refuse to run.</p>
+<div class="code-block"><div class="code-block-title">package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"devEngines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"packageManager"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"npm"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"^11.0.0"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>Two things are deliberately not covered by this:</p>
+<ul>
+<li><strong>pnpm itself.</strong> Changing pnpm's own pin makes the next command switch the running CLI, which is <a href="/cli/self-update"><code>pnpm self-update</code></a>'s job to do deliberately rather than an <code>add</code>'s to do as a side effect.</li>
+<li><strong>A filtered selection.</strong> Which package manager a project uses is that project's own declaration, so <code>pnpm add yarn --filter …</code> fails with <code>ERR_PNPM_PACKAGE_MANAGER_IN_SELECTION</code>. Run the command in the project itself.</li>
+</ul>
+<p>A specifier that locates a <em>package</em> rather than asking for a released version still installs what it names, as an ordinary dependency:</p>
+<pre><code class="hljs language-sh">pnpm add yarn@npm:yarn@1.22.22
+pnpm add yarn@yarnpkg/berry
+</code></pre>
+<p>The resolved version of a package manager other than pnpm is not written to <code>pnpm-lock.yaml</code>: it is pinned in an environment lockfile of its own under the pnpm home. Only pnpm's own pin is recorded in the project's lockfile, under <code>packageManagerDependencies</code>.</p>
+<h3 id="runtimes">Runtimes<a class="hash-link" href="#runtimes" aria-label="Direct link to Runtimes">#</a></h3>
+<p><code>pnpm add</code> follows the same rule for the runtimes: naming <code>node</code> or <code>deno</code> records it under <code>engines.runtime</code>, the way the explicit <code>node@runtime:22</code> spelling already did.</p>
+<p><code>bun</code> is both a runtime and a package manager, and the package manager answers first: <code>pnpm add bun</code> declares it as the project's package manager. To add it as a runtime, ask for one — <code>pnpm add bun@runtime:1.3.0</code>.</p>
+<h2 id="installing-one-globally">Installing one globally<a class="hash-link" href="#installing-one-globally" aria-label="Direct link to Installing one globally">#</a></h2>
+<pre><code class="hljs language-sh">pnpm add -g yarn
+</code></pre>
+<p>installs the current Yarn line — not the Classic-only <code>yarn</code> package on npm — and <code>pnpm add -g node@22</code> / <code>pnpm add -g deno@2</code> install that Node.js or Deno release rather than a wrapper package that downloads one.</p>
+<p>A globally installed package manager also follows a project's pin, the way a globally installed Node.js already follows <a href="/package_json#devenginesruntime"><code>devEngines.runtime</code></a>: the pinned version runs where a project pins one, and the globally installed copy is the fallback everywhere else. pnpm records this by adding a <a href="/settings/other#globalshims"><code>globalShims</code></a> entry for the package manager, unless you already decided about it — an explicit entry, including <code>false</code>, is left as you set it.</p>
+<p>See <a href="/global-packages#project-aware-global-bins">Project-aware global bins</a> for how a version is chosen and when pnpm asks for confirmation.</p>
+<h2 id="running-one-for-a-single-command">Running one for a single command<a class="hash-link" href="#running-one-for-a-single-command" aria-label="Direct link to Running one for a single command">#</a></h2>
+<pre><code class="hljs language-sh">pnx yarn@4 install
+pnx npm@11 ci
+pnx bun@1.3.0 install
+</code></pre>
+<p>See <a href="/cli/pnx#running-a-package-manager-or-a-runtime">Running a package manager or a runtime</a>.</p>
+<h2 id="preparing-a-git-hosted-dependency">Preparing a git-hosted dependency<a class="hash-link" href="#preparing-a-git-hosted-dependency" aria-label="Direct link to Preparing a git-hosted dependency">#</a></h2>
+<p>A <a href="/package-sources#git-repository">git-hosted dependency</a> that has to be built before it can be installed is prepared with the package manager it asks for, rather than with whatever the host happens to have:</p>
+<ul>
+<li>its <code>packageManager</code> / <code>devEngines.packageManager</code> pin is honored;</li>
+<li>failing a pin, the lockfile it ships names the package manager — and a <code>yarn.lock</code> written by Yarn Classic is no longer installed by Yarn Berry. Berry stamps <code>__metadata:</code> into every lockfile it writes and neither line can read the other's, so which one wrote it is a constraint, not a preference.</li>
+</ul>
+<p>pnpm provides that package manager when the dependency pinned a version, or when the host cannot satisfy what the dependency needs — so a repository built with Yarn now installs on a machine that has only pnpm, while a host that already has a suitable one keeps using its own.</p>
+<p>A pnpm pin is an exception when <a href="/settings/cli#pmonfail"><code>pmOnFail</code></a> is set to anything other than <code>download</code>. The running pnpm then prepares the dependency. The nested install applies the same <code>pmOnFail</code> to the dependency's pin, so <code>ignore</code> prepares it silently, <code>warn</code> prints a warning, and <code>error</code> fails the install.</p>
+<h2 id="what-changes-for-a-project-coming-from-v11">What changes for a project coming from v11<a class="hash-link" href="#what-changes-for-a-project-coming-from-v11" aria-label="Direct link to What changes for a project coming from v11">#</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>v11</th><th>v12</th></tr></thead><tbody><tr><td><code>pnpm add yarn</code></td><td>installs the npm package named <code>yarn</code></td><td>records the project's package manager (the package is still reachable as <code>pnpm add yarn@npm:yarn@1.22.22</code>)</td></tr><tr><td><code>pnpm add -g yarn</code></td><td>installs Yarn Classic</td><td>installs the current Yarn line</td></tr><tr><td><code>pnpm add -g node</code> / <code>pnpm add -g deno</code></td><td>installs a wrapper package that downloads a build</td><td>installs that Node.js or Deno release</td></tr><tr><td><code>pnx node</code> / <code>pnx deno</code></td><td>runs the wrapper package</td><td>runs that release</td></tr><tr><td>a globally installed package manager</td><td>always the global copy</td><td>defers to a project's pin where there is one</td></tr></tbody></table></div></article></main></div>
+  </body>
+</html>

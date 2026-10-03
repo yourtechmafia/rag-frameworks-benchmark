@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/import",
+ "file": "markdown/pnpm/cli-import.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.65,
+ "markdown_chars": 349,
+ "raw_html_chars": 5203,
+ "sha256": "ad6c214b201603e265c39e165a1eac13c47ddd31d31925ea8170bbb0c2656421",
+ "fetched_at": "2026-10-03T08:58:05+00:00"
+}

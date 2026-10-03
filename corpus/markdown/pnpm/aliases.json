@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/aliases",
+ "file": "markdown/pnpm/aliases.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.85,
+ "markdown_chars": 2108,
+ "raw_html_chars": 7613,
+ "sha256": "2106a55e467e894f6f53756b82d04fa73fb285010f5b9d6cd9626159abbd3d21",
+ "fetched_at": "2026-10-03T08:57:45+00:00"
+}

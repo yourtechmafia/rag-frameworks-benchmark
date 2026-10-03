@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/crypto-donations",
+ "file": "markdown/pnpm/crypto-donations.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.9,
+ "markdown_chars": 739,
+ "raw_html_chars": 6025,
+ "sha256": "645755ee0118b99ea88815988a12f0ba22cb52a2d78212ae9fa217c8f8c926f4",
+ "fetched_at": "2026-10-03T08:58:44+00:00"
+}

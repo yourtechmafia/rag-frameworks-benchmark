@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm cache path | pnpm</title>
+    <meta name="description" content="Added in: v11.22.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm cache path | pnpm" />
+    <meta property="og:description" content="Added in: v11.22.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm cache path | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.22.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/cache-path" />
+    <meta property="og:url" content="https://pnpm.io/cli/cache-path" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/cache-path" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/cache-path" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/cache-path" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/cache-path" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/cache-path" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/cache-path" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/cache-path" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/cache-path" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/cache-path" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/cache-path" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/cache-path" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/cache-path" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/cache-path" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/cache-path" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm cache path</h1><p>Added in: v11.22.0</p>
+<p>Prints the directory pnpm uses for its metadata cache, mirroring <a href="/cli/store#path"><code>pnpm store path</code></a>. The path is printed absolute and lexically cleaned, so a relative <a href="/settings/other#cachedir"><code>cacheDir</code></a> yields a path other tools can consume.</p>
+<pre><code class="hljs language-sh">pnpm cache path
+</code></pre>
+<p>pnpm derives this directory from the platform and the <code>cacheDir</code> setting, so a CI setup that wants to cache it no longer has to mirror that resolution by hand:</p>
+<div class="code-block"><div class="code-block-title">.github/workflows/ci.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Get</span> <span class="hljs-string">the</span> <span class="hljs-string">cache</span> <span class="hljs-string">directory</span>
+  <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">"PNPM_CACHE_DIR=$(pnpm cache path)"</span> <span class="hljs-string">>></span> <span class="hljs-string">$GITHUB_ENV</span>
+</code></pre></div>
+<p>Besides registry metadata and the <a href="/cli/pnx"><code>pnpm dlx</code></a> cache, that directory holds the lockfile verification log — the record of which lockfile passed which <a href="/supply-chain-security">supply-chain policies</a>. Restoring it lets a job skip re-verifying a lockfile the log already covers under the policies currently configured — the dominant cost of an install in CI once the store is warm. Since v11.22.0, <a href="/cli/store#prune"><code>pnpm store prune</code></a> no longer deletes that log.</p>
+<div class="admonition admonition-important"><p class="admonition-title">Important</p>
+<p>Only cache this directory in locations writable by trusted jobs. See the <a href="/settings/other#cachedir"><code>cacheDir</code></a> setting for details.</p>
+</div></article></main></div>
+  </body>
+</html>

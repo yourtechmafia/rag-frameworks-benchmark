@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm audit | pnpm</title>
+    <meta name="description" content="Checks for known security issues with the installed packages." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm audit | pnpm" />
+    <meta property="og:description" content="Checks for known security issues with the installed packages." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm audit | pnpm" />
+    <meta name="twitter:description" content="Checks for known security issues with the installed packages." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/audit" />
+    <meta property="og:url" content="https://pnpm.io/cli/audit" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/audit" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/audit" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/audit" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/audit" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/audit" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/audit" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/audit" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/audit" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/audit" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/audit" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/audit" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/audit" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/audit" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/audit" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm audit</h1><p>Checks for known security issues with the installed packages.</p>
+<p>If security issues are found, try to update your dependencies via <code>pnpm update</code>.
+If a simple update does not fix all the issues, use <a href="/settings/dependency-resolution#overrides">overrides</a> to force
+versions that are not vulnerable. For instance, if <code>lodash@&#x3C;2.1.0</code> is vulnerable,
+use this overrides to force <code>lodash@^2.1.0</code>:</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">overrides:</span>
+  <span class="hljs-string">"lodash@&#x3C;2.1.0"</span><span class="hljs-string">:</span> <span class="hljs-string">"^2.1.0"</span>
+</code></pre></div>
+<p>Or alternatively, run <code>pnpm audit --fix</code>.</p>
+<p>If you want to tolerate some vulnerabilities as they don't affect your project, you may use the <a href="#auditignore"><code>audit.ignore</code></a> setting.</p>
+<p>Since v11, <code>pnpm audit</code> queries the registry's <code>/-/npm/v1/security/advisories/bulk</code> endpoint. The response does not include CVE identifiers, so advisories are filtered by GitHub advisory ID (GHSA) instead. If you previously listed CVEs under <code>auditConfig.ignoreCves</code>, replace each entry with the corresponding <code>GHSA-xxxx-xxxx-xxxx</code> value (shown in the <code>More info</code> column of <code>pnpm audit</code> output) under <a href="#auditignore"><code>audit.ignore</code></a>.</p>
+<h2 id="commands">Commands<a class="hash-link" href="#commands" aria-label="Direct link to Commands">#</a></h2>
+<h3 id="signatures">signatures<a class="hash-link" href="#signatures" aria-label="Direct link to signatures">#</a></h3>
+<p>Added in: v11.1.0</p>
+<pre><code class="hljs language-sh">pnpm audit signatures
+</code></pre>
+<p>Verifies the ECDSA registry signatures of installed packages against the public keys published by each registry at <code>/-/npm/v1/keys</code>. Scoped registries configured via <a href="/settings/dependency-resolution#registries"><code>registries</code></a> are respected; registries that don't publish signing keys are skipped.</p>
+<p>The command exits with code <code>1</code> if any package has an invalid signature, or if a registry advertises signing keys but a package was published without a signature. Combine with <code>--json</code> to get machine-readable output.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--audit-level-severity">--audit-level &#x3C;severity><a class="hash-link" href="#--audit-level-severity" aria-label="Direct link to --audit-level <severity>">#</a></h3>
+<ul>
+<li>Type: <strong>low</strong>, <strong>moderate</strong>, <strong>high</strong>, <strong>critical</strong></li>
+<li>Default: <strong>low</strong></li>
+</ul>
+<p>Only print advisories with severity greater than or equal to <code>&#x3C;severity></code>.</p>
+<p>This can also be set via <a href="#auditlevel"><code>audit.level</code></a> in <code>pnpm-workspace.yaml</code>.</p>
+<h3 id="--fix">--fix<a class="hash-link" href="#--fix" aria-label="Direct link to --fix">#</a></h3>
+<p>Add overrides to the <code>pnpm-workspace.yaml</code> file in order to force non-vulnerable versions of the dependencies.</p>
+<p>Use <code>--fix=update</code> (added in v11.0.0) to fix vulnerabilities by updating packages in the lockfile instead of adding overrides.</p>
+<p>When <a href="/settings/dependency-resolution#minimumreleaseage"><code>minimumReleaseAge</code></a> is set, <code>--fix</code> also adds the minimum patched version of each advisory to <a href="/settings/dependency-resolution#minimumreleaseageexclude"><code>minimumReleaseAgeExclude</code></a> in <code>pnpm-workspace.yaml</code>, so the security fix can be installed without waiting for the release age window.</p>
+<h3 id="--interactive--i">--interactive, -i<a class="hash-link" href="#--interactive--i" aria-label="Direct link to --interactive, -i">#</a></h3>
+<p>Added in: v11.0.0</p>
+<p>Review the advisories selected by <code>--fix</code> and pick which ones to apply. Only usable together with <code>--fix</code>.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>Output audit report in JSON format.</p>
+<p><code>patched_versions</code> is <code>null</code> for an advisory with no published fix, so tooling can tell "no fix available" from "fix available at version X".</p>
+<h3 id="--dev--d">--dev, -D<a class="hash-link" href="#--dev--d" aria-label="Direct link to --dev, -D">#</a></h3>
+<p>Only audit dev dependencies.</p>
+<h3 id="--prod--p">--prod, -P<a class="hash-link" href="#--prod--p" aria-label="Direct link to --prod, -P">#</a></h3>
+<p>Only audit production dependencies.</p>
+<h3 id="--no-optional">--no-optional<a class="hash-link" href="#--no-optional" aria-label="Direct link to --no-optional">#</a></h3>
+<p>Don't audit <code>optionalDependencies</code>.</p>
+<h3 id="--ignore-registry-errors">--ignore-registry-errors<a class="hash-link" href="#--ignore-registry-errors" aria-label="Direct link to --ignore-registry-errors">#</a></h3>
+<p>If the registry responds with a non-200 status code, the process should exit with 0.
+So the process will fail only if the registry actually successfully responds with found vulnerabilities.</p>
+<h3 id="--ignore-unfixable">--ignore-unfixable<a class="hash-link" href="#--ignore-unfixable" aria-label="Direct link to --ignore-unfixable">#</a></h3>
+<p>Added in: v10.11.0</p>
+<p>Ignore all advisories with no resolution.</p>
+<p>Since v11, unfixable advisories are tracked by GHSA rather than CVE.</p>
+<p>Their IDs are saved in <code>pnpm-workspace.yaml</code> the same way as with <a href="#--ignore-vulnerability"><code>--ignore</code></a>.</p>
+<h3 id="--ignore-vulnerability">--ignore &#x3C;vulnerability><a class="hash-link" href="#--ignore-vulnerability" aria-label="Direct link to --ignore <vulnerability>">#</a></h3>
+<p>Added in: v10.11.0</p>
+<p>Ignore a vulnerability by its GitHub advisory ID (GHSA). Before v11 this flag accepted CVE identifiers.</p>
+<p>The ID is saved in <code>pnpm-workspace.yaml</code>, which is created if missing, and no audit report is printed. It is added to <a href="#auditignore"><code>audit.ignore</code></a> if that list is already set, otherwise to <code>auditConfig.ignoreGhsas</code>. pnpm 12 still reads <code>auditConfig.ignoreGhsas</code>, so the advisory stays ignored either way.</p>
+<h2 id="configuration">Configuration<a class="hash-link" href="#configuration" aria-label="Direct link to Configuration">#</a></h2>
+<p><code>pnpm audit</code> is configured in the <code>audit</code> section of <code>pnpm-workspace.yaml</code> (added in v11.16.0):</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">audit:</span>
+  <span class="hljs-attr">level:</span> <span class="hljs-string">high</span>
+  <span class="hljs-attr">ignore:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">GHSA-42xw-2xvc-qx8m</span>
+</code></pre>
+<h3 id="auditlevel">audit.level<a class="hash-link" href="#auditlevel" aria-label="Direct link to audit.level">#</a></h3>
+<ul>
+<li>Default: <strong>low</strong></li>
+<li>Type: <strong>low</strong>, <strong>moderate</strong>, <strong>high</strong>, <strong>critical</strong></li>
+</ul>
+<p>Only print advisories with severity greater than or equal to this level. Same as the <a href="#--audit-level-severity"><code>--audit-level</code></a> flag.</p>
+<h3 id="auditignore">audit.ignore<a class="hash-link" href="#auditignore" aria-label="Direct link to audit.ignore">#</a></h3>
+<p>A list of GHSA codes that will be ignored by the <code>pnpm audit</code> command.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">audit:</span>
+  <span class="hljs-attr">ignore:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">GHSA-42xw-2xvc-qx8m</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">GHSA-4w2v-q235-vp99</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">GHSA-cph5-m8f7-6c5x</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">GHSA-vh95-rmgr-6w4m</span>
+</code></pre>
+<p>Since v12.4.0, ignored advisories are left out of the vulnerability
+total and the per-severity counts, and reported separately. When every advisory
+found is ignored, the summary says so rather than reporting a clean audit.</p>
+<h3 id="auditignoreprune">audit.ignorePrune<a class="hash-link" href="#auditignoreprune" aria-label="Direct link to audit.ignorePrune">#</a></h3>
+<p>Added in: v12.0.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, <code>pnpm audit --fix</code> removes the <a href="#auditignore"><code>audit.ignore</code></a>
+entries whose GHSA no longer appears in the audit report, so a list of tolerated
+advisories doesn't accumulate entries for dependencies that are long gone.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">audit:</span>
+  <span class="hljs-attr">ignorePrune:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<div class="admonition admonition-info"><p class="admonition-title">Info</p>
+<p>Before v11.16.0, these settings were named <code>auditLevel</code> and <code>auditConfig.ignoreGhsas</code>. These deprecated names are still supported in pnpm v12; when both are set, the <code>audit</code> section takes precedence and a warning is printed.</p>
+<p>Before v11, <code>auditConfig.ignoreCves</code> was used to filter advisories by CVE identifier. That setting is no longer recognized.</p>
+</div></article></main></div>
+  </body>
+</html>

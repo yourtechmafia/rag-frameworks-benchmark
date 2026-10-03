@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/supply-chain-security",
+ "file": "markdown/pnpm/supply-chain-security.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.94,
+ "markdown_chars": 5046,
+ "raw_html_chars": 11722,
+ "sha256": "161b71441006c6e18696e9b30ba95fe997cc0aa1b3e225e86ced97de7c5042e0",
+ "fetched_at": "2026-10-03T08:59:09+00:00"
+}

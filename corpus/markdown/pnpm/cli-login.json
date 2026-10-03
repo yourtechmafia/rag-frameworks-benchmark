@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/login",
+ "file": "markdown/pnpm/cli-login.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.64,
+ "markdown_chars": 1672,
+ "raw_html_chars": 6772,
+ "sha256": "1a3a8d5ef9067f69410921054043ead7bee1fe3ca66b937143fa6681dba00aa2",
+ "fetched_at": "2026-10-03T08:58:14+00:00"
+}

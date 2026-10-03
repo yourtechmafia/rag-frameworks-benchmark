@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/benchmarks",
+ "file": "markdown/pnpm/benchmarks.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.59,
+ "markdown_chars": 9582,
+ "raw_html_chars": 93622,
+ "sha256": "c8daf5b1503850d7585b0a8e353a270cf8ef2a03503b14847abf85daa700da77",
+ "fetched_at": "2026-10-03T08:57:46+00:00"
+}

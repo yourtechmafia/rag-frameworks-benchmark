@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm pkg | pnpm</title>
+    <meta name="description" content="Added in: v11.3.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm pkg | pnpm" />
+    <meta property="og:description" content="Added in: v11.3.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm pkg | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.3.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/pkg" />
+    <meta property="og:url" content="https://pnpm.io/cli/pkg" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/pkg" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/pkg" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/pkg" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/pkg" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/pkg" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/pkg" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/pkg" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/pkg" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/pkg" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/pkg" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/pkg" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/pkg" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/pkg" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/pkg" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm pkg</h1><p>Added in: v11.3.0</p>
+<p>Manages the contents of <code>package.json</code> from the command line.</p>
+<pre><code class="hljs language-sh">pnpm pkg get [&#x3C;key> [&#x3C;key> ...]]
+pnpm pkg <span class="hljs-built_in">set</span> &#x3C;key>=&#x3C;value> [&#x3C;key>=&#x3C;value> ...]
+pnpm pkg delete &#x3C;key> [&#x3C;key> ...]
+pnpm pkg fix
+</code></pre>
+<p>Nested fields are addressed with dot-separated paths (e.g. <code>scripts.test</code>, <code>repository.url</code>).</p>
+<h2 id="commands">Commands<a class="hash-link" href="#commands" aria-label="Direct link to Commands">#</a></h2>
+<h3 id="get">get<a class="hash-link" href="#get" aria-label="Direct link to get">#</a></h3>
+<p>Retrieves a value from <code>package.json</code>. With no arguments, prints the full manifest. With one or more keys, prints the requested fields.</p>
+<pre><code class="hljs language-sh">pnpm pkg get name
+pnpm pkg get name version
+pnpm pkg get scripts.test
+</code></pre>
+<p>When only one key is requested and it resolves to a string, the raw value is printed; otherwise the value is JSON-encoded. Pass <code>--json</code> to always print JSON.</p>
+<h3 id="set">set<a class="hash-link" href="#set" aria-label="Direct link to set">#</a></h3>
+<p>Sets one or more values in <code>package.json</code>. Each argument has the <code>key=value</code> form.</p>
+<pre><code class="hljs language-sh">pnpm pkg <span class="hljs-built_in">set</span> name=my-package
+pnpm pkg <span class="hljs-built_in">set</span> scripts.build=<span class="hljs-string">"tsc -p ."</span>
+pnpm pkg <span class="hljs-built_in">set</span> <span class="hljs-string">'keywords[0]'</span>=cli
+</code></pre>
+<p>By default the value is stored as a string. Pass <code>--json</code> to parse the value as JSON before storing it (useful for booleans, numbers, arrays, and objects):</p>
+<pre><code class="hljs language-sh">pnpm pkg <span class="hljs-built_in">set</span> private=<span class="hljs-literal">true</span> --json
+pnpm pkg <span class="hljs-built_in">set</span> <span class="hljs-string">'engines={"node":">=22"}'</span> --json
+</code></pre>
+<h3 id="delete">delete<a class="hash-link" href="#delete" aria-label="Direct link to delete">#</a></h3>
+<p>Removes one or more keys from <code>package.json</code>.</p>
+<pre><code class="hljs language-sh">pnpm pkg delete scripts.test
+pnpm pkg delete keywords
+</code></pre>
+<h3 id="fix">fix<a class="hash-link" href="#fix" aria-label="Direct link to fix">#</a></h3>
+<p>Auto-corrects common errors in <code>package.json</code> (e.g. removes a non-string <code>name</code> or <code>version</code>, drops dependency / <code>scripts</code> blocks whose values aren't objects, drops a <code>bin</code> field that's neither a string nor an object).</p>
+<pre><code class="hljs language-sh">pnpm pkg fix
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>When setting, parses each <code>value</code> as JSON before writing. When getting a single key, returns the JSON-encoded form instead of the raw value.</p>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Runs the subcommand on every workspace project, or on every project selected by a <code>--filter</code>.</p>
+<pre><code class="hljs language-sh">pnpm -r pkg get name
+pnpm -r pkg <span class="hljs-built_in">set</span> version=1.0.0
+pnpm --filter <span class="hljs-string">"./packages/*"</span> pkg get name
+</code></pre>
+<p><code>pnpm -r pkg get</code> returns a JSON object keyed by package name. A project is keyed by its directory, relative to the workspace root, when it has no name, when another selected project has the same name, or when its name matches the directory key of another project reported that way. <code>set</code>, <code>delete</code>, and <code>fix</code> apply to each matched project.</p></article></main></div>
+  </body>
+</html>

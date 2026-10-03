@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Codes | pnpm</title>
+    <meta name="description" content="A recursive run's task graph contains a dependency cycle. The error lists the participating tasks as &lt;project&gt;#&lt;script&gt; identifiers." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Error Codes | pnpm" />
+    <meta property="og:description" content="A recursive run's task graph contains a dependency cycle. The error lists the participating tasks as &lt;project&gt;#&lt;script&gt; identifiers." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Error Codes | pnpm" />
+    <meta name="twitter:description" content="A recursive run's task graph contains a dependency cycle. The error lists the participating tasks as &lt;project&gt;#&lt;script&gt; identifiers." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/errors" />
+    <meta property="og:url" content="https://pnpm.io/errors" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/errors" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/errors" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/errors" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/errors" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/errors" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/errors" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/errors" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/errors" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/errors" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/errors" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/errors" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/errors" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/errors" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/errors" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Error Codes</h1><h2 id="err_pnpm_task_cycle">ERR_PNPM_TASK_CYCLE<a class="hash-link" href="#err_pnpm_task_cycle" aria-label="Direct link to ERR_PNPM_TASK_CYCLE">#</a></h2>
+<p>A recursive run's task graph contains a dependency cycle. The error lists the
+participating tasks as <code>&#x3C;project>#&#x3C;script></code> identifiers.</p>
+<p>Remove or change the cycle under <a href="/workspace-task-orchestration"><code>tasks</code></a>.
+If it is deliberate, set
+<a href="/workspaces#ignoreworkspacecycles"><code>ignoreWorkspaceCycles</code></a> to <code>true</code> to
+downgrade the error to a warning and run the cycle's tasks without a guaranteed
+order.</p>
+<h2 id="err_pnpm_unexpected_store">ERR_PNPM_UNEXPECTED_STORE<a class="hash-link" href="#err_pnpm_unexpected_store" aria-label="Direct link to ERR_PNPM_UNEXPECTED_STORE">#</a></h2>
+<p>A modules directory is present and is linked to a different store directory.</p>
+<p>If you changed the store directory intentionally, run <code>pnpm install</code> and pnpm will reinstall the dependencies using the new store.</p>
+<h2 id="err_pnpm_no_matching_version_inside_workspace">ERR_PNPM_NO_MATCHING_VERSION_INSIDE_WORKSPACE<a class="hash-link" href="#err_pnpm_no_matching_version_inside_workspace" aria-label="Direct link to ERR_PNPM_NO_MATCHING_VERSION_INSIDE_WORKSPACE">#</a></h2>
+<p>A project has a workspace dependency that does not exist in the workspace.</p>
+<p>For instance, package <code>foo</code> has <code>bar@1.0.0</code> in the <code>dependencies</code>:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"foo"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"1.0.0"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"dependencies"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"bar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"workspace:1.0.0"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>However, there is only <code>bar@2.0.0</code> in the workspace, so <code>pnpm install</code> will fail.</p>
+<p>To fix this error, all dependencies that use the <a href="/workspaces#workspace-protocol-workspace">workspace protocol</a> should be updated to use versions of packages that are present in the workspace. This can be done either manually or using the <code>pnpm -r update</code> command.</p>
+<h2 id="err_pnpm_peer_dep_issues">ERR_PNPM_PEER_DEP_ISSUES<a class="hash-link" href="#err_pnpm_peer_dep_issues" aria-label="Direct link to ERR_PNPM_PEER_DEP_ISSUES">#</a></h2>
+<p><code>pnpm install</code> will fail if the project has unresolved peer dependencies or the peer dependencies are not matching the wanted ranges. To fix this, install the missing peer dependencies.</p>
+<p>You may also selectively ignore these errors using the <a href="/settings/peer-dependencies#peerdependencyrulesignoremissing">peerDependencyRules.ignoreMissing</a> and <a href="/settings/peer-dependencies#peerdependencyrulesallowedversions">peerDependencyRules.allowedVersions</a> settings.</p>
+<h2 id="err_pnpm_outdated_lockfile">ERR_PNPM_OUTDATED_LOCKFILE<a class="hash-link" href="#err_pnpm_outdated_lockfile" aria-label="Direct link to ERR_PNPM_OUTDATED_LOCKFILE">#</a></h2>
+<p>This error happens when installation cannot be performed without changes to the lockfile. This might happen in a CI environment if someone has changed a <code>package.json</code> file in the repository without running <code>pnpm install</code> afterwards. Or someone forgot to commit the changes to the lockfile.</p>
+<p>To fix this error, just run <code>pnpm install</code> and commit the changes to the lockfile.</p>
+<h2 id="err_pnpm_tarball_integrity">ERR_PNPM_TARBALL_INTEGRITY<a class="hash-link" href="#err_pnpm_tarball_integrity" aria-label="Direct link to ERR_PNPM_TARBALL_INTEGRITY">#</a></h2>
+<p>This error indicates that the downloaded package's tarball did not match the expected integrity checksum.</p>
+<p>If you use the npm registry (<code>registry.npmjs.org</code>), then this probably means that the integrity in your lockfile is incorrect.
+This might happen if a lockfile had badly resolved merge conflicts.</p>
+<p>If you use a registry that allows to override existing versions of a package, then it might mean that in your local metadata cache you have the integrity checksum of an older version of the package. In this case, you should run <code>pnpm store prune</code>. This command will remove your local metadata cache. Then you can retry the command that failed.</p>
+<p>But also be careful and verify that the package is downloaded from the right URL. The URL should be printed in the error message.</p>
+<h2 id="err_pnpm_mismatched_release_channel">ERR_PNPM_MISMATCHED_RELEASE_CHANNEL<a class="hash-link" href="#err_pnpm_mismatched_release_channel" aria-label="Direct link to ERR_PNPM_MISMATCHED_RELEASE_CHANNEL">#</a></h2>
+<p>The config field <code>use-node-version</code> defines a release channel different from version suffix.</p>
+<p>For example:</p>
+<ul>
+<li><code>rc/20.0.0</code> defines an <code>rc</code> channel but the version is that of a stable release.</li>
+<li><code>release/20.0.0-rc.0</code> defines a <code>release</code> channel but the version is that of an RC release.</li>
+</ul>
+<p>To fix this error, either remove the release channel prefix or correct the version suffix.</p>
+<p>Note that it is not allowed to specify node versions like <code>lts/Jod</code>.
+The correct syntax for stable release is strictly X.Y.Z or release/X.Y.Z.</p>
+<h2 id="err_pnpm_invalid_node_version">ERR_PNPM_INVALID_NODE_VERSION<a class="hash-link" href="#err_pnpm_invalid_node_version" aria-label="Direct link to ERR_PNPM_INVALID_NODE_VERSION">#</a></h2>
+<p>The value of config field <code>use-node-version</code> has an invalid syntax.</p>
+<p>Below are the valid forms of <code>use-node-version</code>:</p>
+<ul>
+<li>Stable release:
+<ul>
+<li><code>X.Y.Z</code> (<code>X</code>, <code>Y</code>, <code>Z</code> are integers)</li>
+<li><code>release/X.Y.Z</code> (<code>X</code>, <code>Y</code>, <code>Z</code> are integers)</li>
+</ul>
+</li>
+<li>RC release:
+<ul>
+<li><code>X.Y.Z-rc.W</code> (<code>X</code>, <code>Y</code>, <code>Z</code>, <code>W</code> are integers)</li>
+<li><code>rc/X.Y.Z-rc.W</code> (<code>X</code>, <code>Y</code>, <code>Z</code>, <code>W</code> are integers)</li>
+</ul>
+</li>
+</ul></article></main></div>
+  </body>
+</html>

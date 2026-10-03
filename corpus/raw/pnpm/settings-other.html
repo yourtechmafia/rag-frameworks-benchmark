@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Other Settings | pnpm</title>
+    <meta name="description" content="Configure how versions of packages installed to a package.json file get prefixed." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Other Settings | pnpm" />
+    <meta property="og:description" content="Configure how versions of packages installed to a package.json file get prefixed." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Other Settings | pnpm" />
+    <meta name="twitter:description" content="Configure how versions of packages installed to a package.json file get prefixed." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/settings/other" />
+    <meta property="og:url" content="https://pnpm.io/settings/other" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/settings/other" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/settings/other" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/settings/other" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/settings/other" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/settings/other" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/settings/other" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/settings/other" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/settings/other" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/settings/other" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/settings/other" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/settings/other" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/settings/other" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/settings/other" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/settings/other" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Other Settings</h1><h3 id="saveprefix">savePrefix<a class="hash-link" href="#saveprefix" aria-label="Direct link to savePrefix">#</a></h3>
+<ul>
+<li>Default: <strong>'^'</strong></li>
+<li>Type: <strong>'^'</strong>, <strong>'~'</strong>, <strong>''</strong>, <strong>'='</strong></li>
+</ul>
+<p>Configure how versions of packages installed to a <code>package.json</code> file get
+prefixed.</p>
+<p>For example, if a package has version <code>1.2.3</code>, by default its version is set to
+<code>^1.2.3</code> which allows minor upgrades for that package, but after
+<code>pnpm config set save-prefix='~'</code> it would be set to <code>~1.2.3</code> which only allows
+patch upgrades.</p>
+<p>Since v11.19.0, <code>=</code> is also accepted: newly added dependencies are saved with an
+explicit <code>=</code> operator (<code>=1.2.3</code>), which pins the exact version. <code>pnpm update</code>
+keeps the <code>=</code> operator when it updates such a pin.</p>
+<p>This setting is ignored when the added package has a range specified. For
+instance, <code>pnpm add foo@2</code> will set the version of <code>foo</code> in <code>package.json</code> to
+<code>2</code>, regardless of the value of <code>savePrefix</code>.</p>
+<h3 id="savetypes">saveTypes<a class="hash-link" href="#savetypes" aria-label="Direct link to saveTypes">#</a></h3>
+<p>Added in: v12.6.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, <code>pnpm add</code> saves available <code>@types/*</code> packages in
+<code>devDependencies</code> alongside registry dependencies. Packages that declare bundled
+TypeScript types are skipped.</p>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">saveTypes:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p>You can also pass it as a CLI flag: <code>pnpm add --save-types express</code>.</p>
+<h3 id="tag">tag<a class="hash-link" href="#tag" aria-label="Direct link to tag">#</a></h3>
+<ul>
+<li>Default: <strong>latest</strong></li>
+<li>Type: <strong>String</strong></li>
+</ul>
+<p>If you <code>pnpm add</code> a package and you don't provide a specific version, then it
+will install the package at the version registered under the tag from this
+setting.</p>
+<p>This also sets the tag that is added to the <code>package@version</code> specified by the
+<code>pnpm tag</code> command if no explicit tag is given.</p>
+<h3 id="globaldir">globalDir<a class="hash-link" href="#globaldir" aria-label="Direct link to globalDir">#</a></h3>
+<ul>
+<li>Default:
+<ul>
+<li>If the <strong>$XDG_DATA_HOME</strong> env variable is set, then <strong>$XDG_DATA_HOME/pnpm/global</strong></li>
+<li>On Windows: <strong>~/AppData/Local/pnpm/global</strong></li>
+<li>On macOS: <strong>~/Library/pnpm/global</strong></li>
+<li>On Linux: <strong>~/.local/share/pnpm/global</strong></li>
+</ul>
+</li>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>Specify a custom directory to store global packages.</p>
+<h3 id="globalbindir">globalBinDir<a class="hash-link" href="#globalbindir" aria-label="Direct link to globalBinDir">#</a></h3>
+<ul>
+<li>Default:
+<ul>
+<li>If the <strong>$XDG_DATA_HOME</strong> env variable is set, then <strong>$XDG_DATA_HOME/pnpm/bin</strong></li>
+<li>On Windows: <strong>~/AppData/Local/pnpm/bin</strong></li>
+<li>On macOS: <strong>~/Library/pnpm/bin</strong></li>
+<li>On Linux: <strong>~/.local/share/pnpm/bin</strong></li>
+</ul>
+</li>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>Allows to set the target directory for the bin files of globally installed packages.</p>
+<div class="admonition admonition-tip"><p class="admonition-title">Tip</p>
+<p>In pnpm v11, globally installed binaries are stored in a <code>bin</code> subdirectory of <code>PNPM_HOME</code> instead of directly in <code>PNPM_HOME</code>. This prevents internal directories like <code>global/</code> and <code>store/</code> from polluting shell autocompletion when <code>PNPM_HOME</code> is on PATH. After upgrading, run <code>pnpm setup</code> to update your shell configuration.</p>
+</div>
+<h3 id="globalshims">globalShims<a class="hash-link" href="#globalshims" aria-label="Direct link to globalShims">#</a></h3>
+<p>Added in: v12.0.0-rc.2</p>
+<ul>
+<li>Default: <strong>{ node: auto, deno: auto, bun: auto }</strong></li>
+<li>Type: <strong>Boolean</strong>, <strong>Object</strong></li>
+</ul>
+<p>Controls which globally installed packages get <a href="/global-packages#project-aware-global-bins">project-aware shims</a> — global commands that run the version the current project asks for instead of the globally installed one.</p>
+<p>The setting is a map from <strong>package name</strong> to policy. The key is the name of the package that <em>provides</em> the command, not the command itself, so an entry for <code>typescript</code> covers its <code>tsc</code> bin.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">globalShims:</span>
+  <span class="hljs-attr">node:</span> <span class="hljs-string">auto</span>
+  <span class="hljs-attr">deno:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">typescript:</span> <span class="hljs-string">prompt</span>
+</code></pre>
+<p>The supported policies are:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Value</th><th>Behavior</th></tr></thead><tbody><tr><td><code>auto</code> (or <code>true</code>)</td><td>Switch automatically when the candidate is authenticated by a publisher signature; otherwise ask for confirmation once.</td></tr><tr><td><code>prompt</code></td><td>Put every candidate through the confirmation gate, including signature-verified ones. Answers are still remembered, so this asks once per project and candidate, not on every run.</td></tr><tr><td><code>always</code></td><td>Always switch, never ask. Usable in CI, where a prompt would fall back to the global version.</td></tr><tr><td><code>false</code></td><td>Disable the project-aware shim for this package.</td></tr></tbody></table></div>
+<p>Since v12.0.0-rc.6, two commands write entries here for you: <a href="/cli/shim"><code>pnpm shim add &#x3C;pkg></code></a> records the package it links a shim for, and installing a <a href="/package-managers">package manager</a> globally (<code>pnpm add -g yarn</code>) records that package manager so it follows a project's pin. Neither overwrites an entry you set yourself — including <code>false</code>, and including a <code>globalShims: false</code> that turns every shim off.</p>
+<p>Layers merge key by key over the built-in defaults, so a single entry can change one package without restating the rest — <code>globalShims: { bun: false }</code> leaves <code>node</code> and <code>deno</code> at <code>auto</code>.</p>
+<p>The scalar shorthands replace the whole map instead of merging: <code>globalShims: false</code> disables every project-aware shim, and <code>globalShims: true</code> resets to the defaults.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>This setting is only read from locations a project cannot write to: the <a href="/cli/config">global configuration file</a>, a <code>pnpm-workspace.yaml</code> in the pnpm home directory itself, and the <code>PNPM_CONFIG_GLOBAL_SHIMS</code> environment variable (a JSON value), applied in that order. A project's own <code>pnpm-workspace.yaml</code> is ignored — otherwise a repository could grant itself the right to run its own binaries in place of your global ones.</p>
+</div>
+<p>Disabling a package, or changing its policy, takes effect on the very next command — the setting is re-read on each dispatch, so no reinstall is needed.</p>
+<p>Newly <em>enabling</em> a package is the exception. pnpm decides at install time which bins to write dispatching shims for, so a package that was already installed globally while it was disabled needs to be reinstalled to pick up the change:</p>
+<pre><code class="hljs language-sh">pnpm add -g typescript
+</code></pre>
+<p>To bypass dispatch for a single invocation, set <code>PNPM_SHIM_BYPASS=1</code>:</p>
+<pre><code class="hljs language-sh">PNPM_SHIM_BYPASS=1 node --version
+</code></pre>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Project-aware shims are a pnpm v12 feature and are not available in v11.</p>
+</div>
+<h3 id="npmrcauthfile">npmrcAuthFile<a class="hash-link" href="#npmrcauthfile" aria-label="Direct link to npmrcAuthFile">#</a></h3>
+<p>Added in: v11.0.0</p>
+<ul>
+<li>Default: <strong>~/.npmrc</strong></li>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>The path to a file containing registry authentication tokens. By default, pnpm reads auth tokens from <code>~/.npmrc</code> as a fallback for registry authentication. Use this setting to point to a different file instead.</p>
+<p>This setting cannot be set in <code>pnpm-workspace.yaml</code> at the project level; set it in the global configuration file, via the <code>--npmrc-auth-file</code> CLI option, or via the <code>PNPM_CONFIG_NPMRC_AUTH_FILE</code> environment variable (the npm-style <code>NPM_CONFIG_USERCONFIG</code> is honored as a fallback). A relative path is resolved against the working directory.</p>
+<h3 id="statedir">stateDir<a class="hash-link" href="#statedir" aria-label="Direct link to stateDir">#</a></h3>
+<ul>
+<li>Default:
+<ul>
+<li>If the <strong>$XDG_STATE_HOME</strong> env variable is set, then <strong>$XDG_STATE_HOME/pnpm</strong></li>
+<li>On Windows: <strong>~/AppData/Local/pnpm-state</strong></li>
+<li>On macOS: <strong>~/.pnpm-state</strong></li>
+<li>On Linux: <strong>~/.local/state/pnpm</strong></li>
+</ul>
+</li>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>The directory where pnpm stores machine-level state, including the update checker's <code>pnpm-state.json</code> file.</p>
+<p>Since v12.5.0, <a href="/workspace-task-orchestration#concurrencygroups">task concurrency groups</a> also store their shared slot files under <code>stateDir/run-slots</code>. Processes must use the same <code>stateDir</code> to share group limits. Different state directories create independent slot pools, so their combined task count can exceed the configured limit.</p>
+<p>Set <code>stateDir</code> in the <a href="/cli/config">global configuration file</a> or on the command line. It is ignored in project <code>pnpm-workspace.yaml</code> files.</p>
+<h3 id="cachedir">cacheDir<a class="hash-link" href="#cachedir" aria-label="Direct link to cacheDir">#</a></h3>
+<ul>
+<li>Default:
+<ul>
+<li>If the <strong>$XDG_CACHE_HOME</strong> env variable is set, then <strong>$XDG_CACHE_HOME/pnpm</strong></li>
+<li>On Windows: <strong>~/AppData/Local/pnpm-cache</strong></li>
+<li>On macOS: <strong>~/Library/Caches/pnpm</strong></li>
+<li>On Linux: <strong>~/.cache/pnpm</strong></li>
+</ul>
+</li>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>The location of the cache (package metadata, dlx cache, and some install verification results).</p>
+<p>Like the store, the cache directory is intended to be shared only between mutually trusted users, jobs, and processes. If you configure or restore a shared <code>cacheDir</code>, protect it with filesystem permissions so untrusted users cannot write to it.</p>
+<h3 id="usestderr">useStderr<a class="hash-link" href="#usestderr" aria-label="Direct link to useStderr">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When true, all the output is written to stderr.</p>
+<h3 id="updatenotifier">updateNotifier<a class="hash-link" href="#updatenotifier" aria-label="Direct link to updateNotifier">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Set to <code>false</code> to suppress the update notification when using an older version of pnpm than the latest.</p>
+<p><code>pnpm install</code> and <code>pnpm add</code> check at most once a day, and print how to get the
+newer version. pnpm 12 recognized but ignored this setting until v12.0.0, where
+it started checking too.</p>
+<h3 id="prefersymlinkedexecutables">preferSymlinkedExecutables<a class="hash-link" href="#prefersymlinkedexecutables" aria-label="Direct link to preferSymlinkedExecutables">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong>, when <strong>node-linker</strong> is set to <strong>hoisted</strong> and the system is POSIX</li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Create symlinks to executables in <code>node_modules/.bin</code> instead of command shims. This setting is ignored on Windows, where only command shims work.</p>
+<h3 id="ignorecompatibilitydb">ignoreCompatibilityDb<a class="hash-link" href="#ignorecompatibilitydb" aria-label="Direct link to ignoreCompatibilityDb">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>During installation the dependencies of some packages are automatically patched. If you want to disable this, set this config to <code>true</code>.</p>
+<p>The patches are applied from Yarn's <a href="https://github.com/yarnpkg/berry/blob/master/packages/yarnpkg-extensions/sources/index.ts"><code>@yarnpkg/extensions</code></a> package, plus pnpm's
+own curated entries.</p>
+<p>Since v12.0.0, the database no longer carries entries that were derived from
+static analysis of published packages. Those entries named packages a dependent
+imported only for its <em>types</em>. Adding them was at best unnecessary and at worst
+broke the dependent: <code>@typescript-eslint/types</code> gained a <code>typescript</code> dependency
+resolved to the newest release, which put TypeScript 7 under older
+<code>@typescript-eslint</code> versions and made ESLint fail with <code>Cannot read properties of undefined (reading 'Intrinsic')</code>.</p>
+<h3 id="resolutionmode">resolutionMode<a class="hash-link" href="#resolutionmode" aria-label="Direct link to resolutionMode">#</a></h3>
+<ul>
+<li>Default: <strong>highest</strong> (was <strong>lowest-direct</strong> from v8.0.0 to v8.6.12)</li>
+<li>Type: <strong>highest</strong>, <strong>time-based</strong>, <strong>lowest-direct</strong></li>
+</ul>
+<p>When <code>resolutionMode</code> is set to <code>time-based</code>, dependencies will be resolved the following way:</p>
+<ol>
+<li>Direct dependencies will be resolved to their lowest versions. So if there is <code>foo@^1.1.0</code> in the dependencies, then <code>1.1.0</code> will be installed.</li>
+<li>Subdependencies will be resolved from versions that were published no later than one hour after the newest direct dependency. If none of those versions satisfies a subdependency's range, pnpm installs the lowest version that does.</li>
+</ol>
+<p>If <a href="/settings/dependency-resolution#minimumreleaseage"><code>minimumReleaseAge</code></a> is also set, pnpm resolves subdependencies against whichever of the two cutoffs is earlier. If no version published before that cutoff satisfies a subdependency's range, pnpm installs the lowest matching version that is older than the <code>minimumReleaseAge</code> cutoff. If every matching version is newer than the <code>minimumReleaseAge</code> cutoff, pnpm falls back to the lowest matching version, and <a href="/settings/dependency-resolution#minimumreleaseagestrict"><code>minimumReleaseAgeStrict</code></a> decides whether pnpm installs it or fails. Only the <code>minimumReleaseAge</code> cutoff decides which versions pnpm reports as too new. A version that is newer than the time-based cutoff but older than the <code>minimumReleaseAge</code> cutoff is installed without a warning or error.</p>
+<p>With this resolution mode installations with warm cache are faster. It also reduces the chance of subdependency hijacking as subdependencies will be updated only if direct dependencies are updated.</p>
+<p>This resolution mode works only with npm's <a href="https://github.com/npm/registry/blob/master/docs/responses/package-metadata.md#full-metadata-format">full metadata</a>. So it is slower in some scenarios. However, if you use <a href="https://verdaccio.org/">Verdaccio</a> v5.15.1 or newer, you may set the <code>registrySupportsTimeField</code> setting to <code>true</code>, and it will be really fast.</p>
+<p>When <code>resolutionMode</code> is set to <code>lowest-direct</code>, direct dependencies will be resolved to their lowest versions.</p>
+<p>Only the dependencies declared in <code>package.json</code> count as direct here. A peer dependency that <a href="/settings/peer-dependencies#autoinstallpeers"><code>autoInstallPeers</code></a> adds is not something the project declared, so it is resolved like a subdependency: to the highest version satisfying the peer range, or under <code>time-based</code>, to the highest version within the publish-date cutoff.</p>
+<h3 id="registrysupportstimefield">registrySupportsTimeField<a class="hash-link" href="#registrysupportstimefield" aria-label="Direct link to registrySupportsTimeField">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>Set this to <code>true</code> if the registry that you are using returns the "time" field in the abbreviated metadata. <a href="https://verdaccio.org/">Verdaccio</a> supports this from v5.15.1, as do some registry proxies.</p>
+<p>Since v11.23.0, this can also be declared per registry, through the <code>supportsTimeField</code> field of a <a href="/registries#supportstimefield">registry declaration</a>. A registry's own declaration wins; this setting is the answer for every registry the project does not describe.</p>
+<h3 id="extendnodepath">extendNodePath<a class="hash-link" href="#extendnodepath" aria-label="Direct link to extendNodePath">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, pnpm sets the <code>NODE_PATH</code> environment variable in command shims
+(the wrapper scripts created in <code>node_modules/.bin</code>). When <code>false</code>, <code>NODE_PATH</code>
+is not set.</p>
+<h4 id="why-this-is-needed">Why this is needed<a class="hash-link" href="#why-this-is-needed" aria-label="Direct link to Why this is needed">#</a></h4>
+<p>pnpm's <a href="/symlinked-node-modules-structure">isolated <code>node_modules</code> layout</a> means that a package can only access its
+own declared dependencies. However, when a CLI tool runs via a command shim, some
+libraries (notably <a href="https://github.com/sindresorhus/import-local"><code>import-local</code></a>, used by jest, eslint, and others) resolve
+modules from the <strong>current working directory</strong> rather than from the binary's own
+location. Since the working directory is the project root — not the package inside
+the virtual store — the standard <code>node_modules</code> resolution from the CWD won't
+find the binary's transitive dependencies.</p>
+<p>To bridge this gap, pnpm includes two types of paths in <code>NODE_PATH</code>:</p>
+<ol>
+<li><strong>The package's own dependencies directory</strong> (e.g.,
+<code>.pnpm/pkg@version/node_modules</code>) — this allows CWD-based resolution to find
+the correct versions of the package's sibling dependencies.</li>
+<li><strong>The hoisted <code>node_modules</code> directory</strong> (e.g., <code>.pnpm/node_modules</code>) — this
+is the directory where hoisted packages are placed when <a href="/settings/node-modules#hoistpattern"><code>hoistPattern</code></a> is
+set. Node.js cannot discover this directory through its standard resolution
+algorithm, so it must be provided via <code>NODE_PATH</code>.</li>
+</ol>
+<p><code>NODE_PATH</code> is also essential when <a href="/settings/node-modules#enableglobalvirtualstore"><code>enableGlobalVirtualStore</code></a> is enabled.
+With a global virtual store, packages are symlinked from a central location
+outside the project, so Node.js's standard upward <code>node_modules</code> traversal from
+the binary's real path won't reach the project's own <code>node_modules</code> or its hoisted
+dependencies. In this case, <code>NODE_PATH</code> must include both the project's root
+<code>node_modules</code> and the hoisted directory at <code>node_modules/.pnpm/node_modules</code> to
+ensure correct resolution.</p>
+<h4 id="when-to-disable">When to disable<a class="hash-link" href="#when-to-disable" aria-label="Direct link to When to disable">#</a></h4>
+<p>You may set this to <code>false</code> if you are certain that none of the CLI tools in your
+project resolve modules from the working directory and you are not using a global
+virtual store. Disabling it produces slightly simpler command shims.</p>
+<h3 id="deployallfiles">deployAllFiles<a class="hash-link" href="#deployallfiles" aria-label="Direct link to deployAllFiles">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When deploying a package or installing a local package, all files of the package are copied. By default, if the package has a <code>"files"</code> field in the <code>package.json</code>, then only the listed files and directories are copied.</p>
+<h3 id="dedupedirectdeps">dedupeDirectDeps<a class="hash-link" href="#dedupedirectdeps" aria-label="Direct link to dedupeDirectDeps">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, dependencies that are already symlinked to the root <code>node_modules</code> directory of the workspace will not be symlinked to subproject <code>node_modules</code> directories.</p>
+<h3 id="optimisticrepeatinstall">optimisticRepeatInstall<a class="hash-link" href="#optimisticrepeatinstall" aria-label="Direct link to optimisticRepeatInstall">#</a></h3>
+<p>Added in: v10.1.0</p>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When enabled, a fast check will be performed before proceeding to installation. This way a repeat install or an install on a project with everything up-to-date becomes a lot faster.</p>
+<h3 id="requiredscripts">requiredScripts<a class="hash-link" href="#requiredscripts" aria-label="Direct link to requiredScripts">#</a></h3>
+<p>Scripts listed in this array will be required in each project of the workspace. Otherwise, <code>pnpm -r run &#x3C;script name></code> will fail.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">requiredScripts:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">build</span>
+</code></pre>
+<h3 id="enableprepostscripts">enablePrePostScripts<a class="hash-link" href="#enableprepostscripts" aria-label="Direct link to enablePrePostScripts">#</a></h3>
+<ul>
+<li>Default: <strong>true</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, pnpm will run any pre/post scripts automatically. So running <code>pnpm foo</code>
+will be like running <code>pnpm prefoo &#x26;&#x26; pnpm foo &#x26;&#x26; pnpm postfoo</code>.</p>
+<h3 id="scriptshell">scriptShell<a class="hash-link" href="#scriptshell" aria-label="Direct link to scriptShell">#</a></h3>
+<ul>
+<li>Default: <strong>null</strong></li>
+<li>Type: <strong>path</strong></li>
+</ul>
+<p>The shell to use for scripts run with the <code>pnpm run</code> command.</p>
+<p>For instance, to force usage of Git Bash on Windows:</p>
+<pre><code>pnpm config set scriptShell "C:\\Program Files\\git\\bin\\bash.exe"
+</code></pre>
+<p>Since v12.4.0, a relative path in <code>pnpm-workspace.yaml</code> resolves from the workspace root, including for scripts that run in a nested package. A bare command name such as <code>bash</code> is still looked up on <code>PATH</code>.</p>
+<h3 id="shellemulator">shellEmulator<a class="hash-link" href="#shellemulator" aria-label="Direct link to shellEmulator">#</a></h3>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When <code>true</code>, pnpm will use a JavaScript implementation of a <a href="https://www.npmjs.com/package/@yarnpkg/shell">bash-like shell</a> to
+execute scripts.</p>
+<p>This option simplifies cross-platform scripting. For instance, by default, the
+next script will fail on non-POSIX-compliant systems:</p>
+<pre><code class="hljs language-json"><span class="hljs-attr">"scripts"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"test"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"NODE_ENV=test node test.js"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>But if the <code>shellEmulator</code> setting is set to <code>true</code>, it will work on all
+platforms.</p>
+<p>Since v12.8.0, a configured non-empty <code>scriptShell</code> wins over <code>shellEmulator</code>
+for <code>pnpm run</code> and lifecycle scripts. The emulator runs only when <code>scriptShell</code>
+is unset or empty.</p>
+<div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>Node.js 22 or higher supports running scripts without pnpm's assistance. For the example above, you can run the <code>test</code> script with <code>node --run test</code>. However, the <code>shellEmulator</code> option has no effect on this. Scripts that depend on POSIX features are required to be run <code>pnpm run</code> instead of <code>node --run</code> to work in non-POSIX-compliant environments.</p>
+</div>
+<h3 id="catalogmode">catalogMode<a class="hash-link" href="#catalogmode" aria-label="Direct link to catalogMode">#</a></h3>
+<p>Added in: v10.12.1</p>
+<ul>
+<li>Default: <strong>manual</strong></li>
+<li>Type: <strong>manual</strong>, <strong>strict</strong>, <strong>prefer</strong></li>
+</ul>
+<p>Controls if and how dependencies are added to the default catalog, when running <code>pnpm add</code>. There are three modes:</p>
+<ul>
+<li><strong>strict</strong> - only allows dependency versions from the catalog. Adding a dependency outside the catalog's version range will cause an error.</li>
+<li><strong>prefer</strong> - prefers catalog versions, but will fall back to direct dependencies if no compatible version is found.</li>
+<li><strong>manual</strong> (default) - does not automatically add dependencies to the catalog.</li>
+</ul>
+<p>Since v12.3.0, a specifier that names a location rather than a version is never moved into a catalog: local paths, local tarballs, tarball URLs, and <code>workspace:&#x3C;path></code> ranges stay in the <code>package.json</code> that declares them. Such a specifier is resolved relative to its own project, so one catalog entry could not mean the same directory for every project referencing it.</p>
+<h3 id="ci">ci<a class="hash-link" href="#ci" aria-label="Direct link to ci">#</a></h3>
+<p>Added in: v10.12.1</p>
+<ul>
+<li>Default: <strong>true</strong> (when the environment is detected as CI)</li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>This setting explicitly tells pnpm whether the current environment is a CI (Continuous Integration) environment.</p>
+<p><a id="cleanupunusedcatalogs"></a></p>
+<h3 id="catalogprune">catalogPrune<a class="hash-link" href="#catalogprune" aria-label="Direct link to catalogPrune">#</a></h3>
+<p>Added in: v11.22.0 (as <code>cleanupUnusedCatalogs</code> since v10.15.0)</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code>, pnpm will remove unused catalog entries during installation.</p>
+<p><code>cleanupUnusedCatalogs</code> is the deprecated spelling of this setting and continues to work; when both are set, <code>catalogPrune</code> wins.</p>
+<h3 id="macosbackupexcludemodulesdir">macosBackup.excludeModulesDir<a class="hash-link" href="#macosbackupexcludemodulesdir" aria-label="Direct link to macosBackup.excludeModulesDir">#</a></h3>
+<p>Added in: v12.6.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code> on macOS, pnpm marks newly created <code>node_modules</code>, virtual-store, and similar directories with the <code>com.apple.metadata:com_apple_backup_excludeItem</code> extended attribute, so Time Machine skips them.</p>
+<p>Set it in the <a href="/cli/config">global configuration file</a> or via the <code>PNPM_CONFIG_MACOS_BACKUP_EXCLUDE_MODULES_DIR</code> environment variable. This setting is ignored in project <code>pnpm-workspace.yaml</code> files and on non-macOS platforms.</p>
+<div class="code-block"><div class="code-block-title">config.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">macosBackup:</span>
+  <span class="hljs-attr">excludeModulesDir:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<h3 id="macosbackupexcludestoredir">macosBackup.excludeStoreDir<a class="hash-link" href="#macosbackupexcludestoredir" aria-label="Direct link to macosBackup.excludeStoreDir">#</a></h3>
+<p>Added in: v12.6.0</p>
+<ul>
+<li>Default: <strong>false</strong></li>
+<li>Type: <strong>Boolean</strong></li>
+</ul>
+<p>When set to <code>true</code> on macOS, pnpm marks newly created package-store directories with the Time Machine exclusion attribute.</p>
+<p>Set it in the <a href="/cli/config">global configuration file</a> or via the <code>PNPM_CONFIG_MACOS_BACKUP_EXCLUDE_STORE_DIR</code> environment variable. This setting is ignored in project <code>pnpm-workspace.yaml</code> files and on non-macOS platforms.</p>
+<div class="code-block"><div class="code-block-title">config.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">macosBackup:</span>
+  <span class="hljs-attr">excludeStoreDir:</span> <span class="hljs-literal">true</span>
+</code></pre></div></article></main></div>
+  </body>
+</html>

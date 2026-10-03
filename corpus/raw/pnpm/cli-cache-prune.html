@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm cache prune | pnpm</title>
+    <meta name="description" content="Added in: v12.5.0 (pnpm v12 only)" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm cache prune | pnpm" />
+    <meta property="og:description" content="Added in: v12.5.0 (pnpm v12 only)" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm cache prune | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.5.0 (pnpm v12 only)" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/cache-prune" />
+    <meta property="og:url" content="https://pnpm.io/cli/cache-prune" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/cache-prune" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/cache-prune" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/cache-prune" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/cache-prune" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/cache-prune" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/cache-prune" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/cache-prune" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/cache-prune" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/cache-prune" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/cache-prune" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/cache-prune" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/cache-prune" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/cache-prune" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/cache-prune" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm cache prune</h1><p>Added in: v12.5.0 (pnpm v12 only)</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>This command is experimental</p>
+</div>
+<p>Deletes the registry metadata cache directories that this version of pnpm can no longer read.</p>
+<pre><code class="hljs language-sh">pnpm cache prune
+</code></pre>
+<p>pnpm v12.4.0 changed the metadata cache directory name of every registry, so the first install after upgrading refetched metadata into a new directory and left the old one in place. Nothing reads it, and no other subcommand removes it, because <a href="/cli/cache-list"><code>cache list</code></a>, <a href="/cli/cache-view"><code>cache view</code></a> and <a href="/cli/cache-delete"><code>cache delete</code></a> all search under the configured registry's current directory name. <code>cache prune</code> goes through all three metadata roots, <code>v11/metadata</code>, <code>v11/metadata-full</code> and <code>v11/metadata-full-filtered</code>, and removes the directories whose names this version cannot read.</p>
+<p>Each removed directory is printed as the metadata root followed by the directory name:</p>
+<pre><code>v11/metadata/registry.npmjs.org
+v11/metadata-full/npm.example.com
+</code></pre>
+<p>A cache with nothing to reclaim prints nothing and exits successfully. When one directory cannot be read or removed, prune still reclaims the rest, then reports every failure and names the directory it happened on.</p>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--dry-run">--dry-run<a class="hash-link" href="#--dry-run" aria-label="Direct link to --dry-run">#</a></h3>
+<p>Lists what prune would delete and removes nothing.</p>
+<pre><code class="hljs language-sh">pnpm cache prune --dry-run
+</code></pre>
+<p>The list on stdout is the same as a real prune's, so you can diff the two runs or pipe the list into something else. The notice that nothing was deleted goes to stderr.</p>
+<div class="admonition admonition-warning"><p class="admonition-title">Warning</p>
+<p>The cache directory is shared by every pnpm on the machine, and the directory naming change shipped in v11.27.0 as well as v12.4.0. If pnpm v11.26 or earlier runs on the same machine under the same <a href="/settings/other#cachedir"><code>cacheDir</code></a>, it still reads and writes the directories that prune removes, and pruning from v12 costs that CLI one metadata refetch. Only the cache is affected, and it refills itself. Use <code>--dry-run</code> to see the list before removing anything.</p>
+</div>
+<h2 id="what-prune-keeps">What prune keeps<a class="hash-link" href="#what-prune-keeps" aria-label="Direct link to What prune keeps">#</a></h2>
+<p>Prune removes only the directories it can prove are dead, so a few things that look reclaimable stay where they are.</p>
+<ul>
+<li>The descriptor-scoped caches under <code>v11/metadata-private</code>, which every <code>pnpm cache</code> subcommand leaves alone.</li>
+<li>Directories whose names are in the current shape, including the ones that pile up from registries on an ephemeral port, such as a local test registry. Removing those needs a retention policy, an age cutoff for example, rather than a rule about the name.</li>
+<li>A 64-character hexadecimal directory name. A registry URL too long to fit a directory name becomes a bare sha256 hash of itself, and a live cache under such a name cannot be told apart from a stale one, so prune keeps it.</li>
+</ul></article></main></div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/search",
+ "file": "markdown/pnpm/cli-search.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.16,
+ "markdown_chars": 504,
+ "raw_html_chars": 5503,
+ "sha256": "acd96379e6da922fdbf65b8ea24c8d1013cb4f33c8c9a14dbb7fcef12cb561f3",
+ "fetched_at": "2026-10-03T08:58:31+00:00"
+}

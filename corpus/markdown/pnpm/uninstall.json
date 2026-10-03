@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/uninstall",
+ "file": "markdown/pnpm/uninstall.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.08,
+ "markdown_chars": 1484,
+ "raw_html_chars": 6623,
+ "sha256": "efeceb439dacf426ebfb4ec45b4c410f82fda5bd84c5bf823dd285cc45f2918d",
+ "fetched_at": "2026-10-03T08:59:11+00:00"
+}

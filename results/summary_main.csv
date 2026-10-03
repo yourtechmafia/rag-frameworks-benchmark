@@ -1,0 +1,6 @@
+framework,variant,runs,questions,errors,p50_s,p95_s,mean_s,llm_calls_per_q,in_tokens_per_q,out_tokens_per_q,usd_per_100q,index_s,import_s,first_answer_s,hit@5,mrr,answer_stability,faithfulness,context_precision,context_recall,answer_correctness,answer_correctness_js_only,answer_correctness_multi_hop
+baseline,clean,3,100,0,1.88,2.67,1.89,1.0,1046,125,0.167,14.54,8.43,1.59,0.86,0.719,0.76,0.91,0.515,0.625,0.637,0.61,0.561
+langchain,clean,3,100,0,1.78,2.73,1.86,1.0,1027,122,0.164,12.83,9.19,1.89,0.88,0.736,0.74,0.917,0.556,0.672,0.641,0.62,0.586
+llamaindex,clean,3,100,0,1.84,2.52,1.84,1.0,1015,123,0.163,14.11,9.63,1.85,0.89,0.766,0.69,0.9,0.518,0.641,0.631,0.632,0.525
+haystack,clean,3,100,0,1.81,2.96,1.97,1.0,1104,124,0.173,15.88,8.77,2.34,0.86,0.761,0.77,0.908,0.605,0.673,0.641,0.611,0.521
+dspy,clean,3,100,0,2.0,2.75,2.03,1.0,1339,132,0.2,14.82,8.68,4.42,0.86,0.724,0.65,0.878,0.528,0.624,0.641,0.613,0.596

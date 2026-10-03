@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm stage | pnpm</title>
+    <meta name="description" content="Added in: v11.3.0" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm stage | pnpm" />
+    <meta property="og:description" content="Added in: v11.3.0" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm stage | pnpm" />
+    <meta name="twitter:description" content="Added in: v11.3.0" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/stage" />
+    <meta property="og:url" content="https://pnpm.io/cli/stage" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/stage" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/stage" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/stage" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/stage" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/stage" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/stage" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/stage" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/stage" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/stage" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/stage" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/stage" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/stage" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/stage" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/stage" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm stage</h1><p>Added in: v11.3.0</p>
+<p>Stages packages for publishing using npm's <a href="https://docs.npmjs.com/staged-publishing">staged publishing</a> workflow. Staged versions are not resolved by <code>pnpm install</code> until they are explicitly approved, letting you defer proof-of-presence (2FA) to a later point in time — useful for verifying release artifacts, smoke-testing CI, or coordinating multi-package releases.</p>
+<pre><code class="hljs language-sh">pnpm stage &#x3C;subcommand> [options]
+</code></pre>
+<h2 id="subcommands">Subcommands<a class="hash-link" href="#subcommands" aria-label="Direct link to Subcommands">#</a></h2>
+<h3 id="publish">publish<a class="hash-link" href="#publish" aria-label="Direct link to publish">#</a></h3>
+<p>Stage a package for publishing.</p>
+<pre><code class="hljs language-sh">pnpm stage publish [&#x3C;tarball>|&#x3C;<span class="hljs-built_in">dir</span>>] [--tag &#x3C;tag>] [--access &#x3C;public|restricted>] [options]
+</code></pre>
+<p>Accepts the same arguments as <a href="/cli/publish"><code>pnpm publish</code></a>, but uploads the tarball to staging instead of promoting it to the live registry. The resulting <strong>stage id</strong> is printed and can be used with the other subcommands.</p>
+<p>Use <code>--recursive</code> (or <code>-r</code>) to stage every publishable package in the workspace.</p>
+<h3 id="list">list<a class="hash-link" href="#list" aria-label="Direct link to list">#</a></h3>
+<p>List all staged package versions, or list the staged versions of a specific package.</p>
+<pre><code class="hljs language-sh">pnpm stage list [&#x3C;package-spec>]
+</code></pre>
+<h3 id="view">view<a class="hash-link" href="#view" aria-label="Direct link to view">#</a></h3>
+<p>Show details of a specific staged version.</p>
+<pre><code class="hljs language-sh">pnpm stage view &#x3C;stage-id>
+</code></pre>
+<h3 id="approve">approve<a class="hash-link" href="#approve" aria-label="Direct link to approve">#</a></h3>
+<p>Approve a staged version, promoting it to the live registry. This is the step that consumes the one-time password.</p>
+<pre><code class="hljs language-sh">pnpm stage approve [&#x3C;stage-id>...] [--otp &#x3C;otp>]
+</code></pre>
+<p>Since v12.0.0, several stage ids may be approved at once, and running <code>approve</code>
+with none opens an interactive picker over the staged versions:</p>
+<pre><code class="hljs language-sh">pnpm stage approve                     <span class="hljs-comment"># pick interactively</span>
+pnpm stage approve &#x3C;stage-id> &#x3C;stage-id>
+</code></pre>
+<p>The whole batch is approved with a <strong>single</strong> one-time password; pnpm asks for a
+new one only once the registry stops accepting the current one.</p>
+<p>Inside a workspace the selected packages are approved in dependency order, and a
+package whose workspace dependency could not be approved is skipped rather than
+published against a dependency that never reached the registry.</p>
+<h3 id="reject">reject<a class="hash-link" href="#reject" aria-label="Direct link to reject">#</a></h3>
+<p>Reject a staged version and remove it from staging.</p>
+<pre><code class="hljs language-sh">pnpm stage reject &#x3C;stage-id> [--otp &#x3C;otp>]
+</code></pre>
+<h3 id="download">download<a class="hash-link" href="#download" aria-label="Direct link to download">#</a></h3>
+<p>Download the tarball of a staged version for inspection.</p>
+<pre><code class="hljs language-sh">pnpm stage download &#x3C;stage-id>
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<h3 id="--registry-url">--registry &#x3C;url><a class="hash-link" href="#--registry-url" aria-label="Direct link to --registry <url>">#</a></h3>
+<p>The base URL of the npm registry. Defaults to the configured default registry.</p>
+<h3 id="--tag-tag">--tag &#x3C;tag><a class="hash-link" href="#--tag-tag" aria-label="Direct link to --tag <tag>">#</a></h3>
+<p>Registers the staged package with the given dist-tag. Defaults to <code>latest</code>.</p>
+<h3 id="--access-publicrestricted">--access &#x3C;public|restricted><a class="hash-link" href="#--access-publicrestricted" aria-label="Direct link to --access <public|restricted>">#</a></h3>
+<p>Tells the registry whether the staged package should be public or restricted.</p>
+<h3 id="--json">--json<a class="hash-link" href="#--json" aria-label="Direct link to --json">#</a></h3>
+<p>Show information in JSON format. Applies to <code>list</code>, <code>view</code>, <code>publish</code>, and <code>download</code>.</p>
+<h3 id="--dry-run">--dry-run<a class="hash-link" href="#--dry-run" aria-label="Direct link to --dry-run">#</a></h3>
+<p>Does everything <code>stage publish</code> would do except uploading to the registry.</p>
+<h3 id="--otp-otp">--otp &#x3C;otp><a class="hash-link" href="#--otp-otp" aria-label="Direct link to --otp <otp>">#</a></h3>
+<p>One-time password for <code>approve</code> and <code>reject</code>.</p>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Stage all publishable packages from the workspace.</p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p></article></main></div>
+  </body>
+</html>

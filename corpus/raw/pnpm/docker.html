@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with Docker | pnpm</title>
+    <meta name="description" content="It is impossible to create reflinks or hardlinks between a Docker container and the host filesystem during build time. The next best thing you can do is using BuildKit cache mount to share cache between builds. Alternatively, you may use podman because it can mount Btrfs volumes during build..." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Working with Docker | pnpm" />
+    <meta property="og:description" content="It is impossible to create reflinks or hardlinks between a Docker container and the host filesystem during build time. The next best thing you can do is using BuildKit cache mount to share cache between builds. Alternatively, you may use podman because it can mount Btrfs volumes during build..." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Working with Docker | pnpm" />
+    <meta name="twitter:description" content="It is impossible to create reflinks or hardlinks between a Docker container and the host filesystem during build time. The next best thing you can do is using BuildKit cache mount to share cache between builds. Alternatively, you may use podman because it can mount Btrfs volumes during build..." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/docker" />
+    <meta property="og:url" content="https://pnpm.io/docker" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/docker" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/docker" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/docker" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/docker" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/docker" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/docker" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/docker" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/docker" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/docker" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/docker" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/docker" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/docker" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/docker" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/docker" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Working with Docker</h1><div class="admonition admonition-note"><p class="admonition-title">Note</p>
+<p>It is impossible to create reflinks or hardlinks between a Docker container and the host filesystem during build time.
+The next best thing you can do is using BuildKit cache mount to share cache between builds. Alternatively, you may use
+<a href="/podman">podman</a> because it can mount Btrfs volumes during build time.
+If you use BuildKit cache mounts, keep the pnpm store cache scoped to mutually trusted builds. A store cache that can be written by an untrusted build should not be reused by trusted builds.</p>
+</div>
+<h2 id="official-pnpm-base-image">Official pnpm base image<a class="hash-link" href="#official-pnpm-base-image" aria-label="Direct link to Official pnpm base image">#</a></h2>
+<p>An official pnpm base image is published to GitHub Container Registry as <a href="https://github.com/pnpm/pnpm/pkgs/container/pnpm"><code>ghcr.io/pnpm/pnpm</code></a>. It is based on <code>debian:stable-slim</code> and contains only the pnpm <a href="/installation#using-a-standalone-script">standalone binary</a> — Node.js is <strong>not</strong> bundled. This lets you pick the Node.js version yourself (inside your Dockerfile or at runtime) instead of being locked to whatever Node version a base image ships with.</p>
+<h3 id="tags">Tags<a class="hash-link" href="#tags" aria-label="Direct link to Tags">#</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Tag</th><th>Meaning</th></tr></thead><tbody><tr><td><code>&#x3C;version></code></td><td>Exact, immutable (e.g. <code>12.0.0</code>). Includes prereleases.</td></tr><tr><td><code>&#x3C;major></code></td><td>Tracks the latest stable release within that major (e.g. <code>12</code>).</td></tr><tr><td><code>latest</code></td><td>Most recent stable pnpm release. Not updated for prereleases.</td></tr></tbody></table></div>
+<p>Supported platforms: <code>linux/amd64</code>, <code>linux/arm64</code>.</p>
+<h3 id="installing-nodejs">Installing Node.js<a class="hash-link" href="#installing-nodejs" aria-label="Direct link to Installing Node.js">#</a></h3>
+<p>Let pnpm install Node.js automatically from <a href="/package_json#devenginesruntime"><code>devEngines.runtime</code></a> in your <code>package.json</code>:</p>
+<div class="code-block"><div class="code-block-title">package.json</div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"devEngines"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"runtime"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"node"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"22.x"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"onFail"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"download"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>This example assumes the project has a <code>pnpm-workspace.yaml</code>. If it does not,
+use <code>COPY package.json pnpm-lock.yaml ./</code> for the first copy step.</p>
+<pre><code class="hljs language-dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span>
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> package.json pnpm-lock.yaml pnpm-workspace.yaml ./</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm install --frozen-lockfile</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . .</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [<span class="hljs-string">"pnpm"</span>, <span class="hljs-string">"start"</span>]</span>
+</code></pre>
+<p>If your project has a <code>pnpm-workspace.yaml</code>, copy it before running
+<code>pnpm install</code>. It contains project settings and, in a workspace, the package
+patterns. Omitting it can change how dependencies are installed or make a frozen
+install fail. Omit it from the <code>COPY</code> instruction only if your project has no
+such file.</p>
+<h3 id="when-to-use-this-image">When to use this image<a class="hash-link" href="#when-to-use-this-image" aria-label="Direct link to When to use this image">#</a></h3>
+<ul>
+<li>You want the Node.js version to be pinned by your project via <code>devEngines.runtime</code> rather than by the base image.</li>
+<li>You want to upgrade pnpm and Node.js independently.</li>
+<li>You prefer a minimal Debian base without the Node.js build toolchain.</li>
+</ul>
+<p>The recipes further down this page start from this image and let pnpm install Node.js. If you prefer your own Node.js base image, keep the rest of each recipe and <a href="/installation">install pnpm</a> into that image instead.</p>
+<h2 id="minimizing-docker-image-size-and-build-time">Minimizing Docker image size and build time<a class="hash-link" href="#minimizing-docker-image-size-and-build-time" aria-label="Direct link to Minimizing Docker image size and build time">#</a></h2>
+<ul>
+<li>Use a small image, e.g. <code>ghcr.io/pnpm/pnpm</code> or <code>node:XX-slim</code>.</li>
+<li>Leverage multi-stage if possible and makes sense.</li>
+<li>Leverage BuildKit cache mounts.</li>
+</ul>
+<p>The recipes below use the official pnpm image, which already sets <code>PNPM_HOME=/pnpm</code> and puts <code>/pnpm/bin</code> on <code>PATH</code>, so the default store is at <code>/pnpm/store</code>.</p>
+<div class="admonition admonition-caution"><p class="admonition-title">Caution</p>
+<p>Baking a warm store into an image layer — running an install during the build so later containers have nothing to download — does not make linking free. A hardlink to a file in a lower image layer succeeds, but overlayfs copies that file into the container's writable layer first, so an install copies most of the store out of the image while reporting that it hardlinked. <a href="/settings/node-modules#a-store-baked-into-a-container-image-layer"><code>packageImportMethod: copy</code></a> is usually faster in that setup, and measurably so on ext4. A BuildKit cache mount does not have this problem, because the store is a mount rather than a layer.</p>
+</div>
+<p>When the base image has a runtime installed with <code>pnpm runtime set node 24 -g</code>,
+keep the build cache at a separate location, such as <code>/var/cache/pnpm</code>. Mounting
+a cache over <code>/pnpm/store</code> hides the managed runtime for the duration of the
+<code>RUN</code> instruction. The examples below set <code>--store-dir</code> to the cache mount.</p>
+<h3 id="example-1-build-a-bundle-in-a-docker-container">Example 1: Build a bundle in a Docker container<a class="hash-link" href="#example-1-build-a-bundle-in-a-docker-container" aria-label="Direct link to Example 1: Build a bundle in a Docker container">#</a></h3>
+<p>Since <code>devDependencies</code> is only necessary for building the bundle, <code>pnpm install --prod</code> will be a separate stage
+from <code>pnpm install</code> and <code>pnpm run build</code>, allowing the final stage to copy only necessary files from the earlier
+stages, minimizing the size of the final image.</p>
+<div class="code-block"><div class="code-block-title">.dockerignore</div><pre><code class="hljs language-text">node_modules
+.git
+.gitignore
+*.md
+dist
+</code></pre></div>
+<div class="code-block"><div class="code-block-title">Dockerfile</div><pre><code class="hljs language-dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span> AS base
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm runtime <span class="hljs-built_in">set</span> node 24 -g</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . /app</span>
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+
+<span class="hljs-keyword">FROM</span> base AS prod-deps
+<span class="hljs-keyword">RUN</span><span class="bash"> --mount=<span class="hljs-built_in">type</span>=cache,<span class="hljs-built_in">id</span>=pnpm,target=/var/cache/pnpm \
+    pnpm install --store-dir /var/cache/pnpm --prod --frozen-lockfile</span>
+
+<span class="hljs-keyword">FROM</span> base AS build
+<span class="hljs-keyword">RUN</span><span class="bash"> --mount=<span class="hljs-built_in">type</span>=cache,<span class="hljs-built_in">id</span>=pnpm,target=/var/cache/pnpm \
+    pnpm install --store-dir /var/cache/pnpm --frozen-lockfile</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm run build</span>
+
+<span class="hljs-keyword">FROM</span> base
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=prod-deps /app/node_modules /app/node_modules</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=build /app/dist /app/dist</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8000</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"pnpm"</span>, <span class="hljs-string">"start"</span> ]</span>
+</code></pre></div>
+<h3 id="example-2-build-multiple-docker-images-in-a-monorepo">Example 2: Build multiple Docker images in a monorepo<a class="hash-link" href="#example-2-build-multiple-docker-images-in-a-monorepo" aria-label="Direct link to Example 2: Build multiple Docker images in a monorepo">#</a></h3>
+<p>Assuming you have a monorepo with 3 packages: app1, app2, and common; app1 and app2 depend on common but not each other.</p>
+<p>You want to save only necessary dependencies for each package, <code>pnpm deploy</code> should help you with copying only necessary files and packages.</p>
+<div class="code-block"><div class="code-block-title">Structure of the monorepo</div><pre><code class="hljs language-text">./
+├── Dockerfile
+├── .dockerignore
+├── .gitignore
+├── packages/
+│   ├── app1/
+│   │   ├── dist/
+│   │   ├── package.json
+│   │   ├── src/
+│   │   └── tsconfig.json
+│   ├── app2/
+│   │   ├── dist/
+│   │   ├── package.json
+│   │   ├── src/
+│   │   └── tsconfig.json
+│   └── common/
+│       ├── dist/
+│       ├── package.json
+│       ├── src/
+│       └── tsconfig.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+└── tsconfig.json
+</code></pre></div>
+<div class="code-block"><div class="code-block-title">pnpm-workspace.yaml</div><pre><code class="hljs language-yaml"><span class="hljs-attr">packages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">'packages/*'</span>
+<span class="hljs-attr">syncInjectedDepsAfterScripts:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">build</span>
+<span class="hljs-attr">injectWorkspacePackages:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<div class="code-block"><div class="code-block-title">.dockerignore</div><pre><code class="hljs language-text">node_modules
+.git
+.gitignore
+*.md
+dist
+</code></pre></div>
+<div class="code-block"><div class="code-block-title">Dockerfile</div><pre><code class="hljs language-dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span> AS base
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm runtime <span class="hljs-built_in">set</span> node 24 -g</span>
+
+<span class="hljs-keyword">FROM</span> base AS build
+<span class="hljs-keyword">COPY</span><span class="bash"> . /usr/src/app</span>
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /usr/src/app</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> --mount=<span class="hljs-built_in">type</span>=cache,<span class="hljs-built_in">id</span>=pnpm,target=/var/cache/pnpm \
+    pnpm install --store-dir /var/cache/pnpm --frozen-lockfile</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm run -r build</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm deploy --filter=app1 --prod /prod/app1</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm deploy --filter=app2 --prod /prod/app2</span>
+
+<span class="hljs-keyword">FROM</span> base AS app1
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=build /prod/app1 /prod/app1</span>
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /prod/app1</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8000</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"pnpm"</span>, <span class="hljs-string">"start"</span> ]</span>
+
+<span class="hljs-keyword">FROM</span> base AS app2
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=build /prod/app2 /prod/app2</span>
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /prod/app2</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8001</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"pnpm"</span>, <span class="hljs-string">"start"</span> ]</span>
+</code></pre></div>
+<p>Run the following commands to build images for app1 and app2:</p>
+<pre><code class="hljs language-sh">docker build . --target app1 --tag app1:latest
+docker build . --target app2 --tag app2:latest
+</code></pre>
+<h3 id="example-3-build-on-cicd">Example 3: Build on CI/CD<a class="hash-link" href="#example-3-build-on-cicd" aria-label="Direct link to Example 3: Build on CI/CD">#</a></h3>
+<p>On CI or CD environments, the BuildKit cache mounts might not be available, because the VM or container is ephemeral and only normal docker cache will work.</p>
+<p>So an alternative is to use a typical Dockerfile with layers that are built incrementally, for this scenario, <code>pnpm fetch</code> is the best option, as it only needs the <code>pnpm-lock.yaml</code> file and the layer cache will only be lost when you change the dependencies.</p>
+<div class="code-block"><div class="code-block-title">Dockerfile</div><pre><code class="hljs language-dockerfile"><span class="hljs-keyword">FROM</span> ghcr.io/pnpm/pnpm:<span class="hljs-number">12</span> AS base
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm runtime <span class="hljs-built_in">set</span> node 24 -g</span>
+
+<span class="hljs-keyword">FROM</span> base AS prod
+
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> pnpm-lock.yaml /app/</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm fetch --prod</span>
+
+<span class="hljs-keyword">COPY</span><span class="bash"> . /app</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> pnpm run build</span>
+
+<span class="hljs-keyword">FROM</span> base
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=prod /app/node_modules /app/node_modules</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=prod /app/dist /app/dist</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">8000</span>
+<span class="hljs-keyword">CMD</span><span class="bash"> [ <span class="hljs-string">"pnpm"</span>, <span class="hljs-string">"start"</span> ]</span>
+</code></pre></div></article></main></div>
+  </body>
+</html>

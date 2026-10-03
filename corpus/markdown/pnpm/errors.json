@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/errors",
+ "file": "markdown/pnpm/errors.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.02,
+ "markdown_chars": 4806,
+ "raw_html_chars": 11478,
+ "sha256": "0266fc200f2aedf97d8533a2881615a56a1901d312e7bd6304ab638491c307e3",
+ "fetched_at": "2026-10-03T08:58:44+00:00"
+}

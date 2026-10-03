@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/symlinked-node-modules-structure",
+ "file": "markdown/pnpm/symlinked-node-modules-structure.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.81,
+ "markdown_chars": 4607,
+ "raw_html_chars": 10896,
+ "sha256": "193c864f1b38a65afeae94b6ad60300aded879258bf0967846c247b9ab4c2321",
+ "fetched_at": "2026-10-03T08:59:09+00:00"
+}

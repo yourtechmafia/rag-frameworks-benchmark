@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/ecosystems",
+ "file": "markdown/pnpm/pnpr-ecosystems.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.93,
+ "markdown_chars": 9092,
+ "raw_html_chars": 21500,
+ "sha256": "14c431355d3472022ae780c38674ba1ececcd1a1f4b8b59c72715d077f1c2959",
+ "fetched_at": "2026-10-03T08:58:54+00:00"
+}

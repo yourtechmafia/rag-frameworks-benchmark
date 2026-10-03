@@ -1,0 +1,13 @@
+{
+ "site": "go-echarts",
+ "url": "https://go-echarts.github.io/go-echarts/#/en-us/options/global",
+ "file": "markdown/go-echarts/go-echarts-en-us-options-global.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 3.38,
+ "markdown_chars": 7251,
+ "raw_html_chars": 3769,
+ "sha256": "32556fc30c85d4d2303b47aeaca1e815060151dd6c3a567c8ea3c230563a9958",
+ "fetched_at": "2026-10-03T08:59:25+00:00"
+}

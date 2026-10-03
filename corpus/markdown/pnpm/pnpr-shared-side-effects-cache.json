@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/pnpr/shared-side-effects-cache",
+ "file": "markdown/pnpm/pnpr-shared-side-effects-cache.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.37,
+ "markdown_chars": 13056,
+ "raw_html_chars": 21348,
+ "sha256": "096f28f1b3faf3f7de4e917eaa10f3655bec222f61ec574bc468b8a2cba53c08",
+ "fetched_at": "2026-10-03T08:58:57+00:00"
+}

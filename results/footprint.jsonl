@@ -1,0 +1,7 @@
+{"framework": "baseline", "packages": 60, "size_mb": 861}
+{"framework": "langchain", "packages": 85, "size_mb": 879}
+{"framework": "llamaindex", "packages": 110, "size_mb": 967}
+{"framework": "haystack", "packages": 85, "size_mb": 911}
+{"framework": "dspy", "packages": 91, "size_mb": 991}
+{"framework": "lightrag", "packages": 95, "size_mb": 954}
+{"framework": "graphrag", "packages": 140, "size_mb": 799}

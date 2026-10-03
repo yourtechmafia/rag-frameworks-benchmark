@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/pip/packages/",
+ "file": "markdown/uv/uv-pip-packages.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.71,
+ "markdown_chars": 8840,
+ "raw_html_chars": 74267,
+ "sha256": "299757dca2ad62bc0cba202fa01d1e3dbfb645d2ba84ac3639d3a39fd3b9c82c",
+ "fetched_at": "2026-10-03T08:57:37+00:00"
+}

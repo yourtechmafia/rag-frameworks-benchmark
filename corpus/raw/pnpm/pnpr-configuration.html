@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuration | pnpm</title>
+    <meta name="description" content="pnpr uses a YAML config. When you don't pass -c, pnpr looks for a global config.yaml in its config directory and otherwise falls back to a bundled default (which is shaped for pnpm's own test registry — write your own config for real use)." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="Configuration | pnpm" />
+    <meta property="og:description" content="pnpr uses a YAML config. When you don't pass -c, pnpr looks for a global config.yaml in its config directory and otherwise falls back to a bundled default (which is shaped for pnpm's own test registry — write your own config for real use)." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="Configuration | pnpm" />
+    <meta name="twitter:description" content="pnpr uses a YAML config. When you don't pass -c, pnpr looks for a global config.yaml in its config directory and otherwise falls back to a bundled default (which is shaped for pnpm's own test registry — write your own config for real use)." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpr/configuration" />
+    <meta property="og:url" content="https://pnpm.io/pnpr/configuration" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpr/configuration" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpr/configuration" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpr/configuration" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpr/configuration" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpr/configuration" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpr/configuration" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpr/configuration" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpr/configuration" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpr/configuration" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpr/configuration" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpr/configuration" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpr/configuration" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpr/configuration" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpr/configuration" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="current" />
+    <meta name="docsearch:docusaurus_tag" content="docs-pnpr-current" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>Configuration</h1><p>pnpr uses a YAML config. When you don't pass <code>-c</code>, pnpr looks for a global
+<code>config.yaml</code> in its config directory and otherwise falls back to a bundled
+default (which is shaped for pnpm's own test registry — write your own config
+for real use).</p>
+<p>A minimal config that hosts a private scope locally and routes everything else
+to the public npm registry:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">storage:</span> <span class="hljs-string">./storage</span>
+
+<span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">local:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-comment"># The names this registry serves, plus their access rules.</span>
+      <span class="hljs-attr">'@mycompany/*':</span>
+        <span class="hljs-attr">access:</span> <span class="hljs-string">$authenticated</span>
+        <span class="hljs-attr">publish:</span> <span class="hljs-string">$authenticated</span>
+
+  <span class="hljs-attr">npmjs:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://registry.npmjs.org/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">router</span>
+    <span class="hljs-attr">sources:</span> [<span class="hljs-string">local</span>, <span class="hljs-string">npmjs</span>]
+
+<span class="hljs-attr">defaultRegistry:</span> <span class="hljs-string">main</span>
+</code></pre>
+<p>Pass it with <code>-c</code>:</p>
+<pre><code class="hljs language-sh">pnpr -c ./pnpr.yaml
+</code></pre>
+<h2 id="storage-and-cache"><code>storage</code> and <code>cache</code><a class="hash-link" href="#storage-and-cache" aria-label="Direct link to storage and cache">#</a></h2>
+<p>pnpr keeps two kinds of data:</p>
+<ul>
+<li><strong><code>storage</code></strong> — the source of truth: packages published to this server plus
+anything served in static mode. Back this up and keep it on a durable volume.</li>
+<li><strong><code>cache</code></strong> — the disposable mirror of upstream registries plus the resolver
+store, resolver cache, lockfile-verdict cache, local shared-artifact store,
+and S3 upload staging scratch.
+Safe to wipe at any time. Defaults to a <code>.pnpr-cache</code> subdirectory of
+<code>storage</code>; point it at a separate, ephemeral volume to keep cached upstream
+content off the durable disk.</li>
+</ul>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">storage:</span> <span class="hljs-string">./storage</span>
+<span class="hljs-comment">#cache: ./cache</span>
+</code></pre>
+<p>The hosted store can instead live in an S3-compatible object store — see
+<a href="/pnpr/storage">Storage backends</a>.</p>
+<h2 id="registries-and-defaultregistry"><code>registries</code> and <code>defaultRegistry</code><a class="hash-link" href="#registries-and-defaultregistry" aria-label="Direct link to registries and defaultRegistry">#</a></h2>
+<p>The <code>registries:</code> map is pnpr's <strong>only routing surface</strong>. Every addressable
+registry origin is a named registry, exposed at <code>https://&#x3C;pnpr>/~&#x3C;name>/</code>. There
+are three kinds:</p>
+<ul>
+<li><strong><code>hosted</code></strong> — a registry pnpr itself is the authoritative origin for. The
+only kind that accepts writes (publish, dist-tags, unpublish).</li>
+<li><strong><code>upstream</code></strong> — exactly one external registry origin, proxied and cached.</li>
+<li><strong><code>router</code></strong> — an ordered list of concrete source registries; a package
+resolves to the first listed source that claims its name.</li>
+</ul>
+<p>The model is governed by one invariant: <strong>provenance is declared, never
+inferred</strong>. Every concrete registry declares the package names it serves — its
+namespace — through its <a href="#the-packages-map"><code>packages:</code> map</a>, a package
+resolves to exactly one declared origin, and no configuration can express a
+cross-origin fall-through — not on "not found" and not on "unavailable". The
+namespace is enforced at the registry, on every path to it: a read of a name
+outside the namespace is a definitive 404 answered before storage or the
+upstream is consulted, and an off-namespace publish is rejected. This closes
+the dependency-confusion class of attacks by construction.</p>
+<p><code>defaultRegistry</code> names the registry that the path-less base URL
+(<code>https://&#x3C;pnpr>/</code>) aliases — usually a router. When omitted, the bare host
+serves no registry and clients must address a <code>/~&#x3C;name>/</code> URL.</p>
+<p>A registry name is served as the single URL path segment <code>/~&#x3C;name>/</code>, so it
+must be one URL-safe segment: it cannot be empty, <code>.</code> or <code>..</code>, start with <code>.</code>,
+or contain <code>/</code>, <code>\</code>, <code>:</code>, <code>%</code>, <code>?</code>, <code>#</code>, whitespace, or control characters. The
+<code>~</code> must arrive unencoded: <code>%7E</code> does not select the named registry.</p>
+<p>Since v0.1.0-alpha.11, a registry also declares which package ecosystem it
+serves, through <code>ecosystem:</code> (<code>npm</code>, <code>cargo</code>, <code>pypi</code>, or <code>oci</code>; npm by default).
+A server that serves more than one addresses them through <code>/npm/</code>, <code>/cargo/</code>,
+and <code>/pypi/</code> path prefixes, and registry names can be reused across ecosystems
+by grouping the entries under an ecosystem key. See
+<a href="/pnpr/ecosystems">Cargo and Python registries</a> and
+<a href="/pnpr/container-images">Container images</a>.</p>
+<h3 id="the-packages-map">The <code>packages</code> map<a class="hash-link" href="#the-packages-map" aria-label="Direct link to The packages map">#</a></h3>
+<p>Every concrete registry (hosted or upstream) takes an optional <code>packages:</code>
+map. Its <strong>keys are the registry's namespace</strong> — the package names it serves —
+and its <strong>values are the per-package access rules</strong>. One declaration routes,
+filters, and authorizes. When the map is omitted, the registry serves every
+name.</p>
+<p>Keys use a deliberately small pattern language, so coverage can be checked
+statically:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Pattern</th><th>Matches</th></tr></thead><tbody><tr><td><code>**</code></td><td>Every package name.</td></tr><tr><td><code>@*/*</code></td><td>Every scoped package, any scope.</td></tr><tr><td><code>@scope/*</code></td><td>Every package in one scope.</td></tr><tr><td><code>foo</code>, <code>@scope/foo</code></td><td>Exactly that package.</td></tr></tbody></table></div>
+<p>Any other wildcard is a config error rather than a silently-never-matching
+literal.</p>
+<p>The <strong>most specific matching key wins</strong>: an exact name beats <code>@scope/*</code>, which
+beats <code>@*/*</code>, which beats <code>**</code>. Key order carries no meaning — at most one key
+per specificity tier can match a name, so the winning rule is unique and
+reordering the map (by a formatter, or a YAML round-trip) can never change
+which rule applies. A duplicate key is a config error.</p>
+<p>Each value can set <code>access</code>, <code>publish</code>, and <code>unpublish</code>. When a field is
+omitted, <code>access</code> falls back to the registry-level <code>access:</code> default, <code>publish</code>
+defaults to <code>$authenticated</code>, and <code>unpublish</code> defaults to nobody.</p>
+<p>Every one of those fields takes either a single access token or a YAML list of
+them, and the grammar is deliberately small:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Token</th><th>Admits</th></tr></thead><tbody><tr><td><code>$all</code></td><td>Anyone, authenticated or not.</td></tr><tr><td><code>$authenticated</code></td><td>Any logged-in user.</td></tr><tr><td><code>$anonymous</code></td><td>Callers with no credentials.</td></tr><tr><td><code>team:&#x3C;name></code></td><td>The members of a <a href="#teams">team</a> declared on this registry.</td></tr><tr><td><code>alice</code></td><td>Exactly that username. Any bare token is a username.</td></tr></tbody></table></div>
+<p>Tokens are validated at config load and every near-miss is rejected loudly,
+rather than being read as a username that happens to admit nobody:</p>
+<ul>
+<li><code>$</code> is reserved for the three built-ins — any other <code>$token</code> is an error.</li>
+<li><code>all</code>, <code>authenticated</code>, <code>anonymous</code>, and <code>@</code>-prefixed spellings like <code>@all</code>
+are errors suggesting the <code>$</code> form.</li>
+<li><code>team:</code> is the only typed prefix; any other <code>&#x3C;kind>:</code> prefix is an error.
+(htpasswd forbids <code>:</code> in usernames, which is what frees the character.)</li>
+<li><code>team:&#x3C;name></code> must resolve to a team the <strong>same registry</strong> declares — an
+undeclared name is a config error, so a typo can't silently grant to nobody.</li>
+<li>One entry is one token: an entry containing whitespace is an error, so write
+<code>[alice, bob]</code> rather than <code>alice bob</code>.</li>
+<li>The empty string is an error. To admit nobody, write <code>[]</code>; to take the
+default, omit the field.</li>
+</ul>
+<h3 id="hosted-registries">Hosted registries<a class="hash-link" href="#hosted-registries" aria-label="Direct link to Hosted registries">#</a></h3>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">private:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">org:</span> <span class="hljs-string">mycompany</span>
+    <span class="hljs-attr">access:</span> <span class="hljs-string">$authenticated</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'@mycompany/*':</span>
+        <span class="hljs-attr">publish:</span> <span class="hljs-string">$authenticated</span>
+        <span class="hljs-attr">unpublish:</span> <span class="hljs-string">$authenticated</span>
+      <span class="hljs-comment"># An explicit entry fully decides its names — this opens one</span>
+      <span class="hljs-comment"># package on an otherwise-private registry.</span>
+      <span class="hljs-attr">'@mycompany/open-sdk':</span>
+        <span class="hljs-attr">access:</span> <span class="hljs-string">$all</span>
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody><tr><td><code>org</code></td><td>Storage namespace for this registry's packages, so two hosted registries can hold the same <code>name@version</code> without colliding. Omitted means the flat <code>storage</code> root. Must be a single path-safe segment.</td></tr><tr><td><code>access</code></td><td>The default read access for <code>packages:</code> entries that don't set their own. Defaults to <code>$all</code>. This is the only access field settable registry-wide — <code>publish</code> and <code>unpublish</code> belong to <code>packages:</code> entries.</td></tr><tr><td><code>teams</code></td><td>Named user sets for this registry, referenced from its access lists as <code>team:&#x3C;name></code> — see <a href="#teams">Teams</a>.</td></tr><tr><td><code>packages</code></td><td>The registry's namespace and per-package rules — see <a href="#the-packages-map">above</a>. Only these names can be served from or published to this registry.</td></tr></tbody></table></div>
+<p>Two hosted registries cannot share an <code>org</code> namespace — that's rejected at
+config load.</p>
+<p>The shape of a denial depends on who denied it. A caller that the
+registry-level <code>access:</code> default also denies is masked with a <code>404</code> — a
+blanket-private registry never confirms which package names exist. A caller
+denied by an explicit <code>packages:</code> entry while the default would admit them is
+rejected loudly (<code>401</code> for anonymous callers, <code>403</code> for authenticated ones),
+so clients can prompt for credentials.</p>
+<h3 id="upstream-registries">Upstream registries<a class="hash-link" href="#upstream-registries" aria-label="Direct link to Upstream registries">#</a></h3>
+<p>An upstream registry is one external origin — one URL, one credential, one
+cache namespace. It is either <code>public</code> (fetched anonymously, no credential)
+or private (carries a server-owned credential and an <code>access:</code> policy naming
+who may use it):</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">npmjs:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://registry.npmjs.org/</span>
+    <span class="hljs-attr">public:</span> <span class="hljs-literal">true</span>
+
+  <span class="hljs-attr">corp:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://npm.corp.example.com/</span>
+    <span class="hljs-attr">auth:</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">bearer</span>
+      <span class="hljs-attr">token_env:</span> <span class="hljs-string">CORP_NPM_TOKEN</span>
+    <span class="hljs-attr">access:</span> <span class="hljs-string">$authenticated</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'@corp/*':</span> {}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody><tr><td><code>url</code></td><td>Upstream registry URL.</td></tr><tr><td><code>public</code></td><td>Marks an anonymous, world-readable origin (e.g. the public npm registry). A public upstream sends no credential and no custom headers; declaring <code>auth</code>, <code>access</code>, or <code>headers</code> alongside <code>public: true</code> is a config error.</td></tr><tr><td><code>auth</code></td><td>Server-owned credential for a private origin. <code>type</code> is <code>bearer</code> or <code>basic</code>; provide <code>token</code>, or <code>token_env: true</code> to read <code>NPM_TOKEN</code>, or <code>token_env: NAME</code> to read a named environment variable.</td></tr><tr><td><code>headers</code></td><td>Extra request headers to send upstream. If <code>headers.Authorization</code> is set, it overrides the <code>auth</code>-derived header.</td></tr><tr><td><code>access</code></td><td>Which pnpr users may reach this registry at <code>/~&#x3C;name>/</code> (and resolve through it). Required for a non-<code>public</code> upstream.</td></tr><tr><td><code>teams</code></td><td>Named user sets for this registry, referenced from its access lists as <code>team:&#x3C;name></code> — see <a href="#teams">Teams</a>.</td></tr><tr><td><code>packages</code></td><td>The names this upstream serves through pnpr — see <a href="#the-packages-map">above</a>.</td></tr><tr><td><code>maxage</code></td><td>Per-registry packument freshness window. Overrides pnpr's global packument TTL / <code>--packument-ttl-secs</code> for this registry.</td></tr><tr><td><code>timeout</code></td><td>Per-request upstream deadline. Defaults to <code>30s</code>.</td></tr><tr><td><code>maxFails</code></td><td>Consecutive failures before the upstream circuit breaker opens. Defaults to <code>2</code>; <code>0</code> disables the breaker.</td></tr><tr><td><code>failTimeout</code></td><td>Cooldown before an open circuit is probed again. Defaults to <code>5m</code>.</td></tr><tr><td><code>cache</code></td><td>Whether tarballs fetched from this registry are cached locally. Defaults to <code>true</code>; <code>false</code> streams verified tarballs through a temporary file.</td></tr></tbody></table></div>
+<p>Interval values accept strings such as <code>30s</code>, <code>5m</code>, <code>1h30m</code>, or a bare number
+of seconds.</p>
+<p>Two upstream-specific rules apply to the <code>packages:</code> map. Per-package <code>access</code>
+values are allowed even on a <code>public: true</code> upstream — <code>public</code> describes the
+<em>fetch</em> (anonymous, credential-free), while a rule's <code>access</code> gates who may
+read the name <em>through pnpr</em>. And <code>publish</code>/<code>unpublish</code> values are rejected on
+any upstream: no write can land there.</p>
+<p>A private upstream registry is more than a proxy: it is a <strong>pnpr-managed
+credential</strong> for that origin. One upstream token, held by the server, is
+fanned out to a whole team through the registry's <code>access:</code> policy — clients
+authenticate to pnpr with their own tokens and never see the upstream
+credential. Declaring a <code>packages:</code> namespace on a private upstream also
+bounds what that credential can be used for: a caller can't pull arbitrary
+public names through it. pnpr never forwards a client's credentials upstream,
+and the server-owned credential is only ever attached over the upstream's own
+scheme (an <code>https://</code> registry's token is never sent over plain <code>http://</code>).</p>
+<p>Each upstream gets its own cache namespace: a <code>public</code> upstream uses a stable,
+secret-free namespace shared across restarts, while a private upstream's cache
+is keyed by an HMAC of the registry and its credential — so rotating the
+upstream token automatically moves to a fresh namespace, and a private
+registry's content can never be served on a public path or through another
+registry.</p>
+<h3 id="routers">Routers<a class="hash-link" href="#routers" aria-label="Direct link to Routers">#</a></h3>
+<p>A router is an ordered <code>sources:</code> list of concrete registries. A package
+resolves to the <strong>first listed source whose <code>packages:</code> keys claim its name</strong>,
+authoritatively — later sources are never consulted, and a name that no source
+claims is a definitive 404:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">router</span>
+    <span class="hljs-attr">sources:</span> [<span class="hljs-string">private</span>, <span class="hljs-string">corp</span>, <span class="hljs-string">npmjs</span>]
+</code></pre>
+<p>A source with no <code>packages:</code> map claims every name — the catch-all — and must
+be listed last. A router can order competing claims, but it can never assign a
+name to a registry that doesn't claim it: the namespace lives on the concrete
+registry, and is enforced there on every path.</p>
+<p>Because source order is load-bearing — a misordered router is the one way a
+mistake could send a private scope to a public origin — pnpr <strong>refuses to
+start</strong> (and fails a config reload) on an invalid router:</p>
+<ul>
+<li>a source that is unreachable — everything it claims is already covered by
+earlier sources (including a catch-all that isn't last);</li>
+<li>two sources claiming an identical pattern (genuinely ambiguous provenance,
+rejected in either order);</li>
+<li>a duplicate source;</li>
+<li>a source that is undefined, the router itself, or another router (sources
+must be hosted or upstream registries — no nesting, no cycles);</li>
+<li>a router with no sources.</li>
+</ul>
+<h2 id="teams">Teams<a class="hash-link" href="#teams" aria-label="Direct link to Teams">#</a></h2>
+<p>A team is a named list of usernames, declared on the registry that uses it and
+referenced from that registry's access lists as <code>team:&#x3C;name></code> — in the
+registry-level <code>access:</code> default and the per-package <code>packages:</code> rules alike:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">corp:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://npm.corp.example.com/</span>
+    <span class="hljs-attr">auth:</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">bearer</span>
+      <span class="hljs-attr">token_env:</span> <span class="hljs-string">CORP_NPM_TOKEN</span>
+    <span class="hljs-attr">teams:</span>
+      <span class="hljs-attr">platform:</span> [<span class="hljs-string">alice</span>, <span class="hljs-string">bob</span>]
+      <span class="hljs-attr">frontend:</span> [<span class="hljs-string">carol</span>, <span class="hljs-string">dave</span>]
+    <span class="hljs-attr">access:</span> <span class="hljs-string">team:platform</span>
+    <span class="hljs-attr">packages:</span>
+      <span class="hljs-attr">'@corp/ui':</span>
+        <span class="hljs-attr">access:</span> [<span class="hljs-string">team:platform</span>, <span class="hljs-string">team:frontend</span>]
+</code></pre>
+<p>Teams are <strong>registry-scoped</strong>: a registry can only reference teams it declares
+itself, never another registry's. To share one roster between registries, use a
+YAML anchor:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">registries:</span>
+  <span class="hljs-attr">private:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">hosted</span>
+    <span class="hljs-attr">teams:</span> <span class="hljs-meta">&#x26;corpTeams</span>
+      <span class="hljs-attr">platform:</span> [<span class="hljs-string">alice</span>, <span class="hljs-string">bob</span>]
+    <span class="hljs-attr">access:</span> <span class="hljs-string">team:platform</span>
+
+  <span class="hljs-attr">corp:</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">upstream</span>
+    <span class="hljs-attr">url:</span> <span class="hljs-string">https://npm.corp.example.com/</span>
+    <span class="hljs-attr">teams:</span> <span class="hljs-meta">*corpTeams</span>
+    <span class="hljs-attr">access:</span> <span class="hljs-string">team:platform</span>
+</code></pre>
+<p>A team's members are plain usernames. A team cannot contain another team — an
+entry with a <code>:</code> in it is a config error.</p>
+<p>A team is only ever reached through the <code>team:</code> prefix: a bare <code>platform</code> in an
+access list names the <strong>user</strong> <code>platform</code>, even when a team of that name
+exists. Keeping the two apart means someone who can register a username can
+never inherit a team's grants by choosing its name.</p>
+<p>Because teams live in the config, they are served read-only over npm's
+team endpoints, and any attempt to create or modify one through the API is
+refused — see <a href="/pnpr/endpoints#team-endpoints">Team endpoints</a>.</p>
+<h2 id="oci"><code>oci</code><a class="hash-link" href="#oci" aria-label="Direct link to oci">#</a></h2>
+<p>Size limits for the <a href="/pnpr/container-images">container image</a> surface, and the
+Bearer challenge it offers:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">oci:</span>
+  <span class="hljs-attr">bearerAuth:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">maxBlobBytes:</span> <span class="hljs-number">10737418240</span>   <span class="hljs-comment"># 10 GiB</span>
+  <span class="hljs-attr">maxManifestBytes:</span> <span class="hljs-number">4194304</span>   <span class="hljs-comment"># 4 MiB</span>
+</code></pre>
+<p>Both limits must be greater than zero.</p>
+<h2 id="cors"><code>cors</code><a class="hash-link" href="#cors" aria-label="Direct link to cors">#</a></h2>
+<p>The exact browser origins allowed to call pnpr across origins. Cross-origin
+access stays off when the block is absent or its allowlist is empty. See
+<a href="/pnpr/discovery">Browsing and discovery</a>.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">cors:</span>
+  <span class="hljs-attr">allowedOrigins:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">https://registry-ui.example.com</span>
+</code></pre>
+<h2 id="auth"><code>auth</code><a class="hash-link" href="#auth" aria-label="Direct link to auth">#</a></h2>
+<p>By default users are stored in an htpasswd file and tokens in a local SQLite
+database:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">auth:</span>
+  <span class="hljs-attr">htpasswd:</span>
+    <span class="hljs-attr">file:</span> <span class="hljs-string">./htpasswd</span>
+    <span class="hljs-comment"># Self-registration is disabled when omitted or set to -1.</span>
+    <span class="hljs-comment"># Set a non-negative cap to allow new users.</span>
+    <span class="hljs-attr">max_users:</span> <span class="hljs-number">-1</span>
+  <span class="hljs-attr">tokens:</span>
+    <span class="hljs-comment"># Optional. Defaults to a tokens.db sibling of the htpasswd file.</span>
+    <span class="hljs-attr">file:</span> <span class="hljs-string">./tokens.db</span>
+</code></pre>
+<p>Omitted <code>max_users</code> means registration disabled, not unlimited registration.
+Existing users can still log in. When <code>auth.tokens.file</code> is omitted and
+<code>auth.htpasswd.file</code> is set, the token database defaults to <code>tokens.db</code> next to
+the htpasswd file.</p>
+<p>To share auth state across several stateless pnpr replicas, move users and
+tokens into a shared SQL database — see <a href="/pnpr/auth-backends">Auth backends</a>.</p>
+<p>An <code>auth.oidc</code> list configures OpenID Connect browser sign-in and keyless CI
+publishing alongside the password backend — see
+<a href="/pnpr/oidc">OpenID Connect</a>.</p>
+<h2 id="secret"><code>secret</code><a class="hash-link" href="#secret" aria-label="Direct link to secret">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">secret:</span> <span class="hljs-string">${PNPR_SECRET}</span>
+</code></pre>
+<p>The HMAC key for pnpr's private cache namespaces — private resolution-cache
+entries and private per-registry cache directories are keyed with it, so
+on-disk paths reveal neither registry names nor credentials. It must be at
+least 16 bytes. When omitted, a fresh random secret is generated per process,
+which means private cache entries only survive for that process's lifetime —
+set an explicit secret to keep private caches warm across restarts.</p>
+<h2 id="registry-resolver-and-artifact-surfaces">Registry, resolver, artifact, and pipeline surfaces<a class="hash-link" href="#registry-resolver-and-artifact-surfaces" aria-label="Direct link to Registry, resolver, artifact, and pipeline surfaces">#</a></h2>
+<p>pnpr exposes four independently deployable HTTP surfaces:</p>
+<ul>
+<li>The <strong>registry surface</strong> — package and tarball reads, publish,
+unpublish, dist-tags, and search, on the path-less base and on every
+<code>/~&#x3C;name>/</code> endpoint, for <a href="/pnpr/ecosystems">every ecosystem</a> the config
+declares. It has no config toggle: it is served exactly when at
+least one registry is declared under <code>registries:</code>. The CLI flag
+<code>--disable-registry</code> turns it off for one process.</li>
+<li>The <strong>resolver surface</strong> — the pnpr install-accelerator routes
+(<code>GET /-/pnpr</code>, <code>POST /-/pnpr/v0/resolve</code>, and
+<code>POST /-/pnpr/v0/verify-lockfile</code>). It is enabled by default; the CLI flag
+<code>--disable-resolver</code> overrides the setting:</li>
+</ul>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">resolver:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<ul>
+<li>The <strong>shared-artifact surface</strong> — the three organization-scoped endpoints of
+the <a href="/pnpr/shared-side-effects-cache">shared side-effects cache</a> proof of
+concept. It is off by default and is a top-level peer of <code>resolver</code>, so an
+I/O-bound artifact tier can scale independently of a compute-bound resolver:</li>
+</ul>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">artifacts:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">compilerCaches:</span>
+    <span class="hljs-attr">acme:</span>
+      <span class="hljs-attr">access:</span> [<span class="hljs-string">ci-builder</span>, <span class="hljs-string">alice</span>, <span class="hljs-string">bob</span>]
+      <span class="hljs-attr">publish:</span> <span class="hljs-string">ci-builder</span>
+</code></pre>
+<p>The CLI flag <code>--disable-artifacts</code> overrides this setting. With artifacts off,
+its routes are not mounted and the <code>GET /-/pnpr</code> handshake advertises an empty
+artifact-version list. The handshake itself is served when either the resolver
+or artifact surface is enabled, so an artifact-only tier is discoverable.</p>
+<p><code>compilerCaches</code> declares the <a href="/pnpr/compiler-cache">Cargo compilation caches</a>
+this server hosts and who may read and publish to each.</p>
+<ul>
+<li>The <strong>pipeline run surface</strong> — the endpoints that store and serve
+<a href="/pnpr/pipeline-runs"><code>pnpm pipeline</code> run records</a>, a peer of the artifact store.
+It is off by default:</li>
+</ul>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">pipeline:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">workspaces:</span>
+    <span class="hljs-attr">acme-app:</span>
+      <span class="hljs-attr">access:</span> [<span class="hljs-string">team:platform</span>]
+      <span class="hljs-attr">publish:</span> <span class="hljs-string">ci-builder</span>
+</code></pre>
+<p>Something must be served: a config with no registries (or the registry
+surface disabled by flag), the resolver disabled, and artifacts disabled is a
+startup error.</p>
+<p>The health endpoint (<code>/-/ping</code>) and the account endpoints (login, whoami, and
+token management) are always served, whichever surfaces are enabled — so
+<code>pnpm login</code> works even against a resolver-only or artifact-only server. See
+<a href="/pnpr/endpoints">HTTP endpoints</a>.</p>
+<h2 id="routes"><code>routes</code><a class="hash-link" href="#routes" aria-label="Direct link to routes">#</a></h2>
+<p>Resolver route classification (see
+<a href="/pnpr/install-acceleration#private-registries">Install acceleration</a>) treats the
+official npm registry as public out of the box. If clients resolve against
+other registries that serve anonymously-readable content, declare them as
+public routes so their resolutions can be cached and shared across all callers:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">routes:</span>
+  <span class="hljs-attr">public:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">registry:</span> <span class="hljs-string">https://registry.mirror.example.com/</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">registry:</span> <span class="hljs-string">https://npm.corp.example.com/</span>
+      <span class="hljs-attr">package:</span> <span class="hljs-string">'@oss/*'</span>
+</code></pre>
+<p>Each rule may name a <code>registry</code> origin, a <code>package</code> glob, or both. Rules fail
+closed on a typo: a present-but-unparsable <code>registry</code> URL or <code>package</code> glob
+drops the whole rule (with a warning) rather than widening it.</p>
+<h2 id="osv"><code>osv</code><a class="hash-link" href="#osv" aria-label="Direct link to osv">#</a></h2>
+<p>Local OSV checks can hide or reject known vulnerable npm versions without live
+OSV API calls:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">osv:</span>
+  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">path:</span> <span class="hljs-string">./osv/npm/all.zip</span>
+</code></pre>
+<p><code>path</code> may point to an OSV npm database zip or an extracted JSON directory. When
+omitted, pnpr looks for <code>&#x3C;cache>/osv/npm/all.zip</code>. The same feature can be
+enabled from the CLI with <code>--osv</code> and <code>--osv-db</code>.</p>
+<h2 id="log"><code>log</code><a class="hash-link" href="#log" aria-label="Direct link to log">#</a></h2>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">log:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">stdout</span>
+  <span class="hljs-attr">format:</span> <span class="hljs-string">pretty</span>   <span class="hljs-comment"># or `json`</span>
+  <span class="hljs-attr">level:</span> <span class="hljs-string">error</span>     <span class="hljs-comment"># trace, debug, http, info, warn, or error</span>
+</code></pre>
+<p><code>RUST_LOG</code> always overrides the configured level. See the
+<a href="/pnpr/cli#logging">CLI reference</a>.</p>
+<h2 id="environment-variable-substitution">Environment variable substitution<a class="hash-link" href="#environment-variable-substitution" aria-label="Direct link to Environment variable substitution">#</a></h2>
+<p>Any <code>${ENV_VAR}</code> in the config is substituted from the environment before
+parsing, so secrets can be kept out of the file:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">s3:</span>
+  <span class="hljs-attr">bucket:</span> <span class="hljs-string">my-pnpr-packages</span>
+  <span class="hljs-attr">accessKeyId:</span> <span class="hljs-string">${PNPR_S3_ACCESS_KEY_ID}</span>
+  <span class="hljs-attr">secretAccessKey:</span> <span class="hljs-string">${PNPR_S3_SECRET_ACCESS_KEY}</span>
+</code></pre></article></main></div>
+  </body>
+</html>

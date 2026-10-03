@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm exec | pnpm</title>
+    <meta name="description" content="Execute a shell command in scope of a project." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm exec | pnpm" />
+    <meta property="og:description" content="Execute a shell command in scope of a project." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm exec | pnpm" />
+    <meta name="twitter:description" content="Execute a shell command in scope of a project." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/exec" />
+    <meta property="og:url" content="https://pnpm.io/cli/exec" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/exec" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/exec" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/exec" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/exec" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/exec" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/exec" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/exec" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/exec" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/exec" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/exec" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/exec" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/exec" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/exec" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/exec" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm exec</h1><p>Execute a shell command in scope of a project.</p>
+<p><code>node_modules/.bin</code> is added to the <code>PATH</code>, so <code>pnpm exec</code> allows executing commands of dependencies.</p>
+<h2 id="examples">Examples<a class="hash-link" href="#examples" aria-label="Direct link to Examples">#</a></h2>
+<p>If you have Jest as a dependency of your project, there is no need to install Jest globally, just run it with <code>pnpm exec</code>:</p>
+<pre><code>pnpm exec jest
+</code></pre>
+<p>The <code>exec</code> part is actually optional when the command is not in conflict with a builtin pnpm command, so you may also just run:</p>
+<pre><code>pnpm jest
+</code></pre>
+<h2 id="options">Options<a class="hash-link" href="#options" aria-label="Direct link to Options">#</a></h2>
+<p>Any options for the <code>exec</code> command should be listed before the <code>exec</code> keyword.
+Options listed after the <code>exec</code> keyword are passed to the executed command.</p>
+<p>Good. pnpm will run recursively:</p>
+<pre><code>pnpm -r exec jest
+</code></pre>
+<p>Bad, pnpm will not run recursively but <code>jest</code> will be executed with the <code>-r</code> option:</p>
+<pre><code>pnpm exec jest -r
+</code></pre>
+<h3 id="--recursive--r">--recursive, -r<a class="hash-link" href="#--recursive--r" aria-label="Direct link to --recursive, -r">#</a></h3>
+<p>Execute the shell command in every project of the workspace.</p>
+<p>The name of the current package is available through the environment variable
+<code>PNPM_PACKAGE_NAME</code>.</p>
+<h4 id="examples-1">Examples<a class="hash-link" href="#examples-1" aria-label="Direct link to Examples">#</a></h4>
+<p>Prune <code>node_modules</code> installations for all packages:</p>
+<pre><code>pnpm -r exec rm -rf node_modules
+</code></pre>
+<p>View package information for all packages. This should be used with the <code>--shell-mode</code> (or <code>-c</code>) option for the environment variable to work.</p>
+<pre><code>pnpm -rc exec pnpm view \$PNPM_PACKAGE_NAME
+</code></pre>
+<h3 id="--no-reporter-hide-prefix">--no-reporter-hide-prefix<a class="hash-link" href="#--no-reporter-hide-prefix" aria-label="Direct link to --no-reporter-hide-prefix">#</a></h3>
+<p>Do not hide prefix when running commands in parallel.</p>
+<h3 id="--resume-from-package_name">--resume-from &#x3C;package_name><a class="hash-link" href="#--resume-from-package_name" aria-label="Direct link to --resume-from <package_name>">#</a></h3>
+<p>Resume execution at a particular project. pnpm skips the projects a matching
+record of the previous recursive <code>exec</code> says already passed. Without such a
+record, it omits the named project's transitive dependencies, but still runs
+the named project, its dependents, and unrelated projects in the selected
+graph. See <a href="/workspace-task-orchestration#--resume-from-package_name">Workspace task
+orchestration</a>.</p>
+<h3 id="--parallel">--parallel<a class="hash-link" href="#--parallel" aria-label="Direct link to --parallel">#</a></h3>
+<p>Completely disregard concurrency and topological sorting, running a given script
+immediately in all matching packages. This is the
+preferred flag for long-running processes over many packages, for instance, a
+lengthy build process.</p>
+<h3 id="--shell-mode--c">--shell-mode, -c<a class="hash-link" href="#--shell-mode--c" aria-label="Direct link to --shell-mode, -c">#</a></h3>
+<p>Runs the command inside of a shell. Uses <code>/bin/sh</code> on UNIX and <code>\cmd.exe</code> on Windows.</p>
+<h3 id="--report-summary">--report-summary<a class="hash-link" href="#--report-summary" aria-label="Direct link to --report-summary">#</a></h3>
+<p><a href="/cli/run#--report-summary">Read about this option in the run command docs</a></p>
+<h3 id="--filter-package_selector">--filter &#x3C;package_selector><a class="hash-link" href="#--filter-package_selector" aria-label="Direct link to --filter <package_selector>">#</a></h3>
+<p><a href="/filtering">Read more about filtering.</a></p></article></main></div>
+  </body>
+</html>

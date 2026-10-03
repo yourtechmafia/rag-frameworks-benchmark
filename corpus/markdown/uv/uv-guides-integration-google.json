@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/google/",
+ "file": "markdown/uv/uv-guides-integration-google.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 0.97,
+ "markdown_chars": 9639,
+ "raw_html_chars": 73506,
+ "sha256": "63ecce886af95c52b73a0d5cd3362f86c2c79b26c8b50e052406dbee18434be8",
+ "fetched_at": "2026-10-03T08:57:31+00:00"
+}

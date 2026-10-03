@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/concepts/python-versions/",
+ "file": "markdown/uv/uv-concepts-python-versions.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.43,
+ "markdown_chars": 28802,
+ "raw_html_chars": 104766,
+ "sha256": "4a1c9358c4842810f825ad1ade7ce6a5605a03243fac8e67ac279fd6c4f4c2a5",
+ "fetched_at": "2026-10-03T08:57:17+00:00"
+}

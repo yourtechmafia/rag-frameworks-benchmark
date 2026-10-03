@@ -1,0 +1,13 @@
+{
+ "site": "docsify",
+ "url": "https://docsify.js.org/#/emoji",
+ "file": "markdown/docsify/emoji.md",
+ "render_js": true,
+ "status": 200,
+ "credits": 5,
+ "seconds": 4.9,
+ "markdown_chars": 212366,
+ "raw_html_chars": 7894,
+ "sha256": "55dbf2ed57d25ab9a5821934cc4ee06c0896d62f5b94dedf339a0a0c9e430390",
+ "fetched_at": "2026-10-03T09:00:01+00:00"
+}

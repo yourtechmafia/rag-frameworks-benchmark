@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/bin",
+ "file": "markdown/pnpm/cli-bin.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.2,
+ "markdown_chars": 232,
+ "raw_html_chars": 5007,
+ "sha256": "e7eb0b7048593d7472e2007a91dbe8289135b8c92fcf2907a8bcfaad8e4ad92f",
+ "fetched_at": "2026-10-03T08:57:48+00:00"
+}

@@ -1,0 +1,13 @@
+{
+ "site": "pnpm",
+ "url": "https://pnpm.io/cli/patch-remove",
+ "file": "markdown/pnpm/cli-patch-remove.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 10.75,
+ "markdown_chars": 168,
+ "raw_html_chars": 5004,
+ "sha256": "0617b0ae829c33f57148ad34865dfdff062884a0e31778884eef1a03a1d61578",
+ "fetched_at": "2026-10-03T08:58:38+00:00"
+}

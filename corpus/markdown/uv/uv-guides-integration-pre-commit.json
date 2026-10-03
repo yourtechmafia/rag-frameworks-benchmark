@@ -1,0 +1,13 @@
+{
+ "site": "uv",
+ "url": "https://docs.astral.sh/uv/guides/integration/pre-commit/",
+ "file": "markdown/uv/uv-guides-integration-pre-commit.md",
+ "render_js": false,
+ "status": 200,
+ "credits": 1,
+ "seconds": 1.17,
+ "markdown_chars": 6585,
+ "raw_html_chars": 73098,
+ "sha256": "dc92d94c6c69efe265c88549a48e4a5390b69247503a7bb9f5ebebb68560ea87",
+ "fetched_at": "2026-10-03T08:57:32+00:00"
+}

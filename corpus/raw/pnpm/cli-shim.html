@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm shim &lt;cmd&gt; | pnpm</title>
+    <meta name="description" content="Added in: v12.0.0-rc.6 (pnpm v12 only)" />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm shim &lt;cmd&gt; | pnpm" />
+    <meta property="og:description" content="Added in: v12.0.0-rc.6 (pnpm v12 only)" />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm shim &lt;cmd&gt; | pnpm" />
+    <meta name="twitter:description" content="Added in: v12.0.0-rc.6 (pnpm v12 only)" />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/cli/shim" />
+    <meta property="og:url" content="https://pnpm.io/cli/shim" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/cli/shim" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/cli/shim" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/cli/shim" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/cli/shim" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/cli/shim" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/cli/shim" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/cli/shim" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/cli/shim" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/cli/shim" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/cli/shim" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/cli/shim" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/cli/shim" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/cli/shim" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/cli/shim" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm shim &lt;cmd&gt;</h1><p>Added in: v12.0.0-rc.6 (pnpm v12 only)</p>
+<p>Manage project-aware command shims.</p>
+<p>A shim created by this command has no global installation behind it. It exists only to let the project you are standing in decide what runs: <code>pnpm shim add yarn</code> links a <code>yarn</code> command that runs whatever version the current project pins, and provisions that version on demand. On a machine that has only pnpm, that is what makes <code>yarn</code> work inside a Yarn project.</p>
+<p>Creating a shim is always deliberate — nothing writes one as a side effect of <a href="/cli/setup"><code>pnpm setup</code></a> or an install, because a shim shadows whatever the rest of your <code>PATH</code> resolved before it.</p>
+<h2 id="commands">Commands<a class="hash-link" href="#commands" aria-label="Direct link to Commands">#</a></h2>
+<h3 id="add">add<a class="hash-link" href="#add" aria-label="Direct link to add">#</a></h3>
+<pre><code>pnpm shim add &#x3C;pkg>...
+</code></pre>
+<p>Links a shim for every bin of each package into the global bin directory (<code>pnpm bin -g</code>), and records the package in the <a href="/settings/other#globalshims"><code>globalShims</code></a> setting so the shims actually dispatch.</p>
+<pre><code class="hljs language-sh">pnpm shim add yarn
+</code></pre>
+<p>The <a href="/package-managers">package managers pnpm provisions</a> — <code>npm</code>, <code>yarn</code>, <code>bun</code> — need no lookup: their bins are known up front, aliases included (<code>yarn</code> and <code>yarnpkg</code>, <code>npm</code> and <code>npx</code>). For any other package, the bins are read from the package's published manifest; a package that publishes no bin fails with <code>ERR_PNPM_SHIM_NO_BINS</code>.</p>
+<p>A bin that is already in the global bin directory belongs to something else — a globally installed package, or another package's shim — so the command refuses with <code>ERR_PNPM_SHIM_BIN_CONFLICT</code> rather than taking a working command away.</p>
+<p>Adding a shim while <code>globalShims: false</code> is set fails with <code>ERR_PNPM_SHIMS_DISABLED</code>: that setting turns every project-aware shim off, so the shim would sit on <code>PATH</code> doing nothing.</p>
+<h3 id="rm">rm<a class="hash-link" href="#rm" aria-label="Direct link to rm">#</a></h3>
+<pre><code>pnpm shim rm &#x3C;pkg>...
+</code></pre>
+<p>Aliases: <code>remove</code>, <code>uninstall</code></p>
+<p>Removes the package's shims and the <code>globalShims</code> entry that <code>add</code> recorded for it.</p>
+<h3 id="ls">ls<a class="hash-link" href="#ls" aria-label="Direct link to ls">#</a></h3>
+<pre><code>pnpm shim ls
+</code></pre>
+<p>Alias: <code>list</code></p>
+<p>Lists every shim in the global bin directory with the policy governing it:</p>
+<pre><code class="hljs language-text">yarn (auto): yarn, yarnpkg
+</code></pre>
+<h2 id="how-a-version-is-chosen">How a version is chosen<a class="hash-link" href="#how-a-version-is-chosen" aria-label="Direct link to How a version is chosen">#</a></h2>
+<p>A shim resolves the project you are standing in, walking up from the current working directory:</p>
+<ul>
+<li>For a <strong>package manager</strong>, the project's <a href="/package_json"><code>packageManager</code></a> or <a href="/package_json#devenginespackagemanager"><code>devEngines.packageManager</code></a> pin decides the version, and pnpm provisions it. The pin outranks a copy of that package manager installed globally, because it is the project's own statement of what installs it.</li>
+<li>For <strong>any other package</strong>, the project's <code>node_modules/.bin/&#x3C;name></code> is used.</li>
+</ul>
+<p>If nothing in the project provides the command, the globally installed version runs — a shim never makes a command fail merely because dispatch did not apply.</p>
+<p>The <a href="/global-packages#trust">trust rules</a> of project-aware global bins apply here too: an npm-published package manager is verified against npm's signature for its exact version and switches without asking, while Bun and Yarn 6 arrive as checksum-pinned platform archives and go through the confirmation prompt. That answer is remembered per project <em>and</em> per binary, so moving the project's pin to another version asks again.</p>
+<h2 id="the-shim-is-a-real-executable">The shim is a real executable<a class="hash-link" href="#the-shim-is-a-real-executable" aria-label="Direct link to The shim is a real executable">#</a></h2>
+<p>Since v12.3.0, every project-aware global command pnpm writes is a native
+executable on every platform: the shims <code>pnpm shim add</code> creates, and the <code>node</code>,
+<code>deno</code>, and <code>bun</code> commands. On Windows that means <code>&#x3C;name>.exe</code> instead of the
+<code>.cmd</code> and <code>.ps1</code> pair earlier pnpm 12 releases wrote.</p>
+<p>The practical difference is that a shell no longer sits between you and the
+command, so environment variables whose names are not valid shell identifiers
+survive the hop. Shims written by an earlier pnpm 12 are replaced on the next
+global install or <code>pnpm self-update</code>.</p>
+<h2 id="related">Related<a class="hash-link" href="#related" aria-label="Direct link to Related">#</a></h2>
+<ul>
+<li><a href="/package-managers">Other package managers</a></li>
+<li><a href="/global-packages#project-aware-global-bins">Project-aware global bins</a></li>
+<li><a href="/settings/other#globalshims"><code>globalShims</code></a></li>
+</ul></article></main></div>
+  </body>
+</html>

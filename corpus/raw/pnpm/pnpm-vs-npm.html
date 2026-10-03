@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head><!-- first-paint --><script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /><style>body{font-family:var(--typography-font-family,system-ui,sans-serif);background:var(--colors-surface-background,#fff);color:var(--colors-text-primary,#212121);margin:0}.docs-prerendered{box-sizing:border-box;overflow-wrap:break-word;max-width:860px;margin:0 auto;padding:88px 24px 48px;line-height:1.6}.docs-prerendered h1{margin:0 0 24px;font-size:36px;line-height:1.2}.docs-prerendered h2{margin:48px 0 16px;font-size:30px;line-height:1.2}.docs-prerendered h3{margin:32px 0 12px;font-size:24px;line-height:1.2}.docs-prerendered a{color:var(--colors-text-link,#f69220)}.docs-prerendered .hash-link{display:none}.docs-prerendered img{max-width:100%;height:auto}.docs-prerendered pre{background:var(--colors-surface-tertiary,#f8f9fa);border-radius:8px;padding:16px;overflow-x:auto}.docs-prerendered code{font-size:.9em}.docs-prerendered table{border-collapse:collapse;display:block;overflow-x:auto}.docs-prerendered th,.docs-prerendered td{border:1px solid var(--colors-border-default,#e0e0e0);padding:8px 12px}.docs-prerendered article+article{margin-top:48px}</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pnpm vs npm | pnpm</title>
+    <meta name="description" content="npm maintains a flattened dependency tree as of version 3. This leads to less disk space bloat, with a messy node_modules directory as a side effect." />
+    <meta name="theme-color" content="#f69220" />
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="pnpm Blog RSS Feed" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="pnpm Blog Atom Feed" href="/blog/atom.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pnpm" />
+    <meta property="og:title" content="pnpm vs npm | pnpm" />
+    <meta property="og:description" content="npm maintains a flattened dependency tree as of version 3. This leads to less disk space bloat, with a messy node_modules directory as a side effect." />
+    <meta property="og:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pnpmjs" />
+    <meta name="twitter:title" content="pnpm vs npm | pnpm" />
+    <meta name="twitter:description" content="npm maintains a flattened dependency tree as of version 3. This leads to less disk space bloat, with a messy node_modules directory as a side effect." />
+    <meta name="twitter:image" content="https://pnpm.io/img/ogimage.png" />
+
+    <script type="module" crossorigin src="/assets/index-CxL6fshY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-gKrm_uHA.css">
+  <link rel="canonical" href="https://pnpm.io/pnpm-vs-npm" />
+    <meta property="og:url" content="https://pnpm.io/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="en" href="https://pnpm.io/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="it" href="https://pnpm.io/it/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="zh" href="https://pnpm.io/zh/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="ja" href="https://pnpm.io/ja/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="ko" href="https://pnpm.io/ko/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="pt" href="https://pnpm.io/pt/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="zh-TW" href="https://pnpm.io/zh-TW/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="ru" href="https://pnpm.io/ru/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="uk" href="https://pnpm.io/uk/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="fr" href="https://pnpm.io/fr/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="tr" href="https://pnpm.io/tr/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="es" href="https://pnpm.io/es/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="id" href="https://pnpm.io/id/pnpm-vs-npm" />
+    <link rel="alternate" hreflang="x-default" href="https://pnpm.io/pnpm-vs-npm" />
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="12.x" />
+    <meta name="docsearch:docusaurus_tag" content="docs-default-12.x" />
+  </head>
+  <body>
+    <div id="root"><main class="docs-prerendered"><article><h1>pnpm vs npm</h1><h2 id="npms-flat-tree">npm's flat tree<a class="hash-link" href="#npms-flat-tree" aria-label="Direct link to npm&#x27;s flat tree">#</a></h2>
+<p>npm maintains a <a href="https://github.com/npm/npm/issues/6912">flattened dependency tree</a> as of version 3. This leads to less
+disk space bloat, with a messy <code>node_modules</code> directory as a side effect.</p>
+<p>On the other hand, pnpm manages <code>node_modules</code> by using hard linking and
+symbolic linking to a global on-disk content-addressable store. This lets you get the benefits of far less disk space usage, while also keeping your
+<code>node_modules</code> clean. There is documentation on the <a href="symlinked-node-modules-structure">store layout</a> if you wish
+to learn more.</p>
+<p>The good thing about pnpm's proper <code>node_modules</code> structure is that it
+"<a href="https://www.kochan.io/nodejs/pnpms-strictness-helps-to-avoid-silly-bugs.html">helps to avoid silly bugs</a>" by making it impossible to use modules that are not
+specified in the project's <code>package.json</code>.</p>
+<h2 id="installation">Installation<a class="hash-link" href="#installation" aria-label="Direct link to Installation">#</a></h2>
+<p>pnpm does not allow installation of packages without saving them to
+<code>package.json</code>. If no parameters are passed to <code>pnpm add</code>, packages are saved as
+regular dependencies. Like with npm, <code>--save-dev</code> and <code>--save-optional</code> can be
+used to install packages as dev or optional dependencies.</p>
+<p>As a consequence of this limitation, projects won't have any extraneous packages
+when they use pnpm unless they remove a dependency and leave it orphaned. That's
+why pnpm's implementation of the <a href="cli/prune">prune command</a> does not allow you to specify
+packages to prune - it ALWAYS removes all extraneous and orphaned packages.</p>
+<h2 id="directory-dependencies">Directory dependencies<a class="hash-link" href="#directory-dependencies" aria-label="Direct link to Directory dependencies">#</a></h2>
+<p>Directory dependencies start with the <code>file:</code> prefix and point to a directory in
+the filesystem. Like npm, pnpm symlinks those dependencies. Unlike npm, pnpm
+does not perform installation for the file dependencies.</p>
+<p>This means that if you have a package called <code>foo</code> (<code>&#x3C;root>/foo</code>) that has
+<code>bar@file:../bar</code> as a dependency, pnpm won't perform installation for
+<code>&#x3C;root>/bar</code> when you run <code>pnpm install</code> on <code>foo</code>.</p>
+<p>If you need to run installations in several packages at the same time, for
+instance in the case of a monorepo, you should look at the documentation for
+<a href="cli/recursive"><code>pnpm -r</code></a>.</p></article></main></div>
+  </body>
+</html>
